@@ -1,11 +1,9 @@
 import React from 'react';
-import ViewActivity from "@/container/activities-pages/veiw-pages/ViewActivity";
+import ViewActivity from "@/container/activities-pages/view-pages/ViewActivity";
 
 const ActivityView = () => {
   return (
-
     <ViewActivity/>
-
   );
 };
 
