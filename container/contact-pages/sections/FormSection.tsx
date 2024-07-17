@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Header = () => {
+const FormSection = () => {
   return (
     <div>
-      Head
+
     </div>
   );
 };
 
-export default Header;
+export default FormSection;

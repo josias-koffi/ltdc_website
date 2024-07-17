@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from "@/components/header/header";
+import Header from "@/components/header/Header";
 import HistorySection from "@/container/about-pages/sections/HistorySection";
 import AboutHeadSection from "@/container/about-pages/sections/AboutHeadSection";
 import ValuesSection from "@/components/sections/values/ValuesSection";

@@ -1,9 +1,10 @@
 import React from 'react';
+import {Button, Switch} from "@mui/material";
 
 const HeroSection = () => {
   return (
     <div>
-      On va tout peter
+
     </div>
   );
 };
