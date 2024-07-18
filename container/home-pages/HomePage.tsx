@@ -7,7 +7,7 @@ import ReviewSection from "@/components/sections/review/ReviewSection";
 
 const HomePage = () => {
     return (
-        <div>
+        <div style={{backgroundColor: "#FFFCF7"}}>
             <HeroSection/>
             <ValuesSection/>
             <ActivitiesSection/>
