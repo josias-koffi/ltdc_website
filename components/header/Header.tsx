@@ -23,7 +23,7 @@ const Header = () => {
             flexDirection: 'row',
             justifyContent: 'space-between',
             alignItems: "center",
-            px: 5,
+            px: 7,
             py: 2,
             flexWrap: 'wrap'
         }}>

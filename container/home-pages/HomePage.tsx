@@ -6,15 +6,15 @@ import CampaignSection from "@/container/home-pages/sections/CampaignSection";
 import ReviewSection from "@/components/sections/review/ReviewSection";
 
 const HomePage = () => {
-  return (
-    <div>
-      <HeroSection/>
-      <ValuesSection/>
-      <ActivitiesSection/>
-      <CampaignSection/>
-      <ReviewSection/>
-    </div>
-  );
+    return (
+        <div>
+            <HeroSection/>
+            <ValuesSection/>
+            <ActivitiesSection/>
+            <CampaignSection/>
+            <ReviewSection/>
+        </div>
+    );
 };
 
 export default HomePage;
