@@ -19,8 +19,8 @@ export default function Template({ children }: { children: React.ReactNode }) {
   const isUpperMobileScreen = useMediaQuery(theme.breakpoints.up("sm"));
 
   const frame: FrameInterface = {
-    paddingX: isUpperMobileScreen ? 30 : 1,
-    paddingY: isUpperMobileScreen ? 3 : 1,
+    paddingX: isUpperMobileScreen ? 30 : 2,
+    paddingY: isUpperMobileScreen ? 7 : 2,
   };
 
   return (

@@ -83,7 +83,7 @@ const ValuesSection = () => {
         alignItems: "stretch",
       }}
     >
-      <Typography variant="h2" fontWeight={"bold"}>
+      <Typography variant={notPhoneScreen ? "h2" : "h3"} fontWeight={"bold"}>
         {title}
       </Typography>
       <Typography variant="body1">{description}</Typography>
