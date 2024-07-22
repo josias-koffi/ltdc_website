@@ -24,7 +24,7 @@ const Header = () => {
         justifyContent: "space-between",
         alignItems: "center",
         px: frame?.paddingX,
-        py: frame?.paddingY,
+        py: frame?.paddingHeaderY,
         flexWrap: "wrap",
       }}
     >

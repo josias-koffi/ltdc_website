@@ -7,8 +7,10 @@ import { themeOptions } from "@/config/theming";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 export interface FrameInterface {
-  paddingX: number;
-  paddingY: number;
+  paddingX: number | string;
+  paddingY: number | string;
+  paddingHeaderX: number | string;
+  paddingHeaderY: number | string;
 }
 
 export const FrameSettingContext = createContext<FrameInterface | null>(null);
@@ -19,8 +21,10 @@ export default function Template({ children }: { children: React.ReactNode }) {
   const isUpperMobileScreen = useMediaQuery(theme.breakpoints.up("sm"));
 
   const frame: FrameInterface = {
-    paddingX: isUpperMobileScreen ? 30 : 2,
-    paddingY: isUpperMobileScreen ? 7 : 2,
+    paddingX: isUpperMobileScreen ? "10rem" : "1rem",
+    paddingY: isUpperMobileScreen ? "3rem" : "1rem",
+    paddingHeaderX: isUpperMobileScreen ? "10rem" : "1rem",
+    paddingHeaderY: isUpperMobileScreen ? "3rem" : "1rem" ,
   };
 
   return (

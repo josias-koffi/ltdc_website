@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import Header from "@/components/header/Header";
 import HistorySection from "@/container/about-pages/sections/HistorySection";
 import AboutHeadSection from "@/container/about-pages/sections/AboutHeadSection";
@@ -10,12 +10,12 @@ import CallToActionsSection from "@/container/about-pages/sections/CallToActions
 const AboutPage = () => {
   return (
     <div>
-      <AboutHeadSection/>
-      <HistorySection/>
-      <ValuesSection/>
-      <ActivitiesSection/>
-      <MembersSection/>
-      <CallToActionsSection/>
+      <AboutHeadSection />
+      <HistorySection />
+      <ValuesSection />
+      <ActivitiesSection variant="minimal" />
+      <MembersSection />
+      <CallToActionsSection />
     </div>
   );
 };

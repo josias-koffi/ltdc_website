@@ -19,6 +19,7 @@ const ActivitiesSection = (props: ActivitiesSectionInterface) => {
   const frame = useContext(FrameSettingContext);
   const notPhoneScreen = useContext(ScreenTypeContext);
   const ABSOLUT_IMAGE_POSITION = notPhoneScreen ? 2 : -300;
+  const isMinimal = variant == "minimal";
 
   const mapImages = () => {
     return images?.map((image: string, index: number) => {
@@ -27,7 +28,6 @@ const ActivitiesSection = (props: ActivitiesSectionInterface) => {
           <Box
             sx={{
               display: "flex",
-              width: "100%",
               backgroundImage: `url(${image})`,
               backgroundRepeat: "no-repeat",
               backgroundSize: "contain",
@@ -42,7 +42,7 @@ const ActivitiesSection = (props: ActivitiesSectionInterface) => {
   const mapActivities = () => {
     return activities?.map((act: ActivityInterface, index: number) => {
       return (
-        <Grid item xl={6}>
+        <Grid item xl={isMinimal ? 4 : 6}>
           <Typography variant={notPhoneScreen ? "h2" : "h3"} sx={{ pb: 3 }}>
             {`0${index + 1}`}
           </Typography>
@@ -61,8 +61,9 @@ const ActivitiesSection = (props: ActivitiesSectionInterface) => {
         display: "flex",
         flexDirection: "column",
         alignItems: "stretch",
-        backgroundColor: variant == "minimal" ? null : "#FBF6FD",
+        backgroundColor: isMinimal ? "#F5EFE0" : "#FBF6FD",
         position: "relative",
+        // p: 1,
       }}
     >
       <Image
@@ -77,27 +78,32 @@ const ActivitiesSection = (props: ActivitiesSectionInterface) => {
           zIndex: 0,
         }}
       />
+
       <Box
         sx={{
-          px: frame?.paddingX,
-          py: frame?.paddingY,
+          px: notPhoneScreen ? frame?.paddingX : "3rem",
+          py: notPhoneScreen ? frame?.paddingY : "3rem",
           zIndex: 2,
           color: "#642775",
+          position: "static",
         }}
       >
         <Grid container spacing={1}>
-          <Grid xl={6} md={6} sm={12} xs={12}>
-            <Grid
-              container
-              spacing={1}
-              direction="row"
-              justifyContent="flex-start"
-              alignItems="flex-end"
-            >
-              {mapImages()}
+          {!isMinimal ? (
+            <Grid xl={6} md={6} sm={12} xs={12}>
+              <Grid
+                container
+                spacing={1}
+                direction="row"
+                justifyContent="flex-start"
+                alignItems="flex-end"
+              >
+                {mapImages()}
+              </Grid>
             </Grid>
-          </Grid>
-          <Grid xl={6} md={6} sm={12} xs={12}>
+          ) : null}
+
+          <Grid xl={isMinimal ? 12 : 6} md={isMinimal ? 12 : 6} sm={12} xs={12}>
             <Grid container spacing={2}>
               <Grid xl={12}>
                 <Typography

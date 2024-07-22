@@ -29,7 +29,7 @@ const Footer = () => {
       sx={{
         backgroundColor: "#2A2A2A",
         px: frame?.paddingX,
-        py: frame?.paddingY,
+        py: frame?.paddingHeaderY,
         color: "white",
       }}
     >
