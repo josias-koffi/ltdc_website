@@ -14,7 +14,7 @@ interface ButtonListProps {
 
 const ButtonList = (props: Props) => {
   const buttonList: ButtonListProps[] = [
-    { name: "Accueille", link: "/" },
+    { name: "Accueill", link: "/" },
     {
       name: "A Propos",
       link: "/about",
