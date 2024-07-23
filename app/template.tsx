@@ -21,10 +21,10 @@ export default function Template({ children }: { children: React.ReactNode }) {
   const isUpperMobileScreen = useMediaQuery(theme.breakpoints.up("sm"));
 
   const frame: FrameInterface = {
-    paddingX: isUpperMobileScreen ? "10rem" : "1rem",
-    paddingY: isUpperMobileScreen ? "3rem" : "1rem",
-    paddingHeaderX: isUpperMobileScreen ? "10rem" : "1rem",
-    paddingHeaderY: isUpperMobileScreen ? "3rem" : "1rem" ,
+    paddingX: isUpperMobileScreen ? "13rem" : "1rem",
+    paddingY: isUpperMobileScreen ? "7rem" : "1rem",
+    paddingHeaderX: isUpperMobileScreen ? "13rem" : "1rem",
+    paddingHeaderY: isUpperMobileScreen ? "2rem" : "1rem" ,
   };
 
   return (
