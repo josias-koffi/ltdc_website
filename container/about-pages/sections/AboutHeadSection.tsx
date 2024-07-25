@@ -27,9 +27,7 @@ const AboutHeadSection = () => {
                 <Image src={image} alt="Photo de Jed Villejo sur Unsplash" fill={true}
                        style={{objectFit: "cover", borderRadius: 10,objectPosition:" right"}}/>
             </Box>
-            {/*<Image src={image} alt="Photo de Jed Villejo sur Unsplash" width={notPhoneScreen ? 1258 :600} height={notPhoneScreen ? 400 :200}*/}
-            {/*       style={{objectFit: "cover",borderRadius: 10,width:"1000"}}/>*/}
-            <Typography variant="body1" align={""}>{description}</Typography>
+            <Typography variant="body1" align={"center"}>{description}</Typography>
         </Box>
     );
 };

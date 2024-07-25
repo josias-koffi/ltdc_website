@@ -24,7 +24,7 @@ const ActivitiesSection = (props: ActivitiesSectionInterface) => {
   const mapImages = () => {
     return images?.map((image: string, index: number) => {
       return (
-        <Grid item xl={index === 0 ? 12 : 5}>
+        <Grid key={image} item xl={index === 0 ? 12 : 5}>
           <Box
             sx={{
               display: "flex",
@@ -42,7 +42,7 @@ const ActivitiesSection = (props: ActivitiesSectionInterface) => {
   const mapActivities = () => {
     return activities?.map((act: ActivityInterface, index: number) => {
       return (
-        <Grid item xl={isMinimal ? 4 : 6}>
+        <Grid  key={act.title} item xl={isMinimal ? 4 : 6}>
           <Typography variant={notPhoneScreen ? "h2" : "h3"} sx={{ pb: 3 }}>
             {`0${index + 1}`}
           </Typography>
