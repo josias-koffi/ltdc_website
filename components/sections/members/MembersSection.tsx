@@ -3,6 +3,7 @@ import React, {useContext} from 'react';
 import {Box, Grid, Typography} from "@mui/material"
 import {FrameSettingContext, ScreenTypeContext} from "@/app/template";
 import Image from "next/image";
+import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
 
 
 const MemberSection = () => {
@@ -58,6 +59,8 @@ const MemberSection = () => {
                 key={member.name}
                 item
                 xl={3}
+                md={4}
+                sm={6}
                 sx={{
                     display: "flex",
                     flexDirection: "column",
@@ -105,18 +108,15 @@ const MemberSection = () => {
     }
 
     return (
-        <Box
-            sx={{
-                px: frame?.paddingX,
-                py: frame?.paddingY,
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "flex-start",
-                alignItems: "flex-start",
-                gap: 5,
-                position: "relative",
-            }}
-        >
+        <ContainerWrapper sxProps={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "flex-start",
+            alignItems: "flex-start",
+            gap: 5,
+            position: "relative",
+            py:10
+        }}>
             <Typography variant={notPhoneScreen ? "h2" : "h3"} fontWeight={"bold"} sx={{pb: 5}}>{"Membres"}</Typography>
             <Grid
                 container
@@ -126,7 +126,7 @@ const MemberSection = () => {
             >
                 {mapMembers()}
             </Grid>
-        </Box>
+        </ContainerWrapper>
     );
 };
 

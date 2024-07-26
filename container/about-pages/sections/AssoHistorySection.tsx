@@ -4,6 +4,7 @@ import {FrameSettingContext, ScreenTypeContext} from "@/app/template";
 import {Box, Grid, Typography} from "@mui/material";
 import assoHistory from "./AssoHistory.json";
 import Image from "next/image";
+import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
 
 const AssoHistorySection = () => {
 
@@ -24,41 +25,41 @@ const AssoHistorySection = () => {
     return (
         <Box
             sx={{
-                px: frame?.paddingX,
-                py: frame?.paddingY,
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "stretch",
-                backgroundColor: "#F5EFE0"
+                backgroundColor: "#F5EFE0",
+                py: 5
             }}
         >
-            <Grid
-                container
-                alignItems="center"
-                justifyContent="center"
-                spacing={1}
-            >
-                <Grid item xl={6}>
-                    <Typography variant={notPhoneScreen ? "h2" : "h3"} fontWeight={"bold"}
-                                sx={{pb: 5}}>{"Notre Histoire"}</Typography>
-                    <Typography component="div" dangerouslySetInnerHTML={{__html: cleanedAndFormattedText}}/>
+            <ContainerWrapper>
+                <Grid
+                    container
+                    alignItems="center"
+                    justifyContent="center"
+                    spacing={1}
+                >
+                    <Grid item xl={6}>
+                        <Typography variant={notPhoneScreen ? "h2" : "h3"} fontWeight={"bold"}
+                                    sx={{pb: 5}}  >{"Notre Histoire"}</Typography>
+                        <Typography component="div" dangerouslySetInnerHTML={{__html: cleanedAndFormattedText}} color={"text.secondary"}/>
+                    </Grid>
+                    <Grid item xl={6}
+                          sx={{position: "relative", display: "flex", alignItems: "center", justifyContent: "center"}}>
+                        <Box sx={{height: 600, width: 350, position: "relative"}}>
+                            <Image
+                                src={"/images/aboutPage/historySection.png"}
+                                alt="Asso image of peoples"
+                                fill={true}
+                                style={{
+                                    objectFit: "contain",
+                                    objectPosition: " right",
+                                    zIndex: 5
+                                }}/>
+                        </Box>
+                    </Grid>
                 </Grid>
-                <Grid item xl={6}
-                      sx={{position: "relative", display: "flex", alignItems: "center", justifyContent: "center"}}>
-                    <Box sx={{height: 600, width: 350, position: "relative"}}>
-                        <Image
-                            src={"/images/aboutPage/historySection.png"}
-                            alt="Asso image of peoples"
-                            fill={true}
-                            style={{
-                                objectFit: "contain",
-                                objectPosition: " right",
-                                zIndex: 5
-                            }}/>
-                    </Box>
-
-                </Grid>
-            </Grid>
+            </ContainerWrapper>
         </Box>
     );
 };
