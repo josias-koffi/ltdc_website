@@ -1,15 +1,11 @@
 services:
-  nextjs:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "3000:3000"
-    volumes:
-      - .:/app:cached
-      - /app/node_modules
-    environment:
-      - NODE_ENV=development
-      - CHOKIDAR_USEPOLLING=true
-      - CHOKIDAR_INTERVAL=100
-    command: npm run dev
+    nextjs:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports:
+            - "3000:3000"
+        volumes:
+            - .:/app:cached
+            - /app/node_modules
+
