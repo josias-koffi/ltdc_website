@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 import Header from "@/components/header/Header";
-import HistorySection from "@/container/about-pages/sections/HistorySection";
+import AssoHistorySection from "@/container/about-pages/sections/AssoHistorySection";
 import AboutHeadSection from "@/container/about-pages/sections/AboutHeadSection";
 import ValuesSection from "@/components/sections/values/ValuesSection";
 import ActivitiesSection from "@/components/sections/activities/ActivitiesSection";
@@ -10,12 +10,12 @@ import CallToActionsSection from "@/container/about-pages/sections/CallToActions
 const AboutPage = () => {
   return (
     <div>
-      <AboutHeadSection/>
-      <HistorySection/>
-      <ValuesSection/>
-      <ActivitiesSection/>
-      <MembersSection/>
-      <CallToActionsSection/>
+      <AboutHeadSection />
+      <AssoHistorySection />
+      <ValuesSection />
+      <ActivitiesSection variant="minimal" />
+      <MembersSection />
+      <CallToActionsSection />
     </div>
   );
 };

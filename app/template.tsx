@@ -1,19 +1,44 @@
 "use client";
+import {createContext} from "react";
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
-import {ThemeProvider} from '@mui/material/styles';
+import {ThemeProvider, useTheme} from "@mui/material/styles";
 import {themeOptions} from "@/config/theming";
-import {Box} from "@mui/material";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
+export interface FrameInterface {
+    paddingX: number | string;
+    paddingY: number | string;
+    paddingHeaderX: number | string;
+    paddingHeaderY: number | string;
+    upperMd:boolean
+}
+
+export const FrameSettingContext = createContext<FrameInterface | null>(null);
+export const ScreenTypeContext = createContext<boolean | null>(null);
 
 export default function Template({children}: { children: React.ReactNode }) {
+    const theme = useTheme();
+    const upperSm = useMediaQuery(theme.breakpoints.up("sm"));
+    const upperMd = useMediaQuery(theme.breakpoints.up("xl"));
 
+    const frame: FrameInterface = {
+        paddingX: upperSm ? "13rem" : "1rem",
+        paddingY: upperSm ? "7rem" : "1rem",
+        paddingHeaderX: upperSm ? "13rem" : "1rem",
+        paddingHeaderY: upperSm ? "2rem" : "1rem",
+        upperMd
+    };
 
-    return <ThemeProvider theme={themeOptions}>
-        <Header/>
-        <Box px={7} py={5}>
-            {children}
-        </Box>
-        <Footer/>
-    </ThemeProvider>;
+    return (
+        <ThemeProvider theme={themeOptions}>
+            <FrameSettingContext.Provider value={frame}>
+                <ScreenTypeContext.Provider value={upperSm}>
+                    <Header/>
+                    {children}
+                    <Footer/>
+                </ScreenTypeContext.Provider>
+            </FrameSettingContext.Provider>
+        </ThemeProvider>
+    );
 }

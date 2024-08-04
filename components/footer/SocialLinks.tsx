@@ -4,7 +4,7 @@ import {IconBrandFacebookFilled} from "@tabler/icons-react";
 
 const SocialLinks = () => {
     return (
-        <Box sx={{display: "flex", flexDirection: "row", gap: 3, flexWrap: "wrap"}}>
+        <Box sx={{display: "flex", flexDirection: "row", gap: 3, flexWrap: "no-wrap", justifyContent: "space-between",alignItems: "center"}}>
             <IconButton href={"https://facebook.com/"} aria-label="delete">
                 <IconBrandFacebookFilled color="white" size={30}/>
             </IconButton>

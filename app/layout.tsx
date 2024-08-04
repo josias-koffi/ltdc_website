@@ -1,8 +1,8 @@
-import type {Metadata} from "next";
-import {Inter} from "next/font/google";
+import type { Metadata } from "next";
+import { Sen } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({subsets: ["latin"]});
+const sen = Sen({ subsets: ["latin"], weight: ["400"] });
 
 export const metadata: Metadata = {
   title: "LTDC",
@@ -10,13 +10,15 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-                                     children,
-                                   }: Readonly<{
+  children,
+}: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
     <html lang="en">
-    <body className={inter.className} style={{margin: 0}}>{children}</body>
+      <body className={sen.className} style={{ margin: 0 }}>
+        {children}
+      </body>
     </html>
   );
 }
