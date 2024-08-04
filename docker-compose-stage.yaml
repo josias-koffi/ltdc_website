@@ -12,9 +12,10 @@ services:
             - NODE_ENV=production
         labels:
             - traefik.enable=true
-            - traefik.http.routers.backend-app.rule=Host(`stage-ltdc.asso-ltdc.org`)
+            - traefik.http.routers.backend-app.rule=Host(`https://stage-ltdc.asso-ltdc.org`)
             - traefik.http.routers.backend-app.entrypoints=web
             - traefik.http.services.backend-app.loadbalancer.server.port=3030
+        command: next build
 
 networks:
     dokploy-network:
