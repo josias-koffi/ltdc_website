@@ -85,6 +85,7 @@ const ActivitiesSection = (props: ActivitiesSectionInterface) => {
                     zIndex: 2,
                     color: "#642775",
                     position: "static",
+                    px: 7
                 }}
             >
                 <Grid container spacing={1}>
