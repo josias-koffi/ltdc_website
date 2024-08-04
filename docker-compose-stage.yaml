@@ -6,7 +6,6 @@ services:
         ports:
             - "3030:3000"
         volumes:
-            - .:/app:cached
             - /app/node_modules
         environment:
             - NODE_ENV=production
@@ -15,8 +14,7 @@ services:
             - traefik.http.routers.backend-app.rule=Host(`https://stage-ltdc.asso-ltdc.org`)
             - traefik.http.routers.backend-app.entrypoints=web
             - traefik.http.services.backend-app.loadbalancer.server.port=3030
-        command: next build
-
+#        command: next start
 networks:
     dokploy-network:
         external: true
