@@ -24,6 +24,7 @@ const ValuesSection = () => {
                 <Grid
                     key={value.title}
                     xl={3}
+                    md={3}
                     sm={6}
                     xs={12}
                     sx={{

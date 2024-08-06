@@ -4,6 +4,7 @@ import SubjectSection from "@/container/contact-pages/sections/SubjectSection";
 import FormSection from "@/container/contact-pages/sections/FormSection";
 import LocationSection from "@/container/contact-pages/sections/LocationSection";
 
+
 interface ContactInfoInterface {
     subject: string | undefined,
     name: string,

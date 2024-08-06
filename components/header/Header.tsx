@@ -18,7 +18,7 @@ const Header = () => {
 
     return (
         <Box sx={{backgroundColor:"#FFF"}}>
-            <ContainerWrapper>
+            <ContainerWrapper sxProps={{py:3}}>
                 <Box
                     sx={{
                         display: "flex",
