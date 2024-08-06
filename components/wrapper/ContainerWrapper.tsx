@@ -9,7 +9,7 @@ interface ContainerWrapperInterface {
 
 const ContainerWrapper = ({children, sxProps}: ContainerWrapperInterface) => {
     return (
-        <Container maxWidth="xl" sx={{py: 1, ...sxProps}}>
+        <Container maxWidth="xl" sx={{py: {xl: 10, md: 10, sm: 5, xs: 5}, ...sxProps}}>
             {children}
         </Container>
     );
