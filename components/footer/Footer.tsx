@@ -6,6 +6,7 @@ import Link from "next/link";
 import SocialLinks from "@/components/footer/SocialLinks";
 import {FrameSettingContext} from "@/app/template";
 import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
+import ImageWrapper from "@/components/wrapper/ImageWrapper";
 
 const Footer = () => {
     const frame = useContext(FrameSettingContext);
@@ -36,12 +37,8 @@ const Footer = () => {
                 <Box sx={{flexGrow: 1}}>
                     <Grid container spacing={4}>
                         <Grid item xl={6} xs={12}>
-                            <Image
-                                src={footerData?.logoLink}
-                                width={50}
-                                height={50}
-                                alt="Picture of the author"
-                            />
+                            <ImageWrapper src={"/icons/Logo_Association_LTDC_LOGO.svg"} alt={"icon asso"} width={90}
+                                          height={80} objectFit={"cover"} />
                             <Typography variant="h5" component="div">
                                 {footerData?.callSentence}
                             </Typography>
