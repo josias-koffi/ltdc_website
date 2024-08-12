@@ -29,9 +29,9 @@ const Header = () => {
                     }}
                 >
                     <Box sx={{display: "flex", flexDirection: "row", justifyContent: "center",alignItems:"center", position:"relative"}}>
-                        <ImageWrapper src={"/icons/Logo_Association_LTDC_LOGO.svg"} alt={"icon asso"} width={90}
-                                      height={80} objectFit={"cover"} />
-                        <ImageWrapper src={"/icons/Logo_Association_LTDC_TYPO.svg"} alt={"icon asso"} width={250}
+                        <ImageWrapper src={"/icons/Logo_Association_LTDC_LOGO.svg"} alt={"icon asso"} width={80}
+                                      height={70} objectFit={"cover"} />
+                        <ImageWrapper src={"/icons/Logo_Association_LTDC_TYPO.svg"} alt={"icon asso"} width={200}
                                       height={50} objectFit={"cover"} objectPosition={"center"}/>
                     </Box>
 

@@ -1,5 +1,5 @@
 "use client"
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
 import {Box, Grid, Typography, useTheme} from "@mui/material";
 import subjects from "./subjects.json"
@@ -8,10 +8,10 @@ import Image from "next/image";
 
 
 interface SubjectProps {
-    setSubject: (subject: string) => void;
+    setSubject: (subject: any) => void;
 }
 
-interface SubjectStateInterface {
+export interface SubjectStateInterface {
     id: number,
     image: string,
     subject: string
@@ -19,9 +19,24 @@ interface SubjectStateInterface {
 
 const SubjectSection = (props: SubjectProps) => {
     const theme = useTheme()
+    const {setSubject} = props
 
     const [selectedSubject, setSelectedSubject] = useState<SubjectStateInterface>()
     const notPhoneScreen = useContext(ScreenTypeContext);
+
+    const handleSelectSubject = (subject: SubjectStateInterface) => {
+        setSelectedSubject(subject)
+    }
+
+    useEffect(() => {
+        setSelectedSubject(subjects[0])
+    }, []);
+
+    useEffect(() => {
+        setSubject((pre: any) => {
+            return {...pre, "subject": selectedSubject}
+        })
+    }, [selectedSubject]);
 
     const SubjectCards = () => {
         return <Grid
@@ -35,7 +50,7 @@ const SubjectSection = (props: SubjectProps) => {
                 pt: 5
             }}
         >
-            {subjects?.map((subject: SubjectStateInterface) => {
+            {subjects?.map((subject: SubjectStateInterface, index: number) => {
                 return <Grid
                     key={subject.id}
                     item
@@ -53,7 +68,7 @@ const SubjectSection = (props: SubjectProps) => {
                 >
                     <Box
                         sx={{
-                            backgroundColor: theme.palette.primary.main,
+                            backgroundColor: selectedSubject?.id === index ? theme.palette.primary.main : "grey",
                             borderRadius: 2,
                             display: "flex",
                             flexDirection: "column",
@@ -61,6 +76,12 @@ const SubjectSection = (props: SubjectProps) => {
                             alignItems: "center",
                             p: 5,
                             gap: 2,
+                            "&:hover": {
+                                cursor: "pointer",
+                            }
+                        }}
+                        onClick={() => {
+                            handleSelectSubject(subject)
                         }}
                     >
                         <Image

@@ -1,15 +1,16 @@
 "use client";
 import React, {useState} from 'react';
-import SubjectSection from "@/container/contact-pages/sections/SubjectSection";
+import SubjectSection, {SubjectStateInterface} from "@/container/contact-pages/sections/SubjectSection";
 import FormSection from "@/container/contact-pages/sections/FormSection";
 import LocationSection from "@/container/contact-pages/sections/LocationSection";
 
 
-interface ContactInfoInterface {
-    subject: string | undefined,
+export interface ContactInfoInterface {
+    subject: SubjectStateInterface | undefined,
     name: string,
     email: string | undefined,
     message: string | undefined,
+    company: string | undefined
 
 }
 
@@ -18,7 +19,7 @@ const ContactPage = () => {
     return (
         <div>
             <SubjectSection setSubject={setContactInfo}/>
-            <FormSection/>
+            <FormSection setContactInfo={setContactInfo} contactInfo={contactInfo}/>
             <LocationSection/>
         </div>
     );

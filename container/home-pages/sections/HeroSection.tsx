@@ -3,21 +3,23 @@ import React, {useContext} from "react";
 import {Box, Button, Grid, Stack, Typography, useTheme,} from "@mui/material";
 import {IconChevronRight} from "@tabler/icons-react";
 import Image from "next/image";
-import {ScreenTypeContext} from "@/app/template";
+import {FrameSettingContext, ScreenTypeContext} from "@/app/template";
 import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
 
 const HeroSection = () => {
     const theme = useTheme();
     const notPhoneScreen = useContext(ScreenTypeContext);
+    const frame = useContext(FrameSettingContext);
+
     const ABSOLUT_IMAGE_POSITION = notPhoneScreen ? 2 : -300;
     const TITLE_VARIANTS = notPhoneScreen ? "h1" : "h2";
+
 
     return (
         <ContainerWrapper>
             <Stack
                 direction="row"
                 spacing={0}
-                sx={{py: 10}}
             >
                 <Image
                     src={"/images/homePage/Ellipse.svg"}
@@ -78,14 +80,12 @@ const HeroSection = () => {
                         alignItems: "center",
                     }}
                 >
-                    {notPhoneScreen ? (
-                        <Image
-                            src={"/images/homePage/working.svg"}
-                            alt={"Personnes travaillant ensemble"}
-                            width={600}
-                            height={600}
-                        />
-                    ) : null}
+                    <Image
+                        src={"/images/homePage/working.svg"}
+                        alt={"Personnes travaillant ensemble"}
+                        width={frame?.upperMd ? 600 : frame?.upperSm ? 400 : 0}
+                        height={frame?.upperMd ? 600 : frame?.upperSm ? 400 : 0}
+                    />
                 </Grid>
             </Stack>
         </ContainerWrapper>
