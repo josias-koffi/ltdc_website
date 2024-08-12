@@ -1,5 +1,5 @@
 "use client";
-import {createContext} from "react";
+import React, {createContext} from "react";
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 import {ThemeProvider, useTheme} from "@mui/material/styles";
@@ -11,7 +11,8 @@ export interface FrameInterface {
     paddingY: number | string;
     paddingHeaderX: number | string;
     paddingHeaderY: number | string;
-    upperMd:boolean
+    upperSm: boolean,
+    upperMd: boolean,
 }
 
 export const FrameSettingContext = createContext<FrameInterface | null>(null);
@@ -22,11 +23,13 @@ export default function Template({children}: { children: React.ReactNode }) {
     const upperSm = useMediaQuery(theme.breakpoints.up("sm"));
     const upperMd = useMediaQuery(theme.breakpoints.up("xl"));
 
+
     const frame: FrameInterface = {
         paddingX: upperSm ? "13rem" : "1rem",
         paddingY: upperSm ? "7rem" : "1rem",
         paddingHeaderX: upperSm ? "13rem" : "1rem",
         paddingHeaderY: upperSm ? "2rem" : "1rem",
+        upperSm,
         upperMd
     };
 

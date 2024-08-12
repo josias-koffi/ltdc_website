@@ -1,7 +1,7 @@
 "use client";
 import React, {useContext} from "react";
 import VALUES from "./values.json";
-import {FrameSettingContext, ScreenTypeContext} from "@/app/template";
+import {ScreenTypeContext} from "@/app/template";
 import {Box, Grid, Stack, Typography, useTheme} from "@mui/material";
 import Image from "next/image";
 import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
@@ -55,7 +55,7 @@ const ValuesSection = () => {
                             height={80}
                         />
                         <Typography variant="h6" align="center" fontWeight={"bold"}>
-                            {value.title}
+                            {"Nos valeurs"}
                         </Typography>
                         <Typography variant="body1" align="center">
                             {value.description}
@@ -77,7 +77,7 @@ const ValuesSection = () => {
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "stretch",
-                    py: 10
+                    py: 0
                 }}
             >
                 <Typography variant={notPhoneScreen ? "h2" : "h3"} fontWeight={"bold"}>
