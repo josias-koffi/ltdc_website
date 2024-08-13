@@ -6,7 +6,7 @@ import LocationSection from "@/container/contact-pages/sections/LocationSection"
 
 
 export interface ContactInfoInterface {
-    subject: SubjectStateInterface | undefined,
+    subject: SubjectStateInterface |  undefined,
     name: string,
     email: string | undefined,
     message: string | undefined,

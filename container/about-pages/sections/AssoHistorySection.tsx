@@ -1,6 +1,6 @@
 "use client"
 import React, {useContext} from 'react';
-import {FrameSettingContext, ScreenTypeContext} from "@/app/template";
+import {ScreenTypeContext} from "@/app/template";
 import {Box, Grid, Typography} from "@mui/material";
 import assoHistory from "./AssoHistory.json";
 import Image from "next/image";
@@ -9,7 +9,6 @@ import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
 const AssoHistorySection = () => {
 
     const {text} = assoHistory
-    const frame = useContext(FrameSettingContext);
     const notPhoneScreen = useContext(ScreenTypeContext);
 
     const cleanAndFormatText = (text: string) => {
@@ -41,8 +40,9 @@ const AssoHistorySection = () => {
                 >
                     <Grid item xl={6}>
                         <Typography variant={notPhoneScreen ? "h2" : "h3"} fontWeight={"bold"}
-                                    sx={{pb: 5}}  >{"Notre Histoire"}</Typography>
-                        <Typography component="div" dangerouslySetInnerHTML={{__html: cleanedAndFormattedText}} color={"text.secondary"}/>
+                                    sx={{pb: 5}}>{"L’histoire de la création de LTDC"}</Typography>
+                        <Typography component="div" dangerouslySetInnerHTML={{__html: cleanedAndFormattedText}}
+                                    color={"text.secondary"}/>
                     </Grid>
                     <Grid item xl={6}
                           sx={{position: "relative", display: "flex", alignItems: "center", justifyContent: "center"}}>
