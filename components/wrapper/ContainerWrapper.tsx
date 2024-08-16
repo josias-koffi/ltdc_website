@@ -5,11 +5,12 @@ import {Container} from "@mui/material"
 interface ContainerWrapperInterface {
     children?: React.ReactNode
     sxProps?: any
+    containerWidth?: any
 }
 
-const ContainerWrapper = ({children, sxProps}: ContainerWrapperInterface) => {
+const ContainerWrapper = ({children, sxProps, containerWidth}: ContainerWrapperInterface) => {
     return (
-        <Container maxWidth="xl" sx={{py: {xl: 10, md: 10, sm: 5, xs: 5}, ...sxProps}}>
+        <Container maxWidth={containerWidth ?? "xl"} sx={{py: {xl: 10, md: 10, sm: 5, xs: 5}, ...sxProps}}>
             {children}
         </Container>
     );

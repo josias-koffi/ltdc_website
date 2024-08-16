@@ -4,28 +4,12 @@
     "richDescription": "Les Travailleurs du Cœur est une association à but non lucratif dédiée à l'accompagnement des personnes en situation irrégulière. Nous offrons des solutions en matière d'emploi, de formation et de logement pour aider chacun à retrouver sa dignité et son autonomie.",
     "quickLinks": [
         {
-            "name": "Facebook",
-            "link": "https://facebook.com/"
+            "name": "MENTIONS LÉGALES",
+            "link": "/terms-of-use"
         },
         {
-            "name": "Facebook",
-            "link": "https://facebook.com/"
-        },
-        {
-            "name": "Facebook",
-            "link": "https://facebook.com/"
-        },
-        {
-            "name": "Facebook",
-            "link": "https://facebook.com/"
-        },
-        {
-            "name": "Facebook",
-            "link": "https://facebook.com/"
-        },
-        {
-            "name": "Facebook",
-            "link": "https://facebook.com/"
+            "name": "Condition d'utilisation",
+            "link": "/terms-of-use"
         }
     ]
 }
