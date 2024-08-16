@@ -68,7 +68,7 @@ const SubjectSection = (props: SubjectProps) => {
                 >
                     <Box
                         sx={{
-                            backgroundColor: selectedSubject?.id === index ? theme.palette.primary.main : "grey",
+                            backgroundColor: selectedSubject?.id === index ? theme.palette.primary.main : "#C0C0C0 ",
                             borderRadius: 2,
                             display: "flex",
                             flexDirection: "column",

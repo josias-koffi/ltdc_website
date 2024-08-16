@@ -11,12 +11,21 @@ const FormSection = ({contactInfo, setContactInfo}: {
     setContactInfo: any
 }) => {
     const notPhoneScreen = useContext(ScreenTypeContext);
-
     const handleChange = (e: any) => {
-
         const {value, name} = e.target;
-
         console.log(value, name);
+        setContactInfo((pre: any) => {
+            return {...pre, [name]: e.target.value}
+        });
+    }
+
+    const handleSubmit = async () => {
+        try {
+            await fetch("/api/contact",
+                {method: "POST", body: JSON.stringify(contactInfo)})
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     return (
@@ -28,9 +37,18 @@ const FormSection = ({contactInfo, setContactInfo}: {
                 py: 10,
             }}
         >
-            <Box sx={{width: "100%", height: 600, position: "absolute", zIndex: 1}}>
-                <Image src={"/images/contactPage/background.png"} alt="Photo de Jed Villejo sur Unsplash" fill={true}
-                       style={{objectFit: "fill", objectPosition: " center"}}/>
+            <Box
+                sx={{
+                    width: "100%",
+                    height: 600,
+                    position: "absolute",
+                    zIndex: 1
+                }}>
+                <Image
+                    src={"/images/contactPage/background.png"}
+                    alt="Photo de Jed Villejo sur Unsplash"
+                    fill={true}
+                    style={{objectFit: "fill", objectPosition: " center"}}/>
             </Box>
             <ContainerWrapper sxProps={{
                 position: 'relative',
@@ -42,10 +60,16 @@ const FormSection = ({contactInfo, setContactInfo}: {
                 gap: 5
             }}>
                 <Box>
-                    <Typography variant={notPhoneScreen ? "h3" : "h4"} align={'center'}
-                                color={"#FFF"}>{"N'hésitez pas à nous contacter."}</Typography>
-                    <Typography variant={notPhoneScreen ? "h3" : "h4"} color={"#FFF"} align={'center'}>{
-                        "Nous serons heureux d’avoir de vos repondre"}</Typography>
+                    <Typography
+                        variant={notPhoneScreen ? "h3" : "h4"}
+                        align={'center'}
+                        color={"#FFF"}>{"N'hésitez pas à nous contacter."}
+                    </Typography>
+                    <Typography
+                        variant={notPhoneScreen ? "h3" : "h4"}
+                        color={"#FFF"} align={'center'}>
+                        {"Nous serons heureux de vous répondre"}
+                    </Typography>
                 </Box>
 
                 <Card sx={{
@@ -57,7 +81,13 @@ const FormSection = ({contactInfo, setContactInfo}: {
                     width: {xl: 600, md: 500, sm: 350, xs: 300}
                 }}>
                     <CardContent
-                        sx={{display: "flex", alignItems: "center", flexDirection: "column", gap: 2, width: '100%'}}>
+                        sx={{
+                            display: "flex",
+                            alignItems: "center",
+                            flexDirection: "column",
+                            gap: 2,
+                            width: '100%'
+                        }}>
                         <TextField
                             variant={"outlined"}
                             sx={{width: '100%'}}
@@ -67,20 +97,44 @@ const FormSection = ({contactInfo, setContactInfo}: {
                             disabled
                             InputLabelProps={{shrink: true}}
                         />
-                        <TextField variant={"outlined"} sx={{width: '100%'}} label="Nom" name={"name"}
-                                   onChange={handleChange} value={contactInfo?.name}/>
-                        <TextField variant={"outlined"} sx={{width: '100%'}} label="Entreprise" onChange={handleChange}
-                                   value={contactInfo?.company}/>
-                        <TextField variant={"outlined"} sx={{width: '100%'}} label="Email" onChange={handleChange}
-                                   value={contactInfo?.email} type="email"/>
-                        <TextField variant={"outlined"} sx={{width: '100%'}} label="Message" rows={10} multiline
-                                   onChange={handleChange} value={contactInfo?.message}/>
+                        <TextField
+                            variant={"outlined"}
+                            sx={{width: '100%'}}
+                            label="Nom"
+                            name="name"
+                            onChange={handleChange}
+                            value={contactInfo?.name}/>
+                        <TextField
+                            variant={"outlined"}
+                            sx={{width: '100%'}}
+                            label="Entreprise"
+                            name="company"
+                            onChange={handleChange}
+                            value={contactInfo?.company}/>
+                        <TextField
+                            variant={"outlined"}
+                            sx={{width: '100%'}}
+                            label="Email"
+                            name="email"
+                            onChange={handleChange}
+                            value={contactInfo?.email}
+                            type="email"/>
+                        <TextField
+                            variant={"outlined"}
+                            sx={{width: '100%'}}
+                            label="Message"
+                            name="message"
+                            rows={10}
+                            multiline
+                            onChange={handleChange}
+                            value={contactInfo?.message}/>
                     </CardContent>
 
                     <CardActions sx={{width: '100%'}}>
                         <Button
                             variant="contained"
                             sx={{width: '100%'}}
+                            onClick={handleSubmit}
                         >
                             {"Envoyer"}
                         </Button>
