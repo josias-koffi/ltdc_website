@@ -1,10 +1,10 @@
 import React, {useContext, useState} from "react";
 import {Box} from "@mui/material";
 import ButtonList from "@/components/header/components/ButtonList";
-import Image from "next/image";
 import {IconMenu2, IconSquareX} from "@tabler/icons-react";
 import {FrameSettingContext, ScreenTypeContext} from "@/app/template";
 import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
+import ImageWrapper from "@/components/wrapper/ImageWrapper";
 
 const Header = () => {
     const frame = useContext(FrameSettingContext);
@@ -17,8 +17,8 @@ const Header = () => {
     };
 
     return (
-        <Box sx={{backgroundColor:"#FFF"}}>
-            <ContainerWrapper>
+        <Box sx={{backgroundColor: "#FFF"}}>
+            <ContainerWrapper sxProps={{py: 3}}>
                 <Box
                     sx={{
                         display: "flex",
@@ -28,12 +28,13 @@ const Header = () => {
                         flexWrap: "wrap",
                     }}
                 >
-                    <Image
-                        src="/icons/icon_logo.svg"
-                        width={50}
-                        height={50}
-                        alt="Picture of the author"
-                    />
+                    <Box sx={{display: "flex", flexDirection: "row", justifyContent: "center",alignItems:"center", position:"relative"}}>
+                        <ImageWrapper src={"/icons/Logo_Association_LTDC_LOGO.svg"} alt={"icon asso"} width={80}
+                                      height={70} objectFit={"cover"} />
+                        <ImageWrapper src={"/icons/Logo_Association_LTDC_TYPO.svg"} alt={"icon asso"} width={200}
+                                      height={50} objectFit={"cover"} objectPosition={"center"}/>
+                    </Box>
+
                     {isNotMobileScreen ? null : expanded ? (
                         <IconSquareX onClick={handleExpend}/>
                     ) : (
