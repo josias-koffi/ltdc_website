@@ -1,0 +1,21 @@
+{
+  "images": [
+    "/images/activitiesSection/act1.png",
+    "/images/activitiesSection/act3.png",
+    "/images/activitiesSection/act2.png"
+  ],
+  "activities": [
+    {
+      "title": "Faciliter l'accès à l'emploi",
+      "description": "Nous aidons les personnes en situation irrégulière à trouver des opportunités d'emploi grâce à nos programmes de formation"
+    },
+    {
+      "title": "Suivi personnalisé",
+      "description": "Nous offrons des conseils et un soutien adaptés aux besoins spécifiques de chaque bénéficiaire"
+    },
+    {
+      "title": " Aider à la recherche  de logement",
+      "description": "Nous offrons des conseils et un soutien adaptés aux besoins spécifiques de chaque bénéficiaire"
+    }
+  ]
+}

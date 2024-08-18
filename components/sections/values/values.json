@@ -1,0 +1,26 @@
+{
+  "title": "Nos valeurs",
+  "description": "Les Travailleurs du Cœur adhèrent à des principes qui guident notre mission d'accompagnement et de soutien des personnes en situation irrégulière. Nos valeurs fondamentales sont au cœur de toutes nos actions",
+  "values": [
+    {
+      "title": "Accompagnement personnalisé",
+      "description": "Nous offrons un soutien sur mesure pour répondre aux besoins spécifiques de chaque individu",
+      "icon": "/icons/values/accompagnement.svg"
+    },
+    {
+      "title": "Solidarité",
+      "description": "Nous croyons en la force de la communauté et travaillons ensemble pour surmonter les défis",
+      "icon": "/icons/values/solidarité.svg"
+    },
+    {
+      "title": "Respect et dignité",
+      "description": "Nous traitons chaque personne avec respect et dignité, quels que soient leur parcours et leur situation",
+      "icon": "/icons/values/respect_solidarite.svg"
+    },
+    {
+      "title": "Engagement",
+      "description": "Nous nous engageons à accompagner durablement les personnes en situation irrégulière vers l'autonomie",
+      "icon": "/icons/values/engagement.svg"
+    }
+  ]
+}

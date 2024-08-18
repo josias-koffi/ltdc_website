@@ -1,0 +1,6 @@
+services:
+    react-app-dev:
+        restart: always
+        build:
+            context: .
+            dockerfile: Dockerfile

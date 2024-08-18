@@ -1,0 +1,6 @@
+services:
+    react-app-prod:
+        build:
+            target: runner
+        ports:
+            -   '3000:3000'
