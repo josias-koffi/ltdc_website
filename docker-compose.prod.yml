@@ -1,3 +1,6 @@
 services:
-    react-app:
-        image: test
+    react-app-build:
+        build:
+            target: runner
+        ports:
+            -   '3000:3000'
