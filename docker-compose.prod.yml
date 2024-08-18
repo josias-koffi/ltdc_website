@@ -1,5 +1,5 @@
 services:
-    react-app-build:
+    react-app-prod:
         build:
             target: runner
         ports:
