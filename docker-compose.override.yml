@@ -1,0 +1,7 @@
+services:
+    react-app:
+        build:
+            target: builder
+        volumes:
+            - .:/app
+            - /app/node_modules
