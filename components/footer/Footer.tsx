@@ -1,6 +1,5 @@
 import React, {useContext} from "react";
 import {Box, Grid, Typography, useTheme} from "@mui/material";
-import Image from "next/image";
 import footerData from "./footer.json";
 import Link from "next/link";
 import SocialLinks from "@/components/footer/SocialLinks";
@@ -11,9 +10,9 @@ import ImageWrapper from "@/components/wrapper/ImageWrapper";
 const Footer = () => {
     const frame = useContext(FrameSettingContext);
     const mapQuickLinks = () => {
-        return footerData?.quickLinks?.map((quickLink) => {
+        return footerData?.quickLinks?.map((quickLink: any, index: number) => {
             return (
-                <Grid key={quickLink.link} item xl={6}>
+                <Grid key={quickLink.link + index} item xl={6}>
                     <Link
                         style={{color: "white", textDecoration: "none"}}
                         href={quickLink.link}
@@ -38,7 +37,7 @@ const Footer = () => {
                     <Grid container spacing={4}>
                         <Grid item xl={6} xs={12}>
                             <ImageWrapper src={"/icons/Logo_Association_LTDC_LOGO.svg"} alt={"icon asso"} width={90}
-                                          height={80} objectFit={"cover"} />
+                                          height={80} objectFit={"cover"}/>
                             <Typography variant="h5" component="div">
                                 {footerData?.callSentence}
                             </Typography>
@@ -58,13 +57,13 @@ const Footer = () => {
                 </Box>
                 <Box
                     sx={{
-                        pt:5,
+                        pt: 5,
                         display: "flex",
                         flexDirection: "row",
                         justifyContent: "space-between",
                         alignItems: "flex-end",
                         flexWrap: "wrap",
-                        gap:2
+                        gap: 2
                     }}
                 >
                     <SocialLinks/>

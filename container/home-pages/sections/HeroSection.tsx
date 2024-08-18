@@ -65,8 +65,9 @@ const HeroSection = () => {
                             variant="outlined"
                             sx={{m: 1}}
                             size="large"
-                            href={"/"}
+                            href={"https://www.helloasso.com/associations/association-les-travailleurs-du-coeur/collectes/campagne-de-crowdfunding-pour-etablir-un-siege-social"}
                             endIcon={<IconChevronRight/>}
+                            target="_blank"
                         >
                             {"Faire un don"}
                         </Button>
