@@ -13,7 +13,7 @@ const TermesOfUsesMapping = () => {
     }
 
     useEffect(() => {
-        getTerms()
+        getTerms().then()
     }, []);
 
     const mappedConditions = () => articles?.map((condition: any) => {
