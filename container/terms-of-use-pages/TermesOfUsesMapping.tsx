@@ -1,23 +1,24 @@
 "use client"
 import React, {useEffect, useState} from 'react';
 import {Typography} from "@mui/material"
-import {getItems} from "@/libs/directus";
 import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
 import {trierParCle} from "@/libs/ArrayLibs";
 
 const TermesOfUsesMapping = () => {
     const [articles, setArticles] = useState<any[]>([])
+    const getTerms = async () => {
+        const res = await fetch("/api/terms_of_use/", {method: "GET"})
+        const res2 = await res.json()
+        setArticles(trierParCle(res2, "order"))
+    }
 
     useEffect(() => {
-        getItems("terms_of_use").then((result: any) => {
-                setArticles(trierParCle(result, "order"))
-            }
-        )
+        getTerms()
     }, []);
 
-    const mappedConditions = () => articles?.map(condition => {
+    const mappedConditions = () => articles?.map((condition: any) => {
 
-        return <div>
+        return <div key={condition?.id}>
             <Typography variant={"h5"} color={"primary"}>{condition?.title}</Typography>
             <div dangerouslySetInnerHTML={{__html: condition?.content}}/>
         </div>
@@ -25,7 +26,7 @@ const TermesOfUsesMapping = () => {
 
     return (
         <ContainerWrapper containerWidth={"md"}>
-            <Typography variant={"h4"} align={"center"} color={"primary"} sx={{pb:5}}>{"MENTIONS LÉGALES"}</Typography>
+            <Typography variant={"h4"} align={"center"} color={"primary"} sx={{pb: 5}}>{"MENTIONS LÉGALES"}</Typography>
             {mappedConditions()}
         </ContainerWrapper>
     );
