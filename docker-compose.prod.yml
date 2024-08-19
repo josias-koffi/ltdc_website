@@ -3,4 +3,12 @@ services:
         build:
             target: runner
         ports:
-            -   '3000:3000'
+            - '3000:3000'
+        env_file:
+            - .env.prod
+        networks:
+            - vgwss0gcsks4c80kcc4cc8o4
+
+networks:
+    vgwss0gcsks4c80kcc4cc8o4:
+        external: true
