@@ -1,5 +1,5 @@
 services:
-    react-app-dev:
+    react-app:
         restart: always
         build:
             context: .
