@@ -6,6 +6,10 @@
         {
             "name": "Mentions légales",
             "link": "/terms-of-use"
+        },
+        {
+            "name": "Programme ESF",
+            "link": "/esf-program"
         }
     ]
 }

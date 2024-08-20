@@ -6,7 +6,7 @@ const URL = "https://bo-prod.asso-ltdc.org/"
 
 const client = createDirectus(URL).with(rest());
 
-export const getItems = async (item: 'terms_of_use') => {
+export const getItems = async (item: 'terms_of_use'|'esf_program') => {
     try {
         const result = await client.request(readItems(item));
 
