@@ -6,14 +6,16 @@ import Image from "next/image";
 import {ScreenTypeContext} from "@/app/template";
 import {ContactInfoInterface} from "@/container/contact-pages/ContactPage";
 
-const FormSection = ({contactInfo, setContactInfo}: {
+const FormSection = ({contactInfo, setContactInfo, resetInfo}: {
     contactInfo: ContactInfoInterface,
     setContactInfo: any
+    resetInfo: () => void
 }) => {
+
+
     const notPhoneScreen = useContext(ScreenTypeContext);
     const handleChange = (e: any) => {
         const {value, name} = e.target;
-        console.log(value, name);
         setContactInfo((pre: any) => {
             return {...pre, [name]: e.target.value}
         });
@@ -21,11 +23,21 @@ const FormSection = ({contactInfo, setContactInfo}: {
 
     const handleSubmit = async () => {
         try {
-            await fetch("/api/contact",
-                {method: "POST", body: JSON.stringify(contactInfo)})
+            const res = await fetch("/api/contact",
+                {
+                    method: "POST",
+                    body: JSON.stringify(contactInfo)
+                }
+            )
+            const result = await res.json();
+            // console.log(result);
+            // if (result) {
+            //     router.push("/contact")
+            // }
         } catch (error) {
             console.log(error)
         }
+        resetInfo()
     }
 
     return (
