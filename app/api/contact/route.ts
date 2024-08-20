@@ -6,8 +6,8 @@ export const POST = async (req: NextRequest) => {
 
     const data = await getBodyFromRequest(req)
     try {
-       await  mailHandler(data)
-        return NextResponse.json({test: 'success'}, {status: 200})
+        const res = await mailHandler(data)
+        return NextResponse.json(res, {status: 200})
     } catch (err) {
         console.error(err);
     }

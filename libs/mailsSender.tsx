@@ -27,15 +27,13 @@ export default async function mailHandler(body: any) {
 
     try {
         let info = await transporter.sendMail({
-
             from: `"Expediteur" <${config.MAIL_DESTINNATION}>`, // adresse de l'expéditeur
             to: config.MAIL_DESTINNATION, // liste des destinataires
             subject: subject?.subject, // Sujet
             text: message, // corps du texte
             html: emailBodyParser(message, email, name, company), // corps HTML
         });
-        console.log("Message sent: %s", info.messageId);
-        return NextResponse.json({test: 'success'}, {status: 200})
+        return NextResponse.json(info, {status: 200})
     } catch (error) {
         console.error("Error sending email", error);
         return NextResponse.json({test: 'success'}, {status: 500})

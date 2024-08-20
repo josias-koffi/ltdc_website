@@ -7,6 +7,7 @@ import {ScreenTypeContext} from "@/app/template";
 import Image from "next/image";
 
 
+
 interface SubjectProps {
     setSubject: (subject: any) => void;
 }
