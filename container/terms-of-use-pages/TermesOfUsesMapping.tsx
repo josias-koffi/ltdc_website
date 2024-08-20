@@ -3,18 +3,18 @@ import React, {useEffect, useState} from 'react';
 import {Typography} from "@mui/material"
 import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
 import {trierParCle} from "@/libs/ArrayLibs";
+import {getItems} from "@/libs/directus";
 
 const TermesOfUsesMapping = () => {
     const [articles, setArticles] = useState<any[]>([])
-    const getTerms = async () => {
-        const res = await fetch("/api/terms_of_use/", {method: "GET"})
-        const res2 = await res.json()
-        setArticles(trierParCle(res2, "order"))
-    }
 
     useEffect(() => {
-        getTerms().then()
+        getItems("terms_of_use").then((result: any) => {
+                setArticles(trierParCle(result, "order"))
+            }
+        )
     }, []);
+
 
     const mappedConditions = () => articles?.map((condition: any) => {
 
