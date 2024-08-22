@@ -1,3 +1,4 @@
+"use server";
 import {createDirectus, readItems, rest} from '@directus/sdk';
 
 // const URL = process?.env?.NEXT_PUBLIC_BO_URL ?? ""

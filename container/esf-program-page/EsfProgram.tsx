@@ -10,7 +10,7 @@ const EsfProgram = () => {
 
     const handleFetchProgram = () => {
         getItems("esf_program").then((result: any) => {
-                if(!result) return
+                if (!result) return
                 result.content = updateHtmlAttributes(result?.content, {img: {class: "blogImage"}});
                 setProgram(result)
             }
