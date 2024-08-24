@@ -17,7 +17,7 @@ const FormSection = ({contactInfo, setContactInfo, resetInfo}: {
     const handleChange = (e: any) => {
         const {value, name} = e.target;
         setContactInfo((pre: any) => {
-            return {...pre, [name]: e.target.value}
+            return {...pre, [name]: value}
         });
     }
 
@@ -29,11 +29,6 @@ const FormSection = ({contactInfo, setContactInfo, resetInfo}: {
                     body: JSON.stringify(contactInfo)
                 }
             )
-            const result = await res.json();
-            // console.log(result);
-            // if (result) {
-            //     router.push("/contact")
-            // }
         } catch (error) {
             console.log(error)
         }
@@ -154,7 +149,6 @@ const FormSection = ({contactInfo, setContactInfo, resetInfo}: {
                 </Card>
             </ContainerWrapper>
         </Box>
-
     );
 };
 

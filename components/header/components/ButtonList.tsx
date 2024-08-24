@@ -16,7 +16,7 @@ const ButtonList = (props: Props) => {
   const buttonList: ButtonListProps[] = [
     { name: "Accueil", link: "/" },
     {
-      name: "A Propos",
+      name: "À Propos",
       link: "/about",
     },
     { name: "Contact", link: "/contact" },
