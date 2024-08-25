@@ -14,6 +14,7 @@ const FormSection = ({contactInfo, setContactInfo, resetInfo}: {
 
 
     const notPhoneScreen = useContext(ScreenTypeContext);
+
     const handleChange = (e: any) => {
         const {value, name} = e.target;
         setContactInfo((pre: any) => {

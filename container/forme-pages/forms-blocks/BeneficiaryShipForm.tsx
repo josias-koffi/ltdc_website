@@ -1,0 +1,309 @@
+"use client"
+import React, {useContext, useState} from 'react';
+import {
+    Box,
+    Button,
+    Card,
+    CardActions,
+    CardContent,
+    Checkbox,
+    FormControl,
+    FormControlLabel,
+    InputLabel,
+    MenuItem,
+    OutlinedInput,
+    Select,
+    TextField,
+    Typography
+} from "@mui/material";
+import Image from "next/image"
+import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
+import {ScreenTypeContext} from "@/app/template";
+import {DatePicker} from '@mui/x-date-pickers/DatePicker';
+
+interface DataInterface {
+    name: string;
+    firstName: string;
+    birthday: string;
+    nationality: string;
+    adresse: string;
+    phoneNumber: number;
+    email: string;
+    statut: string;
+    dateArrived: string;
+    object: string;
+    message: string;
+    days: string;
+    consent: boolean
+}
+
+interface Props {
+    countyFlags: any[] | undefined
+}
+
+const BeneficiaryShipForm = ({countyFlags}: Props) => {
+    const [data, setData] = useState<DataInterface | undefined>()
+
+    const notPhoneScreen = useContext(ScreenTypeContext);
+
+    const handleChange = (e: any) => {
+        const {value, name} = e.target;
+        setData((pre: any) => {
+            return {...pre, [name]: value}
+        });
+    }
+    const handleChangeDate = (e: any, field: "birthday" | "dateArrived") => {
+        console.log(e)
+        setData((pre: any) => {
+            return {...pre, [field]: e}
+        });
+    }
+    const handleNationality = (event: any) => {
+        const {
+            target: {value},
+        } = event;
+        setData((pre: any) => {
+            return {...pre, nationality: typeof value === 'string' ? value.split(',') : value}
+        });
+    };
+
+    const resetInfo = () => {
+        setData(undefined)
+    }
+
+    const handleSubmit = async () => {
+        try {
+            await fetch("/api/contact",
+                {
+                    method: "POST",
+                    body: JSON.stringify(data)
+                }
+            )
+        } catch (error) {
+            console.log(error)
+        }
+        resetInfo()
+    }
+
+    return <Box
+        sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "stretch",
+        }}
+    >
+        <Box
+            sx={{
+                width: "100%",
+                height: 600,
+                position: "absolute",
+                zIndex: 1
+            }}>
+            <Image
+                src={"/images/contactPage/background.png"}
+                alt="Photo de Jed Villejo sur Unsplash"
+                fill={true}
+                style={{objectFit: "fill", objectPosition: " center"}}/>
+        </Box>
+        <ContainerWrapper sxProps={{
+            position: 'relative',
+            zIndex: 10,
+            flexDirection: "column",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: 5
+        }}>
+            <Box>
+                <Typography
+                    variant={notPhoneScreen ? "h3" : "h4"}
+                    color={"#FFF"}>
+                    {"Formulaire pour devenir bénéficiaire"}
+                </Typography>
+                <br/>
+                <Typography
+                    variant={"body1"}
+                    color={"#FFF"}
+                >
+                    {"Un soucis aves vos papier, votre statut profesionel ou votre logement ? " +
+                        "N'hésitez pas a remplire ce formulaire de contact pour" +
+                        "que nous examinion votre situation"}
+                </Typography>
+            </Box>
+            <Card
+                component={"form"}
+                onSubmit={handleSubmit}
+                sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    flexDirection: "column",
+                    gap: 2,
+                    p: 3,
+                    width: {xl: 800, md: 600, sm: 400, xs: 300},
+                }}>
+                <CardContent
+                    sx={{
+                        display: "flex",
+                        alignItems: "flex-start",
+                        flexDirection: "column",
+                        gap: 2,
+                        width: '100%'
+                    }}>
+                    <Typography
+                        variant={"h5"}>
+                        {"Informations Personnelles"}
+                    </Typography>
+                    <TextField
+                        variant={"outlined"}
+                        sx={{width: '100%'}}
+                        label="Nom"
+                        name="name"
+                        onChange={handleChange}
+                        value={data?.name}
+                        required
+                    />
+                    <TextField
+                        variant={"outlined"}
+                        sx={{width: '100%'}}
+                        label="Prenom"
+                        name="firstName"
+                        onChange={handleChange}
+                        value={data?.firstName}
+                        required
+                    />
+                    <DatePicker
+                        label="Date de naissance"
+                        name="birthday"
+                        value={data?.birthday}
+                        onChange={(e: any) => {
+                            handleChangeDate(e, "birthday")
+                        }}
+                        sx={{width: '100%'}}
+                    />
+                    <FormControl sx={{width: "100%"}} required>
+                        <InputLabel id="demo-multiple-chip-label">{"Nationalité"}</InputLabel>
+                        <Select
+                            labelId="demo-multiple-chip-label"
+                            id="demo-multiple-chip"
+                            value={data?.nationality ?? []}
+                            onChange={handleNationality}
+                            input={<OutlinedInput id="select-multiple-chip" label="Chip"/>}
+                            sx={{width: '100%'}}
+
+                        >
+                            {countyFlags?.map((county) => (
+                                <MenuItem
+                                    key={county[0]}
+                                    value={county[1]}
+                                    sx={{display: 'flex', flexWrap: 'wrap', gap: 0.5}}
+                                >
+                                    <img
+                                        src={`https://flagcdn.com/${county[0]}.svg`}
+                                        width="30"
+                                        alt={county[1]}/>
+                                    {county[1]}
+                                </MenuItem>
+                            ))}
+                        </Select>
+                    </FormControl>
+                    <br/>
+                    <Typography
+                        variant={"h5"}>
+                        {"Coordonnées"}
+                    </Typography>
+                    <TextField
+                        variant={"outlined"}
+                        sx={{width: '100%'}}
+                        label="Adresse"
+                        name="adresse"
+                        onChange={handleChange}
+                        value={data?.adresse}/>
+                    <TextField
+                        variant={"outlined"}
+                        sx={{width: '100%'}}
+                        label="Numéro de téléphone"
+                        name="phoneNumber"
+                        type="number"
+                        onChange={handleChange}
+                        value={data?.phoneNumber}/>
+                    <TextField
+                        variant={"outlined"}
+                        sx={{width: '100%'}}
+                        label="Email"
+                        name="email"
+                        type="email"
+                        onChange={handleChange}
+                        value={data?.email}
+                        required
+                    />
+                    <br/>
+                    <Typography
+                        variant={"h5"}>
+                        {"Situation Administrative"}
+                    </Typography>
+                    <TextField
+                        variant={"outlined"}
+                        sx={{width: '100%'}}
+                        label="Statut (Demandeur d’asile, Réfugié, Sans-papiers, etc.) "
+                        name="statut"
+                        onChange={handleChange}
+                        value={data?.statut}
+                        required
+                    />
+                    <DatePicker
+                        label="Date d'arriver en France"
+                        name="dateArrived"
+                        value={data?.dateArrived}
+                        onChange={(e: any) => {
+                            handleChangeDate(e, "dateArrived")
+                        }}
+                        sx={{width: '100%'}}
+                    />
+                    <br/>
+                    <Typography
+                        variant={"h5"}>
+                        {"Message"}
+                    </Typography>
+                    <TextField
+                        variant={"outlined"}
+                        sx={{width: '100%'}}
+                        label="Objet de la demande"
+                        name="object"
+                        onChange={handleChange}
+                        value={data?.object}
+                        required
+                    />
+                    <TextField
+                        variant={"outlined"}
+                        sx={{width: '100%'}}
+                        label="Message"
+                        name="Message"
+                        rows={10}
+                        multiline
+                        onChange={handleChange}
+                        value={data?.message}
+                        required
+                    />
+                    <br/>
+                    <FormControlLabel
+                        control={<Checkbox value={data?.consent} required/>}
+                        label="J’accepte que mes informations soient utilisées par
+                        l’association LTDC pour traiter mademande"/>
+                </CardContent>
+
+                <CardActions sx={{width: '100%'}}>
+                    <Button
+                        variant="contained"
+                        sx={{width: '100%'}}
+                        type={"submit"}
+                    >
+                        {"Envoyer"}
+                    </Button>
+                </CardActions>
+            </Card>
+        </ContainerWrapper>
+    </Box>
+
+};
+
+export default BeneficiaryShipForm;
