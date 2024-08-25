@@ -310,7 +310,7 @@ const SponsorShipForm = (props: Props) => {
                         sx={{width: '100%'}}
                         label="Pourquoi souhaitez-vous établir un partenariat bénévole avec l’association LTDC ?"
                         name="motivation"
-                        rows={10}
+                        rows={5}
                         multiline
                         onChange={handleChange}
                         value={data?.motivation}

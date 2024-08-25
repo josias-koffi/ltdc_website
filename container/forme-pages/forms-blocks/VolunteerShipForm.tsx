@@ -303,7 +303,7 @@ const VolunteerShipForm = ({countyFlags}: Props) => {
                         sx={{width: '100%'}}
                         label="Compétences spécifiques"
                         name="skills"
-                        rows={10}
+                        rows={5}
                         multiline
                         onChange={handleChange}
                         value={data?.skills}
@@ -314,7 +314,7 @@ const VolunteerShipForm = ({countyFlags}: Props) => {
                         sx={{width: '100%'}}
                         label="Expériences de bénévolat antérieures"
                         name="experiences"
-                        rows={10}
+                        rows={5}
                         multiline
                         onChange={handleChange}
                         value={data?.experiences}
@@ -330,7 +330,7 @@ const VolunteerShipForm = ({countyFlags}: Props) => {
                         sx={{width: '100%'}}
                         label="Pourquoi souhaitez-vous devenir bénévole pour l’association LTDC ?"
                         name="motivation"
-                        rows={10}
+                        rows={5}
                         multiline
                         onChange={handleChange}
                         value={data?.motivation}

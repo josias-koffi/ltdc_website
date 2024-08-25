@@ -217,7 +217,9 @@ const BeneficiaryShipForm = ({countyFlags}: Props) => {
                         label="Adresse"
                         name="adresse"
                         onChange={handleChange}
-                        value={data?.adresse}/>
+                        value={data?.adresse}
+                        required
+                    />
                     <TextField
                         variant={"outlined"}
                         sx={{width: '100%'}}
@@ -225,7 +227,9 @@ const BeneficiaryShipForm = ({countyFlags}: Props) => {
                         name="phoneNumber"
                         type="number"
                         onChange={handleChange}
-                        value={data?.phoneNumber}/>
+                        value={data?.phoneNumber}
+                        required
+                    />
                     <TextField
                         variant={"outlined"}
                         sx={{width: '100%'}}
@@ -278,7 +282,7 @@ const BeneficiaryShipForm = ({countyFlags}: Props) => {
                         sx={{width: '100%'}}
                         label="Message"
                         name="Message"
-                        rows={10}
+                        rows={5}
                         multiline
                         onChange={handleChange}
                         value={data?.message}

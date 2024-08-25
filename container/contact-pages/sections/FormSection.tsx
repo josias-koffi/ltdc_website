@@ -132,7 +132,7 @@ const FormSection = ({contactInfo, setContactInfo, resetInfo}: {
                             sx={{width: '100%'}}
                             label="Message"
                             name="message"
-                            rows={10}
+                            rows={5}
                             multiline
                             onChange={handleChange}
                             value={contactInfo?.message}/>
