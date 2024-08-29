@@ -1,6 +1,5 @@
 "use server";
 
-import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import {
   BeneficiaryShipFormInterface,
@@ -20,6 +19,7 @@ const config = {
     "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",
   MAIL_DESTINNATION: "info.service@asso-ltdc.org",
 };
+
 export default async function mailHandler(
   body:
     | BeneficiaryShipFormInterface
@@ -28,10 +28,6 @@ export default async function mailHandler(
     | ContactInfoInterface,
   subject: MailSubjectInterface["subject"],
 ) {
-  // console.log(generateHtmlTable(body));
-
-  // return 0;
-
   const { email, message, name } = body;
 
   let transporter = nodemailer?.createTransport({
@@ -53,25 +49,13 @@ export default async function mailHandler(
       text: message, // corps du texte
       html: generateHtmlTable(body), // corps HTML
     });
-    return NextResponse.json(info, { status: 200 });
+    console.log(info);
+    return info;
   } catch (error) {
     console.error("Error sending email", error);
-    return NextResponse.json({ test: "success" }, { status: 500 });
+    return { response: "error sending" };
   }
 }
-
-// const emailBodyParser = (message: string, email: string, name: string, company: string) => {
-//
-//     return `
-//         <div>
-//             <p>Bonjour,</p>
-//             <p>Un nouveau mail de contact vient d'être envoyé par ${name}</p>
-//             <p>Email de contact: ${email}</p>
-//             ${company ? `<p>Entreprise: ${company}</p>` : ""}
-//             <p>Message:<br/>${message.replace(/\n/g, '<br/>')}</p>
-//         </div>
-//     `;
-// }
 
 /**
  * Generates an HTML table from the provided data.

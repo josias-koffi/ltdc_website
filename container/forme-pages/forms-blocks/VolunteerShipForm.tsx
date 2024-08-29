@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   Box,
   Button,
@@ -31,28 +31,33 @@ interface Props {
   countyFlags: any[];
 }
 
+const defaultData: VolunteerShipFormInterface = {
+  name: "",
+  firstName: "",
+  birthday: dayjs("2000-01-01"),
+  nationality: "",
+  adresse: "",
+  phoneNumber: "",
+  email: "",
+  statut: "",
+  object: "",
+  message: "",
+  days: null,
+  motivation: "",
+  experiences: "",
+  skills: "",
+  consent: false,
+};
+
+/**
+ * Component to handle the form for the volunteer ship form
+ * @param countyFlags array of flags for the countries
+ */
 const VolunteerShipForm = ({ countyFlags }: Props) => {
   const router = useRouter();
-  const [data, setData] = useState<VolunteerShipFormInterface | undefined>();
-
-  const defaultData: VolunteerShipFormInterface = {
-    name: "",
-    firstName: "",
-    birthday: "",
-    nationality: "",
-    adresse: "",
-    phoneNumber: "",
-    email: "",
-    statut: "",
-    dateArrived: "",
-    object: "",
-    message: "",
-    days: [""],
-    motivation: "",
-    experiences: "",
-    skills: "",
-    consent: false,
-  };
+  const [data, setData] = useState<VolunteerShipFormInterface | undefined>(
+    defaultData,
+  );
 
   const days: VolunteerShipFormInterface["days"] = [
     "Lundi",
@@ -66,11 +71,17 @@ const VolunteerShipForm = ({ countyFlags }: Props) => {
 
   const notPhoneScreen = useContext(ScreenTypeContext);
 
+  /**
+   * Handles the change of the form fields
+   * @param e event of the change
+   */
   const handleChange = (e: any) => {
     const { value, name } = e.target;
     if (name === "consent") {
+      const regexPattern = new RegExp("true");
+      console.log(value, !regexPattern.test(value));
       setData((pre: any) => {
-        return { ...pre, [name]: !value };
+        return { ...pre, [name]: !regexPattern.test(value) };
       });
       return;
     }
@@ -79,11 +90,20 @@ const VolunteerShipForm = ({ countyFlags }: Props) => {
     });
   };
 
+  /**
+   * Handles the change of the date picker
+   * @param e event of the change
+   */
   const handleChangeDate = (e: any) => {
     setData((pre: any) => {
       return { ...pre, birthday: e };
     });
   };
+
+  /**
+   * Handles the change of the select field
+   * @param event event of the change
+   */
   const handleChangeSelect = (event: any) => {
     const {
       target: { value },
@@ -96,6 +116,10 @@ const VolunteerShipForm = ({ countyFlags }: Props) => {
     });
   };
 
+  /**
+   * Handles the change of the nationality field
+   * @param event event of the change
+   */
   const handleNationality = (event: any) => {
     const {
       target: { value },
@@ -107,40 +131,25 @@ const VolunteerShipForm = ({ countyFlags }: Props) => {
       };
     });
   };
-  const resetInfo = () => {
-    setData(defaultData);
-  };
 
+  /**
+   * Handles the submit of the form
+   * @param e event of the submit
+   */
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
       const temp = transformDayjsFields(data);
-      const res = await mailHandler(
-        // JSON.stringify(temp),
-        "",
-        "Demande de volontariat",
-      );
-      console.log("test");
+      const res = await mailHandler(temp, "Demande de volontariat");
       console.log(res);
       if (res) {
-        // router.replace("/get-in-touch/as-volunteer");
-        resetInfo();
+        setData(defaultData);
+        router.refresh();
       }
     } catch (error) {
       console.log(error);
     }
   };
-
-  useEffect(() => {
-    setData((pre: any) => {
-      return {
-        ...pre,
-        defaultData,
-        birthday: dayjs("1980-01-01"),
-        consent: false,
-      };
-    });
-  }, []);
 
   return (
     <Box
@@ -286,6 +295,7 @@ const VolunteerShipForm = ({ countyFlags }: Props) => {
               sx={{ width: "100%" }}
               label="Email"
               name="email"
+              type="email"
               onChange={handleChange}
               value={data?.email}
               required

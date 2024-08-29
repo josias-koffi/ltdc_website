@@ -71,7 +71,6 @@ export interface VolunteerShipFormInterface {
   phoneNumber: number | string;
   email: string;
   statut: string;
-  dateArrived: string | Dayjs;
   object: string;
   message: string;
   days: Array<
@@ -82,8 +81,7 @@ export interface VolunteerShipFormInterface {
     | "Vendredi"
     | "Samedi"
     | "Dimanche"
-    | ""
-  >;
+  > | null;
   motivation: string;
   experiences: string;
   skills: string;
