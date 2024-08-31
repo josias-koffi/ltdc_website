@@ -2,7 +2,6 @@
 import { createDirectus, readItems, rest } from "@directus/sdk";
 
 const URL = process?.env?.DIRECTUS_BO_URL;
-// const URL = "https://bo-prod.asso-ltdc.org/"
 
 let client: any = undefined;
 
