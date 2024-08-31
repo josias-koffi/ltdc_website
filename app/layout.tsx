@@ -3,14 +3,12 @@ import { Montserrat } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 
-
 const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["400"],
   display: "swap",
   adjustFontFallback: false,
 });
-
 
 export const metadata: Metadata = {
   title: "LTDC",
@@ -28,8 +26,8 @@ export default function RootLayout({
         {children}
         <Script
           defer
-          data-domain="tage-ltdc.asso-ltdc.org"
-          src="https://stage-analytics.asso-ltdc.org/js/script.js"
+          data-domain={process?.env?.PLAUSIBLE_DATA_DOMAINE}
+          src={process?.env?.PLAUSIBLE_SCRIPT_SRC}
           strategy="beforeInteractive"
         />
       </body>
