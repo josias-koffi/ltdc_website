@@ -3,7 +3,14 @@ import { Montserrat } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 
-const montserrat = Montserrat({ subsets: ["latin"], weight: ["400"] });
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["400"],
+  display: "swap",
+  adjustFontFallback: false,
+});
+
 
 export const metadata: Metadata = {
   title: "LTDC",
