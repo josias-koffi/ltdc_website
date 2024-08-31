@@ -5,6 +5,8 @@ import Footer from "@/components/footer/Footer";
 import {ThemeProvider, useTheme} from "@mui/material/styles";
 import {themeOptions} from "@/config/theming";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
 export interface FrameInterface {
     paddingX: number | string;
@@ -35,6 +37,7 @@ export default function Template({children}: { children: React.ReactNode }) {
 
     return (
         <ThemeProvider theme={themeOptions}>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
             <FrameSettingContext.Provider value={frame}>
                 <ScreenTypeContext.Provider value={upperSm}>
                     <Header/>
@@ -42,6 +45,7 @@ export default function Template({children}: { children: React.ReactNode }) {
                     <Footer/>
                 </ScreenTypeContext.Provider>
             </FrameSettingContext.Provider>
+            </LocalizationProvider>
         </ThemeProvider>
     );
 }
