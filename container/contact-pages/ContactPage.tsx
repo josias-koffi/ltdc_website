@@ -6,7 +6,6 @@ import LocationSection from "@/container/contact-pages/sections/LocationSection"
 import { ContactInfoInterface } from "@/libs/interfaces/mailType";
 
 const ContactPage = () => {
-  const [contactInfo, setContactInfo] = useState<any>();
   const defaultValue: ContactInfoInterface = {
     subject: {
       id: 0,
@@ -19,6 +18,10 @@ const ContactPage = () => {
     company: "",
     consent: false,
   };
+
+  const [contactInfo, setContactInfo] =
+    useState<ContactInfoInterface>(defaultValue);
+
   const resetInfo = () => {
     setContactInfo(defaultValue);
   };

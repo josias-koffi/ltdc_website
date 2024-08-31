@@ -17,13 +17,34 @@ import { ScreenTypeContext } from "@/app/template";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { SponsorShipFormInterface } from "@/libs/interfaces/mailType";
 import mailHandler from "@/libs/mailsSender";
+import dayjs from "dayjs";
+import { transformDayjsFields } from "@/libs/dateutils";
 
 interface Props {
   countyFlags: any[] | undefined;
 }
 
+const defaultData: SponsorShipFormInterface = {
+  name: "",
+  firstName: "",
+  birthday: dayjs("2000-01-01"),
+  adresse: "",
+  phoneNumber: "",
+  email: "",
+  organization: "",
+  sector: "",
+  organizationAddress: "",
+  organizationPhone: "",
+  organizationEmail: "",
+  motivation: "",
+  partnershipType: "",
+  skillsAndRessources: "",
+  partnershipExperiences: "",
+  consent: false,
+};
+
 const SponsorShipForm = (props: Props) => {
-  const [data, setData] = useState<SponsorShipFormInterface | undefined>();
+  const [data, setData] = useState<SponsorShipFormInterface>(defaultData);
 
   const notPhoneScreen = useContext(ScreenTypeContext);
 
@@ -36,8 +57,9 @@ const SponsorShipForm = (props: Props) => {
   const handleChange = (e: any) => {
     const { value, name } = e.target;
     if (name === "consent") {
+      const regexPattern = new RegExp("true");
       setData((pre: any) => {
-        return { ...pre, [name]: !value };
+        return { ...pre, [name]: !regexPattern.test(value) };
       });
       return;
     }
@@ -63,16 +85,14 @@ const SponsorShipForm = (props: Props) => {
   };
 
   const resetInfo = () => {
-    setData(undefined);
+    setData(defaultData);
   };
 
   const handleSubmit = async () => {
     try {
-      // await fetch("/api/contact", {
-      //   method: "POST",
-      //   body: JSON.stringify(data),
-      // });
-      await mailHandler(data, "Demande de partenariat");
+      const temp = transformDayjsFields(data);
+      await mailHandler(temp, "Demande de partenariat");
+      setData(defaultData);
     } catch (error) {
       console.log(error);
     }
@@ -188,6 +208,7 @@ const SponsorShipForm = (props: Props) => {
               sx={{ width: "100%" }}
               label="Numéro de téléphone"
               name="phoneNumber"
+              type="number"
               onChange={handleChange}
               value={data?.phoneNumber}
               required
@@ -209,7 +230,7 @@ const SponsorShipForm = (props: Props) => {
               variant={"outlined"}
               sx={{ width: "100%" }}
               label="Nom de l’organisation"
-              name="organisation"
+              name="organization"
               onChange={handleChange}
               value={data?.organization}
               required
@@ -268,7 +289,7 @@ const SponsorShipForm = (props: Props) => {
               variant={"outlined"}
               sx={{ width: "100%" }}
               label="Compétences et ressources proposées "
-              name="skillsAndRessouces"
+              name="skillsAndRessources"
               onChange={handleChange}
               value={data?.skillsAndRessources}
               rows={5}
@@ -279,7 +300,7 @@ const SponsorShipForm = (props: Props) => {
               variant={"outlined"}
               sx={{ width: "100%" }}
               label="Expériences de partenariats antérieures"
-              name="partenershipExperiences"
+              name="partnershipExperiences"
               onChange={handleChange}
               value={data?.partnershipExperiences}
               rows={5}

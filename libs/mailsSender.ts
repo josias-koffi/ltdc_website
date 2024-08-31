@@ -28,8 +28,6 @@ export default async function mailHandler(
     | ContactInfoInterface,
   subject: MailSubjectInterface["subject"],
 ) {
-  const { email, message, name } = body;
-
   let transporter = nodemailer?.createTransport({
     host: config.BREVO_HOST, // Votre SMTP server
 
@@ -46,7 +44,7 @@ export default async function mailHandler(
       from: `"Expediteur" <${config.MAIL_DESTINNATION}>`, // adresse de l'expéditeur
       to: config.MAIL_DESTINNATION, // liste des destinataires
       subject: subject, // Sujet
-      text: message, // corps du texte
+      // text: message, // corps du texte
       html: generateHtmlTable(body), // corps HTML
     });
     console.log(info);

@@ -55,9 +55,7 @@ const defaultData: VolunteerShipFormInterface = {
  */
 const VolunteerShipForm = ({ countyFlags }: Props) => {
   const router = useRouter();
-  const [data, setData] = useState<VolunteerShipFormInterface | undefined>(
-    defaultData,
-  );
+  const [data, setData] = useState<VolunteerShipFormInterface>(defaultData);
 
   const days: VolunteerShipFormInterface["days"] = [
     "Lundi",
@@ -79,7 +77,6 @@ const VolunteerShipForm = ({ countyFlags }: Props) => {
     const { value, name } = e.target;
     if (name === "consent") {
       const regexPattern = new RegExp("true");
-      console.log(value, !regexPattern.test(value));
       setData((pre: any) => {
         return { ...pre, [name]: !regexPattern.test(value) };
       });
@@ -137,14 +134,12 @@ const VolunteerShipForm = ({ countyFlags }: Props) => {
    * @param e event of the submit
    */
   const handleSubmit = async (e: any) => {
-    e.preventDefault();
     try {
       const temp = transformDayjsFields(data);
       const res = await mailHandler(temp, "Demande de volontariat");
       console.log(res);
       if (res) {
         setData(defaultData);
-        router.refresh();
       }
     } catch (error) {
       console.log(error);
@@ -286,6 +281,7 @@ const VolunteerShipForm = ({ countyFlags }: Props) => {
               sx={{ width: "100%" }}
               label="Numéro de téléphone"
               name="phoneNumber"
+              type="number"
               onChange={handleChange}
               value={data?.phoneNumber}
               required

@@ -31,8 +31,9 @@ const FormSection = ({
   const handleChange = (e: any) => {
     const { value, name } = e.target;
     if (name === "consent") {
+      const regexPattern = new RegExp("true");
       setContactInfo((pre: any) => {
-        return { ...pre, [name]: !value };
+        return { ...pre, [name]: !regexPattern.test(value) };
       });
       return;
     }
@@ -43,11 +44,9 @@ const FormSection = ({
 
   const handleSubmit = async () => {
     try {
-      // const res = await fetch("/api/contact", {
-      //   method: "POST",
-      //   body: JSON.stringify(contactInfo),
-      // });
-      await mailHandler(contactInfo, "Demande de général");
+      const temp: any = contactInfo;
+      temp.subject = temp.subject?.subject;
+      await mailHandler(temp, "Demande de général");
     } catch (error) {
       console.log(error);
     }
@@ -141,6 +140,7 @@ const FormSection = ({
               name="name"
               onChange={handleChange}
               value={contactInfo?.name}
+              required
             />
             <TextField
               variant={"outlined"}
@@ -158,6 +158,7 @@ const FormSection = ({
               onChange={handleChange}
               value={contactInfo?.email}
               type="email"
+              required
             />
             <TextField
               variant={"outlined"}
@@ -168,6 +169,7 @@ const FormSection = ({
               multiline
               onChange={handleChange}
               value={contactInfo?.message}
+              required
             />
             <br />
             <FormControlLabel

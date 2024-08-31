@@ -42,14 +42,9 @@ export interface SponsorShipFormInterface {
   name: string;
   firstName: string;
   birthday: string | Dayjs;
-  nationality: string;
   adresse: string;
-  phoneNumber: number;
+  phoneNumber: number | string;
   email: string;
-  statut: string;
-  dateArrived: string | Dayjs;
-  object: string;
-  message: string;
   organization: string;
   sector: string;
   organizationAddress: string;

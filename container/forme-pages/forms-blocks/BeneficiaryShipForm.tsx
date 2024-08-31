@@ -23,21 +23,38 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { BeneficiaryShipFormInterface } from "@/libs/interfaces/mailType";
 import mailHandler from "@/libs/mailsSender";
 import { transformDayjsFields } from "@/libs/dateutils";
+import dayjs from "dayjs";
 
 interface Props {
   countyFlags: any[] | undefined;
 }
 
+const defaultData: BeneficiaryShipFormInterface = {
+  name: "",
+  firstName: "",
+  adresse: "",
+  phoneNumber: "",
+  email: "",
+  birthday: dayjs("2000-01-01"),
+  nationality: [""],
+  statut: "",
+  dateArrived: dayjs().subtract(1, "year"),
+  object: "",
+  message: "",
+  consent: false,
+};
+
 const BeneficiaryShipForm = ({ countyFlags }: Props) => {
-  const [data, setData] = useState<BeneficiaryShipFormInterface | undefined>();
+  const [data, setData] = useState<BeneficiaryShipFormInterface>(defaultData);
 
   const notPhoneScreen = useContext(ScreenTypeContext);
 
   const handleChange = (e: any) => {
     const { value, name } = e.target;
     if (name === "consent") {
+      const regexPattern = new RegExp("true");
       setData((pre: any) => {
-        return { ...pre, [name]: !value };
+        return { ...pre, [name]: !regexPattern.test(value) };
       });
       return;
     }
@@ -51,6 +68,7 @@ const BeneficiaryShipForm = ({ countyFlags }: Props) => {
       return { ...pre, [field]: e };
     });
   };
+
   const handleNationality = (event: any) => {
     const {
       target: { value },
@@ -64,7 +82,7 @@ const BeneficiaryShipForm = ({ countyFlags }: Props) => {
   };
 
   const resetInfo = () => {
-    setData(undefined);
+    setData(defaultData);
   };
 
   const handleSubmit = async () => {
@@ -180,7 +198,7 @@ const BeneficiaryShipForm = ({ countyFlags }: Props) => {
               <Select
                 labelId="demo-multiple-chip-label"
                 id="demo-multiple-chip"
-                value={data?.nationality ?? []}
+                value={data?.nationality}
                 onChange={handleNationality}
                 input={<OutlinedInput id="select-multiple-chip" label="Chip" />}
                 sx={{ width: "100%" }}
@@ -267,7 +285,7 @@ const BeneficiaryShipForm = ({ countyFlags }: Props) => {
               variant={"outlined"}
               sx={{ width: "100%" }}
               label="Message"
-              name="Message"
+              name="message"
               rows={5}
               multiline
               onChange={handleChange}

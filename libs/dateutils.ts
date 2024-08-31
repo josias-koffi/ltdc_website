@@ -8,7 +8,7 @@ import { Dayjs } from "dayjs";
  */
 export function transformDayjsFields<T extends Record<string, any>>(
   data: T,
-): T {
+): { [K in keyof T]: T[K] extends Dayjs ? string : T[K] } {
   const transformedData = { ...data };
 
   for (const key in transformedData) {
@@ -19,9 +19,11 @@ export function transformDayjsFields<T extends Record<string, any>>(
       (value as Dayjs)?.isValid &&
       (value as Dayjs)?.isValid()
     ) {
-      transformedData[key] = (value as Dayjs).format("YYYY-MM-DD");
+      (transformedData as any)[key] = (value as Dayjs).format("YYYY-MM-DD");
     }
   }
 
-  return transformedData;
+  return transformedData as {
+    [K in keyof T]: T[K] extends Dayjs ? string : T[K];
+  };
 }
