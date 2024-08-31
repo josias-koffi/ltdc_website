@@ -30,6 +30,11 @@ export default function RootLayout({
           src={process?.env?.PLAUSIBLE_SCRIPT_SRC}
           strategy="beforeInteractive"
         />
+        <Script
+          id={process?.env?.COOKIEYES_ANALYTICS_ID}
+          type={process?.env?.COOKIEYES_ANALYTICS_TYPE}
+          src={process?.env?.COOKIEYES_ANALYTICS_SRC}
+        />
       </body>
     </html>
   );
