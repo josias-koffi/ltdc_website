@@ -9,17 +9,6 @@ import {
   VolunteerShipFormInterface,
 } from "@/libs/interfaces/mailType";
 
-const config = {
-  BREVO_HOST: "smtp-relay.brevo.com",
-  BREVO_PORT: 587,
-  BREVO_USER: "79de59001@smtp-brevo.com",
-  BREVO_PASWORD:
-    "xsmtpsib-e78ca9087f92fa09b2c3cae2bddc9448e6028b4f730b8384a654a65aa53022ec-GcvPFjma90r5t3gs",
-  BREVO_API_KEY:
-    "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",
-  MAIL_DESTINNATION: "info.service@asso-ltdc.org",
-};
-
 export default async function mailHandler(
   body:
     | BeneficiaryShipFormInterface
@@ -29,22 +18,22 @@ export default async function mailHandler(
   subject: MailSubjectInterface["subject"],
 ) {
   let transporter = nodemailer?.createTransport({
-    host: config.BREVO_HOST, // Votre SMTP server
+    // @ts-expect-error  Object literal may only specify known properties, and 'host' does not exist in type 'TransportOptions | Transport<unknown>'
+    host: process?.env?.BREVO_HOST, // Votre SMTP server
 
-    port: config.BREVO_PORT,
-    secure: false, // true pour 465, false pour les autres ports
+    port: process?.env?.BREVO_PORT,
+    secure: true, // true pour 465, false pour les autres ports
     auth: {
-      user: config.BREVO_USER, // votre identifiant SMTP
-      pass: config.BREVO_PASWORD, // votre mot de passe SMTP
+      user: process?.env?.BREVO_USER, // votre identifiant SMTP
+      pass: process?.env?.BREVO_PASWORD, // votre mot de passe SMTP
     },
   });
 
   try {
     let info = await transporter.sendMail({
-      from: `"Expediteur" <${config.MAIL_DESTINNATION}>`, // adresse de l'expéditeur
-      to: config.MAIL_DESTINNATION, // liste des destinataires
+      from: `"Expediteur" <${process?.env?.MAIL_DESTINNATION}>`, // adresse de l'expéditeur
+      to: process?.env?.MAIL_DESTINNATION, // liste des destinataires
       subject: subject, // Sujet
-      // text: message, // corps du texte
       html: generateHtmlTable(body), // corps HTML
     });
     console.log(info);
