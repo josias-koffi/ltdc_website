@@ -14,10 +14,8 @@ import {
 import Image from "next/image";
 import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
 import { ScreenTypeContext } from "@/app/template";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { SponsorShipFormInterface } from "@/libs/interfaces/mailType";
 import mailHandler from "@/libs/mailsSender";
-import dayjs from "dayjs";
 import { transformDayjsFields } from "@/libs/dateutils";
 
 interface Props {
@@ -27,7 +25,6 @@ interface Props {
 const defaultData: SponsorShipFormInterface = {
   name: "",
   firstName: "",
-  birthday: dayjs("2000-01-01"),
   adresse: "",
   phoneNumber: "",
   email: "",
@@ -65,22 +62,6 @@ const SponsorShipForm = (props: Props) => {
     }
     setData((pre: any) => {
       return { ...pre, [name]: value };
-    });
-  };
-
-  /**
-   * Updates the state with the given field and value.
-   *
-   * @param {any} e - The event object containing the new value.
-   * @param {("birthday" | "dateArrived")} field - The field to update in the state.
-   * @return {void} This function does not return anything.
-   */
-  const handleChangeDate = (
-    e: any,
-    field: "birthday" | "dateArrived",
-  ): void => {
-    setData((pre: any) => {
-      return { ...pre, [field]: e };
     });
   };
 
@@ -162,9 +143,7 @@ const SponsorShipForm = (props: Props) => {
               width: "100%",
             }}
           >
-            <Typography variant={"h5"}>
-              {"Informations Personnelles"}
-            </Typography>
+            <Typography variant={"h5"}>{"Informations du contact"}</Typography>
             <TextField
               variant={"outlined"}
               sx={{ width: "100%" }}
@@ -183,17 +162,6 @@ const SponsorShipForm = (props: Props) => {
               value={data?.firstName}
               required
             />
-            <DatePicker
-              label="Date de naissance"
-              name="birthday"
-              value={data?.birthday}
-              onChange={(e: any) => {
-                handleChangeDate(e, "birthday");
-              }}
-              sx={{ width: "100%" }}
-            />
-            <br />
-            <Typography variant={"h5"}>{"Coordonnées"}</Typography>
             <TextField
               variant={"outlined"}
               sx={{ width: "100%" }}

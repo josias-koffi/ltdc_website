@@ -41,7 +41,6 @@ export interface BeneficiaryShipFormInterface {
 export interface SponsorShipFormInterface {
   name: string;
   firstName: string;
-  birthday: string | Dayjs;
   adresse: string;
   phoneNumber: number | string;
   email: string;

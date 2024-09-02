@@ -228,7 +228,6 @@ const BeneficiaryShipForm = ({ countyFlags }: Props) => {
               name="adresse"
               onChange={handleChange}
               value={data?.adresse}
-              required
             />
             <TextField
               variant={"outlined"}

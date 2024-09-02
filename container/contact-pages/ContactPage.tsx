@@ -5,7 +5,11 @@ import FormSection from "@/container/contact-pages/sections/FormSection";
 import LocationSection from "@/container/contact-pages/sections/LocationSection";
 import { ContactInfoInterface } from "@/libs/interfaces/mailType";
 
-const ContactPage = () => {
+interface Props {
+  countyFlags: any[] | undefined;
+}
+
+const ContactPage = (props: Props) => {
   const defaultValue: ContactInfoInterface = {
     subject: {
       id: 0,
@@ -32,6 +36,7 @@ const ContactPage = () => {
         setContactInfo={setContactInfo}
         contactInfo={contactInfo}
         resetInfo={resetInfo}
+        countyFlags={props.countyFlags}
       />
       <LocationSection />
     </div>
