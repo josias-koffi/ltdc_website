@@ -16,15 +16,18 @@ import Image from "next/image";
 import { ScreenTypeContext } from "@/app/template";
 import mailHandler from "@/libs/mailsSender";
 import { ContactInfoInterface } from "@/libs/interfaces/mailType";
+import VolunteerShipForm from "@/container/contact-pages/forms-blocks/VolunteerShipForm";
 
 const FormSection = ({
   contactInfo,
   setContactInfo,
   resetInfo,
+  countyFlags,
 }: {
   contactInfo: ContactInfoInterface;
   setContactInfo: any;
   resetInfo: () => void;
+  countyFlags: any[] | undefined;
 }) => {
   const notPhoneScreen = useContext(ScreenTypeContext);
 
@@ -53,7 +56,7 @@ const FormSection = ({
     resetInfo();
   };
 
-  return (
+  const defaultForm = (
     <Box
       sx={{
         display: "flex",
@@ -112,7 +115,7 @@ const FormSection = ({
             flexDirection: "column",
             gap: 2,
             p: 3,
-            width: { xl: 600, md: 500, sm: 350, xs: 300 },
+            width: { xl: 800, md: 600, sm: 400, xs: 300 },
           }}
         >
           <CardContent
@@ -198,6 +201,13 @@ const FormSection = ({
       </ContainerWrapper>
     </Box>
   );
+
+  switch (contactInfo.subject?.id) {
+    case 0:
+      return <VolunteerShipForm countyFlags={countyFlags} />;
+    default:
+      return defaultForm;
+  }
 };
 
 export default FormSection;

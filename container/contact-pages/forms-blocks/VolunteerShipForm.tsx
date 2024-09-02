@@ -28,7 +28,7 @@ import { transformDayjsFields } from "@/libs/dateutils";
 import { useRouter } from "next/navigation";
 
 interface Props {
-  countyFlags: any[];
+  countyFlags: any[] | undefined;
 }
 
 const defaultData: VolunteerShipFormInterface = {
@@ -152,6 +152,7 @@ const VolunteerShipForm = ({ countyFlags }: Props) => {
         display: "flex",
         flexDirection: "column",
         alignItems: "stretch",
+        py: 10,
       }}
     >
       <Box
