@@ -1,11 +1,8 @@
-import React from 'react';
+import React from "react";
+import ListProjects from "@/container/asso-life-pages/projets/ListProjects";
 
 const Projects = () => {
-    return (
-        <div>
-
-        </div>
-    );
+  return <ListProjects />;
 };
 
 export default Projects;

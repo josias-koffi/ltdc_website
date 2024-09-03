@@ -1,11 +1,8 @@
-import React from 'react';
+import React from "react";
+import ListActualities from "@/container/asso-life-pages/actualities/ListActualities";
 
 const Actualities = () => {
-    return (
-        <div>
-
-        </div>
-    );
+  return <ListActualities />;
 };
 
 export default Actualities;
