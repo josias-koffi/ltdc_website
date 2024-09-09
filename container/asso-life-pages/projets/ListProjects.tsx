@@ -1,7 +1,7 @@
 import React from "react";
-import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
-import RubriqueWrapper from "@/components/wrapper/RubriqueWrapper";
 import RubriqueHead from "@/components/sections/RubriqueHead";
+import ListFromEntity from "@/components/list/ListFromEntity";
+import ProjectsCards from "@/components/cards/ProjectsCards";
 
 const ListProjects = () => {
   return (
@@ -12,6 +12,7 @@ const ListProjects = () => {
         imageAlt={"image de test"}
         imageUrl={"/images/aboutPage/clay-banks-LjqARJaJotc-unsplash.jpg"}
       />
+      <ListFromEntity entity={"projects"} CardType={ProjectsCards} />
     </div>
   );
 };

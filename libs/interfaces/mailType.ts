@@ -1,5 +1,15 @@
 import { Dayjs } from "dayjs";
 
+export interface EntityInterface {
+  name:
+    | "terms_of_use"
+    | "esf_program"
+    | "actualities"
+    | "categories"
+    | "projects"
+    | "events";
+}
+
 export interface MailSubjectInterface {
   subject:
     | "Demande de bénéficiaire"

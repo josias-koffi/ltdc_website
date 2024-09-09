@@ -1,7 +1,8 @@
 "use server";
 import { createDirectus, readItems, rest } from "@directus/sdk";
+import { EntityInterface } from "@/libs/interfaces/mailType";
 
-const URL = process?.env?.DIRECTUS_BO_URL;
+const URL = process?.env?.NEXT_PUBLIC_BO_URL;
 
 let client: any = undefined;
 
@@ -9,7 +10,7 @@ if (URL) {
   client = createDirectus(URL).with(rest());
 }
 
-export const getItems = async (item: "terms_of_use" | "esf_program") => {
+export const getItems = async (item: EntityInterface["name"]) => {
   if (client !== undefined) {
     try {
       //   @ts-expect-error Type error: Argument of type 'string' is not assignable to parameter of type 'never'

@@ -5,10 +5,10 @@ import Image from "next/image";
 import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
 
 interface RubriqueHeadProps {
-  imageUrl?: string;
-  imageAlt?: string;
-  title?: string;
-  description?: string;
+  imageUrl: string;
+  imageAlt: string;
+  title: string;
+  description: string;
 }
 
 const RubriqueHead = ({
