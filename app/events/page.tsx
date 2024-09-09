@@ -1,11 +1,8 @@
-import React from 'react';
+import React from "react";
+import ListEvents from "@/container/asso-life-pages/events/ListEvents";
 
 const Events = () => {
-    return (
-        <div>
-
-        </div>
-    );
+  return <ListEvents />;
 };
 
 export default Events;
