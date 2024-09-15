@@ -10,16 +10,24 @@ if (URL) {
   client = createDirectus(URL).with(rest());
 }
 
-export const getItems = async (item: EntityInterface["name"]) => {
-  if (client !== undefined) {
-    try {
-      //   @ts-expect-error Type error: Argument of type 'string' is not assignable to parameter of type 'never'
-      const result = await client.request(readItems(item));
-      if (result) {
-        return result;
-      }
-    } catch (e) {
-      console.error(e);
+export const getItems = async (
+  item: EntityInterface["name"],
+  deepFields: boolean = false, // get all fields
+  id?: number | string,
+) => {
+  try {
+    const result = await client.request(
+      readItems(item, {
+        filter: { id },
+        fields: [deepFields ? "*.*.*" : "*"],
+      }),
+    );
+    console.log("BON");
+    console.log(result);
+    if (result) {
+      return result;
     }
+  } catch (e) {
+    console.error(e);
   }
 };
