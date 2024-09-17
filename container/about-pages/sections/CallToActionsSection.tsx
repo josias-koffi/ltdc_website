@@ -9,7 +9,6 @@ import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
 const CallToActionsSection = () => {
   const notPhoneScreen = useContext(ScreenTypeContext);
   const upperMd = useContext(FrameSettingContext);
-  console.log(upperMd?.upperMd);
   return (
     <ContainerWrapper
       sxProps={{

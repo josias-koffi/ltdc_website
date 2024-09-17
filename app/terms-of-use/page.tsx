@@ -1,12 +1,8 @@
-import React from 'react';
+import React from "react";
 import TermesOfUsesMapping from "@/container/terms-of-use-pages/TermesOfUsesMapping";
 
 const Terms = () => {
-    return (
-        <div>
-            <TermesOfUsesMapping />
-        </div>
-    );
+  return <TermesOfUsesMapping />;
 };
 
 export default Terms;

@@ -5,7 +5,6 @@ import ImageWrapper from "@/components/wrapper/ImageWrapper";
 import { returnImageUrlById } from "@/libs/stringUtils";
 
 const ViewActualities = ({ actuality }: any) => {
-  console.log(actuality);
   return (
     <ContainerWrapper>
       <ImageWrapper

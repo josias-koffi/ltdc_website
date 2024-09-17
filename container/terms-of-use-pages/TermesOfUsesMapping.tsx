@@ -9,7 +9,7 @@ const TermesOfUsesMapping = () => {
   const [articles, setArticles] = useState<any[]>([]);
 
   useEffect(() => {
-    getItems("terms_of_use").then((result: any) => {
+    getItems({ entity: "terms_of_use" }).then((result: any) => {
       setArticles(trierParCle(result, "order"));
     });
   }, []);

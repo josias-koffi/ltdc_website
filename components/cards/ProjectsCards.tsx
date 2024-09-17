@@ -10,28 +10,28 @@ import {
 } from "@mui/material";
 
 const ProjectsCards = ({ props }: any) => {
-  console.log(props);
-  console.log(process?.env?.NEXT_PUBLIC_BO_URL + "assets/" + props?.cover);
-
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card>
       <CardMedia
-        sx={{ height: 140 }}
+        sx={{ height: 200 }}
         image={process?.env?.NEXT_PUBLIC_BO_URL + "assets/" + props?.cover}
         title="green iguana"
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          Lizard
+          {props?.title}
         </Typography>
         <Typography variant="body2" sx={{ color: "text.secondary" }}>
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+          {props?.description}
         </Typography>
       </CardContent>
-      <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
+      <CardActions sx={{ justifyContent: "flex-end" }}>
+        <Button
+          href={process?.env?.NEXT_PUBLIC_API_URL + "projects/" + props?.id}
+          // href={"http://localhost:3001/" + "projects/" + props?.id}
+        >
+          Lire
+        </Button>
       </CardActions>
     </Card>
   );

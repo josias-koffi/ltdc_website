@@ -1,12 +1,8 @@
-import React from 'react';
+import React from "react";
 import EsfProgram from "@/container/esf-program-page/EsfProgram";
 
 const Page = () => {
-    return (
-        <div>
-            <EsfProgram/>
-        </div>
-    );
+  return <EsfProgram />;
 };
 
 export default Page;
