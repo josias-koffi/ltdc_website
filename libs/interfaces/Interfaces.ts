@@ -1,5 +1,23 @@
 import { Dayjs } from "dayjs";
 
+export interface FetchProps {
+  entity: EntityInterface["name"];
+  deepFields?: boolean;
+  id?: number | string;
+  limit?: number;
+  page?: number;
+}
+
+export interface EntityInterface {
+  name:
+    | "terms_of_use"
+    | "esf_program"
+    | "actualities"
+    | "categories"
+    | "projects"
+    | "events";
+}
+
 export interface MailSubjectInterface {
   subject:
     | "Demande de bénéficiaire"

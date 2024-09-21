@@ -5,10 +5,10 @@ import Image from "next/image";
 import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
 
 interface RubriqueHeadProps {
-  imageUrl?: string;
-  imageAlt?: string;
-  title?: string;
-  description?: string;
+  imageUrl: string;
+  imageAlt: string;
+  title: string;
+  description: string;
 }
 
 const RubriqueHead = ({
@@ -24,7 +24,7 @@ const RubriqueHead = ({
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "flex-start",
-        gap: 1,
+        gap: 2,
         position: "relative",
         py: 5,
       }}
@@ -41,7 +41,7 @@ const RubriqueHead = ({
           }}
         />
       </Box>
-      <Typography variant="h2" align={"left"}>
+      <Typography variant="h3" align={"left"}>
         {title}
       </Typography>
       <Typography variant="body1" align={"left"}>

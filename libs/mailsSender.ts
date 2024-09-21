@@ -36,7 +36,6 @@ export default async function mailHandler(
       subject: subject, // Sujet
       html: generateHtmlTable(body), // corps HTML
     });
-    console.log(info);
     return info;
   } catch (error) {
     console.error("Error sending email", error);

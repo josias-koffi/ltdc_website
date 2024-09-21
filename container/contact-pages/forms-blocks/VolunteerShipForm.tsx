@@ -137,7 +137,6 @@ const VolunteerShipForm = ({ countyFlags }: Props) => {
     try {
       const temp = transformDayjsFields(data);
       const res = await mailHandler(temp, "Demande de volontariat");
-      console.log(res);
       if (res) {
         setData(defaultData);
       }

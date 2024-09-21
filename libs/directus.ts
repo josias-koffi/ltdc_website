@@ -1,7 +1,8 @@
 "use server";
-import { createDirectus, readItems, rest } from "@directus/sdk";
+import { aggregate, createDirectus, readItems, rest } from "@directus/sdk";
+import { EntityInterface, FetchProps } from "@/libs/interfaces/mailType";
 
-const URL = process?.env?.DIRECTUS_BO_URL;
+const URL = process?.env?.NEXT_PUBLIC_BO_URL;
 
 let client: any = undefined;
 
@@ -9,16 +10,34 @@ if (URL) {
   client = createDirectus(URL).with(rest());
 }
 
-export const getItems = async (item: "terms_of_use" | "esf_program") => {
-  if (client !== undefined) {
-    try {
-      //   @ts-expect-error Type error: Argument of type 'string' is not assignable to parameter of type 'never'
-      const result = await client.request(readItems(item));
-      if (result) {
-        return result;
-      }
-    } catch (e) {
-      console.error(e);
+export const getItems = async ({
+  entity,
+  id,
+  deepFields,
+  limit,
+  page,
+}: FetchProps) => {
+  const createFilter = {
+    ...{ filter: { id } },
+    ...{ fields: [deepFields ? "*.*.*" : "*"] },
+    ...limit,
+    ...page,
+  };
+  try {
+    const result = await client.request(readItems(entity, createFilter));
+    if (result) {
+      return result;
     }
+  } catch (e) {
+    console.error(e);
   }
+};
+
+export const getTotalPostCount = async (item: EntityInterface["name"]) => {
+  const totalCount = await client.request(
+    aggregate(item, {
+      aggregate: { count: "*" },
+    }),
+  );
+  return totalCount[0].count;
 };

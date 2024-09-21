@@ -1,7 +1,7 @@
 import React from "react";
 
 const ActivitiesPage = () => {
-  return;
+  return <></>;
 };
 
 export default ActivitiesPage;
