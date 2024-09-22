@@ -15,8 +15,8 @@ import {
 import Image from "next/image";
 import { ScreenTypeContext } from "@/app/template";
 import mailHandler from "@/libs/mailsSender";
-import { ContactInfoInterface } from "@/libs/interfaces/mailType";
 import VolunteerShipForm from "@/container/contact-pages/forms-blocks/VolunteerShipForm";
+import { ContactInfoInterface } from "@/libs/interfaces/Interfaces";
 
 const FormSection = ({
   contactInfo,

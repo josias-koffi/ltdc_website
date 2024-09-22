@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import { Pagination, Stack } from "@mui/material";
 import { getTotalPostCount } from "@/libs/directus";
-import { EntityInterface } from "@/libs/interfaces/mailType";
+import { EntityInterface } from "@/libs/interfaces/Interfaces";
 
 interface Props {
   limit: number;

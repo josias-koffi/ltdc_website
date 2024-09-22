@@ -22,10 +22,10 @@ import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
 import { ScreenTypeContext } from "@/app/template";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import dayjs from "dayjs";
-import { VolunteerShipFormInterface } from "@/libs/interfaces/mailType";
 import mailHandler from "@/libs/mailsSender";
 import { transformDayjsFields } from "@/libs/dateutils";
 import { useRouter } from "next/navigation";
+import { VolunteerShipFormInterface } from "@/libs/interfaces/Interfaces";
 
 interface Props {
   countyFlags: any[] | undefined;

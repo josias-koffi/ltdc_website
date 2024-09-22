@@ -14,9 +14,9 @@ import {
 import Image from "next/image";
 import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
 import { ScreenTypeContext } from "@/app/template";
-import { SponsorShipFormInterface } from "@/libs/interfaces/mailType";
 import mailHandler from "@/libs/mailsSender";
 import { transformDayjsFields } from "@/libs/dateutils";
+import { SponsorShipFormInterface } from "@/libs/interfaces/Interfaces";
 
 interface Props {
   countyFlags: any[] | undefined;

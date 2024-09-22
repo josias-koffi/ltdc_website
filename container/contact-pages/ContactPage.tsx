@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import SubjectSection from "@/container/contact-pages/sections/SubjectSection";
 import FormSection from "@/container/contact-pages/sections/FormSection";
 import LocationSection from "@/container/contact-pages/sections/LocationSection";
-import { ContactInfoInterface } from "@/libs/interfaces/mailType";
+import { ContactInfoInterface } from "@/libs/interfaces/Interfaces";
 
 interface Props {
   countyFlags: any[] | undefined;
@@ -31,7 +31,10 @@ const ContactPage = (props: Props) => {
   };
   return (
     <div>
-      <SubjectSection setSubject={setContactInfo} />
+      <SubjectSection
+        setSubject={setContactInfo}
+        activeIndex={contactInfo?.subject?.id}
+      />
       <FormSection
         setContactInfo={setContactInfo}
         contactInfo={contactInfo}

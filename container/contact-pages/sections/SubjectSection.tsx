@@ -1,14 +1,16 @@
 "use client";
 import React, { useContext, useEffect, useState } from "react";
 import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
-import { Box, Grid, Typography, useTheme } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
+import Grid from "@mui/material/Grid2";
 import subjects from "./subjects.json";
 import { ScreenTypeContext } from "@/app/template";
 import Image from "next/image";
-import { SubjectStateInterface } from "@/libs/interfaces/mailType";
+import { SubjectStateInterface } from "@/libs/interfaces/Interfaces";
 
 interface SubjectProps {
   setSubject: (subject: any) => void;
+  activeIndex: number | undefined;
 }
 
 const SubjectSection = (props: SubjectProps) => {
@@ -46,15 +48,11 @@ const SubjectSection = (props: SubjectProps) => {
           pt: 5,
         }}
       >
-        {subjects?.map((subject: SubjectStateInterface, index: number) => {
+        {subjects?.map((subject: SubjectStateInterface) => {
           return (
             <Grid
               key={subject.id}
-              item
-              xl={4}
-              md={4}
-              sm={12}
-              xs={12}
+              size={{ xl: 4, md: 4, sm: 12, xs: 12 }}
               sx={{
                 display: "flex",
                 flexDirection: "column",
@@ -66,7 +64,7 @@ const SubjectSection = (props: SubjectProps) => {
               <Box
                 sx={{
                   backgroundColor:
-                    selectedSubject?.id === index
+                    subject?.id === props?.activeIndex
                       ? theme.palette.primary.main
                       : "#C0C0C0 ",
                   borderRadius: 2,

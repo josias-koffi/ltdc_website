@@ -1,11 +1,10 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { EntityInterface } from "@/libs/interfaces/mailType";
 import { getItems } from "@/libs/directus";
-import Grid from "@mui/material/Unstable_Grid2";
+import Grid from "@mui/material/Grid2";
 import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
 import PaginationFooter from "@/components/pagination/PaginationFooter";
-import { FetchProps } from "@/libs/interfaces/Interfaces";
+import { EntityInterface, FetchProps } from "@/libs/interfaces/Interfaces";
 
 interface ListFromEntityProps {
   entity: EntityInterface["name"];
@@ -49,7 +48,7 @@ const ListFromEntity = ({ entity, CardType }: ListFromEntityProps) => {
         spacing={2}
       >
         {data?.map((item: any) => (
-          <Grid key={item.id} item xl={4} md={6} sm={12} xs={12}>
+          <Grid key={item.id} size={{ xl: 4, md: 6, sm: 12, xs: 12 }}>
             <CardType props={item} />
           </Grid>
         ))}
