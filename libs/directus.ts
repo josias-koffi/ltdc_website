@@ -1,6 +1,6 @@
 "use server";
 import { aggregate, createDirectus, readItems, rest } from "@directus/sdk";
-import { EntityInterface, FetchProps } from "@/libs/interfaces/mailType";
+import { EntityInterface, FetchProps } from "@/libs/interfaces/Interfaces";
 
 const URL = process?.env?.NEXT_PUBLIC_BO_URL;
 
@@ -20,10 +20,11 @@ export const getItems = async ({
   const createFilter = {
     ...{ filter: { id } },
     ...{ fields: [deepFields ? "*.*.*" : "*"] },
-    ...limit,
-    ...page,
+    limit,
+    page,
   };
   try {
+    //@ts-expect-error Type error: Argument of type 'string' is not assignable to parameter of type 'never'
     const result = await client.request(readItems(entity, createFilter));
     if (result) {
       return result;
@@ -35,6 +36,7 @@ export const getItems = async ({
 
 export const getTotalPostCount = async (item: EntityInterface["name"]) => {
   const totalCount = await client.request(
+    //@ts-expect-error Invalid typing
     aggregate(item, {
       aggregate: { count: "*" },
     }),

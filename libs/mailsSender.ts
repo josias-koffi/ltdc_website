@@ -1,13 +1,12 @@
 "use server";
 
-import nodemailer from "nodemailer";
 import {
   BeneficiaryShipFormInterface,
   ContactInfoInterface,
   MailSubjectInterface,
   SponsorShipFormInterface,
   VolunteerShipFormInterface,
-} from "@/libs/interfaces/mailType";
+} from "@/libs/interfaces/Interfaces";
 
 export default async function mailHandler(
   body:
@@ -17,29 +16,40 @@ export default async function mailHandler(
     | ContactInfoInterface,
   subject: MailSubjectInterface["subject"],
 ) {
-  let transporter = nodemailer?.createTransport({
-    // @ts-expect-error  Object literal may only specify known properties, and 'host' does not exist in type 'TransportOptions | Transport<unknown>'
-    host: process?.env?.BREVO_HOST, // Votre SMTP server
+  const URL = process.env.BREVO_API_URL;
+  const BREVO_API_KEY = process.env.BREVO_API_KEY;
+  const DESTINATION = process.env.MAIL_DESTINNATION;
 
-    port: process?.env?.BREVO_PORT,
-    secure: true, // true pour 465, false pour les autres ports
-    auth: {
-      user: process?.env?.BREVO_USER, // votre identifiant SMTP
-      pass: process?.env?.BREVO_PASWORD, // votre mot de passe SMTP
-    },
-  });
+  const mailData: any = {
+    sender: { name: "Info Service", email: DESTINATION },
+    to: [{ name: "Info Service", email: DESTINATION }], // Replace with actual recipient
+    subject: subject,
+    htmlContent: generateHtmlTable(body),
+  };
+
+  if (!URL || !BREVO_API_KEY || !DESTINATION) {
+    throw new Error("Missing environment key");
+  }
 
   try {
-    let info = await transporter.sendMail({
-      from: `"Expediteur" <${process?.env?.MAIL_DESTINNATION}>`, // adresse de l'expéditeur
-      to: process?.env?.MAIL_DESTINNATION, // liste des destinataires
-      subject: subject, // Sujet
-      html: generateHtmlTable(body), // corps HTML
+    const response = await fetch(URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        accept: "application/json",
+        "api-key": BREVO_API_KEY,
+      },
+      body: JSON.stringify(mailData),
     });
-    return info;
+
+    if (!response.ok) {
+      throw new Error(`Error: ${response.statusText}`);
+    }
+
+    return { response: "Email sent successfully" };
   } catch (error) {
     console.error("Error sending email", error);
-    return { response: "error sending" };
+    return { response: "Error sending email" };
   }
 }
 

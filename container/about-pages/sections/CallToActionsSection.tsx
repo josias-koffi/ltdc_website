@@ -1,6 +1,7 @@
 "use client";
 import React, { useContext } from "react";
-import { Box, Button, Grid, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
+import Grid from "@mui/material/Grid2";
 import { IconChevronRight } from "@tabler/icons-react";
 import { FrameSettingContext, ScreenTypeContext } from "@/app/template";
 import Image from "next/image";
@@ -54,7 +55,7 @@ const CallToActionsSection = () => {
           zIndex: 1,
         }}
       >
-        <Grid item xl={6}>
+        <Grid size={{ xl: 6 }}>
           <Box sx={{ pb: 10, width: "100%" }}>
             <Typography
               variant={notPhoneScreen ? "h4" : "h5"}
