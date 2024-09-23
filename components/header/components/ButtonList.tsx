@@ -48,7 +48,7 @@ const ButtonList = (props: Props) => {
       link: "/contact/general",
     },
     {
-      name: "Dons",
+      name: "Faire un Dons",
       link: "https://www.helloasso.com/associations/association-les-travailleurs-du-coeur/collectes/campagne-de-crowdfunding-pour-etablir-un-siege-social",
       variant: "contained",
       target: "_blank",
