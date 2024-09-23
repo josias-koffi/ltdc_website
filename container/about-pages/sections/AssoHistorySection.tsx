@@ -6,14 +6,11 @@ import Grid from "@mui/material/Grid2";
 import assoHistory from "./AssoHistory.json";
 import Image from "next/image";
 import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
+import { cleanAndFormatText } from "@/libs/stringUtils";
 
 const AssoHistorySection = () => {
   const { text } = assoHistory;
   const notPhoneScreen = useContext(ScreenTypeContext);
-
-  const cleanAndFormatText = (text: string) => {
-    return text.replace(/\n/g, "<br/>"); // Remplace tous les caractères \u200B par des retours à la ligne
-  };
 
   const cleanedAndFormattedText = cleanAndFormatText(text);
 

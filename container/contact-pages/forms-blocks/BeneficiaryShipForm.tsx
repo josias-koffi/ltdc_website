@@ -134,10 +134,14 @@ const BeneficiaryShipForm = ({ countyFlags }: Props) => {
             {"Formulaire pour devenir bénéficiaire"}
           </Typography>
           <br />
-          <Typography variant={"body1"} color={"#FFF"}>
-            {"Un soucis aves vos papier, votre statut profesionel ou votre logement ? " +
-              "N'hésitez pas a remplire ce formulaire de contact pour" +
-              "que nous examinion votre situation"}
+          <Typography
+            sx={{ whiteSpace: "pre-wrap" }}
+            variant={"body1"}
+            color={"#FFF"}
+          >
+            {"Un souci avec vos papiers, votre statut professionnel ou votre logement ? \n" +
+              "N'hésitez pas à remplir ce formulaire " +
+              "de contact pour que nous examinions votre situation."}
           </Typography>
         </Box>
         <Card
@@ -176,7 +180,7 @@ const BeneficiaryShipForm = ({ countyFlags }: Props) => {
             <TextField
               variant={"outlined"}
               sx={{ width: "100%" }}
-              label="Prenom"
+              label="Prénom(s)"
               name="firstName"
               onChange={handleChange}
               value={data?.firstName}

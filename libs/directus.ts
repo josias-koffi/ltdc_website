@@ -20,8 +20,10 @@ export const getItems = async ({
   const createFilter = {
     ...{ filter: { id } },
     ...{ fields: [deepFields ? "*.*.*" : "*"] },
-    limit,
-    page,
+    //@ts-expect-error type error
+    ...limit,
+    //@ts-expect-error error
+    ...page,
   };
   try {
     //@ts-expect-error Type error: Argument of type 'string' is not assignable to parameter of type 'never'

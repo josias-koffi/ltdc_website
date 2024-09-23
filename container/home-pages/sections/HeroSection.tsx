@@ -48,17 +48,17 @@ const HeroSection = () => {
             {" dans le monde"}
           </Typography>
           <Box>
+            {/*<Button*/}
+            {/*  variant="contained"*/}
+            {/*  sx={{ m: 1 }}*/}
+            {/*  size="large"*/}
+            {/*  href={"/"}*/}
+            {/*  endIcon={<IconChevronRight />}*/}
+            {/*>*/}
+            {/*  {"Nos activités"}*/}
+            {/*</Button>*/}
             <Button
               variant="contained"
-              sx={{ m: 1 }}
-              size="large"
-              href={"/"}
-              endIcon={<IconChevronRight />}
-            >
-              {"Nos activités"}
-            </Button>
-            <Button
-              variant="outlined"
               sx={{ m: 1 }}
               size="large"
               href={

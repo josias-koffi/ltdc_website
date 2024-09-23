@@ -97,15 +97,16 @@ const ActivitiesSection = (props: ActivitiesSectionInterface) => {
               xs: 12,
             }}
             sx={{ zIndex: 10, px: 3 }}
+            container
           >
-            <Grid container spacing={1}>
-              <Grid size={{ xl: 12, md: 12 }}>
+            <Grid container spacing={2}>
+              <Grid size={12}>
                 <Typography
                   variant={notPhoneScreen ? "h2" : "h3"}
                   fontWeight={"bold"}
                   sx={{ pb: 3 }}
                 >
-                  {"Nos activités"}
+                  {"Nos activités "}
                 </Typography>
               </Grid>
               {mapActivities()}

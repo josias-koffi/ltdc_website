@@ -43,7 +43,7 @@ const ValuesSection = () => {
               alignItems: "center",
               p: 5,
               gap: 2,
-              height: 200,
+              height: "100%",
             }}
           >
             <Image
@@ -53,7 +53,7 @@ const ValuesSection = () => {
               height={80}
             />
             <Typography variant="h6" align="center" fontWeight={"bold"}>
-              {"Nos valeurs"}
+              {value.title}
             </Typography>
             <Typography variant="body1" align="center">
               {value.description}

@@ -38,3 +38,7 @@ const htmlString = `
 export const returnImageUrlById = (id: string | number) => {
   return process.env.NEXT_PUBLIC_BO_URL + "assets/" + id;
 };
+
+export const cleanAndFormatText = (text: string) => {
+  return text.replace(/\n/g, "<br/>"); // Remplace tous les caractères \u200B par des retours à la ligne
+};

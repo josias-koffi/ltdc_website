@@ -12,7 +12,7 @@ const ListActualities = () => {
           "Une actualité est une information pertinente pour les " +
           "bénéficiaires de l'association, souvent liée à l'emploi, au logement, " +
           "aux démarches administratives ou à l'actualité législative et juridique" +
-          " en France. Elle vise à informer et orienter les personnes " +
+          " en France. Elle vise à informer et à  orienter les personnes " +
           "accompagnées par l'association dans leur processus d'insertion.\n"
         }
         imageAlt={"image de test"}

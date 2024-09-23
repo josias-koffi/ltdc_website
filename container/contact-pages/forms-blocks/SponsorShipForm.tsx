@@ -156,7 +156,7 @@ const SponsorShipForm = (props: Props) => {
             <TextField
               variant={"outlined"}
               sx={{ width: "100%" }}
-              label="Prenom"
+              label="Prénom(s)"
               name="firstName"
               onChange={handleChange}
               value={data?.firstName}
