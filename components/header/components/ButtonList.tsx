@@ -20,7 +20,7 @@ const ButtonList = (props: Props) => {
       link: "/",
     },
     {
-      name: "A Propos",
+      name: "À Propos",
       link: "/about",
     },
     // {
