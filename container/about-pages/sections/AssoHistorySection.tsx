@@ -51,7 +51,6 @@ const AssoHistorySection = () => {
           >
             <ImageWrapper
               height={650}
-              // width={300}
               objectFit={"contain"}
               src={"/images/aboutPage/historySection.png"}
               alt={"Image a propos de l'association"}
