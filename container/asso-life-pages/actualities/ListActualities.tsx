@@ -16,7 +16,7 @@ const ListActualities = () => {
           "accompagnées par l'association dans leur processus d'insertion.\n"
         }
         imageAlt={"image de test"}
-        imageUrl={"/images/aboutPage/clay-banks-LjqARJaJotc-unsplash.jpg"}
+        imageUrl={"/images/aboutPage/groupe_image.jpg"}
       />
       <ListFromEntity entity={"actualities"} CardType={ActualityCard} />
     </div>

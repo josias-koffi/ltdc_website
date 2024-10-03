@@ -13,7 +13,7 @@ const AboutPage = () => {
       <AssoHistorySection />
       <ValuesSection />
       <ActivitiesSection variant="minimal" />
-      <MembersSection />
+      {/*<MembersSection />*/}
       <CallToActionsSection />
     </div>
   );

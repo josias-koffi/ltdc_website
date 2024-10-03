@@ -10,7 +10,7 @@ const ListEvents = () => {
         title={"Les évenements de la LTDC"}
         description={"test de la page"}
         imageAlt={"image de test"}
-        imageUrl={"/images/aboutPage/clay-banks-LjqARJaJotc-unsplash.jpg"}
+        imageUrl={"/images/aboutPage/groupe_image.jpg"}
       />
       <ListFromEntity entity={"events"} CardType={EventCard} />
     </div>

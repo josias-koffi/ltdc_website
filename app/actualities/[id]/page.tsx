@@ -10,6 +10,7 @@ const ActualityView = async ({ params }: { params: { id: string } }) => {
     deepFields: true,
     id: params?.id,
   };
+
   const actuality = await getItems(request);
 
   return <ViewActualities actuality={actuality[0]} />;

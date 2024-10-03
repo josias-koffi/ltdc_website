@@ -17,7 +17,7 @@ const HeroSection = () => {
 
   return (
     <ContainerWrapper>
-      <Stack direction="row" spacing={0}>
+      <Grid container direction="row" spacing={0}>
         <Image
           src={"/images/homePage/Ellipse.svg"}
           alt={"Personnes travaillant ensemble"}
@@ -30,6 +30,7 @@ const HeroSection = () => {
           }}
         />
         <Grid
+          size={{ xl: 6, md: 6, sm: 12, xs: 12 }}
           sx={{
             display: "flex",
             flexDirection: "column",
@@ -72,6 +73,7 @@ const HeroSection = () => {
           </Box>
         </Grid>
         <Grid
+          size={{ xl: 6, md: 6, sm: 12, xs: 12 }}
           sx={{
             display: "flex",
             justifyContent: "center",
@@ -79,13 +81,13 @@ const HeroSection = () => {
           }}
         >
           <Image
-            src={"/images/homePage/working.svg"}
+            src={"/images/homePage/Hero_Images.png"}
             alt={"Personnes travaillant ensemble"}
             width={frame?.upperMd ? 600 : frame?.upperSm ? 400 : 0}
             height={frame?.upperMd ? 600 : frame?.upperSm ? 400 : 0}
           />
         </Grid>
-      </Stack>
+      </Grid>
     </ContainerWrapper>
   );
 };
