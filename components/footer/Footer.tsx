@@ -75,7 +75,7 @@ const Footer = () => {
           <SocialLinks />
           <Typography variant="body2" component="div">
             {"© Tout droits réservés 2024"}
-            <span style={{ color: theme?.palette?.primary?.main }}>
+            <span style={{ color: theme?.palette?.secondary?.main }}>
               {" LTDC"}
             </span>
           </Typography>
