@@ -4,17 +4,15 @@ import { ScreenTypeContext } from "@/app/template";
 import { Box, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import assoHistory from "./AssoHistory.json";
-import Image from "next/image";
 import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
 import { cleanAndFormatText } from "@/libs/stringUtils";
+import ImageWrapper from "@/components/wrapper/ImageWrapper";
 
 const AssoHistorySection = () => {
   const { text } = assoHistory;
   const notPhoneScreen = useContext(ScreenTypeContext);
 
   const cleanedAndFormattedText = cleanAndFormatText(text);
-
-  const renderImages = () => {};
 
   return (
     <Box
@@ -28,7 +26,7 @@ const AssoHistorySection = () => {
     >
       <ContainerWrapper>
         <Grid container alignItems="center" justifyContent="center" spacing={1}>
-          <Grid size={{ xl: 6 }}>
+          <Grid size={{ xl: 6, md: 6, sm: 12, xs: 12 }}>
             <Typography
               variant={notPhoneScreen ? "h2" : "h3"}
               fontWeight={"bold"}
@@ -43,7 +41,7 @@ const AssoHistorySection = () => {
             />
           </Grid>
           <Grid
-            size={{ xl: 6 }}
+            size={{ xl: 6, md: 6, sm: 12, xs: 12 }}
             sx={{
               position: "relative",
               display: "flex",
@@ -51,18 +49,26 @@ const AssoHistorySection = () => {
               justifyContent: "center",
             }}
           >
-            <Box sx={{ height: 600, width: 350, position: "relative" }}>
-              <Image
-                src={"/images/aboutPage/historySection.png"}
-                alt="Asso image of peoples"
-                fill={true}
-                style={{
-                  objectFit: "contain",
-                  objectPosition: " right",
-                  zIndex: 5,
-                }}
-              />
-            </Box>
+            <ImageWrapper
+              height={650}
+              // width={300}
+              objectFit={"contain"}
+              src={"/images/aboutPage/historySection.png"}
+              alt={"Image a propos de l'association"}
+            />
+
+            {/*<Box sx={{ height: 600, width: 350, position: "relative" }}>*/}
+            {/*  <Image*/}
+            {/*    src={"/images/aboutPage/historySection.png"}*/}
+            {/*    alt="Asso image of peoples"*/}
+            {/*    fill={true}*/}
+            {/*    style={{*/}
+            {/*      objectFit: "cover",*/}
+            {/*      objectPosition: " right",*/}
+            {/*      zIndex: 5,*/}
+            {/*    }}*/}
+            {/*  />*/}
+            {/*</Box>*/}
           </Grid>
         </Grid>
       </ContainerWrapper>

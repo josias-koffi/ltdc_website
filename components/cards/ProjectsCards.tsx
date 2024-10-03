@@ -26,12 +26,7 @@ const ProjectsCards = ({ props }: any) => {
         </Typography>
       </CardContent>
       <CardActions sx={{ justifyContent: "flex-end" }}>
-        <Button
-          href={process?.env?.NEXT_PUBLIC_API_URL + "projects/" + props?.id}
-          // href={"http://localhost:3001/" + "projects/" + props?.id}
-        >
-          Lire
-        </Button>
+        <Button href={"projects/" + props?.id}>Lire</Button>
       </CardActions>
     </Card>
   );
