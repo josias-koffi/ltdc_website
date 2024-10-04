@@ -12,13 +12,15 @@
         "@directus/sdk": "^16.1.1",
         "@emotion/react": "^11.11.4",
         "@emotion/styled": "^11.11.5",
-        "@mui/material": "^5.16.1",
+        "@mui/material": "^6.1.1",
         "@tabler/icons-react": "^3.11.0",
         "next": "14.2.5",
         "nodemailer": "^6.9.14",
         "react": "^18",
         "react-dom": "^18",
-        "sharp": "^0.33.5"
+        "sharp": "^0.33.5",
+        "dayjs": "^1.11.13",
+        "@mui/x-date-pickers": "^7.14.0"
     },
     "devDependencies": {
         "@types/node": "^20",

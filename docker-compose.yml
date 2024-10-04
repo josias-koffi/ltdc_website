@@ -1,6 +1,8 @@
 services:
-    react-app-dev:
+    react-app:
         restart: always
         build:
             context: .
             dockerfile: Dockerfile
+        env_file:
+            - .env

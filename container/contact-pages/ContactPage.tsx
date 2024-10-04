@@ -1,28 +1,49 @@
 "use client";
-import React, {useState} from 'react';
-import SubjectSection, {SubjectStateInterface} from "@/container/contact-pages/sections/SubjectSection";
+import React, { useState } from "react";
+import SubjectSection from "@/container/contact-pages/sections/SubjectSection";
 import FormSection from "@/container/contact-pages/sections/FormSection";
 import LocationSection from "@/container/contact-pages/sections/LocationSection";
+import { ContactInfoInterface } from "@/libs/interfaces/Interfaces";
 
-
-export interface ContactInfoInterface {
-    subject: SubjectStateInterface |  undefined,
-    name: string,
-    email: string | undefined,
-    message: string | undefined,
-    company: string | undefined
-
+interface Props {
+  countyFlags: any[] | undefined;
 }
 
-const ContactPage = () => {
-    const [contactInfo, setContactInfo] = useState<any>()
-    return (
-        <div>
-            <SubjectSection setSubject={setContactInfo}/>
-            <FormSection setContactInfo={setContactInfo} contactInfo={contactInfo}/>
-            <LocationSection/>
-        </div>
-    );
+const ContactPage = (props: Props) => {
+  const defaultValue: ContactInfoInterface = {
+    subject: {
+      id: 0,
+      subject: "Question sur l’association",
+      image: "/icons/contact/contact.svg",
+    },
+    name: "",
+    email: "",
+    message: "",
+    company: "",
+    consent: false,
+  };
+
+  const [contactInfo, setContactInfo] =
+    useState<ContactInfoInterface>(defaultValue);
+
+  const resetInfo = () => {
+    setContactInfo(defaultValue);
+  };
+  return (
+    <div>
+      <SubjectSection
+        setSubject={setContactInfo}
+        activeIndex={contactInfo?.subject?.id}
+      />
+      <FormSection
+        setContactInfo={setContactInfo}
+        contactInfo={contactInfo}
+        resetInfo={resetInfo}
+        countyFlags={props.countyFlags}
+      />
+      <LocationSection />
+    </div>
+  );
 };
 
 export default ContactPage;

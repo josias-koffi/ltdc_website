@@ -1,10 +1,8 @@
-import React from 'react';
-import ViewActivity from "@/container/activities-pages/view-pages/ViewActivity";
+import React from "react";
+import ViewActualities from "@/container/activities-pages/view-pages/ViewActualities";
 
 const ActivityView = () => {
-  return (
-    <ViewActivity/>
-  );
+  return <ViewActualities />;
 };
 
 export default ActivityView;

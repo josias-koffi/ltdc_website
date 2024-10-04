@@ -4,3 +4,5 @@ services:
             target: runner
         ports:
             - '3001:3000'
+        env_file:
+            - .env.prod

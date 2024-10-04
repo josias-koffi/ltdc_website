@@ -1,6 +1,5 @@
 import React from "react";
 import { Box, Button, Collapse } from "@mui/material";
-import Link from "next/link";
 
 interface Props {
   normalButton?: boolean | null;
@@ -10,22 +9,60 @@ interface Props {
 interface ButtonListProps {
   name: string;
   link: string;
+  variant?: "text" | "outlined" | "contained" | undefined;
+  target?: "_blank" | undefined;
 }
 
 const ButtonList = (props: Props) => {
   const buttonList: ButtonListProps[] = [
-    { name: "Accueil", link: "/" },
     {
-      name: "A Propos",
+      name: "Accueil",
+      link: "/",
+    },
+    {
+      name: "À Propos",
       link: "/about",
     },
-    { name: "Contact", link: "/contact" },
+    // {
+    //   name: "Projets",
+    //   link: "/projects",
+    // },
+    // {
+    //   name: "Événements",
+    //   link: "/events",
+    // },
+    // {
+    //   name: "Actualités",
+    //   link: "/actualities",
+    // },
+    {
+      name: "Adhésion",
+      link: "/contact/as-beneficiary",
+    },
+    {
+      name: "Partenaires",
+      link: "/contact/as-sponsor",
+    },
+    {
+      name: "Contact",
+      link: "/contact/general",
+    },
+    {
+      name: "Faire un Dons",
+      link: "https://www.helloasso.com/associations/association-les-travailleurs-du-coeur/collectes/campagne-de-crowdfunding-pour-etablir-un-siege-social",
+      variant: "contained",
+      target: "_blank",
+    },
   ];
-
   const mapButtons = () => {
     return buttonList?.map((item: ButtonListProps) => {
       return (
-        <Button key={item.link} href={item.link}>
+        <Button
+          key={item.link}
+          href={item.link}
+          variant={item?.variant}
+          target={item?.variant}
+        >
           {item?.name}
         </Button>
       );
@@ -63,6 +100,7 @@ const ButtonList = (props: Props) => {
           flexDirection: "row",
           justifyContent: "center",
           alignItems: "center",
+          gap: 1,
         }}
       >
         {mapButtons()}
