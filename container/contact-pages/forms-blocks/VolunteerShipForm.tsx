@@ -24,7 +24,6 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import dayjs from "dayjs";
 import mailHandler from "@/libs/mailsSender";
 import { transformDayjsFields } from "@/libs/dateutils";
-import { useRouter } from "next/navigation";
 import { VolunteerShipFormInterface } from "@/libs/interfaces/Interfaces";
 
 interface Props {
@@ -39,9 +38,6 @@ const defaultData: VolunteerShipFormInterface = {
   adresse: "",
   phoneNumber: "",
   email: "",
-  statut: "",
-  object: "",
-  message: "",
   days: null,
   motivation: "",
   experiences: "",
@@ -54,7 +50,6 @@ const defaultData: VolunteerShipFormInterface = {
  * @param countyFlags array of flags for the countries
  */
 const VolunteerShipForm = ({ countyFlags }: Props) => {
-  const router = useRouter();
   const [data, setData] = useState<VolunteerShipFormInterface>(defaultData);
 
   const days: VolunteerShipFormInterface["days"] = [
