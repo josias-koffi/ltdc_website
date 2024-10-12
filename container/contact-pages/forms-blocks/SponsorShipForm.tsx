@@ -228,6 +228,7 @@ const SponsorShipForm = (props: Props) => {
               name="organizationPhone"
               onChange={handleChange}
               value={data?.organizationPhone}
+              type="number"
               required
             />
             <TextField

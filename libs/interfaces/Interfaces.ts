@@ -82,9 +82,6 @@ export interface VolunteerShipFormInterface {
   adresse: string;
   phoneNumber: number | string;
   email: string;
-  statut: string;
-  object: string;
-  message: string;
   days: Array<
     | "Lundi"
     | "Mardi"
