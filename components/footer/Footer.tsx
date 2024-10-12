@@ -51,9 +51,17 @@ const Footer = () => {
                 {footerData?.richDescription}
               </Typography>
             </Grid>
-            <Grid size={{ xl: 6, xs: 12 }}>
+            <Grid
+              size={{ xl: 6, xs: 12 }}
+              sx={{
+                pt: { xl: "5rem", sm: 0 },
+                display: "flex",
+                flexDirection: "column",
+                alignItems: { xl: "flex-end", sm: "flex-start" },
+              }}
+            >
               <Typography variant="h5" component="div">
-                {"Lien rapides"}
+                {"Liens rapides"}
               </Typography>
               <Grid container spacing={2} sx={{ pt: 2 }}>
                 {mapQuickLinks()}
@@ -75,7 +83,7 @@ const Footer = () => {
           <SocialLinks />
           <Typography variant="body2" component="div">
             {"© Tout droits réservés 2024"}
-            <span style={{ color: theme?.palette?.primary?.main }}>
+            <span style={{ color: theme?.palette?.secondary?.main }}>
               {" LTDC"}
             </span>
           </Typography>

@@ -83,8 +83,9 @@ const ActivitiesSection = (props: ActivitiesSectionInterface) => {
               <ImageWrapper
                 src={"/images/activitiesSection/About_Us.png"}
                 alt={"activity image"}
+                objectFit={"contain"}
                 height={600}
-                width={500}
+                // width={500}
               />
             </Grid>
           ) : null}

@@ -20,41 +20,41 @@ const ButtonList = (props: Props) => {
       link: "/"
     },
 
-    { 
-      name: "A Propos", 
-      link: "/about" 
+    {
+      name: "À Propos",
+      link: "/about",
     },
 
-    { 
-      name: "Projets", 
-      link: "/projects" 
+    {
+      name: "Projets",
+      link: "/projects"
     },
 
-    { 
-      name: "Événements", 
-      link: "/events" 
+    {
+      name: "Événements",
+      link: "/events"
     },
 
-    { 
-      name: "Actualités", 
-      link: "/actualities" 
+    {
+      name: "Actualités",
+      link: "/actualities"
     },
 
-    { 
-      name: "Adhésion", 
-      link: "/contact/as-beneficiary" 
+    {
+      name: "Adhésion",
+      link: "/contact/as-beneficiary"
     },
 
-    { 
-      name: "Partenaires", 
-      link: "/contact/as-sponsor" 
+    {
+      name: "Partenaires",
+      link: "/contact/as-sponsor"
     },
-    
-    { 
-      name: "Contact", 
-      link: "/contact/general" 
+
+    {
+      name: "Contact",
+      link: "/contact/general"
     },
-    
+
     {
       name: "Faire un Don",
       link: "https://www.helloasso.com/associations/association-les-travailleurs-du-coeur/collectes/campagne-de-crowdfunding-pour-etablir-un-siege-social",
