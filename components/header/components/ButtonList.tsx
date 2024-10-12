@@ -15,14 +15,46 @@ interface ButtonListProps {
 
 const ButtonList = (props: Props) => {
   const buttonList: ButtonListProps[] = [
-    { name: "Accueil", link: "/" },
-    { name: "A Propos", link: "/about" },
-    { name: "Projets", link: "/projects" },
-    { name: "Événements", link: "/events" },
-    { name: "Actualités", link: "/actualities" },
-    { name: "Adhésion", link: "/contact/as-beneficiary" },
-    { name: "Partenaires", link: "/contact/as-sponsor" },
-    { name: "Contact", link: "/contact/general" },
+    {
+      name: "Accueil",
+      link: "/"
+    },
+
+    { 
+      name: "A Propos", 
+      link: "/about" 
+    },
+
+    { 
+      name: "Projets", 
+      link: "/projects" 
+    },
+
+    { 
+      name: "Événements", 
+      link: "/events" 
+    },
+
+    { 
+      name: "Actualités", 
+      link: "/actualities" 
+    },
+
+    { 
+      name: "Adhésion", 
+      link: "/contact/as-beneficiary" 
+    },
+
+    { 
+      name: "Partenaires", 
+      link: "/contact/as-sponsor" 
+    },
+    
+    { 
+      name: "Contact", 
+      link: "/contact/general" 
+    },
+    
     {
       name: "Faire un Don",
       link: "https://www.helloasso.com/associations/association-les-travailleurs-du-coeur/collectes/campagne-de-crowdfunding-pour-etablir-un-siege-social",
@@ -34,7 +66,7 @@ const ButtonList = (props: Props) => {
   const mapButtons = () => {
     return buttonList?.map((item: ButtonListProps) => {
       const isDonateButton = item.name === "Faire un Dons";
-      
+
       const buttonStyles = {
         flexShrink: 0,
         minWidth: isDonateButton
@@ -44,7 +76,7 @@ const ButtonList = (props: Props) => {
           ? { xs: "75px", sm: "70px", md: "110px", lg: "160px" }
           : undefined,
       };
-  
+
       return (
         <Button
           key={item.link}
@@ -67,7 +99,7 @@ const ButtonList = (props: Props) => {
     });
   };
 
-  
+
 
   const expendedButton = () => {
     return (
