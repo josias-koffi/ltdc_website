@@ -4,6 +4,10 @@ FROM node:20-alpine AS deps
 ARG gitBranch=develop
 RUN apk add --no-cache git openssh libc6-compat g++ make py3-pip
 
+# Install prerequisites
+RUN apk add --update \
+    curl \
+    && rm -rf /var/cache/apk/*
 
 WORKDIR /app
 
@@ -23,7 +27,10 @@ RUN npm install
 # Rebuild the source code only when needed
 FROM node:20-alpine AS builder
 
-
+# Install prerequisites
+RUN apk add --update \
+    curl \
+    && rm -rf /var/cache/apk/*
 
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
@@ -37,6 +44,12 @@ CMD [ "npm","run", "dev" ]
 
 # Production image, copy all the files and run next
 FROM node:20-alpine AS runner
+
+# Install prerequisites
+RUN apk add --update \
+    curl \
+    && rm -rf /var/cache/apk/*
+
 WORKDIR /app
 
 ENV NODE_ENV production
