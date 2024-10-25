@@ -15,7 +15,8 @@ export interface EntityInterface {
     | "actualities"
     | "categories"
     | "projects"
-    | "events";
+    | "events"
+    | "members";
 }
 
 export interface MailSubjectInterface {

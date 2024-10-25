@@ -1,14 +1,34 @@
 "use client";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Box, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid2";
-import { FrameSettingContext, ScreenTypeContext } from "@/app/template";
+import { ScreenTypeContext } from "@/app/template";
 import Image from "next/image";
 import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
+import { FetchProps } from "@/libs/interfaces/Interfaces";
+import { getItems } from "@/libs/directus";
 
 const MemberSection = () => {
-  const frame = useContext(FrameSettingContext);
   const notPhoneScreen = useContext(ScreenTypeContext);
+  const [assoMember, setAssoMember] = useState([]);
+
+  useEffect(() => {
+    getMembers();
+  }, []);
+
+  useEffect(() => {
+    console.log(assoMember);
+  }, []);
+
+  const getMembers = async () => {
+    const request: FetchProps = {
+      entity: "members",
+      deepFields: true,
+      limit: 3,
+    };
+    const members = await getItems(request);
+    setAssoMember(members);
+  };
 
   const members = [
     {
