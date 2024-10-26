@@ -1,5 +1,5 @@
 "use server";
-import { aggregate, createDirectus, readItems, rest } from "@directus/sdk";
+import { aggregate, createDirectus, readItem, rest } from "@directus/sdk";
 import { EntityInterface, FetchProps } from "@/libs/interfaces/Interfaces";
 
 const URL = process?.env?.NEXT_PUBLIC_BO_URL;
@@ -27,7 +27,8 @@ export const getItems = async ({
   };
   try {
     //@ts-expect-error Type error: Argument of type 'string' is not assignable to parameter of type 'never'
-    const result = await client.request(readItems(entity, createFilter));
+    const result = await client.request(readItem(entity, createFilter));
+    console.log(result);
     if (result) {
       return result;
     }
