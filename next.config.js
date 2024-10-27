@@ -10,7 +10,7 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "bo-prod.asso-ltdc.org",
+        hostname: "bo-stage.asso-ltdc.org",
         port: "",
       },
     ],

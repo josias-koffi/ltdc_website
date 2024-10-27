@@ -7,26 +7,45 @@ import {
   CardContent,
   CardMedia,
   Typography,
+  Stack,
 } from "@mui/material";
+import Category from "@/components/entity/Category";
+import { truncateText } from "@/libs/stringUtils";
+import { formatDate } from "@/libs/dateutils";
+import { Actualities } from "@/libs/interfaces/entities";
 
-const ActualityCard = ({ props }: any) => {
+const ActualityCard = ({ props }: { props: Actualities }) => {
   return (
     <Card>
       <CardMedia
-        sx={{ height: 200 }}
+        sx={{ height: 300 }}
         image={process?.env?.NEXT_PUBLIC_BO_URL + "assets/" + props?.cover}
         title="green iguana"
       />
-      <CardContent>
+      <CardContent sx={{ height: 150 }}>
+        <Stack
+          direction="row"
+          spacing={2}
+          sx={{
+            justifyContent: "space-between",
+            alignItems: "center",
+            color: "text.secondary",
+          }}
+        >
+          <Category id={props?.id} />
+          <Typography>{formatDate(props?.publication_date)}</Typography>
+        </Stack>
         <Typography gutterBottom variant="h5" component="div">
           {props?.title}
         </Typography>
-        <Typography variant="body2" sx={{ color: "text.secondary" }}>
-          {props?.description}
+        <Typography variant="subtitle1" sx={{ color: "text.secondary" }}>
+          {truncateText(props?.description)}
         </Typography>
       </CardContent>
       <CardActions sx={{ justifyContent: "flex-end" }}>
-        <Button href={"actualities/" + props?.id}>Lire</Button>
+        <Button variant={"contained"} href={"actualities/" + props?.id}>
+          Lire
+        </Button>
       </CardActions>
     </Card>
   );

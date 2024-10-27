@@ -25,7 +25,6 @@ const ListFromEntity = ({ entity, CardType }: ListFromEntityProps) => {
     try {
       const res = await getItems(request);
       if (res?.length > 0) {
-        console.log("Result", res);
         setData(res);
       }
     } catch (error: any) {

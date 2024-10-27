@@ -42,3 +42,12 @@ export const returnImageUrlById = (id: string | number) => {
 export const cleanAndFormatText = (text: string) => {
   return text.replace(/\n/g, "<br/>"); // Remplace tous les caractères \u200B par des retours à la ligne
 };
+
+export const truncateText = (text: string, maxLength?: number) => {
+  const MAX_LENGTH = maxLength ?? 200;
+
+  if (text?.length > MAX_LENGTH) {
+    return text.slice(0, MAX_LENGTH) + "...";
+  }
+  return text;
+};
