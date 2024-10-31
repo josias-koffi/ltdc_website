@@ -50,16 +50,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${domain}events`,
-      changefreq: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: `${domain}projects`,
-      changefreq: "weekly",
-      priority: 0.9,
-    },
-    {
       url: `${domain}terms-of-use`,
       changefreq: "yearly",
       priority: 0.5,
