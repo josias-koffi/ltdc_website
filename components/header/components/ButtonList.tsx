@@ -31,10 +31,10 @@ const ButtonList = (props: Props) => {
     //   name: "Événements",
     //   link: "/events",
     // },
-    // {
-    //   name: "Actualités",
-    //   link: "/actualities",
-    // },
+    {
+      name: "Actualités",
+      link: "/actualities",
+    },
     {
       name: "Adhésion",
       link: "/contact/as-beneficiary",

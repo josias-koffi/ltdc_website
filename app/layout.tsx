@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
+import { DEFAULT_META_DESCRIPTION, DEFAULT_TITLE } from "@/libs/constants";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -11,8 +12,8 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "LTDC",
-  description: "Une association a but non lucrative",
+  title: DEFAULT_TITLE,
+  description: DEFAULT_META_DESCRIPTION,
 };
 
 export default function RootLayout({
