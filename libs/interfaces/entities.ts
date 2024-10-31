@@ -2,10 +2,33 @@ interface Status {
   value: "published" | "draft" | "archived";
 }
 
-export interface Actualities {
-  categories?: [];
+export interface ActualitiesCategoriesEntity {
+  actualities_id: ActualitiesEntity;
+  categories_id: CategoriesEntity;
+}
+
+export interface ActualitiesTargetsEntity {
+  actualities_id: ActualitiesEntity;
+  targets_id: TargetsEntity;
+}
+
+export interface CategoriesEntity {
+  id: string;
+  name: string;
+  status: Status;
+}
+
+export interface TargetsEntity {
+  id: number;
+  name: string;
+  status: Status;
+}
+
+export interface ActualitiesEntity {
+  categories?: CategoriesEntity[];
+  targets?: TargetsEntity[];
   content: string;
-  cover?: string | FilesInterface;
+  cover: string | FilesInterface;
   date_created: string;
   date_updated?: string;
   description: string;
@@ -14,6 +37,7 @@ export interface Actualities {
   publication_date: string;
   sort?: any;
   sources?: string;
+  resources?: string;
   status: Status["value"];
   title: string;
   user_created: string;

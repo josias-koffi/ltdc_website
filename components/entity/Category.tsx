@@ -2,17 +2,22 @@ import React, { useEffect, useState } from "react";
 import { getItems } from "@/libs/directus";
 import { FetchProps } from "@/libs/interfaces/Interfaces";
 import { Typography } from "@mui/material";
+import {
+  ActualitiesCategoriesEntity,
+  CategoriesEntity,
+} from "@/libs/interfaces/entities";
 
-const Category = ({ id }: { id: number }) => {
-  const [category, setCategory] = useState<any>();
+const Category = ({ id }: { id: any }) => {
+  const [category, setCategory] = useState<CategoriesEntity>();
   const filter: FetchProps = {
-    entity: "categories",
+    entity: "actualities_categories",
+    deepFields: true,
     id,
   };
 
   const fetchData = async () => {
-    let res = await getItems(filter);
-    setCategory(res[0]);
+    let res: ActualitiesCategoriesEntity[] = await getItems(filter);
+    setCategory(res[0].categories_id);
   };
 
   useEffect(() => {

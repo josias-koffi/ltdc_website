@@ -2,6 +2,7 @@
 import React from "react";
 import { Box } from "@mui/material";
 import Image from "next/image";
+import { FilesInterface } from "@/libs/interfaces/entities";
 
 interface ImageWrapperProps {
   src: string;

@@ -12,17 +12,17 @@ import {
 import Category from "@/components/entity/Category";
 import { truncateText } from "@/libs/stringUtils";
 import { formatDate } from "@/libs/dateutils";
-import { Actualities } from "@/libs/interfaces/entities";
+import { ActualitiesEntity } from "@/libs/interfaces/entities";
 
-const ActualityCard = ({ props }: { props: Actualities }) => {
+const ActualityCard = ({ props }: { props: ActualitiesEntity }) => {
   return (
     <Card>
       <CardMedia
-        sx={{ height: 300 }}
+        sx={{ height: 220 }}
         image={process?.env?.NEXT_PUBLIC_BO_URL + "assets/" + props?.cover}
         title="green iguana"
       />
-      <CardContent sx={{ height: 150 }}>
+      <CardContent sx={{ height: 100 }}>
         <Stack
           direction="row"
           spacing={2}
@@ -42,7 +42,7 @@ const ActualityCard = ({ props }: { props: Actualities }) => {
           {truncateText(props?.description)}
         </Typography>
       </CardContent>
-      <CardActions sx={{ justifyContent: "flex-end" }}>
+      <CardActions sx={{ justifyContent: "flex-end", pt: 5 }}>
         <Button variant={"contained"} href={"actualities/" + props?.id}>
           Lire
         </Button>
