@@ -14,7 +14,7 @@ import {
 import Image from "next/image";
 import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
 import { ScreenTypeContext } from "@/app/template";
-import mailHandler from "@/libs/mailsSender";
+import mailHandler from "@/services/email/EmailService";
 import { transformDayjsFields } from "@/libs/dateutils";
 import { SponsorShipFormInterface } from "@/libs/interfaces/Interfaces";
 

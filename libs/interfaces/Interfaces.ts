@@ -1,5 +1,22 @@
 import { Dayjs } from "dayjs";
 
+export enum EmailTemplateIdEnum {
+  Automatic_response = 1,
+}
+
+export interface MailDataInterface {
+  sender: { name: string; email: string };
+  to: { name: string; email: string }[];
+  subject: MailSubjectInterface["subject"];
+  templateId?: EmailTemplateIdEnum;
+  params?:
+    | BeneficiaryShipFormInterface
+    | SponsorShipFormInterface
+    | VolunteerShipFormInterface
+    | ContactInfoInterface;
+  htmlContent?: string;
+}
+
 export interface FetchProps {
   entity: EntityInterface["name"];
   deepFields?: boolean;
@@ -26,13 +43,14 @@ export interface MailSubjectInterface {
     | "Demande de bénéficiaire"
     | "Demande de partenariat"
     | "Demande de volontariat"
-    | "Demande de général";
+    | "Demande de général"
+    | "Confirmation prise de contact";
 }
 
 export interface ContactInfoInterface {
   subject: SubjectStateInterface | undefined;
   name: string;
-  email: string | undefined;
+  email: string;
   message: string | undefined;
   company: string | undefined;
   consent: boolean;
