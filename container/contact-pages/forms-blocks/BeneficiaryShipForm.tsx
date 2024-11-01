@@ -20,7 +20,7 @@ import Image from "next/image";
 import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
 import { ScreenTypeContext } from "@/app/template";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import mailHandler from "@/libs/mailsSender";
+import mailHandler from "@/services/email/EmailService";
 import { transformDayjsFields } from "@/libs/dateutils";
 import dayjs from "dayjs";
 import { BeneficiaryShipFormInterface } from "@/libs/interfaces/Interfaces";
