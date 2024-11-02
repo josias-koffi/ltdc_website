@@ -16,7 +16,10 @@ import Image from "next/image";
 import { ScreenTypeContext } from "@/app/template";
 import mailHandler from "@/services/email/EmailService";
 import VolunteerShipForm from "@/container/contact-pages/forms-blocks/VolunteerShipForm";
-import { ContactInfoInterface } from "@/libs/interfaces/Interfaces";
+import {
+  ContactInfoInterface,
+  EmailSubjectEnum,
+} from "@/libs/interfaces/Interfaces";
 
 const FormSection = ({
   contactInfo,
@@ -49,7 +52,7 @@ const FormSection = ({
     try {
       const temp: any = contactInfo;
       temp.subject = temp.subject?.subject;
-      await mailHandler(temp, "Demande de général");
+      await mailHandler(temp, EmailSubjectEnum.Demande_de_general);
     } catch (error) {
       console.log(error);
     }

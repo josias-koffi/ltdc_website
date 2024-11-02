@@ -16,7 +16,10 @@ import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
 import { ScreenTypeContext } from "@/app/template";
 import mailHandler from "@/services/email/EmailService";
 import { transformDayjsFields } from "@/libs/dateutils";
-import { SponsorShipFormInterface } from "@/libs/interfaces/Interfaces";
+import {
+  EmailSubjectEnum,
+  SponsorShipFormInterface,
+} from "@/libs/interfaces/Interfaces";
 
 interface Props {
   countyFlags: any[] | undefined;
@@ -72,7 +75,7 @@ const SponsorShipForm = (props: Props) => {
   const handleSubmit = async () => {
     try {
       const temp = transformDayjsFields(data);
-      await mailHandler(temp, "Demande de partenariat");
+      await mailHandler(temp, EmailSubjectEnum.Demande_de_partenariat);
       setData(defaultData);
     } catch (error) {
       console.log(error);
