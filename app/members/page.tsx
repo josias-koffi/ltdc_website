@@ -8,6 +8,7 @@ const Members = () => {
     <div>
       <MembersByTeam team={Team.ADMINISTRATION} />
       <MembersByTeam team={Team.LEGAL} />
+      <MembersByTeam team={Team.FINANCE} />
       <MembersByTeam team={Team.MARKETING} />
       <MembersByTeam team={Team.IT} />
       <CallToActionsSection />
