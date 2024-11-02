@@ -20,9 +20,9 @@ export interface MailDataInterface {
 export interface FetchProps {
   entity: EntityInterface["name"];
   deepFields?: boolean;
-  id?: number | string;
   limit?: number;
   page?: number;
+  filter?: any;
 }
 
 export interface EntityInterface {
@@ -35,7 +35,8 @@ export interface EntityInterface {
     | "events"
     | "targets"
     | "actualities_categories"
-    | "actualities_targets";
+    | "actualities_targets"
+    | "members";
 }
 
 export interface MailSubjectInterface {

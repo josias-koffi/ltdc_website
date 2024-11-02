@@ -9,7 +9,7 @@ interface ImageWrapperProps {
   width?: number | string;
   height?: number | string;
   zIndex?: number;
-  position?: "relative" | "absolute";
+  position?: "relative" | "absolute" | "static";
   alt: string;
   objectFit?: "cover" | "fill" | "contain";
   objectPosition?: "right" | "left" | "top" | "bottom" | "center";

@@ -12,22 +12,24 @@ if (URL) {
 
 export const getItems = async ({
   entity,
-  id,
   deepFields,
   limit,
   page,
+  filter,
 }: FetchProps) => {
   const createFilter = {
-    ...{ filter: { id } },
+    ...{ filter },
     ...{ fields: [deepFields ? "*.*.*" : "*"] },
     //@ts-expect-error type error
     ...limit,
     //@ts-expect-error error
     ...page,
   };
+  console.log("createFilter", createFilter);
   try {
     //@ts-expect-error Type error: Argument of type 'string' is not assignable to parameter of type 'never'
     const result = await client.request(readItems(entity, createFilter));
+    // console.log(result);
     if (result) {
       return result;
     }

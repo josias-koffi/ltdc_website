@@ -2,6 +2,20 @@ interface Status {
   value: "published" | "draft" | "archived";
 }
 
+export enum Team {
+  ADMINISTRATION = "ADMINISTRATION",
+  IT = "IT",
+  FINANCE = "FINANCE",
+  MARKETING = "MARKETING",
+  LEGAL = "LEGAL",
+}
+
+export interface MemberEntity {
+  id: number;
+  team: Team;
+  photo: string;
+}
+
 export interface ActualitiesCategoriesEntity {
   actualities_id: ActualitiesEntity;
   categories_id: CategoriesEntity;

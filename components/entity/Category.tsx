@@ -12,7 +12,7 @@ const Category = ({ id }: { id: any }) => {
   const filter: FetchProps = {
     entity: "actualities_categories",
     deepFields: true,
-    id,
+    filter: { id },
   };
 
   const fetchData = async () => {
