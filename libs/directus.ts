@@ -29,7 +29,6 @@ export const getItems = async ({
     createFilter = { ...createFilter, ...{ filter } };
   }
 
-  console.log("createFilter", createFilter);
   try {
     //@ts-expect-error Type error: Argument of type 'string' is not assignable to parameter of type 'never'
     const result = await client.request(readItems(entity, createFilter));
