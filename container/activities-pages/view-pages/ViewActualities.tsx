@@ -16,10 +16,13 @@ const ViewActualities = ({ actuality }: { actuality: ActualitiesEntity }) => {
 
   return (
     <ContainerWrapper>
-      <ImageWrapper
-        src={returnImageUrlById(actuality?.cover)}
-        alt={"Image de l'actualité"}
-      />
+      {actuality?.cover ? (
+        <ImageWrapper
+          src={returnImageUrlById(actuality?.cover)}
+          alt={"Image de l'actualité"}
+        />
+      ) : null}
+
       <Box
         sx={{
           display: "flex",

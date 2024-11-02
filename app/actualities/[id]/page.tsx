@@ -13,7 +13,7 @@ const fetchActuality = async (
   const request: FetchProps = {
     entity: "actualities",
     deepFields: false,
-    id,
+    filter: { id: id },
   };
 
   const res: ActualitiesEntity[] = await getItems(request);

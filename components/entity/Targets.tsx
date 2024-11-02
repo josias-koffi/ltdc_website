@@ -13,7 +13,7 @@ const Targets = ({ id }: { id: any }) => {
   const filter: FetchProps = {
     entity: "actualities_targets",
     deepFields: true,
-    id,
+    filter: { id },
   };
 
   const fetchData = async () => {
