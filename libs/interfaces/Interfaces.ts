@@ -2,12 +2,22 @@ import { Dayjs } from "dayjs";
 
 export enum EmailTemplateIdEnum {
   Automatic_response = 1,
+  Reponse_automatique_maraude = 2,
+}
+
+export enum EmailSubjectEnum {
+  Demande_de_beneficiaire = "Demande de bénéficiaire",
+  Demande_de_partenariat = "Demande de partenariat",
+  Demande_de_volontariat = "Demande de volontariat",
+  Demande_de_general = "Demande de général",
+  Confirmation_prise_de_contact = "Confirmation prise de contact",
+  Demande_de_pour_la_maraude = "Demande de bénévolat pour la maraude",
 }
 
 export interface MailDataInterface {
   sender: { name: string; email: string };
   to: { name: string; email: string }[];
-  subject: MailSubjectInterface["subject"];
+  subject: EmailSubjectEnum;
   templateId?: EmailTemplateIdEnum;
   params?:
     | BeneficiaryShipFormInterface
@@ -66,7 +76,6 @@ export interface SubjectStateInterface {
 export interface BeneficiaryShipFormInterface {
   name: string;
   firstName: string;
-  adresse: string;
   phoneNumber: string;
   email: string;
   birthday: string | Dayjs;

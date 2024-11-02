@@ -3,9 +3,9 @@
 import {
   BeneficiaryShipFormInterface,
   ContactInfoInterface,
+  EmailSubjectEnum,
   EmailTemplateIdEnum,
   MailDataInterface,
-  MailSubjectInterface,
   SponsorShipFormInterface,
   VolunteerShipFormInterface,
 } from "@/libs/interfaces/Interfaces";
@@ -49,7 +49,7 @@ async function sendEmail(
  * Sends an email with the provided data and subject.
  *
  * @param {BeneficiaryShipFormInterface | SponsorShipFormInterface | VolunteerShipFormInterface | ContactInfoInterface} body - The data to be included in the email.
- * @param {string} subject - The subject of the email.
+ * @param {EmailSubjectEnum} subject - The subject of the email.
  * @returns {Promise<{ response: string }>} A promise that resolves with a success message after sending the email.
  */
 export default async function mailHandler(
@@ -58,7 +58,7 @@ export default async function mailHandler(
     | SponsorShipFormInterface
     | VolunteerShipFormInterface
     | ContactInfoInterface,
-  subject: MailSubjectInterface["subject"],
+  subject: EmailSubjectEnum,
 ): Promise<{ response: string }> {
   if (!URL || !BREVO_API_KEY || !DESTINATION) {
     throw new Error("Missing environment key");
@@ -72,7 +72,7 @@ export default async function mailHandler(
   };
 
   await sendEmail(mailData);
-  await responseMailToUser(body);
+  await responseMailToUser(body, subject);
 
   return { response: "Email sent successfully" };
 }
@@ -81,6 +81,7 @@ export default async function mailHandler(
  * Sends an automatic response email to the user with the provided contact information.
  *
  * @param {BeneficiaryShipFormInterface | SponsorShipFormInterface | VolunteerShipFormInterface | ContactInfoInterface} contactInfo - The contact information of the user.
+ * @param subject
  * @returns {Promise<{ response: string }>} A promise that resolves with a success message after sending the email.
  */
 const responseMailToUser = async (
@@ -89,16 +90,22 @@ const responseMailToUser = async (
     | SponsorShipFormInterface
     | VolunteerShipFormInterface
     | ContactInfoInterface,
+  subject: EmailSubjectEnum,
 ): Promise<{ response: string }> => {
   if (!URL || !BREVO_API_KEY || !DESTINATION) {
     throw new Error("Missing environment key");
   }
 
-  const templateId = EmailTemplateIdEnum.Automatic_response;
+  let templateId = EmailTemplateIdEnum.Automatic_response;
+
+  if (subject === EmailSubjectEnum.Demande_de_pour_la_maraude) {
+    templateId = EmailTemplateIdEnum.Reponse_automatique_maraude;
+  }
+
   const mailData: MailDataInterface = {
     sender: { name: "Association LTDC", email: DESTINATION },
     to: [{ name: contactInfo.name, email: contactInfo.email }],
-    subject: "Confirmation prise de contact",
+    subject,
     templateId,
     params: contactInfo,
   };
