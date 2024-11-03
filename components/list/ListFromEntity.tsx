@@ -9,12 +9,19 @@ import { EntityInterface, FetchProps } from "@/libs/interfaces/Interfaces";
 interface ListFromEntityProps {
   entity: EntityInterface["name"];
   CardType: any;
+  itemsSize?: { xl?: number; md?: number; sm?: number; xs?: number };
 }
 
-const ListFromEntity = ({ entity, CardType }: ListFromEntityProps) => {
+const ListFromEntity = ({
+  entity,
+  CardType,
+  itemsSize,
+}: ListFromEntityProps) => {
   const [data, setData] = useState<any[]>();
   const [currentPage, setCurrentPage] = useState(1);
   const LIMIT = 6;
+
+  const DEFAULT_SIZE = { xl: 4, md: 6, sm: 12, xs: 12 };
 
   const fetchData = async () => {
     const request: FetchProps = {
@@ -48,7 +55,7 @@ const ListFromEntity = ({ entity, CardType }: ListFromEntityProps) => {
         spacing={2}
       >
         {data?.map((item: any) => (
-          <Grid key={item.id} size={{ xl: 4, md: 6, sm: 12, xs: 12 }}>
+          <Grid key={item.id} size={itemsSize ?? DEFAULT_SIZE}>
             <CardType props={item} />
           </Grid>
         ))}

@@ -27,10 +27,10 @@ const ButtonList = (props: Props) => {
     //   name: "Projets",
     //   link: "/projects",
     // },
-    // {
-    //   name: "Événements",
-    //   link: "/events",
-    // },
+    {
+      name: "Événements",
+      link: "/events",
+    },
     {
       name: "Actualités",
       link: "/actualities",

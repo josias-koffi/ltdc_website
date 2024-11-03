@@ -90,3 +90,24 @@ export interface FolderInterface {
   name: string;
   parent?: any;
 }
+
+export interface EventInterface {
+  address?: string;
+  capacity: number;
+  cover: string | FilesInterface;
+  description: string;
+  end_date?: string;
+  id: number;
+  link: string;
+  name: string;
+  price: number;
+  recap?: string;
+  sort?: any;
+  start_date: string;
+  state: string;
+  status: string;
+  type: string;
+  sponsor?: string;
+  instagram?: string;
+  linkedin?: string;
+}
