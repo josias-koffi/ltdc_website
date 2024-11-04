@@ -3,12 +3,16 @@ import React from "react";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
+import ImageWrapper from "@/components/wrapper/ImageWrapper";
 
 interface RubriqueHeadProps {
   imageUrl: string;
   imageAlt: string;
   title: string;
   description: string;
+  width?: number | string;
+  height?: number | string;
+  objectPosition?: "right" | "left" | "top" | "bottom" | "center";
 }
 
 const RubriqueHead = ({
@@ -16,6 +20,9 @@ const RubriqueHead = ({
   description,
   title,
   imageAlt,
+  objectPosition,
+  width,
+  height,
 }: RubriqueHeadProps) => {
   return (
     <ContainerWrapper
@@ -29,18 +36,14 @@ const RubriqueHead = ({
         py: 5,
       }}
     >
-      <Box sx={{ width: "100%", height: 300, position: "relative", zIndex: 1 }}>
-        <Image
-          src={imageUrl}
-          alt={imageAlt}
-          fill={true}
-          style={{
-            objectFit: "cover",
-            borderRadius: 10,
-            objectPosition: " right",
-          }}
-        />
-      </Box>
+      <ImageWrapper
+        src={imageUrl}
+        alt={imageAlt}
+        objectPosition={objectPosition}
+        width={width}
+        height={height ?? 400}
+        sx={{ borderRadius: 5 }}
+      />
       <Typography variant="h3" align={"left"}>
         {title}
       </Typography>
