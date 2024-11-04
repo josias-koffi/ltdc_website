@@ -9,11 +9,9 @@ const ListActualities = () => {
       <RubriqueHead
         title={"Les actualitées de la LTDC"}
         description={
-          "Une actualité est une information pertinente pour les " +
-          "bénéficiaires de l'association, souvent liée à l'emploi, au logement, " +
-          "aux démarches administratives ou à l'actualité législative et juridique" +
-          " en France. Elle vise à informer et à  orienter les personnes " +
-          "accompagnées par l'association dans leur processus d'insertion.\n"
+          "🌟 Actualités de l'association ! 🌟\n" +
+          "Restez à jour avec notre rubrique dédiée aux actualités de l'association ! Découvrez les dernières informations, annonces et projets que nous mettons en place. Nous voulons vous tenir informés des avancées et des initiatives qui nous tiennent à cœur.\n" +
+          "Visitez régulièrement cette section pour ne rien manquer et soyez acteur de notre dynamique collective. Ensemble, faisons grandir notre communauté !"
         }
         imageAlt={"image de test"}
         imageUrl={"/images/actualitiesPage/actualities_header.jpeg"}
