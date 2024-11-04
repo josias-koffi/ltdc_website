@@ -9,7 +9,9 @@ const ListEvents = () => {
       <RubriqueHead
         title={"Les évenements de la LTDC"}
         description={
-          "Née d'une conviction forte, notre association combine innovation et solidarité pour avoir un impact réel sur la vie de nos bénéficiaires. Nous travaillons chaque jour à créer un avenir meilleur pour to"
+          "🌟 Événements à venir ! 🌟\n" +
+          "Découvrez notre section dédiée aux événements liée à l'association ! Restez informés des activités, ateliers et rencontres que nous organisons tout au long de l’année. Ne manquez pas l’occasion de participer et de vous impliquer dans notre communauté !\n" +
+          "Visitez régulièrement cette rubrique pour ne rien rater et rejoignez nous pour des moments enrichissants et conviviaux."
         }
         imageAlt={"image de test"}
         imageUrl={"/images/enventPage/event_header.png"}

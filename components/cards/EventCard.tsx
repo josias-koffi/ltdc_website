@@ -6,6 +6,7 @@ import ImageWrapper from "@/components/wrapper/ImageWrapper";
 import { EventInterface } from "@/libs/interfaces/entities";
 import { returnImageUrlById, truncateText } from "@/libs/stringUtils";
 import SocialLinks from "@/components/footer/SocialLinks";
+import { formatDate } from "@/libs/dateutils";
 
 const EventCard = ({ props }: { props: EventInterface }) => {
   const returnPriceChip = () => {
@@ -55,7 +56,10 @@ const EventCard = ({ props }: { props: EventInterface }) => {
             }}
           >
             <Chip
-              label={props?.name}
+              label={formatDate(
+                props?.start_date,
+                "dddd D MMMM YYYY [à] HH [h] MM",
+              )}
               sx={{
                 m: 1,
                 backgroundColor: "#F2F2F2",

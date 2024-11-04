@@ -4,6 +4,7 @@ import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
 import ImageWrapper from "@/components/wrapper/ImageWrapper";
+import { cleanAndFormatText } from "@/libs/stringUtils";
 
 interface RubriqueHeadProps {
   imageUrl: string;
@@ -44,12 +45,15 @@ const RubriqueHead = ({
         height={height ?? 400}
         sx={{ borderRadius: 5 }}
       />
+
       <Typography variant="h3" align={"left"}>
         {title}
       </Typography>
-      <Typography variant="body1" align={"left"}>
-        {description}
-      </Typography>
+      <Typography
+        component="div"
+        dangerouslySetInnerHTML={{ __html: cleanAndFormatText(description) }}
+        color={"text.secondary"}
+      />
     </ContainerWrapper>
   );
 };
