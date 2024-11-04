@@ -1,5 +1,5 @@
 import React from "react";
-import MembersByTeam from "@/container/members-pages/MembersByTeam";
+import MembersByTeam from "@/components/sections/members/components/MembersByTeam";
 import { Team } from "@/libs/interfaces/entities";
 import CallToActionsSection from "@/container/about-pages/sections/CallToActionsSection";
 import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
