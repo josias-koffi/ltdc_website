@@ -1,4 +1,12 @@
 import dayjs, { Dayjs } from "dayjs";
+import "dayjs/locale/fr";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
+
+dayjs.locale("fr");
+dayjs.extend(utc);
+dayjs.extend(timezone);
+dayjs.locale("fr");
 
 /**
  * Transforms an object, converting any Dayjs fields to formatted strings.
@@ -32,5 +40,9 @@ export const formatDate = (
   dateString: string,
   format: string = "D MMMM YYYY",
 ): string => {
-  return dayjs(dateString).format(format);
+  if (dateString) {
+    return dayjs(dateString).tz("Europe/Paris").format(format);
+  } else {
+    return dayjs().tz("Europe/Paris").format(format);
+  }
 };
