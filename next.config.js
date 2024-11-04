@@ -13,6 +13,11 @@ const nextConfig = {
         hostname: "bo-stage.asso-ltdc.org",
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "bo-prod.asso-ltdc.org",
+        port: "",
+      },
     ],
   },
 };
