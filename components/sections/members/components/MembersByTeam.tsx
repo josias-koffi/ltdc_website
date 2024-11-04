@@ -77,8 +77,6 @@ const MembersByTeam = ({
               p: 2,
               zIndex: 100,
               backgroundColor: "#FFFFFF",
-              height: 40,
-              width: 150,
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
@@ -107,7 +105,7 @@ const MembersByTeam = ({
         container
         spacing={10}
         alignItems="center"
-        justifyContent="flex-start"
+        justifyContent="center"
         sx={{ width: "100%" }}
       >
         {mapMembers()}
