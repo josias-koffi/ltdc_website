@@ -21,7 +21,7 @@ const EventCard = ({ props }: { props: EventInterface }) => {
   };
 
   return (
-    <Card>
+    <Card sx={{ borderRadius: 5 }}>
       <Grid container spacing={1} sx={{ width: "100%" }}>
         <Grid size={{ xs: 12, sm: 12, md: 4, xl: 4 }}>
           <ImageWrapper

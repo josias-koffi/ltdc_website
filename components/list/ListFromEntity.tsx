@@ -1,10 +1,12 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { getItems } from "@/libs/directus";
+import { Box } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
 import PaginationFooter from "@/components/pagination/PaginationFooter";
 import { EntityInterface, FetchProps } from "@/libs/interfaces/Interfaces";
+import NotFound from "@/components/NotFound";
 
 interface ListFromEntityProps {
   entity: EntityInterface["name"];
@@ -45,27 +47,33 @@ const ListFromEntity = ({
 
   return (
     <ContainerWrapper sxProps={{ py: 0, pb: 5 }}>
-      <Grid
-        container
-        direction="row"
-        sx={{
-          justifyContent: "flex-start",
-          alignItems: "flex-start",
-        }}
-        spacing={2}
-      >
-        {data?.map((item: any) => (
-          <Grid key={item.id} size={itemsSize ?? DEFAULT_SIZE}>
-            <CardType props={item} />
+      {data?.length === 0 ? (
+        <NotFound />
+      ) : (
+        <Box>
+          <Grid
+            container
+            direction="row"
+            sx={{
+              justifyContent: "flex-start",
+              alignItems: "flex-start",
+            }}
+            spacing={2}
+          >
+            {data?.map((item: any) => (
+              <Grid key={item.id} size={itemsSize ?? DEFAULT_SIZE}>
+                <CardType props={item} />
+              </Grid>
+            ))}
           </Grid>
-        ))}
-      </Grid>
-      <PaginationFooter
-        limit={LIMIT}
-        entity={entity}
-        page={currentPage}
-        setCurrentPage={setCurrentPage}
-      />
+          <PaginationFooter
+            limit={LIMIT}
+            entity={entity}
+            page={currentPage}
+            setCurrentPage={setCurrentPage}
+          />
+        </Box>
+      )}
     </ContainerWrapper>
   );
 };
