@@ -22,9 +22,12 @@ import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
 import { ScreenTypeContext } from "@/app/template";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import dayjs from "dayjs";
-import mailHandler from "@/libs/mailsSender";
+import mailHandler from "@/services/email/EmailService";
 import { transformDayjsFields } from "@/libs/dateutils";
-import { VolunteerShipFormInterface } from "@/libs/interfaces/Interfaces";
+import {
+  EmailSubjectEnum,
+  VolunteerShipFormInterface,
+} from "@/libs/interfaces/Interfaces";
 
 interface Props {
   countyFlags: any[] | undefined;
@@ -51,6 +54,9 @@ const defaultData: VolunteerShipFormInterface = {
  */
 const VolunteerShipForm = ({ countyFlags }: Props) => {
   const [data, setData] = useState<VolunteerShipFormInterface>(defaultData);
+  const [selectedSubject, setSelectedSubject] = useState<EmailSubjectEnum>(
+    EmailSubjectEnum.Demande_de_volontariat,
+  );
 
   const days: VolunteerShipFormInterface["days"] = [
     "Lundi",
@@ -62,7 +68,17 @@ const VolunteerShipForm = ({ countyFlags }: Props) => {
     "Dimanche",
   ];
 
+  const subjects: EmailSubjectEnum[] = [
+    EmailSubjectEnum.Demande_de_beneficiaire,
+    EmailSubjectEnum.Demande_de_pour_la_maraude,
+  ];
+
   const notPhoneScreen = useContext(ScreenTypeContext);
+
+  const handelChangeSubject = (e: any) => {
+    const { value } = e.target;
+    setSelectedSubject(value);
+  };
 
   /**
    * Handles the change of the form fields
@@ -131,7 +147,7 @@ const VolunteerShipForm = ({ countyFlags }: Props) => {
   const handleSubmit = async (e: any) => {
     try {
       const temp = transformDayjsFields(data);
-      const res = await mailHandler(temp, "Demande de volontariat");
+      const res = await mailHandler(temp, selectedSubject);
       if (res) {
         setData(defaultData);
       }
@@ -185,7 +201,6 @@ const VolunteerShipForm = ({ countyFlags }: Props) => {
         </Box>
         <Card
           component={"form"}
-          // onSubmit={handleSubmit}
           sx={{
             display: "flex",
             alignItems: "center",
@@ -204,6 +219,24 @@ const VolunteerShipForm = ({ countyFlags }: Props) => {
               width: "100%",
             }}
           >
+            <Typography variant={"h5"}>{"Sujet"}</Typography>
+            <FormControl sx={{ width: "100%" }} required>
+              <InputLabel id="demo-multiple-chip-label">{"Sujet"}</InputLabel>
+              <Select
+                labelId="multiple-chip-label-subject"
+                id="demo-multiple-chip-subject"
+                value={selectedSubject}
+                onChange={handelChangeSubject}
+                sx={{ width: "100%" }}
+              >
+                {subjects?.map((subject) => (
+                  <MenuItem key={subject} value={subject}>
+                    {subject}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+
             <Typography variant={"h5"}>
               {"Informations Personnelles"}
             </Typography>
@@ -237,7 +270,7 @@ const VolunteerShipForm = ({ countyFlags }: Props) => {
                 {"Nationalité"}
               </InputLabel>
               <Select
-                labelId="demo-multiple-chip-label"
+                labelId="multiple-chip-label-time"
                 id="demo-multiple-chip"
                 value={data?.nationality ?? []}
                 onChange={handleNationality}
@@ -378,7 +411,6 @@ const VolunteerShipForm = ({ countyFlags }: Props) => {
               variant="contained"
               sx={{ width: "100%" }}
               onClick={handleSubmit}
-              // type={"submit"}
             >
               {"Envoyer"}
             </Button>

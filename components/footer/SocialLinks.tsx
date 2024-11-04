@@ -2,8 +2,16 @@ import React from "react";
 import { Box, IconButton } from "@mui/material";
 import { IconBrandInstagram, IconBrandLinkedin } from "@tabler/icons-react";
 
-const SocialLinks = () => {
-  return (
+const SocialLinks = ({
+  preset = true,
+  linkedin,
+  instagram,
+}: {
+  preset?: boolean;
+  linkedin?: string;
+  instagram?: string;
+}) => {
+  return preset ? (
     <Box
       sx={{
         display: "flex",
@@ -28,6 +36,37 @@ const SocialLinks = () => {
       >
         <IconBrandLinkedin color="white" size={30} />
       </IconButton>
+    </Box>
+  ) : (
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "flex-start",
+        alignItems: "center",
+        gap: 1,
+      }}
+    >
+      {instagram ? (
+        <IconButton
+          href={instagram}
+          aria-label="instagram"
+          target="_blank"
+          sx={{ backgroundColor: "#642775" }}
+        >
+          <IconBrandInstagram color="white" size={20} />
+        </IconButton>
+      ) : null}
+      {linkedin ? (
+        <IconButton
+          href={linkedin}
+          aria-label="linkedin"
+          target="_blank"
+          sx={{ backgroundColor: "#642775" }}
+        >
+          <IconBrandLinkedin color="white" size={20} />
+        </IconButton>
+      ) : null}
     </Box>
   );
 };

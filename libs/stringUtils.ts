@@ -1,4 +1,5 @@
-"use client";
+import { FilesInterface } from "@/libs/interfaces/entities";
+
 export const updateHtmlAttributes = (
   htmlString: string,
   tagAttributes: { [tagName: string]: { [attrName: string]: string } },
@@ -35,10 +36,25 @@ const htmlString = `
   </div>
 `;
 
-export const returnImageUrlById = (id: string | number) => {
-  return process.env.NEXT_PUBLIC_BO_URL + "assets/" + id;
+export const returnImageUrlById = (id: string | FilesInterface | undefined) => {
+  if (typeof id === "undefined") {
+    return process.env.NEXT_PUBLIC_BO_URL + "assets/" + "";
+  }
+  if (typeof id == "string") {
+    return process.env.NEXT_PUBLIC_BO_URL + "assets/" + id;
+  }
+  return process.env.NEXT_PUBLIC_BO_URL + "assets/" + id.id;
 };
 
 export const cleanAndFormatText = (text: string) => {
   return text.replace(/\n/g, "<br/>"); // Remplace tous les caractères \u200B par des retours à la ligne
+};
+
+export const truncateText = (text: string, maxLength?: number) => {
+  const MAX_LENGTH = maxLength ?? 50;
+
+  if (text?.length > MAX_LENGTH) {
+    return text.slice(0, MAX_LENGTH) + "...";
+  }
+  return text;
 };

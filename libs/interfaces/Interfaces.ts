@@ -1,11 +1,38 @@
 import { Dayjs } from "dayjs";
 
+export enum EmailTemplateIdEnum {
+  Automatic_response = 1,
+  Reponse_automatique_maraude = 2,
+}
+
+export enum EmailSubjectEnum {
+  Demande_de_beneficiaire = "Demande de bénéficiaire",
+  Demande_de_partenariat = "Demande de partenariat",
+  Demande_de_volontariat = "Demande de volontariat",
+  Demande_de_general = "Demande de général",
+  Confirmation_prise_de_contact = "Confirmation prise de contact",
+  Demande_de_pour_la_maraude = "Demande de bénévolat pour la maraude",
+}
+
+export interface MailDataInterface {
+  sender: { name: string; email: string };
+  to: { name: string; email: string }[];
+  subject: EmailSubjectEnum;
+  templateId?: EmailTemplateIdEnum;
+  params?:
+    | BeneficiaryShipFormInterface
+    | SponsorShipFormInterface
+    | VolunteerShipFormInterface
+    | ContactInfoInterface;
+  htmlContent?: string;
+}
+
 export interface FetchProps {
   entity: EntityInterface["name"];
   deepFields?: boolean;
-  id?: number | string;
   limit?: number;
   page?: number;
+  filter?: any;
 }
 
 export interface EntityInterface {
@@ -15,7 +42,11 @@ export interface EntityInterface {
     | "actualities"
     | "categories"
     | "projects"
-    | "events";
+    | "events"
+    | "targets"
+    | "actualities_categories"
+    | "actualities_targets"
+    | "members";
 }
 
 export interface MailSubjectInterface {
@@ -23,13 +54,14 @@ export interface MailSubjectInterface {
     | "Demande de bénéficiaire"
     | "Demande de partenariat"
     | "Demande de volontariat"
-    | "Demande de général";
+    | "Demande de général"
+    | "Confirmation prise de contact";
 }
 
 export interface ContactInfoInterface {
   subject: SubjectStateInterface | undefined;
   name: string;
-  email: string | undefined;
+  email: string;
   message: string | undefined;
   company: string | undefined;
   consent: boolean;
@@ -44,7 +76,6 @@ export interface SubjectStateInterface {
 export interface BeneficiaryShipFormInterface {
   name: string;
   firstName: string;
-  adresse: string;
   phoneNumber: string;
   email: string;
   birthday: string | Dayjs;

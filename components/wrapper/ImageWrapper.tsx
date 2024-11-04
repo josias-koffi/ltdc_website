@@ -2,13 +2,14 @@
 import React from "react";
 import { Box } from "@mui/material";
 import Image from "next/image";
+import { FilesInterface } from "@/libs/interfaces/entities";
 
 interface ImageWrapperProps {
   src: string;
   width?: number | string;
   height?: number | string;
   zIndex?: number;
-  position?: "relative" | "absolute";
+  position?: "relative" | "absolute" | "static";
   alt: string;
   objectFit?: "cover" | "fill" | "contain";
   objectPosition?: "right" | "left" | "top" | "bottom" | "center";

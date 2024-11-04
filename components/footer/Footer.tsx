@@ -31,6 +31,10 @@ const Footer = () => {
         backgroundColor: "#2A2A2A",
         color: "white",
         py: 5,
+        pt: {
+          sm: 0,
+          md: 0,
+        }
       }}
     >
       <ContainerWrapper>

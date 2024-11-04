@@ -7,7 +7,7 @@ const ProjectView = async ({ params }: { params: { id: string } }) => {
   const request: FetchProps = {
     entity: "projects",
     deepFields: true,
-    id: params?.id,
+    filter: { id: params?.id },
   };
   const projects = await getItems(request);
   return <div></div>;

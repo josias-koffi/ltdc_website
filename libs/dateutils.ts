@@ -1,4 +1,4 @@
-import { Dayjs } from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
 
 /**
  * Transforms an object, converting any Dayjs fields to formatted strings.
@@ -27,3 +27,10 @@ export function transformDayjsFields<T extends Record<string, any>>(
     [K in keyof T]: T[K] extends Dayjs ? string : T[K];
   };
 }
+
+export const formatDate = (
+  dateString: string,
+  format: string = "D MMMM YYYY",
+): string => {
+  return dayjs(dateString).format(format);
+};

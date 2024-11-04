@@ -20,10 +20,13 @@ import Image from "next/image";
 import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
 import { ScreenTypeContext } from "@/app/template";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import mailHandler from "@/libs/mailsSender";
+import mailHandler from "@/services/email/EmailService";
 import { transformDayjsFields } from "@/libs/dateutils";
 import dayjs from "dayjs";
-import { BeneficiaryShipFormInterface } from "@/libs/interfaces/Interfaces";
+import {
+  BeneficiaryShipFormInterface,
+  EmailSubjectEnum,
+} from "@/libs/interfaces/Interfaces";
 
 interface Props {
   countyFlags: any[] | undefined;
@@ -32,7 +35,6 @@ interface Props {
 const defaultData: BeneficiaryShipFormInterface = {
   name: "",
   firstName: "",
-  adresse: "",
   phoneNumber: "",
   email: "",
   birthday: dayjs("2000-01-01"),
@@ -88,7 +90,7 @@ const BeneficiaryShipForm = ({ countyFlags }: Props) => {
   const handleSubmit = async () => {
     try {
       const temp = transformDayjsFields(data);
-      await mailHandler(temp, "Demande de bénéficiaire");
+      await mailHandler(temp, EmailSubjectEnum.Demande_de_beneficiaire);
     } catch (error) {
       console.log(error);
     }
@@ -225,14 +227,6 @@ const BeneficiaryShipForm = ({ countyFlags }: Props) => {
             </FormControl>
             <br />
             <Typography variant={"h5"}>{"Coordonnées"}</Typography>
-            <TextField
-              variant={"outlined"}
-              sx={{ width: "100%" }}
-              label="Adresse"
-              name="adresse"
-              onChange={handleChange}
-              value={data?.adresse}
-            />
             <TextField
               variant={"outlined"}
               sx={{ width: "100%" }}

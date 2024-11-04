@@ -1,68 +1,44 @@
 "use client";
-import React, { useContext } from "react";
-import { Box, Typography } from "@mui/material";
+import React, { useContext, useEffect, useState } from "react";
+import { Box, Button, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid2";
-import { FrameSettingContext, ScreenTypeContext } from "@/app/template";
-import Image from "next/image";
+import { ScreenTypeContext } from "@/app/template";
 import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
+import { FetchProps } from "@/libs/interfaces/Interfaces";
+import { getItems } from "@/libs/directus";
+import { Team } from "@/libs/interfaces/entities";
+import ImageWrapper from "@/components/wrapper/ImageWrapper";
+import { returnImageUrlById } from "@/libs/stringUtils";
+import MembersByTeam from "@/container/members-pages/MembersByTeam";
 
 const MemberSection = () => {
-  const frame = useContext(FrameSettingContext);
   const notPhoneScreen = useContext(ScreenTypeContext);
 
-  const members = [
-    {
-      name: "TETE UHO",
-      role: "CEO",
-      photo:
-        "https://images.unsplash.com/photo-1675983679217-7a0636706b4d?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      name: "TETE UHO",
-      role: "CEO",
-      photo:
-        "https://images.unsplash.com/photo-1675983679217-7a0636706b4d?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      name: "TETE UHO",
-      role: "CEO",
-      photo:
-        "https://images.unsplash.com/photo-1675983679217-7a0636706b4d?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      name: "TETE UHO",
-      role: "CEO",
-      photo:
-        "https://images.unsplash.com/photo-1675983679217-7a0636706b4d?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      name: "TETE UHO",
-      role: "CEO",
-      photo:
-        "https://images.unsplash.com/photo-1675983679217-7a0636706b4d?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      name: "TETE UHO",
-      role: "CEO",
-      photo:
-        "https://images.unsplash.com/photo-1675983679217-7a0636706b4d?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      name: "TETE UHO",
-      role: "CEO",
-      photo:
-        "https://images.unsplash.com/photo-1675983679217-7a0636706b4d?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      name: "TETE UHO",
-      role: "CEO",
-      photo:
-        "https://images.unsplash.com/photo-1675983679217-7a0636706b4d?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-  ];
+  const [membersInfo, setMembersInfo] = useState([]);
+
+  const fetchMembers = async () => {
+    const filter: FetchProps = {
+      entity: "members",
+      filter: { team: { _eq: Team.ADMINISTRATION } },
+      limit: 4,
+    };
+
+    try {
+      const res = await getItems(filter);
+      if (res) {
+        setMembersInfo(res);
+      }
+    } catch (e) {
+      throw new Error("Error fetching members");
+    }
+  };
+
+  useEffect(() => {
+    fetchMembers();
+  }, []);
 
   const mapMembers = () => {
-    return members?.map((member: any) => {
+    return membersInfo?.map((member: any) => {
       return (
         <Grid
           key={member.name}
@@ -81,14 +57,14 @@ const MemberSection = () => {
               width: 300,
             }}
           >
-            <Image
-              src={member.photo}
+            <ImageWrapper
+              src={returnImageUrlById(member.photo)}
               alt={member.role}
-              fill={true}
-              style={{
+              height={400}
+              sx={{
                 objectFit: "cover",
                 objectPosition: " right",
-                zIndex: 5,
+                zIndex: -1,
               }}
             />
           </Box>
@@ -96,7 +72,7 @@ const MemberSection = () => {
           <Box
             sx={{
               p: 2,
-              zIndex: 9,
+              zIndex: 100,
               backgroundColor: "#FFFFFF",
               height: 40,
               width: 150,
@@ -112,7 +88,7 @@ const MemberSection = () => {
             }}
           >
             <Typography variant="h6">{member?.name}</Typography>
-            <Typography>{member?.role}</Typography>
+            <Typography>{member?.team}</Typography>
           </Box>
         </Grid>
       );
@@ -124,9 +100,9 @@ const MemberSection = () => {
       sxProps={{
         display: "flex",
         flexDirection: "column",
-        justifyContent: "flex-start",
-        alignItems: "flex-start",
-        gap: 5,
+        justifyContent: "center",
+        alignItems: "center",
+        gap: 0,
         position: "relative",
         py: 10,
       }}
@@ -138,9 +114,10 @@ const MemberSection = () => {
       >
         {"Membres"}
       </Typography>
-      <Grid container spacing={10} alignItems="center" justifyContent="center">
-        {mapMembers()}
-      </Grid>
+      <MembersByTeam team={Team.ADMINISTRATION} showTips={false} />
+      <Button variant={"contained"} href={"/members"}>
+        {"Voir tout les membres"}
+      </Button>
     </ContainerWrapper>
   );
 };

@@ -8,11 +8,17 @@ const ListEvents = () => {
     <div>
       <RubriqueHead
         title={"Les évenements de la LTDC"}
-        description={"test de la page"}
+        description={
+          "Née d'une conviction forte, notre association combine innovation et solidarité pour avoir un impact réel sur la vie de nos bénéficiaires. Nous travaillons chaque jour à créer un avenir meilleur pour to"
+        }
         imageAlt={"image de test"}
-        imageUrl={"/images/aboutPage/groupe_image.jpg"}
+        imageUrl={"/images/enventPage/event_header.png"}
       />
-      <ListFromEntity entity={"events"} CardType={EventCard} />
+      <ListFromEntity
+        entity={"events"}
+        CardType={EventCard}
+        itemsSize={{ sm: 12, xs: 12, md: 12, xl: 12 }}
+      />
     </div>
   );
 };
