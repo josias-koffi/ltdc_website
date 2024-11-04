@@ -9,7 +9,7 @@ import { getItems } from "@/libs/directus";
 import { Team } from "@/libs/interfaces/entities";
 import ImageWrapper from "@/components/wrapper/ImageWrapper";
 import { returnImageUrlById } from "@/libs/stringUtils";
-import MembersByTeam from "@/container/members-pages/MembersByTeam";
+import MembersByTeam from "@/components/sections/members/components/MembersByTeam";
 
 const MemberSection = () => {
   const notPhoneScreen = useContext(ScreenTypeContext);
@@ -37,64 +37,6 @@ const MemberSection = () => {
     fetchMembers();
   }, []);
 
-  const mapMembers = () => {
-    return membersInfo?.map((member: any) => {
-      return (
-        <Grid
-          key={member.name}
-          size={{ xl: 3, md: 4, sm: 6 }}
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            position: "relative",
-          }}
-        >
-          <Box
-            sx={{
-              position: "relative",
-              height: 400,
-              width: 300,
-            }}
-          >
-            <ImageWrapper
-              src={returnImageUrlById(member.photo)}
-              alt={member.role}
-              height={400}
-              sx={{
-                objectFit: "cover",
-                objectPosition: " right",
-                zIndex: -1,
-              }}
-            />
-          </Box>
-
-          <Box
-            sx={{
-              p: 2,
-              zIndex: 100,
-              backgroundColor: "#FFFFFF",
-              height: 40,
-              width: 150,
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              flexDirection: "column",
-              gap: 1,
-              borderRadius: 2,
-              position: "absolute",
-              bottom: -50,
-              filter: "drop-shadow(0 0 0.5rem grey)",
-            }}
-          >
-            <Typography variant="h6">{member?.name}</Typography>
-            <Typography>{member?.team}</Typography>
-          </Box>
-        </Grid>
-      );
-    });
-  };
-
   return (
     <ContainerWrapper
       sxProps={{
@@ -102,7 +44,7 @@ const MemberSection = () => {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        gap: 0,
+        gap: 10,
         position: "relative",
         py: 10,
       }}
@@ -115,7 +57,7 @@ const MemberSection = () => {
         {"Membres"}
       </Typography>
       <MembersByTeam team={Team.ADMINISTRATION} showTips={false} />
-      <Button variant={"contained"} href={"/members"}>
+      <Button variant={"contained"} href={"/members"} sx={{ p: 3 }}>
         {"Voir tout les membres"}
       </Button>
     </ContainerWrapper>

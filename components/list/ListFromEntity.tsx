@@ -19,7 +19,7 @@ const ListFromEntity = ({
   CardType,
   itemsSize,
 }: ListFromEntityProps) => {
-  const [data, setData] = useState<any[]>();
+  const [data, setData] = useState<any[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const LIMIT = 6;
 
