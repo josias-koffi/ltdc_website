@@ -89,7 +89,7 @@ const MembersByTeam = ({
             }}
           >
             <Typography variant="h6">{member?.name}</Typography>
-            <Typography color={"text.secondary"}>{member?.team}</Typography>
+            {/* <Typography color={"text.secondary"}>{member?.team}</Typography> */}
             <Typography color={"text.secondary"}>{member?.Role}</Typography>
           </Box>
         </Grid>
