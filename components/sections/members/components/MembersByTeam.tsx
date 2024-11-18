@@ -1,45 +1,44 @@
-"use client"
+"use client";
 
-import React, { useEffect, useState } from "react"
-import { MemberEntity } from "@/libs/interfaces/entities"
-import { Team } from "@/libs/interfaces/entities"
-import ContainerWrapper from "@/components/wrapper/ContainerWrapper"
-import { Chip, Box, Typography } from "@mui/material"
-import Grid from "@mui/material/Grid"
-import { FetchProps } from "@/libs/interfaces/Interfaces"
-import { getItems } from "@/libs/directus"
-import ImageWrapper from "@/components/wrapper/ImageWrapper"
-import { returnImageUrlById } from "@/libs/stringUtils"
+import React, { useEffect, useState } from "react";
+import { MemberEntity, Team } from "@/libs/interfaces/entities";
+import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
+import { Chip, Box, Typography } from "@mui/material";
+import Grid from "@mui/material/Grid";
+import { FetchProps } from "@/libs/interfaces/Interfaces";
+import { getItems } from "@/libs/directus";
+import ImageWrapper from "@/components/wrapper/ImageWrapper";
+import { returnImageUrlById } from "@/libs/stringUtils";
 
 const MembersByTeam = ({
   team,
   showTips = true,
 }: {
-  team: Team
-  showTips?: boolean
+  team: Team;
+  showTips?: boolean;
 }) => {
-  const [membersInfo, setMembersInfo] = useState<MemberEntity[]>([])
+  const [membersInfo, setMembersInfo] = useState<MemberEntity[]>([]);
 
   const fetchMembers = async () => {
     const filter: FetchProps = {
       entity: "members",
       filter: { team: { _eq: team } },
       limit: 4,
-    }
+    };
 
     try {
-      const res = await getItems(filter)
+      const res = await getItems(filter);
       if (res) {
-        setMembersInfo(res)
+        setMembersInfo(res);
       }
     } catch (e) {
-      console.error("Error fetching members:", e)
+      console.error("Error fetching members:", e);
     }
-  }
+  };
 
   useEffect(() => {
-    fetchMembers()
-  }, [team])
+    fetchMembers();
+  }, [team]);
 
   return (
     <ContainerWrapper>
@@ -48,7 +47,7 @@ const MembersByTeam = ({
       )}
       <Grid container spacing={4} sx={{ width: "100%", justifyContent: "flex-start" }}>
         {membersInfo.map((member: MemberEntity) => (
-          <Grid item key={member.name} xs={12} sm={6} md={4} lg={3}>
+          <Grid item key={member.id} xs={12} sm={6} md={4} lg={3}>
             <Box sx={{ position: "relative", mb: 8 }}>
               <Box
                 sx={{
@@ -87,15 +86,19 @@ const MembersByTeam = ({
                   boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
                 }}
               >
-                <Typography variant="h6">{member?.name}</Typography>
-                <Typography color="text.secondary" sx={{ textAlign: 'center', width: '100%' }}>{member?.Role}</Typography>
+                <Typography variant="h6" sx={{ textAlign: "center", width: "100%" }}>
+                  {member?.name}
+                </Typography>
+                <Typography color="text.secondary" sx={{ textAlign: "center", width: "100%" }}>
+                  {member?.Role}
+                </Typography>
               </Box>
             </Box>
           </Grid>
         ))}
       </Grid>
     </ContainerWrapper>
-  )
-}
+  );
+};
 
-export default MembersByTeam
+export default MembersByTeam;
