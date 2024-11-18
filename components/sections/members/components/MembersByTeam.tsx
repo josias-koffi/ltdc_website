@@ -1,118 +1,101 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import { MemberEntity } from "@/libs/interfaces/entities";
-import { Team } from "@/libs/interfaces/entities";
-import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
-import { Chip, Button, Box, Typography } from "@mui/material";
-import Grid from "@mui/material/Grid2";
-import { FetchProps } from "@/libs/interfaces/Interfaces";
-import { getItems } from "@/libs/directus";
-import ImageWrapper from "@/components/wrapper/ImageWrapper";
-import { returnImageUrlById } from "@/libs/stringUtils";
+"use client"
+
+import React, { useEffect, useState } from "react"
+import { MemberEntity } from "@/libs/interfaces/entities"
+import { Team } from "@/libs/interfaces/entities"
+import ContainerWrapper from "@/components/wrapper/ContainerWrapper"
+import { Chip, Box, Typography } from "@mui/material"
+import Grid from "@mui/material/Grid"
+import { FetchProps } from "@/libs/interfaces/Interfaces"
+import { getItems } from "@/libs/directus"
+import ImageWrapper from "@/components/wrapper/ImageWrapper"
+import { returnImageUrlById } from "@/libs/stringUtils"
 
 const MembersByTeam = ({
   team,
   showTips = true,
 }: {
-  team: Team;
-  showTips?: boolean;
+  team: Team
+  showTips?: boolean
 }) => {
-  const [membersInfo, setMembersInfo] = useState([]);
+  const [membersInfo, setMembersInfo] = useState<MemberEntity[]>([])
 
   const fetchMembers = async () => {
     const filter: FetchProps = {
       entity: "members",
       filter: { team: { _eq: team } },
       limit: 4,
-    };
+    }
 
     try {
-      const res = await getItems(filter);
+      const res = await getItems(filter)
       if (res) {
-        setMembersInfo(res);
+        setMembersInfo(res)
       }
     } catch (e) {
-      throw new Error("Error fetching members");
+      console.error("Error fetching members:", e)
     }
-  };
+  }
 
   useEffect(() => {
-    fetchMembers();
-  }, []);
-
-  const mapMembers = () => {
-    return membersInfo?.map((member: any) => {
-      return (
-        <Grid
-          key={member.name}
-          size={{ xl: 3, md: 4, sm: 6 }}
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            position: "relative",
-          }}
-        >
-          <Box
-            sx={{
-              position: "relative",
-              height: 400,
-              width: 300,
-            }}
-          >
-            <ImageWrapper
-              src={returnImageUrlById(member.photo)}
-              alt={member.role}
-              height={400}
-              sx={{
-                objectFit: "cover",
-                objectPosition: " right",
-                zIndex: -1,
-              }}
-            />
-          </Box>
-
-          <Box
-            sx={{
-              p: 2,
-              zIndex: 100,
-              backgroundColor: "#FFFFFF",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              flexDirection: "column",
-              gap: 1,
-              borderRadius: 2,
-              position: "absolute",
-              bottom: -50,
-              filter: "drop-shadow(0 0 0.5rem grey)",
-            }}
-          >
-            <Typography variant="h6">{member?.name}</Typography>
-            {/* <Typography color={"text.secondary"}>{member?.team}</Typography> */}
-            <Typography color={"text.secondary"}>{member?.Role}</Typography>
-          </Box>
-        </Grid>
-      );
-    });
-  };
+    fetchMembers()
+  }, [team])
 
   return (
     <ContainerWrapper>
-      {showTips ? (
-        <Chip label={team} color={"primary"} sx={{ borderRadius: 1, mb: 2 }} />
-      ) : null}
-      <Grid
-        container
-        spacing={10}
-        alignItems="center"
-        justifyContent="center"
-        sx={{ width: "100%" }}
-      >
-        {mapMembers()}
+      {showTips && (
+        <Chip label={team} color="primary" sx={{ borderRadius: 1, mb: 2 }} />
+      )}
+      <Grid container spacing={4} sx={{ width: "100%", justifyContent: "flex-start" }}>
+        {membersInfo.map((member: MemberEntity) => (
+          <Grid item key={member.name} xs={12} sm={6} md={4} lg={3}>
+            <Box sx={{ position: "relative", mb: 8 }}>
+              <Box
+                sx={{
+                  position: "relative",
+                  height: 400,
+                  width: "100%",
+                  maxWidth: 300,
+                  margin: "0 auto",
+                }}
+              >
+                <ImageWrapper
+                  src={returnImageUrlById(member.photo)}
+                  alt={member.Role || "Member photo"}
+                  layout="fill"
+                  objectFit="cover"
+                  objectPosition="center"
+                />
+              </Box>
+              <Box
+                sx={{
+                  p: 2,
+                  zIndex: 100,
+                  backgroundColor: "#FFFFFF",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  flexDirection: "column",
+                  gap: 1,
+                  borderRadius: 2,
+                  position: "absolute",
+                  bottom: -60,
+                  left: "50%",
+                  transform: "translateX(-50%)",
+                  width: "90%",
+                  maxWidth: 270,
+                  boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+                }}
+              >
+                <Typography variant="h6">{member?.name}</Typography>
+                <Typography color="text.secondary" sx={{ textAlign: 'center', width: '100%' }}>{member?.Role}</Typography>
+              </Box>
+            </Box>
+          </Grid>
+        ))}
       </Grid>
     </ContainerWrapper>
-  );
-};
+  )
+}
 
-export default MembersByTeam;
+export default MembersByTeam
