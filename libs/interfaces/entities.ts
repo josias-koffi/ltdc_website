@@ -20,14 +20,14 @@ export enum Role {
   PRESIDENTE_RESPONSABLE_JURIDIQUE = "PRESIDENTE & RESPONSABLE JURIDIQUE",
   VICE_PRESIDENTE_RESPONSABLE_IT_MARKETING = "VICE PRESIDENTE, RESPONSABLE IT &MARKETING",
   RESPONSABLE_TRESORERIE = "RESPONSABLE TRESORERIE",
-  JURISTE = "JURISTE"
+  JURISTE = "JURISTE",
 }
-
 
 export interface MemberEntity {
   id: number;
   team: Team;
   photo: string;
+  name: string;
   Role: string;
 }
 
