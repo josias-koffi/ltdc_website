@@ -14,29 +14,6 @@ import MembersByTeam from "@/components/sections/members/components/MembersByTea
 const MemberSection = () => {
   const notPhoneScreen = useContext(ScreenTypeContext);
 
-  const [membersInfo, setMembersInfo] = useState([]);
-
-  const fetchMembers = async () => {
-    const filter: FetchProps = {
-      entity: "members",
-      filter: { team: { _eq: Team.ADMINISTRATION } },
-      limit: 4,
-    };
-
-    try {
-      const res = await getItems(filter);
-      if (res) {
-        setMembersInfo(res);
-      }
-    } catch (e) {
-      throw new Error("Error fetching members");
-    }
-  };
-
-  useEffect(() => {
-    fetchMembers();
-  }, []);
-
   return (
     <ContainerWrapper
       sxProps={{
@@ -56,7 +33,7 @@ const MemberSection = () => {
       >
         {"Membres"}
       </Typography>
-      <MembersByTeam team={Team.ADMINISTRATION} showTips={false} />
+      <MembersByTeam team={Team.DIRECTION} showTips={false} />
       <Button variant={"contained"} href={"/members"} sx={{ p: 3 }}>
         {"Voir tout les membres"}
       </Button>

@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
+import { Sen } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 import { DEFAULT_META_DESCRIPTION, DEFAULT_TITLE } from "@/libs/constants";
 
-const montserrat = Montserrat({
+const montserrat = Sen({
   subsets: ["latin"],
   weight: ["400"],
   display: "swap",

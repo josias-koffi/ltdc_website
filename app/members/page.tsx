@@ -7,12 +7,10 @@ import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
 const Members = () => {
   return (
     <div>
-      <ContainerWrapper>
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <h1>{"Tous les membres"}</h1>
-        </div>
-      </ContainerWrapper>
-
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <h1 style={{ fontSize: 42 }}>{"Tous les membres"}</h1>
+      </div>
+      <MembersByTeam team={Team.DIRECTION} />
       <MembersByTeam team={Team.ADMINISTRATION} />
       <MembersByTeam team={Team.LEGAL} />
       <MembersByTeam team={Team.FINANCE} />
