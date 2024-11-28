@@ -41,9 +41,13 @@ const MembersByTeam = ({
   }, [team]);
 
   return (
-    <ContainerWrapper>
+    <ContainerWrapper sxProps={{ p: 1 }}>
       {showTips && (
-        <Chip label={team} color="primary" sx={{ borderRadius: 1, mb: 2 }} />
+        <Chip
+          label={team}
+          color="primary"
+          sx={{ borderRadius: 2, mb: 2, fontSize: 18, px: 4 }}
+        />
       )}
       <Grid
         container
@@ -67,11 +71,11 @@ const MembersByTeam = ({
                   alt={member.Role || "Member photo"}
                   objectFit="cover"
                   objectPosition="center"
+                  height={400}
                 />
               </Box>
               <Box
                 sx={{
-                  p: 2,
                   zIndex: 100,
                   backgroundColor: "#FFFFFF",
                   display: "flex",

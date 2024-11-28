@@ -1,16 +1,16 @@
-import {createTheme} from "@mui/material/styles";
+import { createTheme } from "@mui/material/styles";
 
 export const themeOptions: any = createTheme({
-    palette: {
-        mode: "light",
-        primary: {
-            main: "#642775",
-        },
-        secondary: {
-            main: "#EDA26B",
-        },
+  palette: {
+    mode: "light",
+    primary: {
+      main: "#642775",
     },
-    typography: {
-        fontFamily: ["Montserrat"].join(",")
+    secondary: {
+      main: "#EDA26B",
     },
+  },
+  typography: {
+    fontFamily: ["Sen"].join(","),
+  },
 });

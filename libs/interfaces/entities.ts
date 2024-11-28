@@ -3,6 +3,7 @@ interface Status {
 }
 
 export enum Team {
+  DIRECTION = "DIRECTION",
   ADMINISTRATION = "ADMINISTRATION",
   IT = "IT",
   FINANCE = "FINANCE",
