@@ -45,7 +45,11 @@ const MembersByTeam = ({
       {showTips && (
         <Chip label={team} color="primary" sx={{ borderRadius: 1, mb: 2 }} />
       )}
-      <Grid container spacing={4} sx={{ width: "100%", justifyContent: "flex-start" }}>
+      <Grid
+        container
+        spacing={4}
+        sx={{ width: "100%", justifyContent: "flex-start" }}
+      >
         {membersInfo.map((member: MemberEntity) => (
           <Grid item key={member.id} xs={12} sm={6} md={4} lg={3}>
             <Box sx={{ position: "relative", mb: 8 }}>
@@ -61,7 +65,6 @@ const MembersByTeam = ({
                 <ImageWrapper
                   src={returnImageUrlById(member.photo)}
                   alt={member.Role || "Member photo"}
-                  layout="fill"
                   objectFit="cover"
                   objectPosition="center"
                 />
@@ -86,10 +89,16 @@ const MembersByTeam = ({
                   boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
                 }}
               >
-                <Typography variant="h6" sx={{ textAlign: "center", width: "100%" }}>
+                <Typography
+                  variant="h6"
+                  sx={{ textAlign: "center", width: "100%" }}
+                >
                   {member?.name}
                 </Typography>
-                <Typography color="text.secondary" sx={{ textAlign: "center", width: "100%" }}>
+                <Typography
+                  color="text.secondary"
+                  sx={{ textAlign: "center", width: "100%" }}
+                >
                   {member?.Role}
                 </Typography>
               </Box>
