@@ -21,17 +21,17 @@ const MemberSection = () => {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        gap: 10,
+        justifyItems: "center",
+        alignContent: "center",
         position: "relative",
-        py: 10,
       }}
     >
       <Typography
         variant={notPhoneScreen ? "h2" : "h3"}
         fontWeight={"bold"}
-        sx={{ pb: 5 }}
+        sx={{ pb: 1 }}
       >
-        {"Membres"}
+        {"Direction"}
       </Typography>
       <MembersByTeam team={Team.DIRECTION} showTips={false} />
       <Button variant={"contained"} href={"/members"} sx={{ p: 3 }}>

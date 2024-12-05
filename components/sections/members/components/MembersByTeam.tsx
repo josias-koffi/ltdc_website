@@ -41,18 +41,39 @@ const MembersByTeam = ({
   }, [team]);
 
   return (
-    <ContainerWrapper sxProps={{ p: 1 }}>
+    <ContainerWrapper
+      sxProps={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        justifyItems: "center",
+        alignContent: "center",
+      }}
+    >
       {showTips && (
-        <Chip
-          label={team}
-          color="primary"
-          sx={{ borderRadius: 2, mb: 2, fontSize: 18, px: 4 }}
-        />
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "flex-start",
+            width: "100%",
+          }}
+        >
+          <Chip
+            label={team}
+            color="primary"
+            sx={{ borderRadius: 2, mb: 2, fontSize: 18, px: 4 }}
+          />
+        </Box>
       )}
       <Grid
         container
         spacing={4}
-        sx={{ width: "100%", justifyContent: "flex-start" }}
+        sx={{
+          width: "100%",
+          justifyContent: { md: "center", xl: "flex-start" },
+        }}
       >
         {membersInfo.map((member: MemberEntity) => (
           <Grid item key={member.id} xs={12} sm={6} md={4} lg={3}>
