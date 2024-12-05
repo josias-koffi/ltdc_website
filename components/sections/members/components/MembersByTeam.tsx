@@ -90,7 +90,7 @@ const MembersByTeam = ({
               >
                 <ImageWrapper
                   src={returnImageUrlById(member.photo)}
-                  alt={member.Role || "Member photo"}
+                  alt={`${member?.name} ${member.team}`}
                   objectFit="cover"
                   objectPosition="center"
                   height={400}
