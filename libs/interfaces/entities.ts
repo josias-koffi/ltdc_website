@@ -28,7 +28,7 @@ export interface MemberEntity {
   team: Team;
   photo: string;
   name: string;
-  Role: string;
+  roles: Role[];
 }
 
 export interface ActualitiesCategoriesEntity {

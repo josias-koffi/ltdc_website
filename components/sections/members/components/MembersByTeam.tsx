@@ -9,6 +9,7 @@ import { FetchProps } from "@/libs/interfaces/Interfaces";
 import { getItems } from "@/libs/directus";
 import ImageWrapper from "@/components/wrapper/ImageWrapper";
 import { returnImageUrlById } from "@/libs/stringUtils";
+import MappingRoles from "@/components/sections/members/components/MappingRoles";
 
 const MembersByTeam = ({
   team,
@@ -124,7 +125,7 @@ const MembersByTeam = ({
                   color="text.secondary"
                   sx={{ textAlign: "center", width: "100%" }}
                 >
-                  {member?.Role}
+                  <MappingRoles roles={member?.roles} />
                 </Typography>
               </Box>
             </Box>
