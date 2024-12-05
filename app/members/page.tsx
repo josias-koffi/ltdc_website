@@ -11,7 +11,6 @@ const Members = () => {
         <h1 style={{ fontSize: 42 }}>{"Tous les membres"}</h1>
       </div>
       <MembersByTeam team={Team.DIRECTION} />
-      <MembersByTeam team={Team.ADMINISTRATION} />
       <MembersByTeam team={Team.LEGAL} />
       <MembersByTeam team={Team.FINANCE} />
       <MembersByTeam team={Team.MARKETING} />
