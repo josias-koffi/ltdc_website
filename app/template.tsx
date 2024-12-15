@@ -26,7 +26,7 @@ export const ScreenTypeContext = createContext<boolean | null>(null);
 
 export default function Template({ children }: { children: React.ReactNode }) {
   const theme = useTheme();
-  const upperSm = useMediaQuery(theme.breakpoints.up("sm"));
+  const upperSm = useMediaQuery(theme.breakpoints.up("md"));
   const upperMd = useMediaQuery(theme.breakpoints.up("xl"));
 
   const frame: FrameInterface = {

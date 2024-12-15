@@ -15,7 +15,11 @@ const Footer = () => {
       return (
         <Grid key={quickLink.link + index} size={{ xl: 6 }}>
           <Link
-            style={{ color: "white", textDecoration: "none" }}
+            style={{
+              color: "white",
+              textDecoration: "none",
+              textWrap: "nowrap",
+            }}
             href={quickLink.link}
           >
             {quickLink?.name}
@@ -34,7 +38,7 @@ const Footer = () => {
         pt: {
           sm: 0,
           md: 0,
-        }
+        },
       }}
     >
       <ContainerWrapper>
