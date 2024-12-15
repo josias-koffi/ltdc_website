@@ -13,7 +13,7 @@ const fetchProjects = async (id: string): Promise<ProjectEntity | null> => {
     filter: { id: id },
   };
 
-  const res: ActualitiesEntity[] = await getItems(request);
+  const res: ProjectEntity[] = await getItems(request);
   return res.length > 0 ? res[0] : null;
 };
 
