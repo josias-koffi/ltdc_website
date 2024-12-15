@@ -26,15 +26,15 @@ export const ScreenTypeContext = createContext<boolean | null>(null);
 
 export default function Template({ children }: { children: React.ReactNode }) {
   const theme = useTheme();
-  const upperSm = useMediaQuery(theme.breakpoints.up("md"));
+  const upperMdScreen = useMediaQuery(theme.breakpoints.up("md"));
   const upperMd = useMediaQuery(theme.breakpoints.up("xl"));
 
   const frame: FrameInterface = {
-    paddingX: upperSm ? "13rem" : "1rem",
-    paddingY: upperSm ? "7rem" : "1rem",
-    paddingHeaderX: upperSm ? "13rem" : "1rem",
-    paddingHeaderY: upperSm ? "2rem" : "1rem",
-    upperSm,
+    paddingX: upperMdScreen ? "13rem" : "1rem",
+    paddingY: upperMdScreen ? "7rem" : "1rem",
+    paddingHeaderX: upperMdScreen ? "13rem" : "1rem",
+    paddingHeaderY: upperMdScreen ? "2rem" : "1rem",
+    upperSm: upperMdScreen,
     upperMd,
   };
 
@@ -42,7 +42,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
     <ThemeProvider theme={themeOptions}>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <FrameSettingContext.Provider value={frame}>
-          <ScreenTypeContext.Provider value={upperSm}>
+          <ScreenTypeContext.Provider value={upperMdScreen}>
             <Header />
             {children}
             <Footer />

@@ -98,8 +98,8 @@ const ButtonList = (props: Props) => {
         sx={{
           display: "flex",
           flexDirection: "row",
-          justifyContent: "center",
-          alignItems: "center",
+          justifyContent: "space-between",
+          alignItems: "space-between",
           gap: 1,
         }}
       >
