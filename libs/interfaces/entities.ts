@@ -72,6 +72,25 @@ export interface ActualitiesEntity {
   user_created: string;
   user_updated?: string;
 }
+export interface ProjectEntity {
+  categories?: CategoriesEntity[];
+  targets?: TargetsEntity[];
+  details: string;
+  cover: string | FilesInterface;
+  date_created: string;
+  date_updated?: string;
+  description: string;
+  end_date?: string;
+  id: number;
+  start_date: string;
+  sort?: any;
+  sources?: string;
+  resources?: string;
+  status: Status["value"];
+  title: string;
+  user_created: string;
+  user_updated?: string;
+}
 
 export interface FilesInterface {
   charset?: any;
