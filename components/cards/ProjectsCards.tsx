@@ -12,9 +12,9 @@ import {
 import Category from "@/components/entity/Category";
 import { truncateText } from "@/libs/stringUtils";
 import { formatDate } from "@/libs/dateutils";
-import { ProjectsEntity } from "@/libs/interfaces/entities";
+import { ProjectEntity } from "@/libs/interfaces/entities";
 
-const ProjectCard = ({ props }: { props: ProjectsEntity }) => {
+const ProjectCard = ({ props }: { props: ProjectEntity }) => {
   return (
     <Card>
       <CardMedia
@@ -33,7 +33,7 @@ const ProjectCard = ({ props }: { props: ProjectsEntity }) => {
             color: "text.secondary",
           }}
         >
-          <Category id={props?.category_id} />
+          <Category id={props?.categories} />
           <Typography>{formatDate(props?.start_date)}</Typography>
         </Stack>
 
