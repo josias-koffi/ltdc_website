@@ -11,14 +11,13 @@ const ViewProject = ({ project }: { project: ProjectEntity }) => {
   project.details = updateHtmlAttributes(project.details, {
     img: { class: "blogImage" },
   });
-  console.log(project);
 
   return (
     <ContainerWrapper>
       {project?.cover ? (
         <ImageWrapper
           src={returnImageUrlById(project?.cover)}
-          alt={"Image de l'actualité"}
+          alt={"Image de couverture du projet"}
         />
       ) : null}
 
@@ -31,18 +30,18 @@ const ViewProject = ({ project }: { project: ProjectEntity }) => {
           pt: 5,
         }}
       >
-        {/*Title*/}
         <Typography variant={"h2"}>{project?.title}</Typography>
-        {/*  Description*/}
+
         <Typography variant={"subtitle1"} sx={{ color: "text.secondary" }}>
           {project?.description}
         </Typography>
       </Box>
+
       <Box
         sx={{
           display: "flex",
-          flexDirection: "row",
-          justifyContent: "flew-start",
+          flexDirection: "column",
+          justifyContent: "flex-start",
           gap: 1,
           width: "100%",
           flexWrap: "wrap",
@@ -50,16 +49,23 @@ const ViewProject = ({ project }: { project: ProjectEntity }) => {
       >
         {project?.start_date ? (
           <Typography variant={"h6"} sx={{ color: "text.secondary" }}>
-            {`Date de début - ${formatDate(project.start_date)}`}
+            {`Date de début : ${formatDate(project.start_date)}`}
           </Typography>
         ) : null}
 
         {project?.end_date ? (
           <Typography variant={"h6"} sx={{ color: "text.secondary" }}>
-            {`Date de fin de validité - ${formatDate(project.end_date)}`}
+            {`Date de fin : ${formatDate(project.end_date)}`}
+          </Typography>
+        ) : null}
+
+        {project?.status ? (
+          <Typography variant={"h6"} sx={{ color: "text.secondary" }}>
+            {`Statut : ${project.status}`}
           </Typography>
         ) : null}
       </Box>
+
       <Typography
         dangerouslySetInnerHTML={{
           __html: project?.details,

@@ -47,7 +47,7 @@ const ProjectCard = ({ props }: { props: ProjectsEntity }) => {
 
       <CardActions sx={{ justifyContent: "flex-end", pt: 5 }}>
         <Button variant={"contained"} href={"projects/" + props?.id}>
-          Voir plus
+          Lire
         </Button>
       </CardActions>
     </Card>
