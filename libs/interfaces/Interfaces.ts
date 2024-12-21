@@ -85,6 +85,27 @@ export interface BeneficiaryShipFormInterface {
   object: string;
   message: string;
   consent: boolean;
+  adresse: string;
+  gender: "homme" | "femme" | "autre";
+  familySituation: "célibataire" | "marié(e)" | "autre";
+  otherFamilySituation: string;
+  oqtf: "oui" | "non";
+  oqtfReceptionDate: string | Dayjs;
+  residentPermitPending: "oui" | "non";
+  residentPermitRequestDate: string | Dayjs;
+  actualStatut: string;
+  working: "oui" | "non";
+  workTitle: string;
+  cddOrInterim: "oui" | "non";
+  workProof: "oui" | "non";
+  degree: string;
+  formationInProgress: "oui" | "non";
+  formationPrecision: string;
+  stablePlace: "oui" | "non";
+  helpForSearchPlace: "oui" | "non";
+  familyInFrance: "oui" | "non";
+  familyLink: string;
+  moreInfo: string;
 }
 
 export interface SponsorShipFormInterface {

@@ -15,6 +15,9 @@ import {
   Select,
   TextField,
   Typography,
+  FormLabel,
+  RadioGroup,
+  Radio,
 } from "@mui/material";
 import Image from "next/image";
 import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
@@ -39,11 +42,32 @@ const defaultData: BeneficiaryShipFormInterface = {
   email: "",
   birthday: dayjs("2000-01-01"),
   nationality: [""],
+  adresse: "",
   statut: "",
   dateArrived: dayjs().subtract(1, "year"),
   object: "",
   message: "",
   consent: false,
+  gender: "femme",
+  familySituation: "célibataire",
+  oqtf: "non",
+  oqtfReceptionDate: dayjs().subtract(1, "year"),
+  residentPermitPending: "non",
+  residentPermitRequestDate: dayjs().subtract(1, "year"),
+  actualStatut: "",
+  working: "oui",
+  workTitle: "",
+  cddOrInterim: "oui",
+  workProof: "oui",
+  degree: "",
+  formationInProgress: "non",
+  formationPrecision: "",
+  stablePlace: "oui",
+  helpForSearchPlace: "oui",
+  familyInFrance: "oui",
+  otherFamilySituation: "",
+  familyLink: "",
+  moreInfo: "",
 };
 
 const BeneficiaryShipForm = ({ countyFlags }: Props) => {
@@ -65,7 +89,14 @@ const BeneficiaryShipForm = ({ countyFlags }: Props) => {
     });
   };
 
-  const handleChangeDate = (e: any, field: "birthday" | "dateArrived") => {
+  const handleChangeDate = (
+    e: any,
+    field:
+      | "birthday"
+      | "dateArrived"
+      | "oqtfReceptionDate"
+      | "residentPermitRequestDate",
+  ) => {
     setData((pre: any) => {
       return { ...pre, [field]: e };
     });
@@ -225,8 +256,98 @@ const BeneficiaryShipForm = ({ countyFlags }: Props) => {
                 ))}
               </Select>
             </FormControl>
+            <FormControl>
+              <FormLabel id="demo-radio-buttons-group-label">Genre</FormLabel>
+              <RadioGroup
+                aria-labelledby="demo-radio-buttons-group-label"
+                defaultValue="female"
+                name="gender"
+                sx={{
+                  display: "flex",
+                  alignItems: "flex-start",
+                  justifyContent: "flex-start",
+                  flexDirection: "row",
+                  gap: 1,
+                  flexWrap: "wrap",
+                }}
+                value={data?.gender}
+                onChange={handleChange}
+              >
+                <FormControlLabel
+                  value="femme"
+                  control={<Radio />}
+                  label="Femme"
+                />
+                <FormControlLabel
+                  value="homme"
+                  control={<Radio />}
+                  label="Homme"
+                />
+                <FormControlLabel
+                  value="autre"
+                  control={<Radio />}
+                  label="Autre"
+                />
+              </RadioGroup>
+            </FormControl>
+            <FormControl>
+              <FormLabel id="demo-radio-buttons-group-label">
+                Situation familiale
+              </FormLabel>
+              <RadioGroup
+                aria-labelledby="demo-radio-buttons-group-label"
+                defaultValue="célibataire"
+                name="familySituation"
+                sx={{
+                  display: "flex",
+                  alignItems: "flex-start",
+                  justifyContent: "flex-start",
+                  flexDirection: "row",
+                  gap: 1,
+                  flexWrap: "wrap",
+                }}
+                value={data?.familySituation}
+                onChange={handleChange}
+              >
+                <FormControlLabel
+                  value="célibataire"
+                  control={<Radio />}
+                  label="Célibataire"
+                />
+                <FormControlLabel
+                  value="marié(e)"
+                  control={<Radio />}
+                  label="Marié(e)"
+                />
+                <FormControlLabel
+                  value="autre"
+                  control={<Radio />}
+                  label="Autre"
+                />
+                <TextField
+                  variant={"outlined"}
+                  sx={{ width: 200 }}
+                  label="Préciser"
+                  name="otherFamilySituation"
+                  type="string"
+                  onChange={handleChange}
+                  value={data?.otherFamilySituation}
+                  disabled={data?.familySituation !== "autre"}
+                />
+              </RadioGroup>
+            </FormControl>
             <br />
             <Typography variant={"h5"}>{"Coordonnées"}</Typography>
+            <TextField
+              variant={"outlined"}
+              sx={{ width: "100%" }}
+              label="Adresse"
+              name="adress"
+              type="string"
+              onChange={handleChange}
+              value={data?.adresse}
+              required
+            />
             <TextField
               variant={"outlined"}
               sx={{ width: "100%" }}
@@ -249,15 +370,6 @@ const BeneficiaryShipForm = ({ countyFlags }: Props) => {
             />
             <br />
             <Typography variant={"h5"}>{"Situation Administrative"}</Typography>
-            <TextField
-              variant={"outlined"}
-              sx={{ width: "100%" }}
-              label="Statut (Demandeur d’asile, Réfugié, Sans-papiers, etc.) "
-              name="statut"
-              onChange={handleChange}
-              value={data?.statut}
-              required
-            />
             <DatePicker
               label="Date d'arriver en France"
               name="dateArrived"
@@ -267,27 +379,300 @@ const BeneficiaryShipForm = ({ countyFlags }: Props) => {
               }}
               sx={{ width: "100%" }}
             />
-            <br />
-            <Typography variant={"h5"}>{"Message"}</Typography>
-            <TextField
-              variant={"outlined"}
+            <FormControl>
+              <FormLabel id="demo-radio-buttons-group-label">
+                OQTF reçue
+              </FormLabel>
+              <RadioGroup
+                aria-labelledby="demo-radio-buttons-group-label"
+                defaultValue="non"
+                name="oqtf"
+                sx={{
+                  display: "flex",
+                  alignItems: "flex-start",
+                  justifyContent: "flex-start",
+                  flexDirection: "row",
+                  gap: 1,
+                  flexWrap: "wrap",
+                }}
+                value={data?.oqtf}
+                onChange={handleChange}
+              >
+                <FormControlLabel value="oui" control={<Radio />} label="Oui" />
+                <FormControlLabel value="non" control={<Radio />} label="Nom" />
+              </RadioGroup>
+            </FormControl>
+            <DatePicker
+              label="Date de réception de l'OQTF (si concerné)"
+              name="oqtfReceptionDate"
+              value={data?.oqtfReceptionDate}
+              onChange={(e: any) => {
+                handleChangeDate(e, "oqtfReceptionDate");
+              }}
               sx={{ width: "100%" }}
-              label="Objet de la demande"
-              name="object"
-              onChange={handleChange}
-              value={data?.object}
-              required
+              disabled={data?.oqtf !== "oui"}
+            />
+            <FormControl>
+              <FormLabel id="demo-radio-buttons-group-label">
+                Demande de titre de séjour en cours
+              </FormLabel>
+              <RadioGroup
+                aria-labelledby="demo-radio-buttons-group-label"
+                defaultValue="non"
+                name="residentPermitPending"
+                sx={{
+                  display: "flex",
+                  alignItems: "flex-start",
+                  justifyContent: "flex-start",
+                  flexDirection: "row",
+                  gap: 1,
+                  flexWrap: "wrap",
+                }}
+                value={data?.residentPermitPending}
+                onChange={handleChange}
+              >
+                <FormControlLabel value="oui" control={<Radio />} label="Oui" />
+                <FormControlLabel value="non" control={<Radio />} label="Nom" />
+              </RadioGroup>
+            </FormControl>
+            <DatePicker
+              label="Date de la demande"
+              name="residentPermitRequestDate"
+              value={data?.residentPermitRequestDate}
+              onChange={(e: any) => {
+                handleChangeDate(e, "residentPermitRequestDate");
+              }}
+              sx={{ width: "100%" }}
+              disabled={data?.residentPermitPending !== "oui"}
             />
             <TextField
               variant={"outlined"}
               sx={{ width: "100%" }}
-              label="Message"
-              name="message"
+              label="Statut (Demandeur d’asile, Réfugié, Sans-papiers, etc.) "
+              name="statut"
+              onChange={handleChange}
+              value={data?.statut}
+              required
+            />
+            <br />
+            <Typography variant={"h5"}>{"Formation"}</Typography>
+            <TextField
+              variant={"outlined"}
+              sx={{ width: "100%" }}
+              label="Niveau d'études"
+              name="object"
+              onChange={handleChange}
+              value={data?.degree}
+              required
+            />
+            <FormControl>
+              <FormLabel id="demo-radio-buttons-group-label">
+                Formation en cours
+              </FormLabel>
+              <RadioGroup
+                aria-labelledby="demo-radio-buttons-group-label"
+                defaultValue="oui"
+                name="formationInProgress"
+                sx={{
+                  display: "flex",
+                  alignItems: "flex-start",
+                  justifyContent: "flex-start",
+                  flexDirection: "row",
+                  gap: 1,
+                  flexWrap: "wrap",
+                }}
+                value={data?.formationInProgress}
+                onChange={handleChange}
+              >
+                <FormControlLabel value="oui" control={<Radio />} label="Oui" />
+                <FormControlLabel value="non" control={<Radio />} label="Nom" />
+              </RadioGroup>
+            </FormControl>
+            <TextField
+              variant={"outlined"}
+              sx={{ width: "100%" }}
+              label="Si oui, précisez"
+              name="formationPrecision"
+              onChange={handleChange}
+              value={data?.formationPrecision}
+              disabled={data?.formationInProgress != "oui"}
+            />
+            <br />
+            <Typography variant={"h5"}>
+              {"Expérience Professionnelle"}
+            </Typography>
+            <FormControl>
+              <FormLabel id="demo-radio-buttons-group-label">
+                Avez-vous un emploi actuel ?
+              </FormLabel>
+              <RadioGroup
+                aria-labelledby="demo-radio-buttons-group-label"
+                defaultValue="working"
+                name="working"
+                sx={{
+                  display: "flex",
+                  alignItems: "flex-start",
+                  justifyContent: "flex-start",
+                  flexDirection: "row",
+                  gap: 1,
+                  flexWrap: "wrap",
+                }}
+                value={data?.working}
+                onChange={handleChange}
+              >
+                <FormControlLabel value="oui" control={<Radio />} label="Oui" />
+                <FormControlLabel value="non" control={<Radio />} label="Nom" />
+              </RadioGroup>
+            </FormControl>
+            <TextField
+              variant={"outlined"}
+              sx={{ width: "100%" }}
+              label="Si oui, quel est votre poste ?"
+              name="workTitle"
+              onChange={handleChange}
+              value={data?.workTitle}
+              disabled={data?.working != "oui"}
+            />
+            <FormControl>
+              <FormLabel id="demo-radio-buttons-group-label">
+                Avez-vous travaillé en intérim ou en CDD ?
+              </FormLabel>
+              <RadioGroup
+                aria-labelledby="demo-radio-buttons-group-label"
+                defaultValue="oui"
+                name="cddOrInterim"
+                sx={{
+                  display: "flex",
+                  alignItems: "flex-start",
+                  justifyContent: "flex-start",
+                  flexDirection: "row",
+                  gap: 1,
+                  flexWrap: "wrap",
+                }}
+                value={data?.cddOrInterim}
+                onChange={handleChange}
+              >
+                <FormControlLabel value="oui" control={<Radio />} label="Oui" />
+                <FormControlLabel value="non" control={<Radio />} label="Nom" />
+              </RadioGroup>
+            </FormControl>
+            <FormControl>
+              <FormLabel id="demo-radio-buttons-group-label">
+                Pouvez-vous fournir un justificatif (contrat de travail) ?
+              </FormLabel>
+              <RadioGroup
+                aria-labelledby="demo-radio-buttons-group-label"
+                defaultValue="oui"
+                name="workProof"
+                sx={{
+                  display: "flex",
+                  alignItems: "flex-start",
+                  justifyContent: "flex-start",
+                  flexDirection: "row",
+                  gap: 1,
+                  flexWrap: "wrap",
+                }}
+                value={data?.workProof}
+                onChange={handleChange}
+              >
+                <FormControlLabel value="oui" control={<Radio />} label="Oui" />
+                <FormControlLabel value="non" control={<Radio />} label="Nom" />
+              </RadioGroup>
+            </FormControl>
+            <br />
+            <Typography variant={"h5"}>{"Besoin en logement"}</Typography>
+            <FormControl>
+              <FormLabel id="demo-radio-buttons-group-label">
+                Avez-vous un logement stable ?
+              </FormLabel>
+              <RadioGroup
+                aria-labelledby="demo-radio-buttons-group-label"
+                defaultValue="oui"
+                name="stablePlace"
+                sx={{
+                  display: "flex",
+                  alignItems: "flex-start",
+                  justifyContent: "flex-start",
+                  flexDirection: "row",
+                  gap: 1,
+                  flexWrap: "wrap",
+                }}
+                value={data?.stablePlace}
+                onChange={handleChange}
+              >
+                <FormControlLabel value="oui" control={<Radio />} label="Oui" />
+                <FormControlLabel value="non" control={<Radio />} label="Nom" />
+              </RadioGroup>
+            </FormControl>
+            <FormControl>
+              <FormLabel id="demo-radio-buttons-group-label">
+                Avez-vous besoin d'assistance pour le logement ?
+              </FormLabel>
+              <RadioGroup
+                aria-labelledby="demo-radio-buttons-group-label"
+                defaultValue="oui"
+                name="helpForSearchPlace"
+                sx={{
+                  display: "flex",
+                  alignItems: "flex-start",
+                  justifyContent: "flex-start",
+                  flexDirection: "row",
+                  gap: 1,
+                  flexWrap: "wrap",
+                }}
+                value={data?.helpForSearchPlace}
+                onChange={handleChange}
+              >
+                <FormControlLabel value="oui" control={<Radio />} label="Oui" />
+                <FormControlLabel value="non" control={<Radio />} label="Nom" />
+              </RadioGroup>
+            </FormControl>
+            <FormControl>
+              <FormLabel id="demo-radio-buttons-group-label">
+                Avez-vous des membres de la famille avec un titre de séjour en
+                France ?
+              </FormLabel>
+              <RadioGroup
+                aria-labelledby="demo-radio-buttons-group-label"
+                defaultValue="oui"
+                name="familyInFrance"
+                sx={{
+                  display: "flex",
+                  alignItems: "flex-start",
+                  justifyContent: "flex-start",
+                  flexDirection: "row",
+                  gap: 1,
+                  flexWrap: "wrap",
+                }}
+                value={data?.familyInFrance}
+                onChange={handleChange}
+              >
+                <FormControlLabel value="oui" control={<Radio />} label="Oui" />
+                <FormControlLabel value="non" control={<Radio />} label="Nom" />
+              </RadioGroup>
+            </FormControl>
+            <TextField
+              variant={"outlined"}
+              sx={{ width: "100%" }}
+              label="Si oui, précisez le lien familial et la durée du titre de séjour"
+              name="object"
+              onChange={handleChange}
+              value={data?.familyLink}
+              disabled={data?.familyInFrance !== "oui"}
+            />
+            <br />
+            <Typography variant={"h5"}>
+              {"Autres informations utiles ?"}
+            </Typography>
+            <TextField
+              variant={"outlined"}
+              sx={{ width: "100%" }}
+              label="Toutes informations complémentaires"
+              name="moreInfo"
               rows={5}
               multiline
               onChange={handleChange}
-              value={data?.message}
-              required
+              value={data?.moreInfo}
             />
             <br />
             <FormControlLabel
