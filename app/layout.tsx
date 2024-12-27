@@ -4,7 +4,7 @@ import "./globals.css";
 import Script from "next/script";
 import { DEFAULT_META_DESCRIPTION, DEFAULT_TITLE } from "@/libs/constants";
 
-const montserrat = Sen({
+const sen = Sen({
   subsets: ["latin"],
   weight: ["400"],
   display: "swap",
@@ -23,7 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={montserrat.className} style={{ margin: 0 }}>
+      <body className={sen.className} style={{ margin: 0 }}>
         {children}
         <Script
           defer

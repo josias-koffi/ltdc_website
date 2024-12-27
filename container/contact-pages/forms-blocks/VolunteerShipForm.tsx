@@ -34,6 +34,7 @@ interface Props {
 }
 
 const defaultData: VolunteerShipFormInterface = {
+  volunteerSpecificField: "",
   name: "",
   firstName: "",
   birthday: dayjs("2000-01-01"),
