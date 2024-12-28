@@ -70,7 +70,7 @@ const VolunteerShipForm = ({ countyFlags }: Props) => {
   ];
 
   const subjects: EmailSubjectEnum[] = [
-    EmailSubjectEnum.Demande_de_beneficiaire,
+    EmailSubjectEnum.Demande_de_volontariat,
     EmailSubjectEnum.Demande_de_pour_la_maraude,
   ];
 

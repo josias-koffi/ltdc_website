@@ -10,8 +10,11 @@ import {
   SponsorShipFormInterface,
   VolunteerShipFormInterface,
 } from "@/libs/interfaces/Interfaces";
-import { generateHtmlTable } from "@/libs/emailtemplate/ArrayTemplaate";
-import { generateHtmlFromJsonForBeneficiary } from "@/libs/emailtemplate/BeneficiaryEmailtemplate";
+import { generateHtmlTable } from "@/libs/emailtemplate/ArrayTemplate";
+import { generateHtmlFromJsonForBeneficiary } from "@/libs/emailtemplate/BeneficiaryEmailTemplate";
+import { generateHtmlFromJsonForSponsor } from "@/libs/emailtemplate/SponsorEmailTemplate";
+import { generateHtmlFromJsonForVolunteer } from "@/libs/emailtemplate/VolunteerEmailTemplate";
+import { generateHtmlFromJsonForContact } from "@/libs/emailtemplate/ContactEmailTemplate";
 
 const URL = process.env.BREVO_API_URL;
 const BREVO_API_KEY = process.env.BREVO_API_KEY;
@@ -97,10 +100,6 @@ const responseMailToUser = async (
     templateId = EmailTemplateIdEnum.Reponse_automatique_maraude;
   }
 
-  if (subject === EmailSubjectEnum.Demande_de_beneficiaire) {
-    templateId = EmailTemplateIdEnum.Reponse_Formulaire_Beneficiaire;
-  }
-
   const mailData: MailDataInterface = {
     sender: { name: "Association LTDC", email: DESTINATION },
     to: [{ name: contactInfo.name, email: contactInfo.email }],
@@ -122,13 +121,13 @@ const createCorrespondingRequestBody = (body: FormInterface) => {
     );
   } else if ("sponsorSpecificField" in body) {
     // Vérifiez un champ spécifique unique à SponsorShipFormInterface
-    return generateHtmlTable(body as SponsorShipFormInterface);
+    return generateHtmlFromJsonForSponsor(body as SponsorShipFormInterface);
   } else if ("volunteerSpecificField" in body) {
     // Vérifiez un champ spécifique unique à VolunteerShipFormInterface
-    return generateHtmlTable(body as VolunteerShipFormInterface);
+    return generateHtmlFromJsonForVolunteer(body as VolunteerShipFormInterface);
   } else if ("contactSpecificField" in body) {
     // Vérifiez un champ spécifique unique à ContactInfoInterface
-    return generateHtmlTable(body as ContactInfoInterface);
+    return generateHtmlFromJsonForContact(body as ContactInfoInterface);
   } else {
     throw new Error("Unrecognized form type");
   }

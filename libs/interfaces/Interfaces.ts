@@ -40,6 +40,7 @@ export interface FetchProps {
   limit?: number;
   page?: number;
   filter?: any;
+  sort?: string[];
 }
 
 export interface EntityInterface {
@@ -66,6 +67,7 @@ export interface MailSubjectInterface {
 }
 
 export interface ContactInfoInterface {
+  contactSpecificField: string;
   subject: SubjectStateInterface | undefined;
   name: string;
   email: string;
