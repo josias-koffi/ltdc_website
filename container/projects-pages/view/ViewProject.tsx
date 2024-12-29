@@ -6,6 +6,7 @@ import { returnImageUrlById, updateHtmlAttributes } from "@/libs/stringUtils";
 import ImageWrapper from "@/components/wrapper/ImageWrapper";
 import { Typography, Box } from "@mui/material";
 import { formatDate } from "@/libs/dateutils";
+import Targets from "@/components/entity/Targets";
 
 const ViewProject = ({ project }: { project: ProjectEntity }) => {
   project.details = updateHtmlAttributes(project.details, {
@@ -59,10 +60,46 @@ const ViewProject = ({ project }: { project: ProjectEntity }) => {
           </Typography>
         ) : null}
 
+        {project?.cout ? (
+          <Box sx={{ display: "flex", flexDirection: "row", gap: 1 }}>
+            <Typography variant={"h6"} sx={{ color: "text.secondary" }}>
+              {"Coût"}
+            </Typography>
+            <Typography
+              variant={"h6"}
+              color={"primary"}
+              sx={{ fontWeight: "bold" }}
+            >
+              {project?.cout}
+            </Typography>
+          </Box>
+        ) : null}
+
         {project?.status ? (
-          <Typography variant={"h6"} sx={{ color: "text.secondary" }}>
-            {`Statut : ${project.status}`}
-          </Typography>
+          <Box sx={{ display: "flex", flexDirection: "row", gap: 1 }}>
+            <Typography variant={"h6"} sx={{ color: "text.secondary" }}>
+              {"Statut"}
+            </Typography>
+            <Typography
+              variant={"h6"}
+              color={"primary"}
+              sx={{ fontWeight: "bold" }}
+            >
+              {project.status}
+            </Typography>
+          </Box>
+        ) : null}
+
+        {project?.targets ? (
+          <Box sx={{ display: "flex", flexDirection: "row", gap: 1 }}>
+            <Typography variant={"h6"} sx={{ color: "text.secondary" }}>
+              {"Public"}
+            </Typography>
+            <Targets
+              id={project?.targets ? project?.targets[0] : 1}
+              entity={"projects_targets"}
+            />
+          </Box>
         ) : null}
       </Box>
 

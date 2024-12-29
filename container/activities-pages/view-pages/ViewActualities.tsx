@@ -68,7 +68,10 @@ const ViewActualities = ({ actuality }: { actuality: ActualitiesEntity }) => {
           <Typography variant={"h6"} sx={{ color: "text.secondary" }}>
             {"Public"}
           </Typography>
-          <Targets id={actuality?.targets ? actuality?.targets[0] : 1} />
+          <Targets
+            id={actuality?.targets ? actuality?.targets[0] : 1}
+            entity={"actualities_targets"}
+          />
         </Box>
       </Box>
       <Typography
