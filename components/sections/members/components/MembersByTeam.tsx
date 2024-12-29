@@ -25,6 +25,7 @@ const MembersByTeam = ({
       entity: "members",
       filter: { team: { _eq: team } },
       limit: 4,
+      sort: ["order"],
     };
 
     try {

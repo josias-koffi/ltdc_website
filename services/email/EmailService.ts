@@ -5,10 +5,16 @@ import {
   ContactInfoInterface,
   EmailSubjectEnum,
   EmailTemplateIdEnum,
+  FormInterface,
   MailDataInterface,
   SponsorShipFormInterface,
   VolunteerShipFormInterface,
 } from "@/libs/interfaces/Interfaces";
+import { generateHtmlTable } from "@/libs/emailtemplate/ArrayTemplate";
+import { generateHtmlFromJsonForBeneficiary } from "@/libs/emailtemplate/BeneficiaryEmailTemplate";
+import { generateHtmlFromJsonForSponsor } from "@/libs/emailtemplate/SponsorEmailTemplate";
+import { generateHtmlFromJsonForVolunteer } from "@/libs/emailtemplate/VolunteerEmailTemplate";
+import { generateHtmlFromJsonForContact } from "@/libs/emailtemplate/ContactEmailTemplate";
 
 const URL = process.env.BREVO_API_URL;
 const BREVO_API_KEY = process.env.BREVO_API_KEY;
@@ -28,7 +34,7 @@ async function sendEmail(
   }
 
   try {
-    const response = await fetch(URL, {
+    await fetch(URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -53,11 +59,7 @@ async function sendEmail(
  * @returns {Promise<{ response: string }>} A promise that resolves with a success message after sending the email.
  */
 export default async function mailHandler(
-  body:
-    | BeneficiaryShipFormInterface
-    | SponsorShipFormInterface
-    | VolunteerShipFormInterface
-    | ContactInfoInterface,
+  body: FormInterface,
   subject: EmailSubjectEnum,
 ): Promise<{ response: string }> {
   if (!URL || !BREVO_API_KEY || !DESTINATION) {
@@ -68,7 +70,7 @@ export default async function mailHandler(
     sender: { name: "Info Service", email: DESTINATION },
     to: [{ name: "Info Service", email: DESTINATION }], // Remplacez par le destinataire réel
     subject: subject,
-    htmlContent: generateHtmlTable(body),
+    htmlContent: createCorrespondingRequestBody(body),
   };
 
   await sendEmail(mailData);
@@ -85,11 +87,7 @@ export default async function mailHandler(
  * @returns {Promise<{ response: string }>} A promise that resolves with a success message after sending the email.
  */
 const responseMailToUser = async (
-  contactInfo:
-    | BeneficiaryShipFormInterface
-    | SponsorShipFormInterface
-    | VolunteerShipFormInterface
-    | ContactInfoInterface,
+  contactInfo: FormInterface,
   subject: EmailSubjectEnum,
 ): Promise<{ response: string }> => {
   if (!URL || !BREVO_API_KEY || !DESTINATION) {
@@ -115,35 +113,22 @@ const responseMailToUser = async (
   return { response: "Email sent successfully" };
 };
 
-/**
- * Generates an HTML table from the provided data.
- *
- * @param {BeneficiaryShipFormInterface | SponsorShipFormInterface | VolunteerShipFormInterface} data - The data to be used to generate the HTML table.
- * @return {string} The HTML table as a string.
- */
-function generateHtmlTable(
-  data:
-    | BeneficiaryShipFormInterface
-    | SponsorShipFormInterface
-    | VolunteerShipFormInterface
-    | ContactInfoInterface,
-): string {
-  // Create table rows
-  const rows = Object.entries(data)
-    .map(([key, value]) => {
-      if (Array.isArray(value)) {
-        value = value.join(", ");
-      } else if (typeof value === "boolean") {
-        value = value ? "Oui" : "Non";
-      }
-      return `<tr><td><strong>${key}</strong></td><td>${value}</td></tr>`;
-    })
-    .join("");
-
-  // Generate the HTML table
-  return `
-        <table border="1" cellpadding="5" cellspacing="0">
-            ${rows}
-        </table>
-    `;
-}
+const createCorrespondingRequestBody = (body: FormInterface) => {
+  if ("beneficiarySpecificField" in body) {
+    // Vérifiez un champ spécifique unique à BeneficiaryShipFormInterface
+    return generateHtmlFromJsonForBeneficiary(
+      body as BeneficiaryShipFormInterface,
+    );
+  } else if ("sponsorSpecificField" in body) {
+    // Vérifiez un champ spécifique unique à SponsorShipFormInterface
+    return generateHtmlFromJsonForSponsor(body as SponsorShipFormInterface);
+  } else if ("volunteerSpecificField" in body) {
+    // Vérifiez un champ spécifique unique à VolunteerShipFormInterface
+    return generateHtmlFromJsonForVolunteer(body as VolunteerShipFormInterface);
+  } else if ("contactSpecificField" in body) {
+    // Vérifiez un champ spécifique unique à ContactInfoInterface
+    return generateHtmlFromJsonForContact(body as ContactInfoInterface);
+  } else {
+    throw new Error("Unrecognized form type");
+  }
+};

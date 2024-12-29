@@ -36,17 +36,17 @@ interface Props {
 }
 
 const defaultData: BeneficiaryShipFormInterface = {
+  beneficiarySpecificField: "",
   name: "",
   firstName: "",
   phoneNumber: "",
   email: "",
   birthday: dayjs("2000-01-01"),
   nationality: [""],
-  adresse: "",
+  adress: "",
   statut: "",
   dateArrived: dayjs().subtract(1, "year"),
   object: "",
-  message: "",
   consent: false,
   gender: "femme",
   familySituation: "célibataire",
@@ -345,7 +345,7 @@ const BeneficiaryShipForm = ({ countyFlags }: Props) => {
               name="adress"
               type="string"
               onChange={handleChange}
-              value={data?.adresse}
+              value={data?.adress}
               required
             />
             <TextField
@@ -451,7 +451,7 @@ const BeneficiaryShipForm = ({ countyFlags }: Props) => {
               label="Statut (Demandeur d’asile, Réfugié, Sans-papiers, etc.) "
               name="statut"
               onChange={handleChange}
-              value={data?.statut}
+              value={data?.actualStatut}
               required
             />
             <br />
@@ -460,7 +460,7 @@ const BeneficiaryShipForm = ({ countyFlags }: Props) => {
               variant={"outlined"}
               sx={{ width: "100%" }}
               label="Niveau d'études"
-              name="object"
+              name="degree"
               onChange={handleChange}
               value={data?.degree}
               required
@@ -655,7 +655,7 @@ const BeneficiaryShipForm = ({ countyFlags }: Props) => {
               variant={"outlined"}
               sx={{ width: "100%" }}
               label="Si oui, précisez le lien familial et la durée du titre de séjour"
-              name="object"
+              name="familyLink"
               onChange={handleChange}
               value={data?.familyLink}
               disabled={data?.familyInFrance !== "oui"}

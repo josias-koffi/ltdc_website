@@ -52,7 +52,8 @@ const FormSection = ({
     try {
       const temp: any = contactInfo;
       temp.subject = temp.subject?.subject;
-      await mailHandler(temp, EmailSubjectEnum.Demande_de_general);
+      console.log(temp);
+      await mailHandler(contactInfo, EmailSubjectEnum.Demande_de_general);
     } catch (error) {
       console.log(error);
     }

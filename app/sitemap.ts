@@ -7,17 +7,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${domain}`,
       lastModified: new Date(),
-      changeFrequency: "weekly",
+      changeFrequency: "yearly",
       priority: 1.0,
     },
     {
       url: `${domain}about`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${domain}activities`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,
@@ -55,7 +49,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${domain}esf-program`,
       lastModified: new Date(),
-      changeFrequency: "monthly",
+      changeFrequency: "yearly",
       priority: 0.8,
     },
     {

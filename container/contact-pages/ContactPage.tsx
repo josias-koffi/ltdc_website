@@ -11,6 +11,7 @@ interface Props {
 
 const ContactPage = (props: Props) => {
   const defaultValue: ContactInfoInterface = {
+    contactSpecificField: "",
     subject: {
       id: 0,
       subject: "Question sur l’association",

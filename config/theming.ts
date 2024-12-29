@@ -1,4 +1,12 @@
 import { createTheme } from "@mui/material/styles";
+import { Sen } from "next/font/google";
+
+const sen = Sen({
+  subsets: ["latin"],
+  weight: ["400"],
+  display: "swap",
+  adjustFontFallback: false,
+});
 
 export const themeOptions: any = createTheme({
   palette: {
@@ -11,6 +19,6 @@ export const themeOptions: any = createTheme({
     },
   },
   typography: {
-    fontFamily: ["Sen"].join(","),
+    fontFamily: sen.style.fontFamily,
   },
 });

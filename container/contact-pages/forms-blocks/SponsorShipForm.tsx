@@ -26,6 +26,7 @@ interface Props {
 }
 
 const defaultData: SponsorShipFormInterface = {
+  sponsorSpecificField: "",
   name: "",
   firstName: "",
   adresse: "",

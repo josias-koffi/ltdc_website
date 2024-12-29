@@ -1,8 +1,15 @@
 import { Dayjs } from "dayjs";
 
+export type FormInterface =
+  | BeneficiaryShipFormInterface
+  | SponsorShipFormInterface
+  | VolunteerShipFormInterface
+  | ContactInfoInterface;
+
 export enum EmailTemplateIdEnum {
   Automatic_response = 1,
   Reponse_automatique_maraude = 2,
+  Reponse_Formulaire_Beneficiaire = 3,
 }
 
 export enum EmailSubjectEnum {
@@ -33,6 +40,7 @@ export interface FetchProps {
   limit?: number;
   page?: number;
   filter?: any;
+  sort?: string[];
 }
 
 export interface EntityInterface {
@@ -59,6 +67,7 @@ export interface MailSubjectInterface {
 }
 
 export interface ContactInfoInterface {
+  contactSpecificField: string;
   subject: SubjectStateInterface | undefined;
   name: string;
   email: string;
@@ -74,6 +83,7 @@ export interface SubjectStateInterface {
 }
 
 export interface BeneficiaryShipFormInterface {
+  beneficiarySpecificField: string;
   name: string;
   firstName: string;
   phoneNumber: string;
@@ -83,9 +93,8 @@ export interface BeneficiaryShipFormInterface {
   statut: string;
   dateArrived: string | Dayjs;
   object: string;
-  message: string;
   consent: boolean;
-  adresse: string;
+  adress: string;
   gender: "homme" | "femme" | "autre";
   familySituation: "célibataire" | "marié(e)" | "autre";
   otherFamilySituation: string;
@@ -109,6 +118,7 @@ export interface BeneficiaryShipFormInterface {
 }
 
 export interface SponsorShipFormInterface {
+  sponsorSpecificField: string;
   name: string;
   firstName: string;
   adresse: string;
@@ -127,6 +137,7 @@ export interface SponsorShipFormInterface {
 }
 
 export interface VolunteerShipFormInterface {
+  volunteerSpecificField: string;
   name: string;
   firstName: string;
   birthday: string | Dayjs;
