@@ -9,6 +9,7 @@ import { FetchProps } from "@/libs/interfaces/Interfaces";
 import { getItems } from "@/libs/directus";
 import ImageWrapper from "@/components/wrapper/ImageWrapper";
 import { returnImageUrlById } from "@/libs/stringUtils";
+import MappingRoles from "@/components/sections/members/components/MappingRoles";
 
 const MembersByTeam = ({
   team,
@@ -24,6 +25,7 @@ const MembersByTeam = ({
       entity: "members",
       filter: { team: { _eq: team } },
       limit: 4,
+      sort: ["order"],
     };
 
     try {
@@ -41,11 +43,40 @@ const MembersByTeam = ({
   }, [team]);
 
   return (
-    <ContainerWrapper>
+    <ContainerWrapper
+      sxProps={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        justifyItems: "center",
+        alignContent: "center",
+      }}
+    >
       {showTips && (
-        <Chip label={team} color="primary" sx={{ borderRadius: 1, mb: 2 }} />
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "flex-start",
+            width: "100%",
+          }}
+        >
+          <Chip
+            label={team}
+            color="primary"
+            sx={{ borderRadius: 2, mb: 2, fontSize: 18, px: 4 }}
+          />
+        </Box>
       )}
-      <Grid container spacing={4} sx={{ width: "100%", justifyContent: "flex-start" }}>
+      <Grid
+        container
+        spacing={4}
+        sx={{
+          width: "100%",
+          justifyContent: { md: "center", xl: "flex-start" },
+        }}
+      >
         {membersInfo.map((member: MemberEntity) => (
           <Grid item key={member.id} xs={12} sm={6} md={4} lg={3}>
             <Box sx={{ position: "relative", mb: 8 }}>
@@ -60,15 +91,14 @@ const MembersByTeam = ({
               >
                 <ImageWrapper
                   src={returnImageUrlById(member.photo)}
-                  alt={member.Role || "Member photo"}
-                  layout="fill"
+                  alt={`${member?.name} ${member.team}`}
                   objectFit="cover"
                   objectPosition="center"
+                  height={400}
                 />
               </Box>
               <Box
                 sx={{
-                  p: 2,
                   zIndex: 100,
                   backgroundColor: "#FFFFFF",
                   display: "flex",
@@ -86,11 +116,17 @@ const MembersByTeam = ({
                   boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
                 }}
               >
-                <Typography variant="h6" sx={{ textAlign: "center", width: "100%" }}>
+                <Typography
+                  variant="h6"
+                  sx={{ textAlign: "center", width: "100%" }}
+                >
                   {member?.name}
                 </Typography>
-                <Typography color="text.secondary" sx={{ textAlign: "center", width: "100%" }}>
-                  {member?.Role}
+                <Typography
+                  color="text.secondary"
+                  sx={{ textAlign: "center", width: "100%" }}
+                >
+                  <MappingRoles roles={member?.roles} />
                 </Typography>
               </Box>
             </Box>

@@ -3,7 +3,7 @@ interface Status {
 }
 
 export enum Team {
-  ADMINISTRATION = "ADMINISTRATION",
+  DIRECTION = "DIRECTION",
   IT = "IT",
   FINANCE = "FINANCE",
   MARKETING = "MARKETING",
@@ -20,15 +20,15 @@ export enum Role {
   PRESIDENTE_RESPONSABLE_JURIDIQUE = "PRESIDENTE & RESPONSABLE JURIDIQUE",
   VICE_PRESIDENTE_RESPONSABLE_IT_MARKETING = "VICE PRESIDENTE, RESPONSABLE IT &MARKETING",
   RESPONSABLE_TRESORERIE = "RESPONSABLE TRESORERIE",
-  JURISTE = "JURISTE"
+  JURISTE = "JURISTE",
 }
-
 
 export interface MemberEntity {
   id: number;
   team: Team;
   photo: string;
-  Role: string;
+  name: string;
+  roles: Role[];
 }
 
 export interface ActualitiesCategoriesEntity {
@@ -38,6 +38,10 @@ export interface ActualitiesCategoriesEntity {
 
 export interface ActualitiesTargetsEntity {
   actualities_id: ActualitiesEntity;
+  targets_id: TargetsEntity;
+}
+export interface ProjectsTargetsEntity {
+  actualities_id: ProjectEntity;
   targets_id: TargetsEntity;
 }
 
@@ -71,6 +75,25 @@ export interface ActualitiesEntity {
   title: string;
   user_created: string;
   user_updated?: string;
+}
+export interface ProjectEntity {
+  targets?: TargetsEntity[];
+  details: string;
+  cover: string | FilesInterface;
+  date_created: string;
+  date_updated?: string;
+  description: string;
+  end_date?: string;
+  id: number;
+  start_date: string;
+  sort?: any;
+  sources?: string;
+  resources?: string;
+  status: Status["value"];
+  title: string;
+  user_created: string;
+  user_updated?: string;
+  cout?: number;
 }
 
 export interface FilesInterface {

@@ -81,7 +81,7 @@ const ActivitiesSection = (props: ActivitiesSectionInterface) => {
               }}
             >
               <ImageWrapper
-                src={"/images/activitiesSection/About_Us.png"}
+                src={"/images/activitiesSection/About_Us.webp"}
                 alt={"activity image"}
                 objectFit={"contain"}
                 height={600}

@@ -12,8 +12,6 @@ const AssoHistorySection = () => {
   const { text } = assoHistory;
   const notPhoneScreen = useContext(ScreenTypeContext);
 
-  const cleanedAndFormattedText = cleanAndFormatText(text);
-
   return (
     <Box
       sx={{
@@ -36,7 +34,7 @@ const AssoHistorySection = () => {
             </Typography>
             <Typography
               component="div"
-              dangerouslySetInnerHTML={{ __html: cleanedAndFormattedText }}
+              dangerouslySetInnerHTML={{ __html: text }}
               color={"text.secondary"}
             />
           </Grid>

@@ -34,6 +34,7 @@ interface Props {
 }
 
 const defaultData: VolunteerShipFormInterface = {
+  volunteerSpecificField: "",
   name: "",
   firstName: "",
   birthday: dayjs("2000-01-01"),
@@ -69,7 +70,7 @@ const VolunteerShipForm = ({ countyFlags }: Props) => {
   ];
 
   const subjects: EmailSubjectEnum[] = [
-    EmailSubjectEnum.Demande_de_beneficiaire,
+    EmailSubjectEnum.Demande_de_volontariat,
     EmailSubjectEnum.Demande_de_pour_la_maraude,
   ];
 

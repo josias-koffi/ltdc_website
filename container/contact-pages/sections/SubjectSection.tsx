@@ -45,14 +45,14 @@ const SubjectSection = (props: SubjectProps) => {
         spacing={5}
         sx={{
           color: "#fff",
-          pt: 5,
+          pt: 3,
         }}
       >
         {subjects?.map((subject: SubjectStateInterface) => {
           return (
             <Grid
               key={subject.id}
-              size={{ xl: 4, md: 4, sm: 12, xs: 12 }}
+              size={{ xl: 4, md: 6, sm: 12, xs: 12 }}
               sx={{
                 display: "flex",
                 flexDirection: "column",
@@ -72,7 +72,7 @@ const SubjectSection = (props: SubjectProps) => {
                   flexDirection: "column",
                   justifyContent: "space-between",
                   alignItems: "center",
-                  p: 5,
+                  p: 2,
                   gap: 2,
                   "&:hover": {
                     cursor: "pointer",
@@ -85,10 +85,10 @@ const SubjectSection = (props: SubjectProps) => {
                 <Image
                   src={subject.image}
                   alt={`${subject.subject}icon`}
-                  width={80}
-                  height={80}
+                  width={48}
+                  height={48}
                 />
-                <Typography variant={notPhoneScreen ? "h4" : "h5"}>
+                <Typography variant={notPhoneScreen ? "h5" : "h6"}>
                   {subject?.subject}
                 </Typography>
               </Box>
@@ -100,7 +100,7 @@ const SubjectSection = (props: SubjectProps) => {
   };
 
   return (
-    <ContainerWrapper sxProps={{ py: 10 }}>
+    <ContainerWrapper sxProps={{ py: 2 }}>
       <Box
         sx={{
           display: "flex",

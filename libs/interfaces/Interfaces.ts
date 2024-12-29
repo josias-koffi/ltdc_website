@@ -1,8 +1,15 @@
 import { Dayjs } from "dayjs";
 
+export type FormInterface =
+  | BeneficiaryShipFormInterface
+  | SponsorShipFormInterface
+  | VolunteerShipFormInterface
+  | ContactInfoInterface;
+
 export enum EmailTemplateIdEnum {
   Automatic_response = 1,
   Reponse_automatique_maraude = 2,
+  Reponse_Formulaire_Beneficiaire = 3,
 }
 
 export enum EmailSubjectEnum {
@@ -33,6 +40,7 @@ export interface FetchProps {
   limit?: number;
   page?: number;
   filter?: any;
+  sort?: string[];
 }
 
 export interface EntityInterface {
@@ -46,7 +54,8 @@ export interface EntityInterface {
     | "targets"
     | "actualities_categories"
     | "actualities_targets"
-    | "members";
+    | "members"
+    | "projects_targets";
 }
 
 export interface MailSubjectInterface {
@@ -59,6 +68,7 @@ export interface MailSubjectInterface {
 }
 
 export interface ContactInfoInterface {
+  contactSpecificField: string;
   subject: SubjectStateInterface | undefined;
   name: string;
   email: string;
@@ -74,6 +84,7 @@ export interface SubjectStateInterface {
 }
 
 export interface BeneficiaryShipFormInterface {
+  beneficiarySpecificField: string;
   name: string;
   firstName: string;
   phoneNumber: string;
@@ -83,11 +94,32 @@ export interface BeneficiaryShipFormInterface {
   statut: string;
   dateArrived: string | Dayjs;
   object: string;
-  message: string;
   consent: boolean;
+  adress: string;
+  gender: "homme" | "femme" | "autre";
+  familySituation: "célibataire" | "marié(e)" | "autre";
+  otherFamilySituation: string;
+  oqtf: "oui" | "non";
+  oqtfReceptionDate: string | Dayjs;
+  residentPermitPending: "oui" | "non";
+  residentPermitRequestDate: string | Dayjs;
+  actualStatut: string;
+  working: "oui" | "non";
+  workTitle: string;
+  cddOrInterim: "oui" | "non";
+  workProof: "oui" | "non";
+  degree: string;
+  formationInProgress: "oui" | "non";
+  formationPrecision: string;
+  stablePlace: "oui" | "non";
+  helpForSearchPlace: "oui" | "non";
+  familyInFrance: "oui" | "non";
+  familyLink: string;
+  moreInfo: string;
 }
 
 export interface SponsorShipFormInterface {
+  sponsorSpecificField: string;
   name: string;
   firstName: string;
   adresse: string;
@@ -106,6 +138,7 @@ export interface SponsorShipFormInterface {
 }
 
 export interface VolunteerShipFormInterface {
+  volunteerSpecificField: string;
   name: string;
   firstName: string;
   birthday: string | Dayjs;
