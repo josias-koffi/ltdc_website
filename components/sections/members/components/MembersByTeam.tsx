@@ -108,7 +108,7 @@ const MembersByTeam = ({
                   gap: 1,
                   borderRadius: 2,
                   position: "absolute",
-                  bottom: -60,
+                  bottom: -50,
                   left: "50%",
                   transform: "translateX(-50%)",
                   width: "90%",
