@@ -9,10 +9,10 @@ import {
   Typography,
   Stack,
 } from "@mui/material";
-import Category from "@/components/entity/Category";
 import { truncateText } from "@/libs/stringUtils";
 import { formatDate } from "@/libs/dateutils";
 import { ProjectEntity } from "@/libs/interfaces/entities";
+import Targets from "@/components/entity/Targets";
 
 const ProjectCard = ({ props }: { props: ProjectEntity }) => {
   return (
@@ -33,7 +33,10 @@ const ProjectCard = ({ props }: { props: ProjectEntity }) => {
             color: "text.secondary",
           }}
         >
-          <Category id={props?.categories} />
+          <Targets
+            id={props?.targets ? props?.targets[0] : 1}
+            entity={"projects_targets"}
+          />
           <Typography>{formatDate(props?.start_date)}</Typography>
         </Stack>
 

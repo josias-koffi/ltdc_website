@@ -40,6 +40,10 @@ export interface ActualitiesTargetsEntity {
   actualities_id: ActualitiesEntity;
   targets_id: TargetsEntity;
 }
+export interface ProjectsTargetsEntity {
+  actualities_id: ProjectEntity;
+  targets_id: TargetsEntity;
+}
 
 export interface CategoriesEntity {
   id: string;
@@ -73,7 +77,6 @@ export interface ActualitiesEntity {
   user_updated?: string;
 }
 export interface ProjectEntity {
-  categories?: CategoriesEntity[];
   targets?: TargetsEntity[];
   details: string;
   cover: string | FilesInterface;
@@ -90,6 +93,7 @@ export interface ProjectEntity {
   title: string;
   user_created: string;
   user_updated?: string;
+  cout?: number;
 }
 
 export interface FilesInterface {
