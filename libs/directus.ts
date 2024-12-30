@@ -20,14 +20,17 @@ export const getItems = async ({
 }: FetchProps) => {
   let createFilter = {
     ...{ fields: [deepFields ? "*.*.*" : "*"] },
-    ...{ limit },
+    //@ts-expect-error error
+    ...limit,
     //@ts-expect-error error
     ...page,
-    ...{ sort },
   };
 
   if (filter) {
     createFilter = { ...createFilter, ...{ filter } };
+  }
+  if (sort) {
+    createFilter = { ...createFilter, ...{ sort } };
   }
   try {
     //@ts-expect-error Type error: Argument of type 'string' is not assignable to parameter of type 'never'
