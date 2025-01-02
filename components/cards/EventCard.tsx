@@ -58,7 +58,7 @@ const EventCard = ({ props }: { props: EventInterface }) => {
             <Chip
               label={formatDate(
                 props?.start_date,
-                "dddd D MMMM YYYY [à] HH [h] MM",
+                "dddd D MMMM YYYY [à] HH [h] mm",
               )}
               sx={{
                 m: 1,
