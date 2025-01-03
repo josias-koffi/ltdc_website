@@ -29,6 +29,7 @@ export interface MemberEntity {
   photo: string;
   name: string;
   roles: Role[];
+  main_role: string;
 }
 
 export interface ActualitiesCategoriesEntity {

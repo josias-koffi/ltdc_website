@@ -118,9 +118,20 @@ const MembersByTeam = ({
               >
                 <Typography
                   variant="h6"
-                  sx={{ textAlign: "center", width: "100%" }}
+                  sx={{
+                    textAlign: "center",
+                    width: "100%",
+                    fontWeight: "bold",
+                  }}
                 >
                   {member?.name}
+                </Typography>
+                <Typography
+                  variant="h6"
+                  color={"primary"}
+                  sx={{ textAlign: "center", width: "100%" }}
+                >
+                  {member?.main_role}
                 </Typography>
                 <Typography
                   color="text.secondary"
