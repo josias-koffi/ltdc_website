@@ -160,3 +160,9 @@ export interface VolunteerShipFormInterface {
   skills: string;
   consent: boolean;
 }
+
+export interface PartnerImageInterface {
+  name: string;
+  url: string;
+  sourceName: string;
+}
