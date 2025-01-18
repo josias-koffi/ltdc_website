@@ -4,6 +4,7 @@ import ValuesSection from "@/components/sections/values/ValuesSection";
 import ActivitiesSection from "@/components/sections/activities/ActivitiesSection";
 import CampaignSection from "@/container/home-pages/sections/CampaignSection";
 import ReviewSection from "@/components/sections/review/ReviewSection";
+import PartnerSection from "@/components/sections/partner/PartnerSection";
 
 const HomePage = () => {
   return (
@@ -11,6 +12,7 @@ const HomePage = () => {
       <HeroSection />
       <ValuesSection />
       <ActivitiesSection />
+      <PartnerSection />
       <CampaignSection />
       <ReviewSection />
     </div>
