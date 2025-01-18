@@ -37,7 +37,7 @@ const PartnerSection = () => {
           alignItems: "center",
           justifyContent: "center",
           gap: 5,
-          py: 10,
+          py: 5,
         }}
       >
         {partnerImages?.map((partner) => (
