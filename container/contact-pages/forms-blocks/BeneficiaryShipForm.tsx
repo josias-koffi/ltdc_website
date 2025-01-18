@@ -399,7 +399,7 @@ const BeneficiaryShipForm = ({ countyFlags }: Props) => {
                 onChange={handleChange}
               >
                 <FormControlLabel value="oui" control={<Radio />} label="Oui" />
-                <FormControlLabel value="non" control={<Radio />} label="Nom" />
+                <FormControlLabel value="non" control={<Radio />} label="Non" />
               </RadioGroup>
             </FormControl>
             <DatePicker
