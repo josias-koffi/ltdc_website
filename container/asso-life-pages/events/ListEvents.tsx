@@ -14,7 +14,7 @@ const ListEvents = () => {
           "Visitez régulièrement cette rubrique pour ne rien rater et rejoignez nous pour des moments enrichissants et conviviaux."
         }
         imageAlt={"image de test"}
-        imageUrl={"/images/enventPage/event-section-cover.jpeg"}
+        imageUrl={"/images/enventPage/wmremove-transformed.jpeg"}
       />
       <ListFromEntity
         entity={"events"}
