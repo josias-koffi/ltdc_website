@@ -55,7 +55,8 @@ export interface EntityInterface {
     | "actualities_categories"
     | "actualities_targets"
     | "members"
-    | "projects_targets";
+    | "projects_targets"
+    | "offer";
 }
 
 export interface MailSubjectInterface {
