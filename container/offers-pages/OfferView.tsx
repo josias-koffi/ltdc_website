@@ -24,11 +24,7 @@ const OfferView = ({ offer }: { offer: OfferEntity }) => {
           {`À Propos de LTDC`}
         </Typography>
         <Typography variant="body1" sx={{ color: "text.secondary" }}>
-          {`🌟 L'association "Les travailleurs du cœur" (LTDC) s'engage à
-                accompagner les personnes en situation irrégulière dans leur parcours
-                de formation, d'emploi et de logement. Nous croyons en un monde où
-                chacun mérite une chance égale de s'épanouir et de bâtir un avenir
-                meilleur.🌟`}
+          {`🌟 L'association "Les travailleurs du cœur" (LTDC) s'engage à accompagner les personnes en situation irrégulière dans leur parcours de formation, d'emploi et de logement. Nous croyons en un monde où chacun mérite une chance égale de s'épanouir et de bâtir un avenirmeilleur.🌟`}
         </Typography>
         <Typography variant="h4" color={"secondary"}>
           {`Nos Valeurs`}
@@ -121,12 +117,10 @@ const OfferView = ({ offer }: { offer: OfferEntity }) => {
           <Link href={"mailto:recrutement@asso-ltdc.org"}>
             recrutement@asso-ltdc.org
           </Link>{" "}
-          {`. Nous serions ravis de vous accueillir au sein de notre associationet de travailler ensemble pour créer un avenir meilleur pour tous.`}
+          {`. Nous serions ravis de vous accueillir au sein de notre association et de travailler ensemble pour créer un avenir meilleur pour tous.`}
         </Typography>
         <Typography>
-          {`Nous avons hâte de découvrir vos talents et de faire équipe avec vous
-                pour continuer à bâtir une communauté solidaire et inclusive. "Mettons
-                du cœur à l'ouvrage" et faisons la différence ensemble ! ❤️`}
+          {`Nous avons hâte de découvrir vos talents et de faire équipe avec vous pour continuer à bâtir une communauté solidaire et inclusive. "Mettons du cœur à l'ouvrage" et faisons la différence ensemble ! ❤️`}
         </Typography>
       </Box>
     </ContainerWrapper>
