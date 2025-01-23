@@ -105,7 +105,7 @@ const OfferView = ({ offer }: { offer: OfferEntity }) => {
             <Typography>
               <strong>Expériences Enrichissantes</strong> 🌈: Vivez des
               expériences humaines uniques et inspirantes en participant à de
-              <strong>beaux projets en cours et à venir</strong>.
+              <strong> beaux projets en cours et à venir</strong>.
             </Typography>
           </li>
         </ul>

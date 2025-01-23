@@ -24,11 +24,11 @@ export const generateMetadata = async ({
 }: {
   params: { id: string };
 }): Promise<Metadata> => {
-  const actuality = await fetchOffers(params.id);
+  const offer = await fetchOffers(params.id);
 
   return {
-    title: actuality?.name || "Offres",
-    description: actuality?.description || "Discover the latest offer",
+    title: offer?.name || "Offres",
+    description: offer?.description || "Discover the latest offer",
   };
 };
 

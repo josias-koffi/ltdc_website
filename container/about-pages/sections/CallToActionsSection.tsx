@@ -71,7 +71,7 @@ const CallToActionsSection = () => {
           </Box>
           <Button
             variant={"contained"}
-            href={"/contact/general"}
+            href={"/offers"}
             endIcon={<IconChevronRight />}
           >
             {"Nous rejoindre"}
