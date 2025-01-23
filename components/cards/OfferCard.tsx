@@ -23,7 +23,7 @@ const OfferCard = ({ props }: { props: OfferEntity }) => {
           variant="subtitle1"
           sx={{ color: "text.secondary" }}
           dangerouslySetInnerHTML={{
-            __html: truncateText(props?.description, 300),
+            __html: truncateText(props?.description, 250),
           }}
         />
       </CardContent>

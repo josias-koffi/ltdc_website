@@ -44,6 +44,10 @@ const ButtonList = (props: Props) => {
       link: "/contact/as-sponsor",
     },
     {
+      name: "Nos offres",
+      link: "/contact/offers",
+    },
+    {
       name: "Contact",
       link: "/contact/general",
     },
@@ -62,6 +66,7 @@ const ButtonList = (props: Props) => {
           href={item.link}
           variant={item?.variant}
           target={item?.variant}
+          sx={{ textWrap: "nowrap" }}
         >
           {item?.name}
         </Button>
@@ -101,6 +106,7 @@ const ButtonList = (props: Props) => {
           justifyContent: "space-between",
           alignItems: "space-between",
           gap: 1,
+          textWrap: "nowrap",
         }}
       >
         {mapButtons()}
