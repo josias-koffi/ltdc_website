@@ -55,7 +55,8 @@ export interface EntityInterface {
     | "actualities_categories"
     | "actualities_targets"
     | "members"
-    | "projects_targets";
+    | "projects_targets"
+    | "offer";
 }
 
 export interface MailSubjectInterface {
@@ -159,4 +160,10 @@ export interface VolunteerShipFormInterface {
   experiences: string;
   skills: string;
   consent: boolean;
+}
+
+export interface PartnerImageInterface {
+  name: string;
+  url: string;
+  sourceName: string;
 }

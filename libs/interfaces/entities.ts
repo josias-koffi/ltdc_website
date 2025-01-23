@@ -23,6 +23,17 @@ export enum Role {
   JURISTE = "JURISTE",
 }
 
+export interface OfferEntity {
+  id: number;
+  name: string;
+  status: string;
+  date_created: string;
+  date_updated: string;
+  description: string;
+  responsabilities: string;
+  profile: string;
+}
+
 export interface MemberEntity {
   id: number;
   team: Team;
