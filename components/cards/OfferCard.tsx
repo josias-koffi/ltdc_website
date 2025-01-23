@@ -27,7 +27,7 @@ const OfferCard = ({ props }: { props: OfferEntity }) => {
           }}
         />
       </CardContent>
-      <CardActions sx={{ justifyContent: "flex-end", pt: 5 }}>
+      <CardActions sx={{ justifyContent: "flex-end", pt: 10 }}>
         <Button variant={"contained"} href={"offers/" + props?.id}>
           {"Voir l'offre"}
         </Button>
