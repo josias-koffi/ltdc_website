@@ -51,8 +51,6 @@ const FormSection = ({
   const handleSubmit = async () => {
     try {
       const temp: any = contactInfo;
-      temp.subject = temp.subject?.subject;
-      console.log(temp);
       await mailHandler(contactInfo, EmailSubjectEnum.Demande_de_general);
     } catch (error) {
       console.log(error);

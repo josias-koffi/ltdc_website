@@ -41,6 +41,7 @@ export interface MemberEntity {
   name: string;
   roles: Role[];
   main_role: string;
+  itv?: string;
 }
 
 export interface ActualitiesCategoriesEntity {

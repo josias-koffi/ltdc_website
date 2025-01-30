@@ -3,22 +3,33 @@
 import React, { useEffect, useState } from "react";
 import { MemberEntity, Team } from "@/libs/interfaces/entities";
 import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
-import { Chip, Box, Typography } from "@mui/material";
-import Grid from "@mui/material/Grid";
+import { Chip, Box, Typography, Dialog } from "@mui/material";
+import Grid from "@mui/material/Grid2";
 import { FetchProps } from "@/libs/interfaces/Interfaces";
 import { getItems } from "@/libs/directus";
 import ImageWrapper from "@/components/wrapper/ImageWrapper";
 import { returnImageUrlById } from "@/libs/stringUtils";
 import MappingRoles from "@/components/sections/members/components/MappingRoles";
+import CustomDialog from "@/components/dialog/CustomDialog";
+import VideoPlayer from "@/components/sections/video/warpper/VideoPlayer";
 
 const MembersByTeam = ({
   team,
   showTips = true,
+  isInteractive = false,
 }: {
   team: Team;
   showTips?: boolean;
+  isInteractive?: boolean;
 }) => {
   const [membersInfo, setMembersInfo] = useState<MemberEntity[]>([]);
+  const [activeMember, setActiveMember] = useState<MemberEntity>();
+
+  const [open, setOpen] = React.useState<boolean>(false);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const fetchMembers = async () => {
     const filter: FetchProps = {
@@ -37,10 +48,20 @@ const MembersByTeam = ({
       console.error("Error fetching members:", e);
     }
   };
+  const getVideoUrl = (itvUrl: MemberEntity["itv"]): string => {
+    return `${process.env.NEXT_PUBLIC_BO_URL}assets/${itvUrl}`;
+  };
 
   useEffect(() => {
     fetchMembers();
   }, [team]);
+
+  const handleClickActiveMember = (member: MemberEntity) => {
+    if (member?.itv) {
+      setActiveMember(member);
+      setOpen(true);
+    }
+  };
 
   return (
     <ContainerWrapper
@@ -77,9 +98,35 @@ const MembersByTeam = ({
           justifyContent: { md: "center", xl: "flex-start" },
         }}
       >
+        <CustomDialog
+          title={`ITV de ${activeMember?.name}`}
+          open={open}
+          handleClose={handleClose}
+        >
+          <VideoPlayer
+            videoUrl={getVideoUrl(activeMember?.itv)}
+            controls
+            autoPlay={false}
+            muted={false}
+            loop={false}
+            playsInline
+          />
+        </CustomDialog>
         {membersInfo.map((member: MemberEntity) => (
-          <Grid item key={member.id} xs={12} sm={6} md={4} lg={3}>
-            <Box sx={{ position: "relative", mb: 8 }}>
+          <Grid key={member.id} size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
+            <Box
+              onClick={() => {
+                handleClickActiveMember(member);
+              }}
+              sx={{
+                position: "relative",
+                mb: 8,
+                // Si l'élément est interactif, on change le curseur
+                cursor: isInteractive ? "pointer" : "default",
+                // Transition pour animer le changement de boxShadow/bordure
+                transition: "box-shadow 0.3s ease, border 0.3s ease",
+              }}
+            >
               <Box
                 sx={{
                   position: "relative",
@@ -95,6 +142,15 @@ const MembersByTeam = ({
                   objectFit="cover"
                   objectPosition="center"
                   height={400}
+                  sx={{
+                    // Au survol (hover), on applique le glow UNIQUEMENT si isInteractive === true
+                    ...(isInteractive &&
+                      member?.itv && {
+                        "&:hover": {
+                          boxShadow: "0 0 25px 20px rgba(237, 162, 107, 0.5)",
+                        },
+                      }),
+                  }}
                 />
               </Box>
               <Box
