@@ -1,6 +1,10 @@
 import React from "react";
 import { Box, IconButton } from "@mui/material";
-import { IconBrandInstagram, IconBrandLinkedin } from "@tabler/icons-react";
+import {
+  IconBrandInstagram,
+  IconBrandLinkedin,
+  IconBrandYoutube,
+} from "@tabler/icons-react";
 
 const SocialLinks = ({
   preset = true,
@@ -35,6 +39,13 @@ const SocialLinks = ({
         target="_blank"
       >
         <IconBrandLinkedin color="white" size={30} />
+      </IconButton>
+      <IconButton
+        href={"https://www.youtube.com/@AssociationLTDC"}
+        aria-label="youtube"
+        target="_blank"
+      >
+        <IconBrandYoutube color="white" size={30} />
       </IconButton>
     </Box>
   ) : (
