@@ -57,7 +57,7 @@ const MembersByTeam = ({
   }, [team]);
 
   const handleClickActiveMember = (member: MemberEntity) => {
-    if (member?.itv) {
+    if (member?.itv && isInteractive) {
       setActiveMember(member);
       setOpen(true);
     }
