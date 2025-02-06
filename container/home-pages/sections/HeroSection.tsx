@@ -25,7 +25,7 @@ const HeroSection = () => {
 
   return (
     <VideoBackground>
-      <Container maxWidth={"xl"}>
+      <Container maxWidth={"xl"} sx={{ pb: 20 }}>
         <Grid container direction="row" spacing={0}>
           <Image
             src={"/images/homePage/Ellipse.svg"}

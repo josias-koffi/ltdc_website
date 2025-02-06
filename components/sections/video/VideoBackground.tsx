@@ -76,7 +76,7 @@ const VideoBackground = ({
         sx={{
           position: "relative",
           display: "flex",
-          alignItems: "center",
+          alignItems: "flex-end",
           justifyContent: "center",
           height: "100%",
           color: "#fff", // par exemple, texte blanc
