@@ -196,7 +196,7 @@ const MembersByTeam = ({
                 </Typography>
               </Box>
             </Box>
-            {isInteractive ? (
+            {isInteractive && member?.itv ? (
               <Button
                 fullWidth
                 onClick={() => {
