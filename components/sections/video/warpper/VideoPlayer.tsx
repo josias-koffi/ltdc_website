@@ -29,10 +29,13 @@ export default function VideoPlayer({
   return (
     <Box
       sx={{
-        // Largeur/hauteur adaptables ou fixes
         width: "100%",
-        maxWidth: 800, // par ex. largeur max de 800px
-        margin: "0 auto",
+        height: 600,
+        maxWidth: "100%",
+        maxHeight: "100%",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
       }}
     >
       <video
@@ -43,12 +46,12 @@ export default function VideoPlayer({
         loop={loop}
         playsInline={playsInline}
         style={{
-          width: "100%", // Pour occuper toute la largeur du conteneur
-          height: "auto", // Ajuste la hauteur automatiquement
-          display: "block",
+          width: "100%",
+          maxWidth: "100%",
+          maxHeight: "100%",
+          objectFit: "contain", // Empêche la vidéo de dépasser
         }}
       >
-        {/* Fallback si le navigateur ne supporte pas la vidéo HTML5 */}
         <p>Votre navigateur ne supporte pas la lecture de vidéos HTML5.</p>
       </video>
     </Box>

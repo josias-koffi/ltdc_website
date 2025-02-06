@@ -1,9 +1,8 @@
 "use client";
-
 import React, { useEffect, useState } from "react";
 import { MemberEntity, Team } from "@/libs/interfaces/entities";
 import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
-import { Chip, Box, Typography, Dialog } from "@mui/material";
+import { Chip, Box, Typography, Button } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import { FetchProps } from "@/libs/interfaces/Interfaces";
 import { getItems } from "@/libs/directus";
@@ -105,11 +104,11 @@ const MembersByTeam = ({
         >
           <VideoPlayer
             videoUrl={getVideoUrl(activeMember?.itv)}
-            controls
+            controls={true}
             autoPlay={false}
             muted={false}
             loop={false}
-            playsInline
+            playsInline={true}
           />
         </CustomDialog>
         {membersInfo.map((member: MemberEntity) => (
@@ -197,6 +196,14 @@ const MembersByTeam = ({
                 </Typography>
               </Box>
             </Box>
+            <Button
+              fullWidth
+              onClick={() => {
+                handleClickActiveMember(member);
+              }}
+            >
+              {"Voir l'interview"}
+            </Button>
           </Grid>
         ))}
       </Grid>

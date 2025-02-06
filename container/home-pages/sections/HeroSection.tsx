@@ -1,31 +1,22 @@
 "use client";
 import React, { useContext } from "react";
-import {
-  Box,
-  Button,
-  Stack,
-  Typography,
-  useTheme,
-  Container,
-} from "@mui/material";
+import { Box, Button, Typography, useTheme, Container } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import { IconChevronRight } from "@tabler/icons-react";
 import Image from "next/image";
-import { FrameSettingContext, ScreenTypeContext } from "@/app/template";
-import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
+import { ScreenTypeContext } from "@/app/template";
 import VideoBackground from "@/components/sections/video/VideoBackground";
 
 const HeroSection = () => {
   const theme = useTheme();
   const notPhoneScreen = useContext(ScreenTypeContext);
-  const frame = useContext(FrameSettingContext);
 
   const ABSOLUT_IMAGE_POSITION = notPhoneScreen ? 2 : -300;
   const TITLE_VARIANTS = notPhoneScreen ? "h1" : "h2";
 
   return (
     <VideoBackground>
-      <Container maxWidth={"xl"}>
+      <Container maxWidth={"xl"} sx={{ pb: 20 }}>
         <Grid container direction="row" spacing={0}>
           <Image
             src={"/images/homePage/Ellipse.svg"}

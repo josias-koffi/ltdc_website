@@ -5,7 +5,7 @@ const RootLayout = ({
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
-  return <div style={{ paddingTop: "100px" }}>{children}</div>;
+  return <div style={{ paddingTop: "115px" }}>{children}</div>;
 };
 
 export default RootLayout;
