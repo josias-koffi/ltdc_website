@@ -196,14 +196,16 @@ const MembersByTeam = ({
                 </Typography>
               </Box>
             </Box>
-            <Button
-              fullWidth
-              onClick={() => {
-                handleClickActiveMember(member);
-              }}
-            >
-              {"Voir l'interview"}
-            </Button>
+            {isInteractive ? (
+              <Button
+                fullWidth
+                onClick={() => {
+                  handleClickActiveMember(member);
+                }}
+              >
+                {"Voir l'interview"}
+              </Button>
+            ) : null}
           </Grid>
         ))}
       </Grid>
