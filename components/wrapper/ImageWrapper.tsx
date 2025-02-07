@@ -26,6 +26,7 @@ const ImageWrapper = (props: ImageWrapperProps) => {
     alt,
     objectFit,
     objectPosition,
+    sx,
   }: ImageWrapperProps = props;
   return (
     <Box
@@ -34,6 +35,8 @@ const ImageWrapper = (props: ImageWrapperProps) => {
         height: height ?? 300,
         position: position ?? "relative",
         zIndex: zIndex ?? 10,
+        borderRadius: 4,
+        ...sx,
       }}
     >
       <Image
