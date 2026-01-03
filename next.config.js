@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
+const path = require("path");
+
 const nextConfig = {
   output: "standalone",
   images: {
@@ -19,6 +21,10 @@ const nextConfig = {
         port: "",
       },
     ],
+  },
+  webpack: (config) => {
+    config.resolve.alias["@"] = path.resolve(__dirname);
+    return config;
   },
 };
 
