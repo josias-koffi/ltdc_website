@@ -34,7 +34,7 @@ const ListFromEntity = ({
     try {
       const res = await getItems(request);
       if (res?.length > 0) {
-        setData(res);
+        setData(res.reverse());
       }
     } catch (error: any) {
       throw new Error(error);
