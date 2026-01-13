@@ -90,7 +90,7 @@ const Footer = () => {
         >
           <SocialLinks />
           <Typography variant="body2" component="div">
-            {"© Tout droits réservés 2024"}
+            {`© Tout droits réservés ${new Date().getFullYear()}`}
             <span style={{ color: theme?.palette?.secondary?.main }}>
               {" LTDC"}
             </span>
