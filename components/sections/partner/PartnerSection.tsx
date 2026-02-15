@@ -19,7 +19,7 @@ const PartnerSection = () => {
             sourceName: "Association-Guinéenne-des-étudiants-de-Tours.jpg",
         },
         {
-            name: "Humenyaa",
+            name: "Humenya",
             url: "https://linktr.ee/humenya.asso",
             sourceName: "Humenya.jpeg",
         },
