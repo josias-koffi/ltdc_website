@@ -25,11 +25,11 @@ const AssoHistorySection = () => {
         <Grid container alignItems="start" justifyContent="center" spacing={1}>
           <Grid size={{ xl: 6, md: 6, sm: 12, xs: 12 }}>
             <Typography
-              variant={notPhoneScreen ? "h2" : "h3"}
+              variant={notPhoneScreen ? "h3" : "h4"}
               fontWeight={"bold"}
               sx={{ pb: 5 }}
             >
-              {"L’histoire de la création de LTDC"}
+              {"L’histoire de LTDC – Quand la solidarité devient une mission"}
             </Typography>
             <Typography
               component="div"
