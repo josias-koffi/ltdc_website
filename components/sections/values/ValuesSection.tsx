@@ -87,7 +87,7 @@ const ValuesSection = () => {
           spacing={1}
           direction="row"
           justifyContent="center"
-          alignItems="center"
+          alignItems="stretch"
           sx={{ color: "white" }}
         >
           {mapValues()}
