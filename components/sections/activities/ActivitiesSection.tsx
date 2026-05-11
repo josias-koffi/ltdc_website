@@ -6,7 +6,6 @@ import Grid from "@mui/material/Grid2";
 import { FrameSettingContext, ScreenTypeContext } from "@/app/template";
 import ACTIVITIES from "./activities.json";
 import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
-import ImageWrapper from "@/components/wrapper/ImageWrapper";
 
 interface ActivitiesSectionInterface {
   variant?: "minimal" | "detail";
@@ -69,24 +68,63 @@ const ActivitiesSection = (props: ActivitiesSectionInterface) => {
           color: "#642775",
         }}
       >
-        <Grid container spacing={1}>
+        <Grid container spacing={1} sx={{ alignItems: { xs: "flex-start", md: "center" } }}>
           {!isMinimal ? (
             <Grid
               size={{ xl: 6, md: 6, sm: 12, xs: 12 }}
               sx={{
                 display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "center",
+                flexDirection: "column",
+                gap: 1,
               }}
             >
-              <ImageWrapper
-                src={"/images/activitiesSection/About_Us.webp"}
-                alt={"activity image"}
-                objectFit={"contain"}
-                height={600}
-                // width={500}
-              />
+              <Box
+                sx={{
+                  position: "relative",
+                  height: 340,
+                  borderRadius: 2,
+                  overflow: "hidden",
+                }}
+              >
+                <Image
+                  src={images[0]}
+                  alt="activité 1"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              </Box>
+              <Box sx={{ display: "flex", gap: 1, height: 250 }}>
+                <Box
+                  sx={{
+                    position: "relative",
+                    flex: 1,
+                    borderRadius: 2,
+                    overflow: "hidden",
+                  }}
+                >
+                  <Image
+                    src={images[1]}
+                    alt="activité 2"
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                </Box>
+                <Box
+                  sx={{
+                    position: "relative",
+                    flex: 1,
+                    borderRadius: 2,
+                    overflow: "hidden",
+                  }}
+                >
+                  <Image
+                    src={images[2]}
+                    alt="activité 3"
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                </Box>
+              </Box>
             </Grid>
           ) : null}
 
