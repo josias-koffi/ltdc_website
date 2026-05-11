@@ -1,21 +1,21 @@
 {
   "images": [
-    "/images/activitiesSection/act1.png",
-    "/images/activitiesSection/act3.png",
-    "/images/activitiesSection/act2.png"
+    "/images/activitiesSection/IMG_4789.jpeg",
+    "/images/activitiesSection/IMG_4818.jpeg",
+    "/images/activitiesSection/IMG_4773.jpeg"
   ],
   "activities": [
     {
-      "title": "Faciliter l'accès à l'emploi",
-      "description": "Nous aidons les personnes en situation irrégulière à trouver des opportunités d'emploi grâce à nos programmes de formation"
+      "title": "Développer des projets sociaux",
+      "description": "Nous concevons et mettons en œuvre des projets solidaires destinés à soutenir les personnes vulnérables et à renforcer la cohésion sociale au sein des communautés."
     },
     {
-      "title": "Suivi personnalisé",
-      "description": "Nous offrons des conseils et un soutien adaptés aux besoins spécifiques de chaque bénéficiaire"
+      "title": "Créer des initiatives culturelles",
+      "description": "Nous organisons des actions culturelles qui favorisent l'expression, la créativité, la diversité et l'inclusion, tout en valorisant les talents locaux."
     },
     {
-      "title": " Aider à la recherche  de logement",
-      "description": "Nous offrons des conseils et un soutien adaptés aux besoins spécifiques de chaque bénéficiaire"
+      "title": "Mener des actions humanitaires",
+      "description": "Nous réalisons des projets humanitaires et des actions de terrain pour répondre aux besoins essentiels des populations en difficulté, en France et à l'international."
     }
   ]
 }
