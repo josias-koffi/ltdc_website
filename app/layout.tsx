@@ -6,7 +6,7 @@ import { DEFAULT_META_DESCRIPTION, DEFAULT_TITLE } from "@/libs/constants";
 
 const sen = Sen({
   subsets: ["latin"],
-  weight: ["400"],
+  weight: ["400", "700"],
   display: "swap",
   adjustFontFallback: false,
 });
@@ -22,7 +22,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="fr">
       <body className={sen.className} style={{ margin: 0 }}>
         {children}
         <Script
