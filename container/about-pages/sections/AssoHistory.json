@@ -1,5 +1,53 @@
 {
-    "text": "<p>\n    Floriane Kibangou, une jeune professionnelle des ressources humaines, a\n    souvent été sollicitée pour renseigner les personnes en situation\n    irrégulière sur les démarches administratives liées à l’emploi. Confrontée à\n    ces défis, elle a réalisé l’importance d’un soutien structuré pour ces\n    personnes dans le besoin. C’est ainsi que l’idée de créer une association dédiée à leur\n    insertion a germé.\n</p>\n<p>\n    Le programme ESF est conçu pour fournir un soutien complet, allant de la\n    recherche d’emploi à la formation professionnelle, en passant par l’aide au\n    logement. Grâce à leur engagement et à leur dévouement, les membres de la\n    LTDC travaillent sans relâche pour créer un impact positif et durable dans\n    la vie des personnes qu’ils aident. L’association aspire à devenir un pilier\n    de soutien pour ceux qui cherchent à améliorer leur situation et à\n    construire un avenir meilleur.\n</p>",
+    "blocks": [
+        { "type": "paragraph", "segments": [
+            { "text": "Il y a des histoires qui naissent d'un simple geste, d'une conversation, d'un regard échangé avec quelqu'un qui a besoin d'aide. L'histoire de " },
+            { "text": "LTDC – Les Travailleurs du Cœur", "bold": true },
+            { "text": " fait partie de celles-là." }
+        ]},
+        { "type": "paragraph", "segments": [
+            { "text": "Au départ, tout commence avec " },
+            { "text": "Floriane KIBANGOU", "bold": true },
+            { "text": ", une jeune professionnelle des ressources humaines, souvent sollicitée pour aider des personnes en situation irrégulière à comprendre les démarches liées à l'emploi, à la formation ou au logement. Elle répond, elle explique, elle accompagne… mais très vite, elle réalise que derrière chaque question administrative se cache une réalité bien plus dure : " },
+            { "text": "des vies fragiles, des parcours brisés, des personnes souvent livrées à elles-mêmes", "bold": true },
+            { "text": "." }
+        ]},
+        { "type": "paragraph", "segments": [
+            { "text": "Pendant plusieurs mois, LTDC se consacre à cet accompagnement. Mais un jour, un constat bouleverse tout : " },
+            { "text": "beaucoup de personnes aidées se retrouvent sans domicile, parfois du jour au lendemain.", "bold": true }
+        ]},
+        { "type": "paragraph", "content": "Ce choc devient un tournant." },
+        { "type": "paragraph", "segments": [
+            { "text": "En " },
+            { "text": "décembre 2024", "bold": true },
+            { "text": ", les membres de LTDC décident d'agir autrement. Ils organisent leur " },
+            { "text": "première maraude solidaire", "bold": true },
+            { "text": ". Ils marchent dans le froid, distribuent des repas, des couvertures, des sourires. Ils écoutent des histoires de vie, des peurs, des espoirs. Et ce soir-là, quelque chose change." }
+        ]},
+        { "type": "paragraph", "segments": [
+            { "text": "Les membres comprennent que leur place est là : " },
+            { "text": "sur le terrain, au plus près des besoins, là où la solidarité se vit, se touche, se partage", "bold": true },
+            { "text": "." }
+        ]},
+        { "type": "paragraph", "content": "C'est ainsi que LTDC se transforme. L'association élargit sa mission et devient un acteur engagé dans :" },
+        {
+            "type": "list",
+            "items": [
+                [{ "text": "les " }, { "text": "projets sociaux", "bold": true }, { "text": "," }],
+                [{ "text": "les " }, { "text": "actions humanitaires", "bold": true }, { "text": "," }],
+                [{ "text": "les " }, { "text": "initiatives culturelles", "bold": true }, { "text": "," }],
+                [{ "text": "les " }, { "text": "voyages solidaires", "bold": true }, { "text": "," }],
+                [{ "text": "les " }, { "text": "maraudes régulières", "bold": true }, { "text": "," }],
+                [{ "text": "les " }, { "text": "projets à impact social durable", "bold": true }, { "text": "." }]
+            ]
+        },
+        { "type": "paragraph", "segments": [
+            { "text": "LTDC n'est plus seulement une association d'accompagnement. C'est une " },
+            { "text": "communauté de cœur", "bold": true },
+            { "text": ", un collectif qui veut \"mettre la main à la pâte\", agir concrètement, créer du lien, redonner de la dignité et de l'espoir." }
+        ]},
+        { "type": "paragraph", "content": "Aujourd'hui, LTDC continue d'écrire son histoire, entourée de bénévoles passionnés, de partenaires engagés et de personnes qui croient en un monde plus humain. Une histoire qui ne fait que commencer." }
+    ],
     "images": [
         "",
         "",

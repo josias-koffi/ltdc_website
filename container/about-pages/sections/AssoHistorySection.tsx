@@ -8,7 +8,7 @@ import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
 import ImageWrapper from "@/components/wrapper/ImageWrapper";
 
 const AssoHistorySection = () => {
-  const { text } = assoHistory;
+  const { blocks } = assoHistory;
   const notPhoneScreen = useContext(ScreenTypeContext);
 
   return (
@@ -25,17 +25,35 @@ const AssoHistorySection = () => {
         <Grid container alignItems="start" justifyContent="center" spacing={1}>
           <Grid size={{ xl: 6, md: 6, sm: 12, xs: 12 }}>
             <Typography
-              variant={notPhoneScreen ? "h3" : "h4"}
+              variant={notPhoneScreen ? "h4" : "h3"}
               fontWeight={"bold"}
               sx={{ pb: 5 }}
             >
               {"L’histoire de LTDC – Quand la solidarité devient une mission"}
             </Typography>
-            <Typography
-              component="div"
-              dangerouslySetInnerHTML={{ __html: text }}
-              color={"text.secondary"}
-            />
+            {blocks.map((block, i) =>
+              block.type === "list" ? (
+                <Box component="ul" key={i} sx={{ pl: 3, my: 1 }}>
+                  {block.items!.map((item, j) => (
+                    <Typography component="li" key={j} color="text.secondary">
+                      {Array.isArray(item)
+                        ? item.map((seg, k) =>
+                            seg.bold ? <strong key={k}>{seg.text}</strong> : seg.text
+                          )
+                        : item}
+                    </Typography>
+                  ))}
+                </Box>
+              ) : (
+                <Typography key={i} color="text.secondary" sx={{ mb: 1 }}>
+                  {block.segments
+                    ? block.segments.map((seg, j) =>
+                        seg.bold ? <strong key={j}>{seg.text}</strong> : seg.text
+                      )
+                    : block.content}
+                </Typography>
+              )
+            )}
           </Grid>
           <Grid
             size={{ xl: 6, md: 6, sm: 12, xs: 12 }}
