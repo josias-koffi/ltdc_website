@@ -46,7 +46,7 @@ const Footer = () => {
           <Grid container spacing={4}>
             <Grid size={{ xl: 6, xs: 12 }}>
               <ImageWrapper
-                src={"/icons/Logo_Association_LTDC_LOGO.svg"}
+                src={"/icons/logo/LOGO-DÉCLINAISON-1.svg"}
                 alt={"icon asso"}
                 width={90}
                 height={80}
