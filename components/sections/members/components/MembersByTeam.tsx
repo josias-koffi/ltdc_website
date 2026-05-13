@@ -11,6 +11,9 @@ import { returnImageUrlById } from "@/libs/stringUtils";
 import MappingRoles from "@/components/sections/members/components/MappingRoles";
 import CustomDialog from "@/components/dialog/CustomDialog";
 import VideoPlayer from "@/components/sections/video/warpper/VideoPlayer";
+import { motion } from "framer-motion";
+
+const MotionGrid = motion(Grid);
 
 const MembersByTeam = ({
   team,
@@ -23,12 +26,9 @@ const MembersByTeam = ({
 }) => {
   const [membersInfo, setMembersInfo] = useState<MemberEntity[]>([]);
   const [activeMember, setActiveMember] = useState<MemberEntity>();
-
   const [open, setOpen] = React.useState<boolean>(false);
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+  const handleClose = () => setOpen(false);
 
   const fetchMembers = async () => {
     const filter: FetchProps = {
@@ -37,19 +37,16 @@ const MembersByTeam = ({
       limit: 4,
       sort: ["order"],
     };
-
     try {
       const res = await getItems(filter);
-      if (res) {
-        setMembersInfo(res);
-      }
+      if (res) setMembersInfo(res);
     } catch (e) {
       console.error("Error fetching members:", e);
     }
   };
-  const getVideoUrl = (itvUrl: MemberEntity["itv"]): string => {
-    return `${process.env.NEXT_PUBLIC_BO_URL}assets/${itvUrl}`;
-  };
+
+  const getVideoUrl = (itvUrl: MemberEntity["itv"]): string =>
+    `${process.env.NEXT_PUBLIC_BO_URL}assets/${itvUrl}`;
 
   useEffect(() => {
     fetchMembers();
@@ -89,126 +86,136 @@ const MembersByTeam = ({
           />
         </Box>
       )}
-      <Grid
-        container
-        spacing={4}
-        sx={{
-          width: "100%",
-          justifyContent: { md: "center", xl: "flex-start" },
-        }}
-      >
-        <CustomDialog
-          title={`ITV de ${activeMember?.name}`}
-          open={open}
-          handleClose={handleClose}
+
+        <Grid
+          container
+          spacing={4}
+          sx={{
+            width: "100%",
+            justifyContent: { md: "center", xl: "flex-start" },
+          }}
         >
-          <VideoPlayer
-            videoUrl={getVideoUrl(activeMember?.itv)}
-            controls={true}
-            autoPlay={false}
-            muted={false}
-            loop={false}
-            playsInline={true}
-          />
-        </CustomDialog>
-        {membersInfo.map((member: MemberEntity) => (
-          <Grid key={member.id} size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
-            <Box
-              onClick={() => {
-                handleClickActiveMember(member);
-              }}
-              sx={{
-                position: "relative",
-                mb: 8,
-                // Si l'élément est interactif, on change le curseur
-                cursor: isInteractive ? "pointer" : "default",
-                // Transition pour animer le changement de boxShadow/bordure
-                transition: "box-shadow 0.3s ease, border 0.3s ease",
-              }}
+          <CustomDialog
+            title={`ITV de ${activeMember?.name}`}
+            open={open}
+            handleClose={handleClose}
+          >
+            <VideoPlayer
+              videoUrl={getVideoUrl(activeMember?.itv)}
+              controls={true}
+              autoPlay={false}
+              muted={false}
+              loop={false}
+              playsInline={true}
+            />
+          </CustomDialog>
+
+          {membersInfo.map((member: MemberEntity, index: number) => (
+            <MotionGrid
+              key={member.id}
+              size={{ xs: 12, sm: 6, md: 4, lg: 3 }}
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.45, ease: "easeOut", delay: index * 0.1 }}
             >
               <Box
+                onClick={() => handleClickActiveMember(member)}
                 sx={{
                   position: "relative",
-                  height: 400,
-                  width: "100%",
-                  maxWidth: 300,
-                  margin: "0 auto",
+                  mb: 8,
+                  cursor: isInteractive ? "pointer" : "default",
+                  transition: "box-shadow 0.3s ease, border 0.3s ease",
+                  "&:focus-visible": {
+                    outline: "2px solid #EDA26B",
+                    borderRadius: 2,
+                  },
                 }}
+                tabIndex={isInteractive && member?.itv ? 0 : undefined}
+                role={isInteractive && member?.itv ? "button" : undefined}
               >
-                <ImageWrapper
-                  src={returnImageUrlById(member.photo)}
-                  alt={`${member?.name} ${member.team}`}
-                  objectFit="cover"
-                  objectPosition="center"
-                  height={400}
-                  sx={{
-                    // Au survol (hover), on applique le glow UNIQUEMENT si isInteractive === true
-                    ...(isInteractive &&
-                      member?.itv && {
-                        "&:hover": {
-                          boxShadow: "0 0 25px 20px rgba(237, 162, 107, 0.5)",
-                        },
-                      }),
-                  }}
-                />
+                <motion.div whileHover={{ scale: 1.03 }} transition={{ duration: 0.25 }}>
+                  <Box
+                    sx={{
+                      position: "relative",
+                      height: 400,
+                      width: "100%",
+                      maxWidth: 300,
+                      margin: "0 auto",
+                    }}
+                  >
+                    <ImageWrapper
+                      src={returnImageUrlById(member.photo)}
+                      alt={`${member?.name} ${member.team}`}
+                      objectFit="cover"
+                      objectPosition="center"
+                      height={400}
+                      sx={{
+                        ...(isInteractive &&
+                          member?.itv && {
+                            "&:hover": {
+                              boxShadow: "0 0 25px 20px rgba(237, 162, 107, 0.5)",
+                            },
+                          }),
+                      }}
+                    />
+                  </Box>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 + index * 0.1, duration: 0.4 }}
+                >
+                  <Box
+                    sx={{
+                      zIndex: 100,
+                      backgroundColor: "#FFFFFF",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      flexDirection: "column",
+                      gap: 1,
+                      borderRadius: 2,
+                      position: "absolute",
+                      bottom: -50,
+                      left: "50%",
+                      transform: "translateX(-50%)",
+                      width: "90%",
+                      maxWidth: 270,
+                      boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+                    }}
+                  >
+                    <Typography
+                      variant="h6"
+                      sx={{ textAlign: "center", width: "100%", fontWeight: "bold" }}
+                    >
+                      {member?.name}
+                    </Typography>
+                    <Typography
+                      variant="h6"
+                      color={"primary"}
+                      sx={{ textAlign: "center", width: "100%" }}
+                    >
+                      {member?.main_role}
+                    </Typography>
+                    <Typography
+                      color="text.secondary"
+                      sx={{ textAlign: "center", width: "100%" }}
+                    >
+                      <MappingRoles roles={member?.roles} />
+                    </Typography>
+                  </Box>
+                </motion.div>
               </Box>
-              <Box
-                sx={{
-                  zIndex: 100,
-                  backgroundColor: "#FFFFFF",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  flexDirection: "column",
-                  gap: 1,
-                  borderRadius: 2,
-                  position: "absolute",
-                  bottom: -50,
-                  left: "50%",
-                  transform: "translateX(-50%)",
-                  width: "90%",
-                  maxWidth: 270,
-                  boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-                }}
-              >
-                <Typography
-                  variant="h6"
-                  sx={{
-                    textAlign: "center",
-                    width: "100%",
-                    fontWeight: "bold",
-                  }}
-                >
-                  {member?.name}
-                </Typography>
-                <Typography
-                  variant="h6"
-                  color={"primary"}
-                  sx={{ textAlign: "center", width: "100%" }}
-                >
-                  {member?.main_role}
-                </Typography>
-                <Typography
-                  color="text.secondary"
-                  sx={{ textAlign: "center", width: "100%" }}
-                >
-                  <MappingRoles roles={member?.roles} />
-                </Typography>
-              </Box>
-            </Box>
-            {isInteractive && member?.itv ? (
-              <Button
-                fullWidth
-                onClick={() => {
-                  handleClickActiveMember(member);
-                }}
-              >
-                {"Voir l'interview"}
-              </Button>
-            ) : null}
-          </Grid>
-        ))}
-      </Grid>
+
+              {isInteractive && member?.itv ? (
+                <Button fullWidth onClick={() => handleClickActiveMember(member)}>
+                  {"Voir l'interview"}
+                </Button>
+              ) : null}
+            </MotionGrid>
+          ))}
+        </Grid>
     </ContainerWrapper>
   );
 };
