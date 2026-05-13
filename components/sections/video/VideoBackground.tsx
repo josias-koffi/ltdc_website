@@ -3,16 +3,16 @@ import React, { useState, useRef } from "react";
 import { Box, IconButton } from "@mui/material";
 import VolumeUpRoundedIcon from "@mui/icons-material/VolumeUpRounded";
 import VolumeOffRoundedIcon from "@mui/icons-material/VolumeOffRounded";
+import { motion } from "framer-motion";
+
+const MotionIconButton = motion(IconButton);
 
 const VideoBackground = ({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
-  // État pour gérer le son
   const [isMuted, setIsMuted] = useState(true);
-
-  // Référence vers la balise <video> (pour éventuellement faire d'autres contrôles)
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const handleToggleSound = () => {
@@ -24,43 +24,53 @@ const VideoBackground = ({
       sx={{
         position: "relative",
         height: "100vh",
-        overflow: "hidden", // évite un éventuel scroll si la vidéo dépasse
+        overflow: "hidden",
       }}
     >
-      {/* La vidéo en arrière-plan */}
       <video
         ref={videoRef}
         autoPlay
         loop
         muted={isMuted}
-        playsInline // recommandé pour éviter le plein écran sur mobile
+        playsInline
+        poster="/images/homePage/Ellipse.svg"
         style={{
           position: "absolute",
           top: 0,
           left: 0,
           width: "100%",
           height: "100%",
-          objectFit: "cover", // couvre tout l'espace
-          zIndex: -1, // place la vidéo derrière le contenu
+          objectFit: "cover",
+          zIndex: -1,
         }}
       >
-        {/* Multiples sources pour une meilleure compatibilité (webm / mp4) */}
-        {/*<source src="/videos/hero-section/video_hero_section.mp4" type="video/webm" />*/}
         <source
           src="/videos/hero-section/video_hero_section.mp4"
           type="video/mp4"
         />
-        {/* Fallback si le navigateur ne supporte pas la vidéo */}
         Votre navigateur ne supporte pas la lecture de vidéos HTML5.
       </video>
-      {/* Bouton pour activer/désactiver le son */}
-      <IconButton
+
+      {/* Gradient overlay — improves text legibility on any video frame */}
+      <Box
+        sx={{
+          position: "absolute",
+          inset: 0,
+          background:
+            "linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.25) 40%, transparent 70%)",
+          zIndex: 0,
+        }}
+      />
+
+      <MotionIconButton
         onClick={handleToggleSound}
+        whileHover={{ scale: 1.15, rotate: 5 }}
+        whileTap={{ scale: 0.9 }}
         sx={{
           position: "absolute",
           bottom: "1rem",
           right: "1rem",
-          zIndex: 1, // pour être au-dessus de la vidéo
+          zIndex: 2,
           color: "#EDA26B",
         }}
       >
@@ -69,9 +79,8 @@ const VideoBackground = ({
         ) : (
           <VolumeUpRoundedIcon sx={{ width: 40, height: 40 }} />
         )}
-      </IconButton>
+      </MotionIconButton>
 
-      {/* Contenu au-dessus de la vidéo */}
       <Box
         sx={{
           position: "relative",
@@ -79,8 +88,9 @@ const VideoBackground = ({
           alignItems: "flex-end",
           justifyContent: "center",
           height: "100%",
-          color: "#fff", // par exemple, texte blanc
+          color: "#fff",
           textAlign: "left",
+          zIndex: 1,
         }}
       >
         {children}
