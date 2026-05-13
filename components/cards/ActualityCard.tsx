@@ -13,14 +13,34 @@ import Category from "@/components/entity/Category";
 import { truncateText } from "@/libs/stringUtils";
 import { formatDate } from "@/libs/dateutils";
 import { ActualitiesEntity } from "@/libs/interfaces/entities";
+import { motion } from "framer-motion";
+import { fadeInUp } from "@/components/animation/variants";
+
+const MotionCard = motion(Card);
 
 const ActualityCard = ({ props }: { props: ActualitiesEntity }) => {
   return (
-    <Card>
+    <MotionCard
+      variants={fadeInUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.1 }}
+      whileHover={{ y: -6, boxShadow: "0 20px 40px rgba(0,0,0,0.12)" }}
+      transition={{ duration: 0.25 }}
+      sx={{
+        "& .MuiCardMedia-root": {
+          transition: "transform 0.4s ease",
+        },
+        "&:hover .MuiCardMedia-root": {
+          transform: "scale(1.06)",
+        },
+        overflow: "hidden",
+      }}
+    >
       <CardMedia
         sx={{ height: 220 }}
         image={process?.env?.NEXT_PUBLIC_BO_URL + "assets/" + props?.cover}
-        title="green iguana"
+        title={props?.title}
       />
       <CardContent sx={{ height: 100 }}>
         <Stack
@@ -43,11 +63,13 @@ const ActualityCard = ({ props }: { props: ActualitiesEntity }) => {
         </Typography>
       </CardContent>
       <CardActions sx={{ justifyContent: "flex-end", pt: 5 }}>
-        <Button variant={"contained"} href={"actualities/" + props?.id}>
-          Lire
-        </Button>
+        <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
+          <Button variant={"contained"} href={"actualities/" + props?.id}>
+            Lire
+          </Button>
+        </motion.div>
       </CardActions>
-    </Card>
+    </MotionCard>
   );
 };
 
