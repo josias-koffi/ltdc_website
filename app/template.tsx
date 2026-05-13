@@ -9,6 +9,8 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
 import "dayjs/locale/fr";
+import { AnimatePresence, motion } from "framer-motion";
+import { usePathname } from "next/navigation";
 
 dayjs.locale("fr");
 
@@ -28,6 +30,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
   const theme = useTheme();
   const upperMdScreen = useMediaQuery(theme.breakpoints.up("xl"));
   const upperMd = useMediaQuery(theme.breakpoints.up("xl"));
+  const pathname = usePathname();
 
   const frame: FrameInterface = {
     paddingX: upperMdScreen ? "13rem" : "1rem",
@@ -44,7 +47,17 @@ export default function Template({ children }: { children: React.ReactNode }) {
         <FrameSettingContext.Provider value={frame}>
           <ScreenTypeContext.Provider value={upperMdScreen}>
             <Header />
-            {children}
+            <AnimatePresence mode="wait">
+              <motion.main
+                key={pathname}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+              >
+                {children}
+              </motion.main>
+            </AnimatePresence>
             <Footer />
           </ScreenTypeContext.Provider>
         </FrameSettingContext.Provider>
