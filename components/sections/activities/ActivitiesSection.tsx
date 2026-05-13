@@ -6,6 +6,11 @@ import Grid from "@mui/material/Grid2";
 import { FrameSettingContext, ScreenTypeContext } from "@/app/template";
 import ACTIVITIES from "./activities.json";
 import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
+import { motion } from "framer-motion";
+import { fadeInLeft, fadeInUp } from "@/components/animation/variants";
+import { useAnimationVariants } from "@/hooks/useAnimationVariants";
+
+const MotionBox = motion(Box);
 
 interface ActivitiesSectionInterface {
   variant?: "minimal" | "detail";
@@ -24,6 +29,9 @@ const ActivitiesSection = (props: ActivitiesSectionInterface) => {
   const ABSOLUT_IMAGE_POSITION = notPhoneScreen ? 2 : -300;
   const isMinimal = variant == "minimal";
 
+  const fadeLeft = useAnimationVariants(fadeInLeft);
+  const fadeUp = useAnimationVariants(fadeInUp);
+
   const mapActivities = () => {
     return activities?.map((act: ActivityInterface, index: number) => {
       return (
@@ -31,13 +39,22 @@ const ActivitiesSection = (props: ActivitiesSectionInterface) => {
           key={act.title}
           size={{ xl: isMinimal ? 4 : 6, md: isMinimal ? 4 : 6 }}
         >
-          <Typography variant={notPhoneScreen ? "h2" : "h3"} sx={{ pb: 3 }}>
-            {`0${index + 1}`}
-          </Typography>
-          <Typography variant={notPhoneScreen ? "h4" : "h5"}>
-            {act?.title}
-          </Typography>
-          <Typography variant="body1">{act?.description}</Typography>
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            custom={index}
+            transition={{ delay: index * 0.1 } as never}
+          >
+            <Typography variant={notPhoneScreen ? "h2" : "h3"} sx={{ pb: 3 }}>
+              {`0${index + 1}`}
+            </Typography>
+            <Typography variant={notPhoneScreen ? "h4" : "h5"}>
+              {act?.title}
+            </Typography>
+            <Typography variant="body1">{act?.description}</Typography>
+          </motion.div>
         </Grid>
       );
     });
@@ -50,18 +67,26 @@ const ActivitiesSection = (props: ActivitiesSectionInterface) => {
         position: "relative",
       }}
     >
-      <Image
-        src={"/images/homePage/EllipseActivities.svg"}
-        alt={"Personnes travaillant ensemble"}
-        width={300}
-        height={300}
+      <motion.div
+        animate={{ rotate: 360 }}
+        transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
         style={{
           position: "absolute",
           top: ABSOLUT_IMAGE_POSITION,
           left: ABSOLUT_IMAGE_POSITION,
           zIndex: 0,
+          width: 300,
+          height: 300,
         }}
-      />
+      >
+        <Image
+          src={"/images/homePage/EllipseActivities.svg"}
+          alt={"Personnes travaillant ensemble"}
+          width={300}
+          height={300}
+        />
+      </motion.div>
+
       <ContainerWrapper
         sxProps={{
           zIndex: 10,
@@ -78,52 +103,57 @@ const ActivitiesSection = (props: ActivitiesSectionInterface) => {
                 gap: 1,
               }}
             >
-              <Box
-                sx={{
-                  position: "relative",
-                  height: 340,
-                  borderRadius: 2,
-                  overflow: "hidden",
-                }}
+              <motion.div
+                variants={fadeLeft}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
               >
-                <Image
-                  src={images[0]}
-                  alt="activité 1"
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
-              </Box>
+                <Box
+                  sx={{
+                    position: "relative",
+                    height: 340,
+                    borderRadius: 2,
+                    overflow: "hidden",
+                  }}
+                >
+                  <Image
+                    src={images[0]}
+                    alt="activité 1"
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                </Box>
+              </motion.div>
+
               <Box sx={{ display: "flex", gap: 1, height: 250 }}>
-                <Box
-                  sx={{
-                    position: "relative",
-                    flex: 1,
-                    borderRadius: 2,
-                    overflow: "hidden",
-                  }}
-                >
-                  <Image
-                    src={images[1]}
-                    alt="activité 2"
-                    fill
-                    style={{ objectFit: "cover" }}
-                  />
-                </Box>
-                <Box
-                  sx={{
-                    position: "relative",
-                    flex: 1,
-                    borderRadius: 2,
-                    overflow: "hidden",
-                  }}
-                >
-                  <Image
-                    src={images[2]}
-                    alt="activité 3"
-                    fill
-                    style={{ objectFit: "cover" }}
-                  />
-                </Box>
+                {[images[1], images[2]].map((src, i) => (
+                  <motion.div
+                    key={src}
+                    variants={fadeLeft}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.2 }}
+                    style={{ flex: 1, position: "relative" }}
+                    transition={{ delay: 0.15 + i * 0.1 } as never}
+                  >
+                    <Box
+                      sx={{
+                        position: "relative",
+                        height: "100%",
+                        borderRadius: 2,
+                        overflow: "hidden",
+                      }}
+                    >
+                      <Image
+                        src={src}
+                        alt={`activité ${i + 2}`}
+                        fill
+                        style={{ objectFit: "cover" }}
+                      />
+                    </Box>
+                  </motion.div>
+                ))}
               </Box>
             </Grid>
           ) : null}
@@ -140,13 +170,20 @@ const ActivitiesSection = (props: ActivitiesSectionInterface) => {
           >
             <Grid container spacing={2}>
               <Grid size={12}>
-                <Typography
-                  variant={notPhoneScreen ? "h2" : "h3"}
-                  fontWeight={"bold"}
-                  sx={{ pb: 3 }}
+                <motion.div
+                  variants={fadeUp}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.2 }}
                 >
-                  {"Nos activités "}
-                </Typography>
+                  <Typography
+                    variant={notPhoneScreen ? "h2" : "h3"}
+                    fontWeight={"bold"}
+                    sx={{ pb: 3 }}
+                  >
+                    {"Nos activités "}
+                  </Typography>
+                </motion.div>
               </Grid>
               {mapActivities()}
             </Grid>
