@@ -11,10 +11,10 @@ interface RubriqueHeadProps {
   imageAlt: string;
   title: string;
   description: string;
-  width?: number | string;
-  height?: number | string;
   objectPosition?: "right" | "left" | "top" | "bottom" | "center";
 }
+
+const BANNER_HEIGHT = { xs: 220, sm: 280, md: 340, lg: 400 } as const;
 
 const RubriqueHead = ({
   imageUrl,
@@ -22,8 +22,6 @@ const RubriqueHead = ({
   title,
   imageAlt,
   objectPosition,
-  width,
-  height,
 }: RubriqueHeadProps) => {
   return (
     <ContainerWrapper
@@ -43,14 +41,16 @@ const RubriqueHead = ({
         transition={{ duration: 0.7, ease: "easeOut" }}
         style={{ width: "100%", overflow: "hidden", borderRadius: 12 }}
       >
-        <ImageWrapper
-          src={imageUrl}
-          alt={imageAlt}
-          objectPosition={objectPosition}
-          width={width}
-          height={height ?? 400}
-          sx={{ borderRadius: 5 }}
-        />
+        <Box sx={{ width: "100%", height: BANNER_HEIGHT }}>
+          <ImageWrapper
+            src={imageUrl}
+            alt={imageAlt}
+            objectPosition={objectPosition}
+            width="100%"
+            height="100%"
+            sx={{ borderRadius: 5 }}
+          />
+        </Box>
       </motion.div>
 
       <motion.div
