@@ -17,7 +17,11 @@ const ListProjects = () => {
         objectPosition="center"
       />
 
-      <ListFromEntity entity="projects" CardType={ProjectsCards} />
+      <ListFromEntity
+        entity="projects"
+        CardType={ProjectsCards}
+        itemsSize={{ sm: 12, xs: 12, md: 12, xl: 12 }}
+      />
     </>
   );
 };
