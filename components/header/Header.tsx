@@ -50,7 +50,7 @@ const Header = () => {
         backgroundColor: expanded ? "rgba(255,255,255,1)" : backgroundColor,
         boxShadow: expanded ? "0 2px 20px rgba(0,0,0,0.08)" : boxShadow,
       }}
-      sx={{ position: "fixed", width: "100%", zIndex: 100 }}
+      sx={{ position: "fixed", width: "100%", zIndex: 1000 }}
     >
       <ContainerWrapper sxProps={{ py: 3 }}>
         <Box
