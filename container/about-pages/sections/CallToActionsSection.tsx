@@ -34,7 +34,7 @@ const CallToActionsSection = () => {
             }}
           >
             <Image
-              src={"/images/aboutPage/callToActionImage.png"}
+              src={"/images/recrutement_image.png"}
               alt={"Call to action"}
               fill={true}
               style={{

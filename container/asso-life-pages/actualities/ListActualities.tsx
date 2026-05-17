@@ -14,7 +14,7 @@ const ListActualities = () => {
           "Visitez régulièrement cette section pour ne rien manquer et soyez acteur de notre dynamique collective. Ensemble, faisons grandir notre communauté !"
         }
         imageAlt={"image de test"}
-        imageUrl={"/images/actualitiesPage/actualities_header.jpeg"}
+        imageUrl={"/images/asso_ban_2.png"}
       />
       <ListFromEntity entity={"actualities"} CardType={ActualityCard} />
     </div>
