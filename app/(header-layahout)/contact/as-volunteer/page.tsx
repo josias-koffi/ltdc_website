@@ -1,8 +1,6 @@
 import React from "react";
-import FormsPage from "@/container/contact-pages/FormsPage";
+import VolunteerFormController from "@/container/contact-pages/forms/volunteer/VolunteerFormController";
 
-const Volunteer = () => {
-  return <FormsPage type={"volunteer"} />;
-};
+const Page = () => <VolunteerFormController />;
 
-export default Volunteer;
+export default Page;

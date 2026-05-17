@@ -48,10 +48,8 @@ const ButtonList = (props: Props) => {
     { name: "Projets", link: "/projects" },
     { name: "Événements", link: "/events" },
     { name: "Actualités", link: "/actualities" },
-    { name: "Adhésion", link: "/contact/as-beneficiary" },
-    { name: "Partenaires", link: "/contact/as-sponsor" },
     { name: "Nos offres", link: "/offers" },
-    { name: "Contact", link: "/contact/general" },
+    { name: "Contact", link: "/contact" },
     {
       name: "Faire un Don",
       link: "https://www.helloasso.com/associations/association-les-travailleurs-du-c-ur/formulaires/1",

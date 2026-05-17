@@ -1,9 +1,6 @@
 import React from "react";
-import ContactPage from "@/container/contact-pages/ContactPage";
-import FormsPage from "@/container/contact-pages/FormsPage";
+import GeneralFormController from "@/container/contact-pages/forms/general/GeneralFormController";
 
-const Page = () => {
-  return <FormsPage type={"general"} />;
-};
+const Page = () => <GeneralFormController />;
 
 export default Page;

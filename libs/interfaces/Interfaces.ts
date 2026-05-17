@@ -70,18 +70,12 @@ export interface MailSubjectInterface {
 
 export interface ContactInfoInterface {
   contactSpecificField: string;
-  subject: SubjectStateInterface | undefined;
+  subject: string;
   name: string;
   email: string;
-  message: string | undefined;
-  company: string | undefined;
+  message: string;
+  company: string;
   consent: boolean;
-}
-
-export interface SubjectStateInterface {
-  id: number;
-  image: string;
-  subject: string;
 }
 
 export interface BeneficiaryShipFormInterface {
