@@ -1,8 +1,6 @@
 import React from "react";
-import FormsPage from "@/container/contact-pages/FormsPage";
+import BeneficiaryFormController from "@/container/contact-pages/forms/beneficiary/BeneficiaryFormController";
 
-const Beneficiary = () => {
-  return <FormsPage type={"beneficiary"} />;
-};
+const Page = () => <BeneficiaryFormController />;
 
-export default Beneficiary;
+export default Page;

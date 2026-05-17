@@ -1,8 +1,6 @@
 import React from "react";
-import FormsPage from "@/container/contact-pages/FormsPage";
+import SponsorFormController from "@/container/contact-pages/forms/sponsor/SponsorFormController";
 
-const Sponsor = () => {
-  return <FormsPage type={"sponsor"} />;
-};
+const Page = () => <SponsorFormController />;
 
-export default Sponsor;
+export default Page;
