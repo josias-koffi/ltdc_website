@@ -37,7 +37,7 @@ const htmlString = `
 `;
 
 export const returnImageUrlById = (id: string | FilesInterface | undefined) => {
-  if (typeof id === "undefined") {
+  if (id === undefined || id === null) {
     return process.env.NEXT_PUBLIC_BO_URL + "assets/" + "";
   }
   if (typeof id == "string") {
