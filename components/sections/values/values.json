@@ -5,22 +5,22 @@
     {
       "title": "Impact social durable",
       "description": "LTDC agit pour créer des changements concrets, mesurables et durables dans les communautés. Chaque projet vise à améliorer la vie des personnes vulnérables, ici comme ailleurs.",
-      "icon": "/icons/values/accompagnement.svg"
+      "icon": "seeding"
     },
     {
       "title": "Solidarité active",
       "description": "La solidarité n’est pas un concept : c’est une action. Maraudes, projets humanitaires, soutien culturel, entraide locale… LTDC s’engage sur le terrain, avec bienveillance et détermination.",
-      "icon": "/icons/values/solidarité.svg"
+      "icon": "handshake"
     },
     {
       "title": "Respect & Humanité",
       "description": "Chaque personne est accueillie avec dignité, écoute et considération. LTDC place l’humain au centre de toutes ses décisions et interventions.",
-      "icon": "/icons/values/respect_solidarite.svg"
+      "icon": "user-heart"
     },
     {
       "title": "Engagement collectif & collaboration",
       "description": "LTDC croit en la force du collectif : bénévoles, partenaires locaux, entreprises, institutions. Les projets se construisent ensemble, dans une dynamique de coopération et de responsabilité partagée.",
-      "icon": "/icons/values/engagement.svg"
+      "icon": "users-group"
     }
   ]
 }

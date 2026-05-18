@@ -4,11 +4,24 @@ import VALUES from "./values.json";
 import { ScreenTypeContext } from "@/app/template";
 import { Box, Stack, Typography, useTheme } from "@mui/material";
 import Grid from "@mui/material/Grid2";
-import Image from "next/image";
 import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
 import { motion } from "framer-motion";
 import { fadeInUp, scaleIn, staggerContainer } from "@/components/animation/variants";
 import { useAnimationVariants } from "@/hooks/useAnimationVariants";
+import {
+  IconSeeding,
+  IconHeartHandshake,
+  IconUserHeart,
+  IconUsersGroup,
+  type IconProps,
+} from "@tabler/icons-react";
+
+const ICONS: Record<string, React.ComponentType<IconProps>> = {
+  seeding: IconSeeding,
+  handshake: IconHeartHandshake,
+  "user-heart": IconUserHeart,
+  "users-group": IconUsersGroup,
+};
 
 const MotionBox = motion(Box);
 const MotionGrid = motion(Grid);
@@ -30,6 +43,7 @@ const ValuesSection = () => {
 
   const mapValues = () => {
     return values?.map((value: ValueInterface) => {
+      const Icon = ICONS[value.icon] ?? IconSeeding;
       return (
         <MotionGrid
           key={value.title}
@@ -65,12 +79,9 @@ const ValuesSection = () => {
               viewport={{ once: true }}
               transition={{ type: "spring", stiffness: 200, damping: 15, delay: 0.1 }}
             >
-              <Image
-                src={value.icon}
-                alt={`${value.title}icon`}
-                width={80}
-                height={80}
-              />
+              <Box sx={{ color: "#fff", display: "flex" }}>
+                <Icon size={64} stroke={1.6} aria-label={value.title} />
+              </Box>
             </motion.div>
             <Typography variant="h6" align="center" fontWeight={"bold"}>
               {value.title}
