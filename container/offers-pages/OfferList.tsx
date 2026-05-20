@@ -13,7 +13,7 @@ const OfferList = () => {
           "Notre association propose un large éventail de solutions et de programmes pour répondre aux besoins des personnes en situation irrégulière. Qu’il s’agisse de missions de bénévolat, de formations spécialisées ou d’accompagnements individuels, vous trouverez une offre adaptée à votre envie de vous impliquer et de faire la différence. Rejoignez-nous et participez à nos actions solidaires pour soutenir et accompagner celles et ceux qui en ont le plus besoin"
         }
         imageAlt={"Images des offres"}
-        imageUrl={"/images/asso_ban_2.png"}
+        imageUrl={"/images/banners/CHEZ_LTDC_CHAQUE_TALENT_FAIT_LA_DIFFérence-3.png"}
       />
       <ListFromEntity entity={"offer"} CardType={OfferCard} />
     </div>
