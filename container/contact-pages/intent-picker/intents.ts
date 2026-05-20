@@ -3,21 +3,13 @@ export interface Intent {
   label: string;
   description: string;
   href: string;
-  icon: "help" | "handshake" | "heart" | "mail";
+  icon: "handshake" | "heart" | "mail";
 }
 
 export const intents: Intent[] = [
   {
-    id: "beneficiary",
-    label: "J'ai besoin d'aide",
-    description:
-      "Vous traversez une difficulté administrative, professionnelle ou de logement.",
-    href: "/contact/as-beneficiary",
-    icon: "help",
-  },
-  {
     id: "sponsor",
-    label: "Je veux soutenir l'asso",
+    label: "Devenir partenaire",
     description:
       "Vous représentez une organisation et souhaitez devenir partenaire.",
     href: "/contact/as-sponsor",
@@ -25,14 +17,14 @@ export const intents: Intent[] = [
   },
   {
     id: "volunteer",
-    label: "Je veux donner du temps",
+    label: "Devenir bénévole",
     description: "Rejoignez nos bénévoles et participez aux maraudes et missions.",
     href: "/contact/as-volunteer",
     icon: "heart",
   },
   {
     id: "general",
-    label: "J'ai une question",
+    label: "Nous contacter",
     description: "Toute autre demande, suggestion ou information.",
     href: "/contact/general",
     icon: "mail",

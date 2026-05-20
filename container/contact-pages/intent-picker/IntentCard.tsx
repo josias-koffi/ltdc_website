@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { Box, Card, CardActionArea, Typography } from "@mui/material";
 import Link from "next/link";
 import {
-  IconHelpCircle,
   IconBuildingCommunity,
   IconHeartHandshake,
   IconMail,
@@ -14,7 +13,6 @@ import { fadeInUp } from "@/components/animation/variants";
 import type { Intent } from "./intents";
 
 const iconMap = {
-  help: IconHelpCircle,
   handshake: IconBuildingCommunity,
   heart: IconHeartHandshake,
   mail: IconMail,
