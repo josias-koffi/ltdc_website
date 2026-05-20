@@ -11,6 +11,7 @@ import dayjs from "dayjs";
 import "dayjs/locale/fr";
 import { AnimatePresence, motion } from "framer-motion";
 import { usePathname } from "next/navigation";
+import PopupSystem from "@/components/popup/PopupSystem";
 
 dayjs.locale("fr");
 
@@ -59,6 +60,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
               </motion.main>
             </AnimatePresence>
             <Footer />
+            <PopupSystem />
           </ScreenTypeContext.Provider>
         </FrameSettingContext.Provider>
       </LocalizationProvider>

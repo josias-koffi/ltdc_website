@@ -1,0 +1,16 @@
+[
+  {
+    "id": "recrutement",
+    "title": "Rejoins l'association !",
+    "description": "Nous recherchons des membres passionnés pour rejoindre notre aventure. Découvrez toutes nos offres de bénévolat et participez à la vie de l'association.",
+    "imageUrl": "/images/recrutement_image_2.png",
+    "url": "/offers"
+  },
+  {
+    "id": "tiktok",
+    "title": "Suivez-nous sur TikTok !",
+    "description": "Retrouvez les coulisses de l'association, nos événements et notre actualité sur notre compte TikTok.",
+    "videoUrl": "https://www.tiktok.com/@association_ltdc/video/7606685087593286934?is_from_webapp=1&lang=fr",
+    "url": "https://www.tiktok.com/@association_ltdc?lang=fr"
+  }
+]
