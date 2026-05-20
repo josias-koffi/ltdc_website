@@ -30,24 +30,40 @@ async function sendEmail(
   mailData: MailDataInterface,
 ): Promise<{ response: string }> {
   if (!URL || !BREVO_API_KEY || !DESTINATION) {
+    console.error("[EmailService] Missing env vars — URL:", URL, "DESTINATION:", DESTINATION, "API_KEY set:", !!BREVO_API_KEY);
     throw new Error("Missing environment key");
   }
 
+  const payload = JSON.stringify(mailData);
+  console.log("[EmailService] Sending to:", URL);
+  console.log("[EmailService] API key prefix:", BREVO_API_KEY.slice(0, 12) + "...");
+  console.log("[EmailService] Payload:", payload);
+
   try {
-    await fetch(URL, {
+    const res = await fetch(URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         accept: "application/json",
         "api-key": BREVO_API_KEY,
       },
-      body: JSON.stringify(mailData),
+      body: payload,
     });
 
+    const responseText = await res.text();
+    console.log("[EmailService] Brevo status:", res.status, res.statusText);
+    console.log("[EmailService] Brevo response body:", responseText);
+
+    if (!res.ok) {
+      console.error("[EmailService] Brevo API error — status:", res.status, "body:", responseText);
+      throw new Error(`Brevo API error ${res.status}: ${responseText}`);
+    }
+
+    console.log("[EmailService] Email sent successfully to:", mailData.to.map((t) => t.email).join(", "));
     return { response: "Email sent successfully" };
   } catch (error) {
-    console.error("Error sending email", error);
-    return { response: "Error sending email" };
+    console.error("[EmailService] fetch threw:", error);
+    throw error;
   }
 }
 
@@ -73,9 +89,11 @@ export default async function mailHandler(
     htmlContent: createCorrespondingRequestBody(body),
   };
 
+  console.log("[EmailService] mailHandler — subject:", subject, "form type:", Object.keys(body).find(k => k.endsWith("SpecificField")));
   await sendEmail(mailData);
   await responseMailToUser(body, subject);
 
+  console.log("[EmailService] Both emails dispatched for subject:", subject);
   return { response: "Email sent successfully" };
 }
 

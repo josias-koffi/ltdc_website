@@ -24,6 +24,5 @@ export const generalDefaults: GeneralFormValues = {
 
 export const GENERAL_SUBJECTS = [
   { value: "Question sur l'association", label: "Question sur l'association" },
-  { value: "Question sur les offres", label: "Question sur les offres" },
   { value: "Autre sujet", label: "Autre sujet" },
 ];
