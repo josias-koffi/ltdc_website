@@ -51,7 +51,8 @@ const EventCard = ({ props }: { props: EventInterface }) => {
             sx={{
               display: "flex",
               flexDirection: "row",
-              alignItems: "center",
+              alignItems: "flex-start",
+              flexWrap: "wrap",
               gap: 1,
             }}
           >
@@ -66,6 +67,12 @@ const EventCard = ({ props }: { props: EventInterface }) => {
                 fontWeight: "bold",
                 color: "#5F5F75",
                 fontSize: 16,
+                maxWidth: "100%",
+                height: "auto",
+                "& .MuiChip-label": {
+                  whiteSpace: "normal",
+                  py: 0.75,
+                },
               }}
             />
             <Typography
@@ -74,6 +81,8 @@ const EventCard = ({ props }: { props: EventInterface }) => {
                 m: 1,
                 fontWeight: "bold",
                 color: "#5F5F75",
+                minWidth: 0,
+                overflowWrap: "anywhere",
               }}
             >
               {props?.address}
@@ -105,7 +114,6 @@ const EventCard = ({ props }: { props: EventInterface }) => {
               variant={"subtitle1"}
             >{`${props?.capacity} participants maximum`}</Typography>
 
-            <Typography>{props?.sponsor}</Typography>
             {props?.instagram || props?.linkedin ? <Divider /> : null}
             <SocialLinks
               preset={false}
