@@ -6,6 +6,10 @@ const MappingRoles = ({ roles }: { roles: Role[] }) => {
   const maxlength = roles?.length;
 
   const returnPonctuation = (index: number) => {
+    if (index === maxlength - 2) {
+      return "\n";
+    }
+
     return index < maxlength - 1 ? " / " : " ";
   };
 

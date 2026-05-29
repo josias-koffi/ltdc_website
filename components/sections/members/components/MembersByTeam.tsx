@@ -200,7 +200,11 @@ const MembersByTeam = ({
                     </Typography>
                     <Typography
                       color="text.secondary"
-                      sx={{ textAlign: "center", width: "100%" }}
+                      sx={{
+                        textAlign: "center",
+                        width: "100%",
+                        whiteSpace: "pre-line",
+                      }}
                     >
                       <MappingRoles roles={member?.roles} />
                     </Typography>

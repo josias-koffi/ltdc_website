@@ -112,7 +112,7 @@ const EventCard = ({ props }: { props: EventInterface }) => {
 
             <Typography
               variant={"subtitle1"}
-            >{`${props?.capacity} participants maximum`}</Typography>
+            >{`${props?.capacity} bénévoles mobilisés`}</Typography>
 
             {props?.instagram || props?.linkedin ? <Divider /> : null}
             <SocialLinks
