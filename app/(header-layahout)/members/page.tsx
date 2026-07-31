@@ -15,6 +15,7 @@ const Members = () => {
       <MembersByTeam team={Team.FINANCE} isInteractive />
       <MembersByTeam team={Team.MARKETING} isInteractive />
       <MembersByTeam team={Team.IT} isInteractive />
+      <MembersByTeam team={Team.PROJET} isInteractive />
       <CallToActionsSection />
     </div>
   );

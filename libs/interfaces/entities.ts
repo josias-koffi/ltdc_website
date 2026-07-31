@@ -8,6 +8,7 @@ export enum Team {
   FINANCE = "FINANCE",
   MARKETING = "MARKETING",
   LEGAL = "LEGAL",
+  PROJET = "PROJET",
 }
 
 export enum Role {
