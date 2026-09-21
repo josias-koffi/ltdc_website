@@ -71,7 +71,7 @@ const SocialLinks = ({
                     href={instagram}
                     aria-label="instagram"
                     target="_blank"
-                    sx={{backgroundColor: "#642775"}}
+                    sx={{backgroundColor: "var(--ltdc-primary)"}}
                 >
                     <IconBrandInstagram color="white" size={20}/>
                 </IconButton>
@@ -81,7 +81,7 @@ const SocialLinks = ({
                     href={linkedin}
                     aria-label="linkedin"
                     target="_blank"
-                    sx={{backgroundColor: "#642775"}}
+                    sx={{backgroundColor: "var(--ltdc-primary)"}}
                 >
                     <IconBrandLinkedin color="white" size={20}/>
                 </IconButton>
