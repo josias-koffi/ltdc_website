@@ -28,6 +28,12 @@ interface PopupItem {
   season?: SeasonKey;
   /** Poids dans le tirage aléatoire. Défaut : 1. Un poids de 3 = trois fois plus fréquent. */
   weight?: number;
+  /**
+   * En affichage automatique, cette popup prend la main sur toutes les autres.
+   * Sert aux campagnes mises en avant : le message passe sans dépendre du hasard.
+   * Le clic sur la pastille reste un tirage normal entre toutes les popups.
+   */
+  exclusive?: boolean;
 }
 
 const STORAGE_KEY = "ltdc_popup_last_shown";
@@ -47,6 +53,16 @@ function getEligiblePopups(popups: PopupItem[], seasonKey: SeasonKey): PopupItem
   return popups.filter(
     (popup) => !isSeasonKey(popup.season) || popup.season === seasonKey,
   );
+}
+
+/**
+ * Popups retenues pour l'affichage automatique. Dès qu'une campagne exclusive
+ * est éligible, elle est seule en lice : une seule popup passe par jour, on ne
+ * la laisse pas au hasard.
+ */
+function getAutoPopups(popups: PopupItem[]): PopupItem[] {
+  const exclusives = popups.filter((popup) => popup.exclusive === true);
+  return exclusives.length ? exclusives : popups;
 }
 
 /** Tirage aléatoire pondéré : un poids plus élevé sort plus souvent. */
@@ -105,11 +121,12 @@ export default function PopupSystem() {
   );
 
   useEffect(() => {
-    if (!eligiblePopups.length) return;
+    const autoPopups = getAutoPopups(eligiblePopups);
+    if (!autoPopups.length) return;
     if (hasShownToday()) return;
     const timer = setTimeout(() => {
       markShownToday();
-      showRandom(eligiblePopups);
+      showRandom(autoPopups);
     }, AUTO_DELAY_MS);
     return () => clearTimeout(timer);
   }, [eligiblePopups, showRandom]);
