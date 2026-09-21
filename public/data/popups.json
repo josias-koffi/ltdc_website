@@ -1,5 +1,15 @@
 [
   {
+    "id": "octobre-rose",
+    "title": "Mission Octobre Rose",
+    "description": "Un mois pour agir, un don pour avancer. Dans le cadre de la Mission Rose LTDC, une partie des dons sera reversée à notre association partenaire.",
+    "imageUrl": "/images/october/campagne_octobre.jpg",
+    "url": "https://www.helloasso.com/associations/association-les-travailleurs-du-c-ur/formulaires/1",
+    "ctaLabel": "Faire un don",
+    "season": "october",
+    "weight": 3
+  },
+  {
     "id": "recrutement",
     "title": "Rejoins l'association !",
     "description": "Nous recherchons des membres passionnés pour rejoindre notre aventure. Découvrez toutes nos offres de bénévolat et participez à la vie de l'association.",
