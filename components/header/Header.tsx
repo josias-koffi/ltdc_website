@@ -6,12 +6,14 @@ import { IconMenu2, IconSquareX } from "@tabler/icons-react";
 import { ScreenTypeContext } from "@/app/template";
 import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
 import ImageWrapper from "@/components/wrapper/ImageWrapper";
+import useSeason from "@/hooks/useSeason";
 import { usePathname, useRouter } from "next/navigation";
 import { motion, useMotionValueEvent, useScroll, useTransform } from "framer-motion";
 
 const MotionBox = motion(Box);
 
 const Header = () => {
+  const { season } = useSeason();
   const router = useRouter();
   const pathname = usePathname();
   const isHomePage = pathname === "/";
@@ -74,7 +76,7 @@ const Header = () => {
             }}
           >
             <ImageWrapper
-              src={"/icons/logo/LOGO-ENTIER.png"}
+              src={season.logos.full}
               alt={"icon asso"}
               width={80}
               height={70}

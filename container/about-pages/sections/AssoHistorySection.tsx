@@ -17,7 +17,7 @@ const AssoHistorySection = () => {
         display: "flex",
         flexDirection: "column",
         alignItems: "stretch",
-        backgroundColor: "#F5EFE0",
+        backgroundColor: "var(--ltdc-section-warm)",
         py: 5,
       }}
     >

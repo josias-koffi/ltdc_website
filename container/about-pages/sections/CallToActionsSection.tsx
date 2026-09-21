@@ -48,7 +48,7 @@ const CallToActionsSection = () => {
       <Grid
         container
         sx={{
-          backgroundColor: "#F5EFE0",
+          backgroundColor: "var(--ltdc-section-warm)",
           borderRadius: 3,
           p: 5,
           position: "relative",

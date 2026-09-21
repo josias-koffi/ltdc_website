@@ -3,6 +3,8 @@ import { Sen } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 import { DEFAULT_META_DESCRIPTION, DEFAULT_TITLE } from "@/libs/constants";
+import SeasonalThemeProvider from "@/components/theme/SeasonalThemeProvider";
+import { SEASON_BOOTSTRAP_SCRIPT } from "@/config/seasonBootstrap";
 
 const sen = Sen({
   subsets: ["latin"],
@@ -22,9 +24,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr">
+    // data-season est posé par le script de bootstrap avant le premier paint :
+    // les pages étant prérendues au build, la saison ne peut pas être calculée
+    // côté serveur sans être figée à la date de compilation.
+    <html lang="fr" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: SEASON_BOOTSTRAP_SCRIPT }} />
+      </head>
       <body className={sen.className} style={{ margin: 0 }}>
-        {children}
+        <SeasonalThemeProvider>{children}</SeasonalThemeProvider>
         <Script
           defer
           data-domain={process?.env?.PLAUSIBLE_DATA_DOMAINE}

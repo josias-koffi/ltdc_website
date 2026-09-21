@@ -105,7 +105,7 @@ const EventCard = ({ props }: { props: EventInterface }) => {
               variant={"contained"}
               href={props.link}
               target={"_blank"}
-              sx={{ backgroundColor: "#F2F2F2", color: "#642775" }}
+              sx={{ backgroundColor: "#F2F2F2", color: "var(--ltdc-primary)" }}
             >
               {"Faire un don "}👈
             </Button>

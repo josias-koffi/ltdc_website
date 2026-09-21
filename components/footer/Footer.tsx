@@ -7,8 +7,10 @@ import SocialLinks from "@/components/footer/SocialLinks";
 import { FrameSettingContext } from "@/app/template";
 import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
 import ImageWrapper from "@/components/wrapper/ImageWrapper";
+import useSeason from "@/hooks/useSeason";
 
 const Footer = () => {
+  const { season } = useSeason();
   const frame = useContext(FrameSettingContext);
   const mapQuickLinks = () => {
     return footerData?.quickLinks?.map((quickLink: any, index: number) => {
@@ -46,7 +48,7 @@ const Footer = () => {
           <Grid container spacing={4}>
             <Grid size={{ xl: 6, xs: 12 }}>
               <ImageWrapper
-                src={"/icons/logo/LOGO-DÉCLINAISON-1.svg"}
+                src={season.logos.compact}
                 alt={"icon asso"}
                 width={90}
                 height={80}

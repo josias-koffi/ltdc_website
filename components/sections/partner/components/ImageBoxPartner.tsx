@@ -41,7 +41,7 @@ const ImageBoxPartner = ({
         },
         transition: "filter 0.3s ease",
         "&:focus-visible": {
-          outline: "2px solid #EDA26B",
+          outline: "2px solid var(--ltdc-accent)",
           borderRadius: 1,
         },
       }}

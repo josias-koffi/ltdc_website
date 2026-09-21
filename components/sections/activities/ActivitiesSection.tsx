@@ -63,7 +63,7 @@ const ActivitiesSection = (props: ActivitiesSectionInterface) => {
   return (
     <Box
       sx={{
-        backgroundColor: isMinimal ? "#F5EFE0" : "#FBF6FD",
+        backgroundColor: isMinimal ? "var(--ltdc-section-warm)" : "var(--ltdc-section-cool)",
         position: "relative",
       }}
     >
@@ -90,7 +90,7 @@ const ActivitiesSection = (props: ActivitiesSectionInterface) => {
       <ContainerWrapper
         sxProps={{
           zIndex: 10,
-          color: "#642775",
+          color: "var(--ltdc-primary)",
         }}
       >
         <Grid container spacing={1} sx={{ alignItems: { xs: "flex-start", md: "center" } }}>
