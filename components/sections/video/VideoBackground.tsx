@@ -71,7 +71,7 @@ const VideoBackground = ({
           bottom: "1rem",
           right: "1rem",
           zIndex: 2,
-          color: "#EDA26B",
+          color: "var(--ltdc-accent)",
         }}
       >
         {isMuted ? (

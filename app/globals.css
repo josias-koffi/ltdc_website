@@ -1,5 +1,33 @@
+/*
+ * Tokens de marque. L'attribut data-season est posé sur <html> par
+ * SeasonalThemeProvider (et, avant le premier paint, par le script inline de
+ * app/layout.tsx) : changer de saison ne fait que redéfinir ces variables.
+ * Voir config/seasons.ts pour la source de vérité des valeurs.
+ */
+:root {
+    --ltdc-primary: #642775;
+    --ltdc-accent: #EDA26B;
+    --ltdc-accent-strong: #C4761F;
+    --ltdc-accent-soft: #F7E3D0;
+    --ltdc-bg: #FFFCF7;
+    --ltdc-section-warm: #F5EFE0;
+    --ltdc-section-cool: #FBF6FD;
+}
+
+:root[data-season="october"] {
+    --ltdc-primary: #642775;
+    --ltdc-accent: #FF70C2;
+    --ltdc-accent-strong: #C9327F;
+    --ltdc-accent-soft: #FFD7E3;
+    --ltdc-bg: #FFF8FA;
+    --ltdc-section-warm: #FFEFF4;
+    --ltdc-section-cool: #FFF0F6;
+}
+
+/* Noël : à renseigner avec la déclinaison, cf. config/seasons.ts */
+
 body {
-    background-color: #FFFCF7;
+    background-color: var(--ltdc-bg);
 }
 
 .blogImage {

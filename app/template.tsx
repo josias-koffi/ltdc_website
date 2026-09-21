@@ -2,8 +2,7 @@
 import React, { createContext } from "react";
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
-import { ThemeProvider, useTheme } from "@mui/material/styles";
-import { themeOptions } from "@/config/theming";
+import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
@@ -43,27 +42,25 @@ export default function Template({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <ThemeProvider theme={themeOptions}>
-      <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <FrameSettingContext.Provider value={frame}>
-          <ScreenTypeContext.Provider value={upperMdScreen}>
-            <Header />
-            <AnimatePresence mode="wait">
-              <motion.main
-                key={pathname}
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                transition={{ duration: 0.3, ease: "easeInOut" }}
-              >
-                {children}
-              </motion.main>
-            </AnimatePresence>
-            <Footer />
-            <PopupSystem />
-          </ScreenTypeContext.Provider>
-        </FrameSettingContext.Provider>
-      </LocalizationProvider>
-    </ThemeProvider>
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <FrameSettingContext.Provider value={frame}>
+        <ScreenTypeContext.Provider value={upperMdScreen}>
+          <Header />
+          <AnimatePresence mode="wait">
+            <motion.main
+              key={pathname}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+            >
+              {children}
+            </motion.main>
+          </AnimatePresence>
+          <Footer />
+          <PopupSystem />
+        </ScreenTypeContext.Provider>
+      </FrameSettingContext.Provider>
+    </LocalizationProvider>
   );
 }
