@@ -53,7 +53,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
-      url: `${domain}esf-program`,
+      url: `${domain}our-story`,
       lastModified: new Date(),
       changeFrequency: "yearly",
       priority: 0.8,

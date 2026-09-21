@@ -22,6 +22,15 @@ const nextConfig = {
       },
     ],
   },
+  redirects: async () => [
+    // La page « Notre histoire » était exposée sous /esf-program et figurait
+    // dans le sitemap : on preserve les liens existants et le referencement.
+    {
+      source: "/esf-program",
+      destination: "/our-story",
+      permanent: true,
+    },
+  ],
   webpack: (config) => {
     config.resolve.alias["@"] = path.resolve(__dirname);
     return config;
