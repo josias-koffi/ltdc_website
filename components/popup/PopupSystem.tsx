@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback, useMemo } from "react";
 import {
   Dialog,
   DialogContent,
@@ -12,6 +12,8 @@ import {
 } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
+import useSeason from "@/hooks/useSeason";
+import { isSeasonKey, SeasonKey } from "@/config/seasons";
 
 interface PopupItem {
   id: string;
@@ -20,18 +22,45 @@ interface PopupItem {
   imageUrl?: string;
   videoUrl?: string;
   url: string;
+  /** Libellé du bouton d'action. Défaut : "En savoir plus". */
+  ctaLabel?: string;
+  /** Restreint l'affichage à une saison (cf. config/seasons.ts). Absent = toujours éligible. */
+  season?: SeasonKey;
+  /** Poids dans le tirage aléatoire. Défaut : 1. Un poids de 3 = trois fois plus fréquent. */
+  weight?: number;
 }
 
 const STORAGE_KEY = "ltdc_popup_last_shown";
 const AUTO_DELAY_MS = 60_000;
+/** Les affiches sont au format portrait : il leur faut de la hauteur pour rester lisibles. */
+const POSTER_MAX_HEIGHT = "min(55vh, 480px)";
 const TIKTOK_VIDEO_RE = /tiktok\.com\/@[^/]+\/video\/(\d+)/;
+
+const isExternalUrl = (url: string): boolean => /^https?:\/\//.test(url);
 
 function extractTiktokId(url: string): string | null {
   return url.match(TIKTOK_VIDEO_RE)?.[1] ?? null;
 }
 
-function getRandomPopup(popups: PopupItem[]): PopupItem {
-  return popups[Math.floor(Math.random() * popups.length)];
+/** Popups affichables pour la saison courante. */
+function getEligiblePopups(popups: PopupItem[], seasonKey: SeasonKey): PopupItem[] {
+  return popups.filter(
+    (popup) => !isSeasonKey(popup.season) || popup.season === seasonKey,
+  );
+}
+
+/** Tirage aléatoire pondéré : un poids plus élevé sort plus souvent. */
+function pickWeightedPopup(popups: PopupItem[]): PopupItem | null {
+  if (!popups.length) return null;
+  const weightOf = (popup: PopupItem) =>
+    typeof popup.weight === "number" && popup.weight > 0 ? popup.weight : 1;
+  const total = popups.reduce((sum, popup) => sum + weightOf(popup), 0);
+  let draw = Math.random() * total;
+  for (const popup of popups) {
+    draw -= weightOf(popup);
+    if (draw < 0) return popup;
+  }
+  return popups[popups.length - 1];
 }
 
 function hasShownToday(): boolean {
@@ -51,6 +80,7 @@ function markShownToday(): void {
 }
 
 export default function PopupSystem() {
+  const { season, seasonKey } = useSeason();
   const [popups, setPopups] = useState<PopupItem[]>([]);
   const [activePopup, setActivePopup] = useState<PopupItem | null>(null);
   const [open, setOpen] = useState(false);
@@ -63,26 +93,28 @@ export default function PopupSystem() {
   }, []);
 
   const showRandom = useCallback((popupList: PopupItem[]) => {
-    if (!popupList.length) return;
-    setActivePopup(getRandomPopup(popupList));
+    const picked = pickWeightedPopup(popupList);
+    if (!picked) return;
+    setActivePopup(picked);
     setOpen(true);
   }, []);
 
+  const eligiblePopups = useMemo(
+    () => getEligiblePopups(popups, seasonKey),
+    [popups, seasonKey],
+  );
+
   useEffect(() => {
-    if (!popups.length) return;
+    if (!eligiblePopups.length) return;
     if (hasShownToday()) return;
     const timer = setTimeout(() => {
       markShownToday();
-      showRandom(popups);
+      showRandom(eligiblePopups);
     }, AUTO_DELAY_MS);
     return () => clearTimeout(timer);
-  }, [popups, showRandom]);
+  }, [eligiblePopups, showRandom]);
 
-  const handleBadgeClick = () => {
-    if (!popups.length) return;
-    setActivePopup(getRandomPopup(popups));
-    setOpen(true);
-  };
+  const handleBadgeClick = () => showRandom(eligiblePopups);
 
   const handleClose = () => setOpen(false);
 
@@ -114,7 +146,7 @@ export default function PopupSystem() {
         }}
       >
         <Image
-          src="/icons/logo/LOGO_DÉCLINAISON_2.png"
+          src={season.logos.icon}
           alt="LTDC"
           fill
           style={{ objectFit: "cover" }}
@@ -200,13 +232,13 @@ export default function PopupSystem() {
           </DialogTitle>
           <DialogContent sx={{ p: 0 }}>
             {activePopup?.imageUrl && (
+              // Hauteur fixe plutot que maxHeight : la place est reservee avant
+              // le chargement, sinon la fenetre saute quand l'affiche arrive.
               <Box
                 sx={{
+                  position: "relative",
                   width: "100%",
-                  maxHeight: 360,
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
+                  height: POSTER_MAX_HEIGHT,
                   bgcolor: "#f5f5f5",
                   overflow: "hidden",
                 }}
@@ -214,16 +246,9 @@ export default function PopupSystem() {
                 <Image
                   src={activePopup.imageUrl}
                   alt={activePopup.title}
-                  width={0}
-                  height={0}
+                  fill
                   sizes="(max-width: 600px) 100vw, 600px"
-                  style={{
-                    maxWidth: "100%",
-                    maxHeight: 360,
-                    width: "auto",
-                    height: "auto",
-                    display: "block",
-                  }}
+                  style={{ objectFit: "contain" }}
                 />
               </Box>
             )}
@@ -244,8 +269,11 @@ export default function PopupSystem() {
                 onClick={handleClose}
                 variant="contained"
                 color="primary"
+                {...(isExternalUrl(activePopup.url)
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
               >
-                En savoir plus
+                {activePopup.ctaLabel ?? "En savoir plus"}
               </Button>
             )}
           </DialogActions>
