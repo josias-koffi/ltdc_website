@@ -11,6 +11,8 @@
 
 # next.js
 /.next/
+# répertoires de build alternatifs (distDir temporaire, ancien .next mis de côté)
+/.next-*/
 /out/
 
 # production
