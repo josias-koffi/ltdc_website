@@ -75,13 +75,25 @@ const Header = () => {
               "&:hover": { cursor: "pointer" },
             }}
           >
-            <ImageWrapper
-              src={season.logos.full}
-              alt={"icon asso"}
-              width={80}
-              height={70}
-              objectFit={"fill"}
-            />
+            {/* Carré blanc commun à tous les thèmes : garantit le contraste sur la vidéo du hero,
+                que le visuel de la saison ait un fond intégré ou soit transparent. */}
+            <Box
+              sx={{
+                width: 60,
+                height: 60,
+                p: 0.5,
+                bgcolor: "#FFFFFF",
+                borderRadius: "10px",
+              }}
+            >
+              <ImageWrapper
+                src={season.logos.full}
+                alt={"icon asso"}
+                width={"100%"}
+                height={"100%"}
+                objectFit={"contain"}
+              />
+            </Box>
             {/*<ImageWrapper*/}
             {/*  src={"/icons/Logo_Association_LTDC_TYPO.svg"}*/}
             {/*  alt={"icon asso"}*/}
