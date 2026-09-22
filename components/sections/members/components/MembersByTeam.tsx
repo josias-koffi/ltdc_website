@@ -153,7 +153,7 @@ const MembersByTeam = ({
                         ...(isInteractive &&
                           member?.itv && {
                             "&:hover": {
-                              boxShadow: "0 0 25px 20px rgba(237, 162, 107, 0.5)",
+                              boxShadow: "0 0 25px 20px color-mix(in srgb, var(--ltdc-accent) 50%, transparent)",
                             },
                           }),
                       }}
