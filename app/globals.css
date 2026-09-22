@@ -16,12 +16,12 @@
 
 :root[data-season="october"] {
     --ltdc-primary: #642775;
-    --ltdc-accent: #FF70C2;
-    --ltdc-accent-strong: #C9327F;
-    --ltdc-accent-soft: #FFD7E3;
-    --ltdc-bg: #FFF8FA;
-    --ltdc-section-warm: #FFEFF4;
-    --ltdc-section-cool: #FFF0F6;
+    --ltdc-accent: #DC2A8F;
+    --ltdc-accent-strong: #A8165F;
+    --ltdc-accent-soft: #FFB8D6;
+    --ltdc-bg: #FFF0F6;
+    --ltdc-section-warm: #FFDCEA;
+    --ltdc-section-cool: #FFDCEA;
 }
 
 /* Noël : à renseigner avec la déclinaison, cf. config/seasons.ts */

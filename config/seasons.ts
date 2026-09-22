@@ -86,12 +86,12 @@ export const SEASONS: Record<SeasonKey, SeasonDefinition> = {
     colors: {
       // Le violet de la charte est conservé : seul l'orange devient rose.
       primary: "#642775",
-      accent: "#FF70C2",
-      accentStrong: "#C9327F",
-      accentSoft: "#FFD7E3",
-      pageBackground: "#FFF8FA",
-      sectionWarm: "#FFEFF4",
-      sectionCool: "#FFF0F6",
+      accent: "#DC2A8F",
+      accentStrong: "#A8165F",
+      accentSoft: "#FFB8D6",
+      pageBackground: "#FFF0F6",
+      sectionWarm: "#FFDCEA",
+      sectionCool: "#FFDCEA",
     },
     logos: {
       full: "/icons/logo/october/logo-entier.png",
