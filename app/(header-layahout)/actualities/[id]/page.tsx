@@ -5,6 +5,7 @@ import { FetchProps } from "@/libs/interfaces/Interfaces";
 import { ActualitiesEntity } from "@/libs/interfaces/entities";
 import { revalidatePath } from "next/cache";
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 // Fonction utilitaire pour récupérer une actuality par ID
 const fetchActuality = async (
@@ -13,7 +14,10 @@ const fetchActuality = async (
   const request: FetchProps = {
     entity: "actualities",
     deepFields: false,
-    filter: { id: id },
+    filter: {
+      id: { _eq: id },
+      status: { _eq: "published" },
+    },
   };
 
   const res: ActualitiesEntity[] = await getItems(request);
@@ -41,7 +45,7 @@ const ActualityView = async ({ params }: { params: { id: string } }) => {
   revalidatePath("/actualities/[id]", "page");
 
   if (!actuality) {
-    throw new Error("Actualité non trouvé"); // Gérer le cas où l'actualité n'existe pas
+    notFound();
   }
 
   return <ViewActualities actuality={actuality} />;

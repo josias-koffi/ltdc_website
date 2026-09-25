@@ -43,11 +43,15 @@ export const getItems = async ({
   }
 };
 
-export const getTotalPostCount = async (item: EntityInterface["name"]) => {
+export const getTotalPostCount = async (
+  item: EntityInterface["name"],
+  filter?: FetchProps["filter"],
+) => {
   const totalCount = await client.request(
     //@ts-expect-error Invalid typing
     aggregate(item, {
       aggregate: { count: "*" },
+      ...(filter ? { filter } : {}),
     }),
   );
   return totalCount[0].count;
