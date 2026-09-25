@@ -2,16 +2,17 @@
 import React, { useEffect } from "react";
 import { Pagination, Stack } from "@mui/material";
 import { getTotalPostCount } from "@/libs/directus";
-import { EntityInterface } from "@/libs/interfaces/Interfaces";
+import { EntityInterface, FetchProps } from "@/libs/interfaces/Interfaces";
 
 interface Props {
   limit: number;
   entity: EntityInterface["name"];
+  filter?: FetchProps["filter"];
   page: number;
   setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const PaginationFooter = ({ limit, entity, setCurrentPage }: Props) => {
+const PaginationFooter = ({ limit, entity, filter, setCurrentPage }: Props) => {
   const [page, setPage] = React.useState(1);
   const [totalPostCount, setTotalPostCount] = React.useState(1);
   const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
@@ -28,7 +29,7 @@ const PaginationFooter = ({ limit, entity, setCurrentPage }: Props) => {
 
   const fetchData = async () => {
     try {
-      const totalPostCount = await getTotalPostCount(entity);
+      const totalPostCount = await getTotalPostCount(entity, filter);
       const totalPages = Math.ceil(totalPostCount / limit);
       setTotalPostCount(totalPages);
     } catch (error: any) {

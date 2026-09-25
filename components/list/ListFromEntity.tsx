@@ -12,6 +12,7 @@ interface ListFromEntityProps {
   entity: EntityInterface["name"];
   CardType: unknown;
   itemsSize?: { xl?: number; md?: number; sm?: number; xs?: number };
+  filter?: FetchProps["filter"];
 }
 
 const DEFAULT_SIZE = { xl: 4, md: 6, sm: 12, xs: 12 };
@@ -35,6 +36,7 @@ const ListFromEntity = ({
   entity,
   CardType,
   itemsSize,
+  filter,
 }: ListFromEntityProps) => {
   const [data, setData] = useState<unknown[]>([]);
   const [loading, setLoading] = useState(true);
@@ -48,6 +50,7 @@ const ListFromEntity = ({
       entity: entity,
       limit: LIMIT,
       page: currentPage,
+      filter,
     };
     try {
       const res = await getItems(request);
@@ -104,6 +107,7 @@ const ListFromEntity = ({
           <PaginationFooter
             limit={LIMIT}
             entity={entity}
+            filter={filter}
             page={currentPage}
             setCurrentPage={setCurrentPage}
           />
