@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useCallback, useContext, useEffect, useRef } from "react";
 import { Box, Typography, useTheme } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import footerData from "./footer.json";
@@ -8,10 +8,46 @@ import { FrameSettingContext } from "@/app/template";
 import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
 import ImageWrapper from "@/components/wrapper/ImageWrapper";
 import useSeason from "@/hooks/useSeason";
+import { SEASON_KEYS } from "@/config/seasons";
+
+const LOGO_TAP_TIMEOUT_MS = 800;
 
 const Footer = () => {
-  const { season } = useSeason();
+  const { season, seasonKey, setSeason } = useSeason();
+  const logoTapCountRef = useRef(0);
+  const logoTapTimerRef = useRef<ReturnType<typeof setTimeout>>();
   const frame = useContext(FrameSettingContext);
+
+  const resetLogoTapCount = useCallback(() => {
+    logoTapCountRef.current = 0;
+    if (logoTapTimerRef.current) {
+      clearTimeout(logoTapTimerRef.current);
+      logoTapTimerRef.current = undefined;
+    }
+  }, []);
+
+  const handleLogoClick = useCallback(() => {
+    if (logoTapTimerRef.current) {
+      clearTimeout(logoTapTimerRef.current);
+    }
+
+    logoTapCountRef.current += 1;
+    if (logoTapCountRef.current === 3) {
+      const currentIndex = SEASON_KEYS.indexOf(seasonKey);
+      const nextIndex = (currentIndex + 1) % SEASON_KEYS.length;
+      setSeason(SEASON_KEYS[nextIndex]);
+      resetLogoTapCount();
+      return;
+    }
+
+    logoTapTimerRef.current = setTimeout(
+      resetLogoTapCount,
+      LOGO_TAP_TIMEOUT_MS,
+    );
+  }, [resetLogoTapCount, seasonKey, setSeason]);
+
+  useEffect(() => resetLogoTapCount, [resetLogoTapCount]);
+
   const mapQuickLinks = () => {
     return footerData?.quickLinks?.map((quickLink: any, index: number) => {
       return (
@@ -47,13 +83,28 @@ const Footer = () => {
         <Box sx={{ flexGrow: 1 }}>
           <Grid container spacing={4}>
             <Grid size={{ xl: 6, xs: 12 }}>
-              <ImageWrapper
-                src={season.logos.compact}
-                alt={"icon asso"}
-                width={90}
-                height={80}
-                objectFit={"cover"}
-              />
+              <Box
+                component="button"
+                type="button"
+                onClick={handleLogoClick}
+                aria-label="Changer de thème après trois appuis"
+                sx={{
+                  display: "block",
+                  p: 0,
+                  border: 0,
+                  background: "transparent",
+                  cursor: "pointer",
+                  touchAction: "manipulation",
+                }}
+              >
+                <ImageWrapper
+                  src={season.logos.compact}
+                  alt={"icon asso"}
+                  width={90}
+                  height={80}
+                  objectFit={"cover"}
+                />
+              </Box>
               <Typography variant="h5" component="div">
                 {footerData?.callSentence}
               </Typography>
