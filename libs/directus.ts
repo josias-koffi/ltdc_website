@@ -79,7 +79,7 @@ export const getTotalPostCount = async (
     //@ts-expect-error Invalid typing
     aggregate(item, {
       aggregate: { count: "*" },
-      ...(publishedFilter ? { filter: publishedFilter } : {}),
+      ...(publishedFilter ? { query: { filter: publishedFilter } } : {}),
     }),
   );
   return totalCount[0].count;
