@@ -3,6 +3,7 @@ import { OfferEntity } from "@/libs/interfaces/entities";
 import { FetchProps } from "@/libs/interfaces/Interfaces";
 import { getItems } from "@/libs/directus";
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import OfferView from "@/container/offers-pages/OfferView";
 
@@ -38,7 +39,7 @@ const OfferById = async ({ params }: { params: { id: string } }) => {
   revalidatePath("/offers/[id]", "page");
 
   if (!offer) {
-    throw new Error("Offre non trouvé"); // Gérer le cas où l'actualité n'existe pas
+    notFound();
   }
 
   return <OfferView offer={offer} />;

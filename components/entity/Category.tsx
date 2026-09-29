@@ -17,7 +17,7 @@ const Category = ({ id }: { id: any }) => {
 
   const fetchData = async () => {
     let res: ActualitiesCategoriesEntity[] = await getItems(filter);
-    setCategory(res[0].categories_id);
+    setCategory(res?.[0]?.categories_id);
   };
 
   useEffect(() => {
