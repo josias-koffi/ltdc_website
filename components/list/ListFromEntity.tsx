@@ -17,6 +17,9 @@ interface ListFromEntityProps {
 
 const DEFAULT_SIZE = { xl: 4, md: 6, sm: 12, xs: 12 };
 const LIMIT = 6;
+// Les plus récents d'abord : le tri doit être fait par Directus pour rester
+// cohérent d'une page à l'autre.
+const SORT = ["-id"];
 
 const CardSkeleton = ({
   size,
@@ -50,12 +53,13 @@ const ListFromEntity = ({
       entity: entity,
       limit: LIMIT,
       page: currentPage,
+      sort: SORT,
       filter,
     };
     try {
       const res = await getItems(request);
       if (res?.length > 0) {
-        setData(res.reverse());
+        setData(res);
       } else {
         setData([]);
       }
