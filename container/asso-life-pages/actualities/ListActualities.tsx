@@ -3,8 +3,6 @@ import RubriqueHead from "@/components/sections/RubriqueHead";
 import ListFromEntity from "@/components/list/ListFromEntity";
 import ActualityCard from "@/components/cards/ActualityCard";
 
-const PUBLISHED_FILTER = { status: { _eq: "published" } };
-
 const ListActualities = () => {
   return (
     <div>
@@ -18,11 +16,7 @@ const ListActualities = () => {
         imageAlt={"image de test"}
         imageUrl={"/images/banners/CHEZ_LTDC_CHAQUE_TALENT_FAIT_LA_DIFFérence-4.png"}
       />
-      <ListFromEntity
-        entity={"actualities"}
-        CardType={ActualityCard}
-        filter={PUBLISHED_FILTER}
-      />
+      <ListFromEntity entity={"actualities"} CardType={ActualityCard} />
     </div>
   );
 };

@@ -4,6 +4,7 @@ import { FetchProps } from "@/libs/interfaces/Interfaces";
 import { ActualitiesEntity, ProjectEntity } from "@/libs/interfaces/entities";
 import { revalidatePath } from "next/cache";
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
 import ViewProject from "@/container/projects-pages/view/ViewProject";
 
 const fetchProjects = async (id: string): Promise<ProjectEntity | null> => {
@@ -37,7 +38,7 @@ const ProjectView = async ({ params }: { params: { id: string } }) => {
   revalidatePath("/projects/[id]", "page");
 
   if (!project) {
-    throw new Error("Projet non trouvé"); // Gérer le cas où le projet n'existe pas
+    notFound();
   }
 
   return <ViewProject project={project} />;
