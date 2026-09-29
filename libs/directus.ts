@@ -48,10 +48,8 @@ export const getItems = async ({
 }: FetchProps) => {
   let createFilter = {
     ...{ fields: [deepFields ? "*.*.*" : "*"] },
-    //@ts-expect-error error
-    ...limit,
-    //@ts-expect-error error
-    ...page,
+    ...(limit ? { limit } : {}),
+    ...(page ? { page } : {}),
   };
 
   const publishedFilter = withPublishedFilter(entity, filter);

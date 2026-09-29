@@ -12,16 +12,19 @@ interface Props {
   setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const PaginationFooter = ({ limit, entity, filter, setCurrentPage }: Props) => {
-  const [page, setPage] = React.useState(1);
+// La page courante est portée par le parent : ce composant est démonté pendant
+// chaque chargement, un état local repartirait à la page 1.
+const PaginationFooter = ({
+  limit,
+  entity,
+  filter,
+  page,
+  setCurrentPage,
+}: Props) => {
   const [totalPostCount, setTotalPostCount] = React.useState(1);
   const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
-    setPage(value);
+    setCurrentPage(value);
   };
-
-  useEffect(() => {
-    setCurrentPage(page);
-  }, [page]);
 
   useEffect(() => {
     fetchData();
