@@ -4,6 +4,7 @@ import { Box, IconButton } from "@mui/material";
 import VolumeUpRoundedIcon from "@mui/icons-material/VolumeUpRounded";
 import VolumeOffRoundedIcon from "@mui/icons-material/VolumeOffRounded";
 import { motion } from "framer-motion";
+import useSeason from "@/hooks/useSeason";
 
 const MotionIconButton = motion(IconButton);
 
@@ -12,6 +13,7 @@ const VideoBackground = ({
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
+  const { assets } = useSeason();
   const [isMuted, setIsMuted] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -27,13 +29,16 @@ const VideoBackground = ({
         overflow: "hidden",
       }}
     >
+      {/* key : le thème est résolu après l'hydratation, changer de source
+          impose de recréer l'élément pour que le navigateur recharge la vidéo. */}
       <video
+        key={assets.heroVideo}
         ref={videoRef}
         autoPlay
         loop
         muted={isMuted}
         playsInline
-        poster="/images/homePage/Ellipse.svg"
+        poster={assets.heroPoster}
         style={{
           position: "absolute",
           top: 0,
@@ -44,10 +49,7 @@ const VideoBackground = ({
           zIndex: -1,
         }}
       >
-        <source
-          src="/videos/hero-section/video_hero_section.mp4"
-          type="video/mp4"
-        />
+        <source src={assets.heroVideo} type="video/mp4" />
         Votre navigateur ne supporte pas la lecture de vidéos HTML5.
       </video>
 

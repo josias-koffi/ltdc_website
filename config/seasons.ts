@@ -1,5 +1,5 @@
 /**
- * Habillages saisonniers du site (logos + palette).
+ * Habillages saisonniers du site (logos + palette + visuels).
  *
  * Source de vérité unique, sans dépendance React : ce module est importable
  * aussi bien côté serveur (rendu initial) que côté client (bascule à chaud).
@@ -7,6 +7,10 @@
  * Pour ajouter une opération : déclarer une entrée dans SEASONS, fournir les
  * visuels dans public/icons/logo/<clé>/ et déclarer les variables CSS
  * correspondantes dans app/globals.css sous :root[data-season="<clé>"].
+ * Les contenus saisonniers (vidéo du hero, bloc d'appel à l'action, campagne
+ * HelloAsso) se déclarent dans `assets` : seuls les champs qui changent sont à
+ * renseigner, les autres retombent sur DEFAULT_ASSETS. Les fichiers vont dans
+ * public/images/<clé>/ (ou public/videos/<clé>/ pour les vidéos).
  * Aucun composant n'est à modifier.
  */
 
@@ -43,6 +47,36 @@ export interface SeasonLogos {
   favicon: string;
 }
 
+export interface SeasonCampaign {
+  /** Titre de la section campagne de l'accueil. */
+  title: string;
+  description?: string;
+  /** URL du widget HelloAsso (se termine par /widget). */
+  widgetUrl: string;
+}
+
+/** Bloc d'appel à l'action des pages À propos et Membres (« Rejoignez-nous » par défaut). */
+export interface SeasonCallToAction {
+  title: string;
+  /** Les retours à la ligne sont conservés à l'affichage. */
+  text: string;
+  buttonLabel: string;
+  /** Lien interne (/offers) ou externe (https://…, ouvert dans un nouvel onglet). */
+  url: string;
+  /** Visuel affiché à côté du bloc sur grand écran. */
+  image: string;
+}
+
+export interface SeasonAssets {
+  /** Vidéo de fond du hero de l'accueil. */
+  heroVideo: string;
+  /** Image affichée tant que la vidéo du hero n'est pas chargée. */
+  heroPoster: string;
+  callToAction: SeasonCallToAction;
+  /** Campagne HelloAsso de l'accueil. null = section masquée. */
+  campaign: SeasonCampaign | null;
+}
+
 export interface SeasonDefinition {
   key: SeasonKey;
   /** Libellé affiché dans la confirmation de bascule. */
@@ -51,7 +85,14 @@ export interface SeasonDefinition {
   window: { start: MonthDay; end: MonthDay } | null;
   colors: SeasonColors;
   logos: SeasonLogos;
+  /** Contenus propres à la saison ; tout champ absent reprend DEFAULT_ASSETS. */
+  assets?: SeasonAssetOverrides;
 }
+
+/** Surcharges d'une saison : l'appel à l'action se surcharge aussi champ par champ. */
+export type SeasonAssetOverrides = Partial<Omit<SeasonAssets, "callToAction">> & {
+  callToAction?: Partial<SeasonCallToAction>;
+};
 
 const DEFAULT_COLORS: SeasonColors = {
   primary: "#642775",
@@ -68,6 +109,21 @@ const DEFAULT_LOGOS: SeasonLogos = {
   compact: "/icons/logo/LOGO-DÉCLINAISON-1.svg",
   icon: "/icons/logo/LOGO_DÉCLINAISON_2.png",
   favicon: "/favicon.ico",
+};
+
+const DEFAULT_ASSETS: SeasonAssets = {
+  heroVideo: "/videos/hero-section/video_hero_section.mp4",
+  heroPoster: "/images/homePage/Ellipse.svg",
+  callToAction: {
+    title: "Rejoignez-nous",
+    text:
+      "Rejoignez-nous pour faire un travail significatif avec des collègues bienveillants " +
+      "et intelligents, investis dans votre développement.",
+    buttonLabel: "Nous rejoindre",
+    url: "/offers",
+    image: "/images/recrutement_image.png",
+  },
+  campaign: null,
 };
 
 export const SEASONS: Record<SeasonKey, SeasonDefinition> = {
@@ -99,6 +155,29 @@ export const SEASONS: Record<SeasonKey, SeasonDefinition> = {
       icon: "/icons/logo/october/logo-declinaison-2.png",
       favicon: "/icons/logo/october/favicon-october.png",
     },
+    assets: {
+      // heroVideo : vidéo Octobre Rose pas encore livrée, la vidéo par défaut
+      // reste affichée d'ici là.
+      callToAction: {
+        title: "Un bout de ma vie",
+        text:
+          "🎙️ Découvrez Un bout de ma vie, notre toute nouvelle émission.\n\n" +
+          "Pour ce premier épisode, Sarah, Lila et Mélanie se livrent sur leur parcours face au " +
+          "cancer du sein. Un échange authentique, rempli de courage et d’émotion.\n" +
+          "📅 Rendez-vous le 09 octobre. 💗",
+        buttonLabel: "Voir sur YouTube",
+        url: "https://www.youtube.com/channel/UCsuewndAyw8jXs1agFpBKCg",
+        image: "/images/october/vu-bout-de-ma-vie.jpg",
+      },
+      campaign: {
+        title: "Mission Octobre Rose",
+        description:
+          "Un mois pour agir, un don pour avancer. Dans le cadre de la Mission Rose LTDC, " +
+          "une partie des dons sera reversée à notre association partenaire, Tout le Monde Contre le Cancer.",
+        widgetUrl:
+          "https://www.helloasso.com/associations/association-les-travailleurs-du-c-ur/formulaires/2/widget",
+      },
+    },
   },
 
   // Placeholder : la mécanique est opérationnelle, seuls les visuels et la
@@ -119,6 +198,16 @@ export const isSeasonKey = (value: unknown): value is SeasonKey =>
   typeof value === "string" && SEASON_KEYS.includes(value as SeasonKey);
 
 export const getSeason = (key: SeasonKey): SeasonDefinition => SEASONS[key];
+
+/** Visuels effectifs d'une saison : ceux qu'elle déclare, sinon ceux par défaut. */
+export const getSeasonAssets = (key: SeasonKey): SeasonAssets => {
+  const { callToAction, ...overrides } = SEASONS[key].assets ?? {};
+  return {
+    ...DEFAULT_ASSETS,
+    ...overrides,
+    callToAction: { ...DEFAULT_ASSETS.callToAction, ...callToAction },
+  };
+};
 
 /** Position d'une date dans l'année, comparable sans tenir compte de l'année. */
 const dayOfYearIndex = ([month, day]: MonthDay): number => month * 100 + day;

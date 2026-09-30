@@ -7,33 +7,22 @@ import HelloAssoWidget from "@/components/sections/campaign/HelloAssoWidget";
 import { ScreenTypeContext } from "@/app/template";
 import { fadeInUp } from "@/components/animation/variants";
 import { useAnimationVariants } from "@/hooks/useAnimationVariants";
-
-export interface CampaignInterface {
-  title: string;
-  description?: string;
-  widgetUrl: string;
-}
-
-// Campagne mise en avant sur l'accueil : remplacer ces valeurs (ou passer une
-// autre campagne en props) pour promouvoir une nouvelle collecte HelloAsso.
-const CURRENT_CAMPAIGN: CampaignInterface = {
-  title: "Soutenez nos actions",
-  description:
-    "Chaque don nous aide à poursuivre notre engagement solidaire. " +
-    "Participez à notre campagne en quelques clics, en toute sécurité via HelloAsso.",
-  widgetUrl:
-    "https://www.helloasso.com/associations/association-les-travailleurs-du-c-ur/formulaires/2/widget",
-};
+import useSeason from "@/hooks/useSeason";
+import { SeasonCampaign } from "@/config/seasons";
 
 interface CampaignSectionInterface {
-  campaign?: CampaignInterface;
+  /** Force une campagne ; par défaut, celle de la saison active (config/seasons.ts). */
+  campaign?: SeasonCampaign;
 }
 
-const CampaignSection = ({
-  campaign = CURRENT_CAMPAIGN,
-}: CampaignSectionInterface) => {
+const CampaignSection = (props: CampaignSectionInterface) => {
+  const { assets } = useSeason();
   const notPhoneScreen = useContext(ScreenTypeContext);
   const fadeUp = useAnimationVariants(fadeInUp);
+  const campaign = props.campaign ?? assets.campaign;
+
+  // Aucune campagne en cours pour cette saison : la section disparaît.
+  if (!campaign) return null;
 
   return (
     <ContainerWrapper>
@@ -55,7 +44,12 @@ const CampaignSection = ({
         ) : null}
       </motion.div>
 
-      <HelloAssoWidget src={campaign.widgetUrl} title={campaign.title} />
+      {/* key : repart de la hauteur initiale si la campagne change à chaud. */}
+      <HelloAssoWidget
+        key={campaign.widgetUrl}
+        src={campaign.widgetUrl}
+        title={campaign.title}
+      />
     </ContainerWrapper>
   );
 };

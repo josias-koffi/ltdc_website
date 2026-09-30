@@ -13,8 +13,10 @@ import { ThemeProvider } from "@mui/material/styles";
 import { buildTheme } from "@/config/theming";
 import {
   getSeason,
+  getSeasonAssets,
   isSeasonKey,
   resolveSeasonByDate,
+  SeasonAssets,
   SeasonDefinition,
   SeasonKey,
 } from "@/config/seasons";
@@ -27,6 +29,8 @@ import useSeasonEasterEgg from "@/hooks/useSeasonEasterEgg";
 export interface SeasonContextValue {
   season: SeasonDefinition;
   seasonKey: SeasonKey;
+  /** Visuels de la saison, complétés par ceux par défaut. */
+  assets: SeasonAssets;
   /** Force une saison. "default" efface l'override et rend la main au calendrier. */
   setSeason: (key: SeasonKey) => void;
   /** true si la saison affichée vient d'un override et non du calendrier. */
@@ -61,6 +65,7 @@ const SeasonalThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const defaultFaviconRef = useRef<string | null>(null);
 
   const season = useMemo(() => getSeason(seasonKey), [seasonKey]);
+  const assets = useMemo(() => getSeasonAssets(seasonKey), [seasonKey]);
   const theme = useMemo(() => buildTheme(season), [season]);
 
   const setSeason = useCallback((key: SeasonKey) => {
@@ -113,8 +118,8 @@ const SeasonalThemeProvider = ({ children }: { children: React.ReactNode }) => {
   useSeasonEasterEgg(setSeason);
 
   const value = useMemo<SeasonContextValue>(
-    () => ({ season, seasonKey, setSeason, isOverridden }),
-    [season, seasonKey, setSeason, isOverridden],
+    () => ({ season, seasonKey, assets, setSeason, isOverridden }),
+    [season, seasonKey, assets, setSeason, isOverridden],
   );
 
   return (

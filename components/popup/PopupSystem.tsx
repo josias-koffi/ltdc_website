@@ -34,6 +34,12 @@ interface PopupItem {
    * Le clic sur la pastille reste un tirage normal entre toutes les popups.
    */
   exclusive?: boolean;
+  /**
+   * Id d'une popup que celle-ci remplace tant qu'elle est éligible. Sert à
+   * décliner une popup permanente pour une saison (ex. l'affiche de recrutement
+   * d'Octobre Rose à la place de celle de l'année).
+   */
+  replaces?: string;
 }
 
 const STORAGE_KEY = "ltdc_popup_last_shown";
@@ -48,11 +54,15 @@ function extractTiktokId(url: string): string | null {
   return url.match(TIKTOK_VIDEO_RE)?.[1] ?? null;
 }
 
-/** Popups affichables pour la saison courante. */
+/** Popups affichables pour la saison courante, déclinaisons saisonnières comprises. */
 function getEligiblePopups(popups: PopupItem[], seasonKey: SeasonKey): PopupItem[] {
-  return popups.filter(
+  const inSeason = popups.filter(
     (popup) => !isSeasonKey(popup.season) || popup.season === seasonKey,
   );
+  const replaced = new Set(
+    inSeason.flatMap((popup) => (popup.replaces ? [popup.replaces] : [])),
+  );
+  return inSeason.filter((popup) => !replaced.has(popup.id));
 }
 
 /**

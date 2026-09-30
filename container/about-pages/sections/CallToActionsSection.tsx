@@ -6,10 +6,14 @@ import { IconChevronRight } from "@tabler/icons-react";
 import { FrameSettingContext, ScreenTypeContext } from "@/app/template";
 import Image from "next/image";
 import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
+import useSeason from "@/hooks/useSeason";
 
 const CallToActionsSection = () => {
   const notPhoneScreen = useContext(ScreenTypeContext);
   const upperMd = useContext(FrameSettingContext);
+  const { assets } = useSeason();
+  const cta = assets.callToAction;
+  const isExternal = /^https?:\/\//.test(cta.url);
   return (
     <ContainerWrapper
       sxProps={{
@@ -34,8 +38,8 @@ const CallToActionsSection = () => {
             }}
           >
             <Image
-              src={"/images/recrutement_image.png"}
-              alt={"Call to action"}
+              src={cta.image}
+              alt={cta.title}
               fill={true}
               style={{
                 objectFit: "contain",
@@ -61,20 +65,24 @@ const CallToActionsSection = () => {
               variant={notPhoneScreen ? "h4" : "h5"}
               fontWeight={"bold"}
             >
-              {"Rejoignez-nous"}
+              {cta.title}
             </Typography>
-            <Typography variant={"body1"} sx={{ color: "text.secondary" }}>
-              {
-                "Rejoignez-nous pour faire un travail significatif avec des collègues bienveillants et intelligents, investis dans votre développement."
-              }
+            <Typography
+              variant={"body1"}
+              sx={{ color: "text.secondary", whiteSpace: "pre-line" }}
+            >
+              {cta.text}
             </Typography>
           </Box>
           <Button
             variant={"contained"}
-            href={"/offers"}
+            href={cta.url}
             endIcon={<IconChevronRight />}
+            {...(isExternal
+              ? { target: "_blank", rel: "noopener noreferrer" }
+              : {})}
           >
-            {"Nous rejoindre"}
+            {cta.buttonLabel}
           </Button>
         </Grid>
       </Grid>
