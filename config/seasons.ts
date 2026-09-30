@@ -53,6 +53,20 @@ export interface SeasonCampaign {
   description?: string;
   /** URL du widget HelloAsso (se termine par /widget). */
   widgetUrl: string;
+  /**
+   * Fond de la section sur grand écran, à caler sur celui du formulaire
+   * HelloAsso pour que l'iframe se fonde dans la page. Absent = fond de page.
+   */
+  background?: string;
+  /** Fond sur mobile, où le widget HelloAsso est blanc. Défaut : blanc. */
+  mobileBackground?: string;
+  /**
+   * Couleur posée juste derrière l'iframe. Le fond du widget bureau est un voile
+   * qui se multiplie à ce qu'il y a derrière (teinte mesurée ≈ #FDEAF2 pour
+   * Octobre Rose) : pour qu'il rende exactement `background`, il faut ici
+   * `background` ÷ teinte, canal par canal. Absent = `background`.
+   */
+  widgetBackdrop?: string;
 }
 
 /** Bloc d'appel à l'action des pages À propos et Membres (« Rejoignez-nous » par défaut). */
@@ -176,6 +190,9 @@ export const SEASONS: Record<SeasonKey, SeasonDefinition> = {
           "une partie des dons sera reversée à notre association partenaire, Tout le Monde Contre le Cancer.",
         widgetUrl:
           "https://www.helloasso.com/associations/association-les-travailleurs-du-c-ur/formulaires/2/widget",
+        background: "#FEDDE8",
+        // #FEDDE8 ÷ teinte du widget : l'iframe rend alors le même rose que la section.
+        widgetBackdrop: "#FFF1F5",
       },
     },
   },
