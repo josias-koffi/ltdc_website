@@ -18,13 +18,13 @@
     "url": "/offers"
   },
   {
-    "id": "recrutement-octobre",
+    "id": "emission-octobre",
     "title": "Émission « Un bout de ma vie »",
-    "description": "Dans le cadre d'Octobre Rose, retrouvez l'émission « Un bout de ma vie » présentée par Floriane & Astou. Envie de vous engager à nos côtés ? Découvrez toutes nos offres de bénévolat.",
+    "description": "🎙️ Découvrez Un bout de ma vie, notre toute nouvelle émission. Pour ce premier épisode, Sarah, Lila et Mélanie se livrent sur leur parcours face au cancer du sein. Un échange authentique, rempli de courage et d’émotion. 📅 Rendez-vous le 09 octobre. 💗",
     "imageUrl": "/images/october/vu-bout-de-ma-vie.jpg",
-    "url": "/offers",
-    "season": "october",
-    "replaces": "recrutement"
+    "url": "https://www.youtube.com/channel/UCsuewndAyw8jXs1agFpBKCg",
+    "ctaLabel": "Voir sur YouTube",
+    "season": "october"
   },
   {
     "id": "tiktok",
