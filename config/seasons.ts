@@ -159,7 +159,7 @@ export const SEASONS: Record<SeasonKey, SeasonDefinition> = {
       // heroVideo : vidéo Octobre Rose pas encore livrée, la vidéo par défaut
       // reste affichée d'ici là.
       callToAction: {
-        title: "Un bout de ma vie",
+        title: "C’est bientôt disponible !",
         text:
           "🎙️ Découvrez Un bout de ma vie, notre toute nouvelle émission.\n\n" +
           "Pour ce premier épisode, Sarah, Lila et Mélanie se livrent sur leur parcours face au " +
