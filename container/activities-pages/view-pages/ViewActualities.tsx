@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
 import ImageWrapper, {
-  DETAIL_BANNER_HEIGHT,
+  BANNER_HEIGHT,
 } from "@/components/wrapper/ImageWrapper";
 import { returnImageUrlById, updateHtmlAttributes } from "@/libs/stringUtils";
 import { ActualitiesEntity } from "@/libs/interfaces/entities";
@@ -28,7 +28,7 @@ const ViewActualities = ({ actuality }: { actuality: ActualitiesEntity }) => {
         <ImageWrapper
           src={returnImageUrlById(actuality?.cover)}
           alt={"Image de l'actualité"}
-          sx={{ height: DETAIL_BANNER_HEIGHT }}
+          sx={{ height: BANNER_HEIGHT }}
         />
       ) : null}
 

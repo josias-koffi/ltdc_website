@@ -2,7 +2,7 @@
 import React from "react";
 import {Box, Typography} from "@mui/material";
 import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
-import ImageWrapper from "@/components/wrapper/ImageWrapper";
+import ImageWrapper, {BANNER_HEIGHT} from "@/components/wrapper/ImageWrapper";
 import {cleanAndFormatText} from "@/libs/stringUtils";
 import {motion} from "framer-motion";
 
@@ -13,8 +13,6 @@ interface RubriqueHeadProps {
     description: string;
     objectPosition?: "right" | "left" | "top" | "bottom" | "center";
 }
-
-const BANNER_HEIGHT = {xs: 220, sm: 280, md: 340, lg: 400} as const;
 
 const RubriqueHead = ({
                           imageUrl,
