@@ -17,6 +17,12 @@ interface ImageWrapperProps {
   sx?: any;
 }
 
+/**
+ * Hauteur du bandeau de couverture des pages détail (actualités, projets) :
+ * plus haut que la valeur par défaut pour limiter le recadrage des visuels.
+ */
+export const DETAIL_BANNER_HEIGHT = { xs: 260, sm: 380, md: 480, lg: 560 };
+
 const ImageWrapper = (props: ImageWrapperProps) => {
   const {
     src,
