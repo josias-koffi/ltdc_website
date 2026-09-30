@@ -46,6 +46,34 @@ export const returnImageUrlById = (id: string | FilesInterface | undefined) => {
   return process.env.NEXT_PUBLIC_BO_URL + "assets/" + id.id;
 };
 
+/**
+ * Champs à demander pour obtenir la couverture avec son point focal (réglé dans
+ * l'éditeur d'images Directus) au lieu du seul identifiant de fichier.
+ */
+export const COVER_WITH_FOCAL_POINT_FIELDS = [
+  "*",
+  "cover.id",
+  "cover.width",
+  "cover.height",
+  "cover.focal_point_x",
+  "cover.focal_point_y",
+];
+
+/**
+ * Point focal Directus (en pixels) converti en `object-position` CSS, pour que
+ * le recadrage garde le sujet choisi. undefined si l'image n'en a pas.
+ */
+export const focalPointPosition = (
+  file: string | FilesInterface | undefined | null,
+): string | undefined => {
+  if (!file || typeof file === "string") return undefined;
+  const { focal_point_x: x, focal_point_y: y, width, height } = file;
+  if (x == null || y == null || !width || !height) return undefined;
+  const toPercent = (value: number, size: number) =>
+    `${Math.min(100, Math.max(0, (value / size) * 100)).toFixed(1)}%`;
+  return `${toPercent(x, width)} ${toPercent(y, height)}`;
+};
+
 export const cleanAndFormatText = (text: string) => {
   return text.replace(/\n/g, "<br/>"); // Remplace tous les caractères \u200B par des retours à la ligne
 };

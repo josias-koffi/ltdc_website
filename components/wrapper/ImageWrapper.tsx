@@ -12,7 +12,8 @@ interface ImageWrapperProps {
   position?: "relative" | "absolute" | "static";
   alt: string;
   objectFit?: "cover" | "fill" | "contain";
-  objectPosition?: "right" | "left" | "top" | "bottom" | "center";
+  /** Mot-clé CSS ou position libre (ex. "50% 18%" issu d'un point focal). */
+  objectPosition?: string;
   sx?: any;
 }
 

@@ -41,13 +41,14 @@ const withPublishedFilter = (
 export const getItems = async ({
   entity,
   deepFields,
+  fields,
   limit,
   page,
   filter,
   sort,
 }: FetchProps) => {
   let createFilter = {
-    ...{ fields: [deepFields ? "*.*.*" : "*"] },
+    ...{ fields: fields ?? [deepFields ? "*.*.*" : "*"] },
     ...(limit ? { limit } : {}),
     ...(page ? { page } : {}),
   };

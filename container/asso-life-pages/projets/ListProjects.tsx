@@ -3,6 +3,7 @@ import React from "react";
 import RubriqueHead from "@/components/sections/RubriqueHead";
 import ListFromEntity from "@/components/list/ListFromEntity";
 import ProjectsCards from "@/components/cards/ProjectsCards";
+import { COVER_WITH_FOCAL_POINT_FIELDS } from "@/libs/stringUtils";
 
 const ListProjects = () => {
   return (
@@ -18,7 +19,7 @@ const ListProjects = () => {
       <ListFromEntity
         entity="projects"
         CardType={ProjectsCards}
-        itemsSize={{ sm: 12, xs: 12, md: 12, xl: 12 }}
+        fields={COVER_WITH_FOCAL_POINT_FIELDS}
       />
     </>
   );

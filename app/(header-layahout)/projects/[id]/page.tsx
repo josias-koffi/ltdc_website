@@ -1,17 +1,23 @@
 import React from "react";
 import { getItems } from "@/libs/directus";
 import { FetchProps } from "@/libs/interfaces/Interfaces";
-import { ActualitiesEntity, ProjectEntity } from "@/libs/interfaces/entities";
-import { revalidatePath } from "next/cache";
+import { ProjectEntity } from "@/libs/interfaces/entities";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import ViewProject from "@/container/projects-pages/view/ViewProject";
+import { COVER_WITH_FOCAL_POINT_FIELDS } from "@/libs/stringUtils";
+
+// Contenu édité dans le BO : sans cela, Next met en cache la réponse Directus
+// et la page ne reflète pas les modifications publiées. `dynamic` seul ne
+// suffit pas ici : les appels passent par une Server Action (libs/directus).
+export const dynamic = "force-dynamic";
+export const fetchCache = "force-no-store";
 
 const fetchProjects = async (id: string): Promise<ProjectEntity | null> => {
   const request: FetchProps = {
     entity: "projects",
-    deepFields: false,
-    filter: { id: id },
+    fields: COVER_WITH_FOCAL_POINT_FIELDS,
+    filter: { id: { _eq: id } },
   };
 
   const res: ProjectEntity[] = await getItems(request);
@@ -34,8 +40,6 @@ export const generateMetadata = async ({
 
 const ProjectView = async ({ params }: { params: { id: string } }) => {
   const project = await fetchProjects(params.id);
-
-  revalidatePath("/projects/[id]", "page");
 
   if (!project) {
     notFound();

@@ -13,6 +13,7 @@ interface ListFromEntityProps {
   CardType: unknown;
   itemsSize?: { xl?: number; md?: number; sm?: number; xs?: number };
   filter?: FetchProps["filter"];
+  fields?: FetchProps["fields"];
 }
 
 const DEFAULT_SIZE = { xl: 4, md: 6, sm: 12, xs: 12 };
@@ -40,6 +41,7 @@ const ListFromEntity = ({
   CardType,
   itemsSize,
   filter,
+  fields,
 }: ListFromEntityProps) => {
   const [data, setData] = useState<unknown[]>([]);
   const [loading, setLoading] = useState(true);
@@ -55,6 +57,7 @@ const ListFromEntity = ({
       page: currentPage,
       sort: SORT,
       filter,
+      fields,
     };
     try {
       const res = await getItems(request);

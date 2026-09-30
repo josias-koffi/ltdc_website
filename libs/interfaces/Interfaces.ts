@@ -37,6 +37,8 @@ export interface MailDataInterface {
 export interface FetchProps {
   entity: EntityInterface["name"];
   deepFields?: boolean;
+  /** Champs Directus explicites ; prioritaires sur deepFields. */
+  fields?: string[];
   limit?: number;
   page?: number;
   filter?: any;
