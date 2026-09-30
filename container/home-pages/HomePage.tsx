@@ -12,8 +12,8 @@ const HomePage = () => {
       <HeroSection />
       <ValuesSection />
       <ActivitiesSection />
-      <PartnerSection />
       <CampaignSection />
+      <PartnerSection />
       <ReviewSection />
     </div>
   );
