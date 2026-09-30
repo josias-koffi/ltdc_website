@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
 import ImageWrapper from "@/components/wrapper/ImageWrapper";
 import { returnImageUrlById, updateHtmlAttributes } from "@/libs/stringUtils";
@@ -10,9 +10,15 @@ import Category from "@/components/entity/Category";
 import Targets from "@/components/entity/Targets";
 
 const ViewActualities = ({ actuality }: { actuality: ActualitiesEntity }) => {
-  actuality.content = updateHtmlAttributes(actuality.content, {
-    img: { class: "blogImage" },
-  });
+  // DOMParser n'existe que dans le navigateur : on rend le HTML brut au serveur
+  // puis on ajoute la classe des images après l'hydratation, sans écart de rendu.
+  const [content, setContent] = useState(actuality.content);
+
+  useEffect(() => {
+    setContent(
+      updateHtmlAttributes(actuality.content, { img: { class: "blogImage" } }),
+    );
+  }, [actuality.content]);
 
   return (
     <ContainerWrapper>
@@ -75,8 +81,9 @@ const ViewActualities = ({ actuality }: { actuality: ActualitiesEntity }) => {
         </Box>
       </Box>
       <Typography
+        component="div"
         dangerouslySetInnerHTML={{
-          __html: actuality.content,
+          __html: content,
         }}
       />
       {/*  Sources et liens utiles*/}
@@ -90,6 +97,7 @@ const ViewActualities = ({ actuality }: { actuality: ActualitiesEntity }) => {
             {"Sources et liens utiles"}
           </Typography>
           <Typography
+            component="div"
             dangerouslySetInnerHTML={{
               __html: actuality.sources,
             }}

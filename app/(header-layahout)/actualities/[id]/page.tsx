@@ -3,9 +3,14 @@ import { getItems } from "@/libs/directus";
 import ViewActualities from "@/container/activities-pages/view-pages/ViewActualities";
 import { FetchProps } from "@/libs/interfaces/Interfaces";
 import { ActualitiesEntity } from "@/libs/interfaces/entities";
-import { revalidatePath } from "next/cache";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
+
+// Contenu édité dans le BO : sans cela, Next met en cache la réponse Directus
+// et la page ne reflète pas les modifications publiées. `dynamic` seul ne
+// suffit pas ici : les appels passent par une Server Action (libs/directus).
+export const dynamic = "force-dynamic";
+export const fetchCache = "force-no-store";
 
 // Fonction utilitaire pour récupérer une actuality par ID
 const fetchActuality = async (
@@ -38,8 +43,6 @@ export const generateMetadata = async ({
 // Composant principal
 const ActualityView = async ({ params }: { params: { id: string } }) => {
   const actuality = await fetchActuality(params.id);
-
-  revalidatePath("/actualities/[id]", "page");
 
   if (!actuality) {
     notFound();
