@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
 import ImageWrapper, {
-  DETAIL_BANNER_HEIGHT,
+  BANNER_HEIGHT,
 } from "@/components/wrapper/ImageWrapper";
 import {
   focalPointPosition,
@@ -32,7 +32,7 @@ const ViewProject = ({ project }: { project: ProjectEntity }) => {
           src={returnImageUrlById(project?.cover)}
           alt={"Image du projet"}
           objectPosition={focalPointPosition(project.cover)}
-          sx={{ height: DETAIL_BANNER_HEIGHT }}
+          sx={{ height: BANNER_HEIGHT }}
         />
       ) : null}
 
