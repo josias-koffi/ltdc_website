@@ -1,0 +1,65 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/josias-koffi/infra/main/schema/manifest.v1.json
+# Deployment of the LTDC website on Dokploy (infra: josias-koffi/infra, docs/guides/deploy-an-app.md).
+# DNS is managed at Infomaniak: create the A records of every domain below before the first deploy.
+apiVersion: deploy/v1
+name: ltdc
+description: Site de l'association Les Travailleurs du Cœur (Next.js + Directus)
+server: vps20
+mode: services
+dns: external
+
+secrets: [BREVO_API_KEY]
+generate: [DIRECTUS_KEY, DIRECTUS_SECRET]
+lockedSecrets: [DIRECTUS_KEY, DIRECTUS_SECRET]
+
+apps:
+  web:
+    image: ghcr.io/josias-koffi/ltdc-web
+    port: 3000
+    domain: web
+    healthcheck: /
+    secrets: [BREVO_API_KEY]
+    vars:
+      BREVO_API_URL: https://api.brevo.com/v3/smtp/email
+      MAIL_DESTINNATION: infos.service@asso-ltdc.org
+    resources: { cpus: 0.5, memory: 512m }
+
+  cms:
+    image: directus/directus:12.4.1   # same version as docker-compose.directus.yml
+    port: 8055
+    domain: cms
+    # /server/health requires a token since Directus 12; /server/ping is the public liveness probe.
+    healthcheck: /server/ping
+    uses: [db]                        # DB_HOST, DB_PORT, DB_USER, DB_PASSWORD
+    volumes: { uploads: /directus/uploads }
+    secrets: [DIRECTUS_KEY, DIRECTUS_SECRET]
+    vars:
+      DB_CLIENT: pg
+      DB_DATABASE: ltdc
+      KEY: ${secrets.DIRECTUS_KEY}
+      SECRET: ${secrets.DIRECTUS_SECRET}
+      PUBLIC_URL: https://${domains.cms}
+      CORS_ENABLED: "true"
+      CORS_ORIGIN: https://${domains.web}
+      TELEMETRY: "false"
+    resources: { cpus: 1, memory: 1g }
+
+databases:
+  db:
+    type: postgres
+    version: 16-alpine
+    database: ltdc
+    user: ltdc
+    envPrefix: DB
+    resources: { memory: 512m }
+    # The weekly restore test must find real content, not just tables.
+    verify: { query: "select count(*) from terms_of_use" }
+
+environments:
+  production:
+    branch: master
+    deploy: manual
+    domains: { web: www.asso-ltdc.org, cms: bo-prod.asso-ltdc.org }
+  staging:
+    branch: develop
+    domains: { web: stage-ltdc.asso-ltdc.org, cms: bo-stage.asso-ltdc.org }

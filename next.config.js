@@ -1,6 +1,11 @@
 /** @type {import('next').NextConfig} */
 const path = require("path");
 
+// Le BO courant (NEXT_PUBLIC_BO_URL, figé au build) est toujours autorisé pour next/image.
+const boUrl = process.env.NEXT_PUBLIC_BO_URL
+  ? new URL(process.env.NEXT_PUBLIC_BO_URL)
+  : undefined;
+
 const nextConfig = {
   output: "standalone",
   images: {
@@ -20,6 +25,15 @@ const nextConfig = {
         hostname: "bo-prod.asso-ltdc.org",
         port: "",
       },
+      ...(boUrl
+        ? [
+            {
+              protocol: boUrl.protocol.replace(":", ""),
+              hostname: boUrl.hostname,
+              port: boUrl.port,
+            },
+          ]
+        : []),
     ],
   },
   redirects: async () => [
