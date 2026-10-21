@@ -14,7 +14,7 @@ lockedSecrets: [DIRECTUS_KEY, DIRECTUS_SECRET]
 
 apps:
   web:
-    image: ghcr.io/jkoffiltdc/ltdc-web
+    image: ghcr.io/josias-koffi/ltdc-web
     port: 3000
     domain: web
     healthcheck: /

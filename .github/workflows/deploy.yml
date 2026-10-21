@@ -56,7 +56,7 @@ jobs:
         with:
           push: true
           target: runner
-          tags: ghcr.io/jkoffiltdc/ltdc-web:${{ needs.resolve.outputs.image_tag }}
+          tags: ghcr.io/josias-koffi/ltdc-web:${{ needs.resolve.outputs.image_tag }}
           build-args: |
             NEXT_PUBLIC_BO_URL=${{ needs.resolve.outputs.environment == 'production' && 'https://bo-prod.asso-ltdc.org/' || 'https://bo-stage.asso-ltdc.org/' }}
             NEXT_PUBLIC_API_URL=${{ needs.resolve.outputs.environment == 'production' && 'https://www.asso-ltdc.org/' || 'https://stage-ltdc.asso-ltdc.org/' }}
