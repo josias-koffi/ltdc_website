@@ -33,17 +33,23 @@ export default function RootLayout({
       </head>
       <body className={sen.className} style={{ margin: 0 }}>
         <SeasonalThemeProvider>{children}</SeasonalThemeProvider>
-        <Script
-          defer
-          data-domain={process?.env?.PLAUSIBLE_DATA_DOMAINE}
-          src={process?.env?.PLAUSIBLE_SCRIPT_SRC}
-          strategy="beforeInteractive"
-        />
-        <Script
-          id={process?.env?.COOKIEYES_ANALYTICS_ID}
-          type={process?.env?.COOKIEYES_ANALYTICS_TYPE}
-          src={process?.env?.COOKIEYES_ANALYTICS_SRC}
-        />
+        {/* afterInteractive : un service d'analytics injoignable ne doit jamais
+            bloquer l'hydratation (et donc le contenu chargé côté client). */}
+        {process?.env?.PLAUSIBLE_SCRIPT_SRC && (
+          <Script
+            defer
+            data-domain={process?.env?.PLAUSIBLE_DATA_DOMAINE}
+            src={process?.env?.PLAUSIBLE_SCRIPT_SRC}
+            strategy="afterInteractive"
+          />
+        )}
+        {process?.env?.COOKIEYES_ANALYTICS_SRC && (
+          <Script
+            id={process?.env?.COOKIEYES_ANALYTICS_ID}
+            type={process?.env?.COOKIEYES_ANALYTICS_TYPE}
+            src={process?.env?.COOKIEYES_ANALYTICS_SRC}
+          />
+        )}
       </body>
     </html>
   );
