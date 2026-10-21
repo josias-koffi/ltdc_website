@@ -57,7 +57,7 @@ databases:
 
 environments:
   production:
-    branch: main
+    branch: master
     deploy: manual
     domains: { web: www.asso-ltdc.org, cms: bo-prod.asso-ltdc.org }
   staging:
