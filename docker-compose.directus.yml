@@ -1,0 +1,40 @@
+# Local Directus backend (same images as the Dokploy deployment, see .deploy/manifest.yaml).
+# Secrets live in .env.directus.local (gitignored).
+#   docker compose -f docker-compose.directus.yml up -d
+services:
+    db:
+        image: postgres:16-alpine
+        restart: unless-stopped
+        env_file:
+            - .env.directus.local
+        volumes:
+            - directus-db:/var/lib/postgresql/data
+        ports:
+            - '127.0.0.1:5432:5432'
+        healthcheck:
+            test: ['CMD-SHELL', 'pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}']
+            interval: 5s
+            retries: 10
+
+    directus:
+        image: directus/directus:12.4.1
+        restart: unless-stopped
+        depends_on:
+            db:
+                condition: service_healthy
+        env_file:
+            - .env.directus.local
+        environment:
+            DB_CLIENT: pg
+            DB_HOST: db
+            DB_PORT: 5432
+            PUBLIC_URL: http://localhost:8055
+            CORS_ENABLED: 'true'
+            CORS_ORIGIN: http://localhost:3000
+        volumes:
+            - ./.directus/uploads:/directus/uploads
+        ports:
+            - '127.0.0.1:8055:8055'
+
+volumes:
+    directus-db:

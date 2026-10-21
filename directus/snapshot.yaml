@@ -1,0 +1,5064 @@
+version: 1
+directus: 12.4.1
+vendor: postgres
+collections:
+  - collection: actualities
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: status
+      archive_value: archived
+      autosave_revision_interval: null
+      collapse: open
+      collection: actualities
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: null
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: null
+      sort_field: sort
+      status: active
+      translations: null
+      unarchive_value: draft
+      versioning: false
+    schema:
+      name: actualities
+  - collection: actualities_categories
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      autosave_revision_interval: null
+      collapse: open
+      collection: actualities_categories
+      color: null
+      display_template: null
+      group: null
+      hidden: true
+      icon: import_export
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: null
+      sort_field: null
+      status: active
+      translations: null
+      unarchive_value: null
+      versioning: false
+    schema:
+      name: actualities_categories
+  - collection: actualities_targets
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      autosave_revision_interval: null
+      collapse: open
+      collection: actualities_targets
+      color: null
+      display_template: null
+      group: null
+      hidden: true
+      icon: import_export
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: null
+      sort_field: null
+      status: active
+      translations: null
+      unarchive_value: null
+      versioning: false
+    schema:
+      name: actualities_targets
+  - collection: categories
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: status
+      archive_value: archived
+      autosave_revision_interval: null
+      collapse: open
+      collection: categories
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: null
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: null
+      sort_field: null
+      status: active
+      translations: null
+      unarchive_value: draft
+      versioning: false
+    schema:
+      name: categories
+  - collection: esf_program
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: status
+      archive_value: archived
+      autosave_revision_interval: null
+      collapse: open
+      collection: esf_program
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: null
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: true
+      sort: null
+      sort_field: null
+      status: active
+      translations: null
+      unarchive_value: draft
+      versioning: false
+    schema:
+      name: esf_program
+  - collection: events
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: status
+      archive_value: archived
+      autosave_revision_interval: null
+      collapse: open
+      collection: events
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: null
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: null
+      sort_field: sort
+      status: active
+      translations: null
+      unarchive_value: draft
+      versioning: false
+    schema:
+      name: events
+  - collection: members
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      autosave_revision_interval: null
+      collapse: open
+      collection: members
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: null
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: null
+      sort_field: order
+      status: active
+      translations: null
+      unarchive_value: null
+      versioning: false
+    schema:
+      name: members
+  - collection: offer
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: status
+      archive_value: archived
+      autosave_revision_interval: null
+      collapse: open
+      collection: offer
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: work
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: null
+      sort_field: null
+      status: active
+      translations: null
+      unarchive_value: draft
+      versioning: false
+    schema:
+      name: offer
+  - collection: projects
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: status
+      archive_value: archived
+      autosave_revision_interval: null
+      collapse: open
+      collection: projects
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: null
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: null
+      sort_field: sort
+      status: active
+      translations: null
+      unarchive_value: draft
+      versioning: false
+    schema:
+      name: projects
+  - collection: projects_files
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      autosave_revision_interval: null
+      collapse: open
+      collection: projects_files
+      color: null
+      display_template: null
+      group: null
+      hidden: true
+      icon: import_export
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: null
+      sort_field: null
+      status: active
+      translations: null
+      unarchive_value: null
+      versioning: false
+    schema:
+      name: projects_files
+  - collection: projects_targets
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      autosave_revision_interval: null
+      collapse: open
+      collection: projects_targets
+      color: null
+      display_template: null
+      group: null
+      hidden: true
+      icon: import_export
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: null
+      sort_field: null
+      status: active
+      translations: null
+      unarchive_value: null
+      versioning: false
+    schema:
+      name: projects_targets
+  - collection: targets
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: status
+      archive_value: archived
+      autosave_revision_interval: null
+      collapse: open
+      collection: targets
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: null
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: null
+      sort_field: null
+      status: active
+      translations: null
+      unarchive_value: draft
+      versioning: false
+    schema:
+      name: targets
+  - collection: terms_of_use
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: status
+      archive_value: archived
+      autosave_revision_interval: null
+      collapse: open
+      collection: terms_of_use
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: null
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: null
+      sort_field: sort
+      status: active
+      translations: null
+      unarchive_value: draft
+      versioning: false
+    schema:
+      name: terms_of_use
+fields:
+  - collection: actualities
+    field: id
+    type: integer
+    meta:
+      collection: actualities
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: actualities
+      data_type: integer
+      default_value: nextval('actualities_id_seq'::regclass)
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: true
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: actualities
+    field: status
+    type: string
+    meta:
+      collection: actualities
+      conditions: null
+      display: labels
+      display_options:
+        choices:
+          - background: var(--theme--primary-background)
+            color: var(--theme--primary)
+            foreground: var(--theme--primary)
+            text: $t:published
+            value: published
+          - background: var(--theme--background-normal)
+            color: var(--theme--foreground)
+            foreground: var(--theme--foreground)
+            text: $t:draft
+            value: draft
+          - background: var(--theme--warning-background)
+            color: var(--theme--warning)
+            foreground: var(--theme--warning)
+            text: $t:archived
+            value: archived
+        showAsDot: true
+      field: status
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - color: var(--theme--primary)
+            text: $t:published
+            value: published
+          - color: var(--theme--foreground)
+            text: $t:draft
+            value: draft
+          - color: var(--theme--warning)
+            text: $t:archived
+            value: archived
+      readonly: false
+      required: false
+      searchable: true
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: status
+      table: actualities
+      data_type: character varying
+      default_value: draft
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: actualities
+    field: sort
+    type: integer
+    meta:
+      collection: actualities
+      conditions: null
+      display: null
+      display_options: null
+      field: sort
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 16
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: sort
+      table: actualities
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: actualities
+    field: user_created
+    type: uuid
+    meta:
+      collection: actualities
+      conditions: null
+      display: user
+      display_options: null
+      field: user_created
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      searchable: true
+      sort: 12
+      special:
+        - user-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: user_created
+      table: actualities
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_users
+      foreign_key_column: id
+  - collection: actualities
+    field: date_created
+    type: timestamp
+    meta:
+      collection: actualities
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_created
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 13
+      special:
+        - date-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: date_created
+      table: actualities
+      data_type: timestamp with time zone
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: actualities
+    field: user_updated
+    type: uuid
+    meta:
+      collection: actualities
+      conditions: null
+      display: user
+      display_options: null
+      field: user_updated
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      searchable: true
+      sort: 14
+      special:
+        - user-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: user_updated
+      table: actualities
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_users
+      foreign_key_column: id
+  - collection: actualities
+    field: date_updated
+    type: timestamp
+    meta:
+      collection: actualities
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_updated
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 15
+      special:
+        - date-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: date_updated
+      table: actualities
+      data_type: timestamp with time zone
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: actualities
+    field: content
+    type: text
+    meta:
+      collection: actualities
+      conditions: null
+      display: null
+      display_options: null
+      field: content
+      group: null
+      hidden: false
+      interface: input-rich-text-html
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 8
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: content
+      table: actualities
+      data_type: text
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: actualities
+    field: categories
+    type: alias
+    meta:
+      collection: actualities
+      conditions: null
+      display: related-values
+      display_options:
+        template: '{{categories_id.name}}'
+      field: categories
+      group: null
+      hidden: false
+      interface: list-m2m
+      note: null
+      options:
+        template: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 5
+      special:
+        - m2m
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+  - collection: actualities
+    field: title
+    type: string
+    meta:
+      collection: actualities
+      conditions: null
+      display: null
+      display_options: null
+      field: title
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: title
+      table: actualities
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: actualities
+    field: description
+    type: text
+    meta:
+      collection: actualities
+      conditions: null
+      display: null
+      display_options: null
+      field: description
+      group: null
+      hidden: false
+      interface: input-multiline
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 7
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: description
+      table: actualities
+      data_type: text
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: actualities
+    field: cover
+    type: uuid
+    meta:
+      collection: actualities
+      conditions: null
+      display: null
+      display_options: null
+      field: cover
+      group: null
+      hidden: false
+      interface: file-image
+      note: null
+      options:
+        folder: 28be050a-ecb1-4810-a167-e709f6212642
+      readonly: false
+      required: false
+      searchable: true
+      sort: 2
+      special:
+        - file
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: cover
+      table: actualities
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_files
+      foreign_key_column: id
+  - collection: actualities
+    field: publication_date
+    type: dateTime
+    meta:
+      collection: actualities
+      conditions: null
+      display: null
+      display_options: null
+      field: publication_date
+      group: null
+      hidden: false
+      interface: datetime
+      note: null
+      options: null
+      readonly: false
+      required: true
+      searchable: true
+      sort: 9
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: publication_date
+      table: actualities
+      data_type: timestamp without time zone
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: actualities
+    field: end_validity_date
+    type: dateTime
+    meta:
+      collection: actualities
+      conditions: null
+      display: null
+      display_options: null
+      field: end_validity_date
+      group: null
+      hidden: false
+      interface: datetime
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 11
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: end_validity_date
+      table: actualities
+      data_type: timestamp without time zone
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: actualities
+    field: sources
+    type: text
+    meta:
+      collection: actualities
+      conditions: null
+      display: null
+      display_options: null
+      field: sources
+      group: null
+      hidden: false
+      interface: input-rich-text-html
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 10
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: sources
+      table: actualities
+      data_type: text
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: actualities
+    field: targets
+    type: alias
+    meta:
+      collection: actualities
+      conditions: null
+      display: related-values
+      display_options:
+        template: '{{targets_id.name}}'
+      field: targets
+      group: null
+      hidden: false
+      interface: list-m2m
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 6
+      special:
+        - m2m
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+  - collection: actualities
+    field: resources
+    type: text
+    meta:
+      collection: actualities
+      conditions: null
+      display: null
+      display_options: null
+      field: resources
+      group: null
+      hidden: false
+      interface: input-rich-text-html
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 17
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: resources
+      table: actualities
+      data_type: text
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: actualities_categories
+    field: id
+    type: integer
+    meta:
+      collection: actualities_categories
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: actualities_categories
+      data_type: integer
+      default_value: nextval('actualities_categories_id_seq'::regclass)
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: true
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: actualities_categories
+    field: actualities_id
+    type: integer
+    meta:
+      collection: actualities_categories
+      conditions: null
+      display: null
+      display_options: null
+      field: actualities_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: actualities_id
+      table: actualities_categories
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: actualities
+      foreign_key_column: id
+  - collection: actualities_categories
+    field: categories_id
+    type: integer
+    meta:
+      collection: actualities_categories
+      conditions: null
+      display: null
+      display_options: null
+      field: categories_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: categories_id
+      table: actualities_categories
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: categories
+      foreign_key_column: id
+  - collection: actualities_targets
+    field: id
+    type: integer
+    meta:
+      collection: actualities_targets
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: actualities_targets
+      data_type: integer
+      default_value: nextval('actualities_targets_id_seq'::regclass)
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: true
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: actualities_targets
+    field: actualities_id
+    type: integer
+    meta:
+      collection: actualities_targets
+      conditions: null
+      display: null
+      display_options: null
+      field: actualities_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: actualities_id
+      table: actualities_targets
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: actualities
+      foreign_key_column: id
+  - collection: actualities_targets
+    field: targets_id
+    type: integer
+    meta:
+      collection: actualities_targets
+      conditions: null
+      display: null
+      display_options: null
+      field: targets_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: targets_id
+      table: actualities_targets
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: targets
+      foreign_key_column: id
+  - collection: categories
+    field: id
+    type: integer
+    meta:
+      collection: categories
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: categories
+      data_type: integer
+      default_value: nextval('categories_id_seq'::regclass)
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: true
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: categories
+    field: status
+    type: string
+    meta:
+      collection: categories
+      conditions: null
+      display: labels
+      display_options:
+        choices:
+          - background: var(--theme--primary-background)
+            color: var(--theme--primary)
+            foreground: var(--theme--primary)
+            text: $t:published
+            value: published
+          - background: var(--theme--background-normal)
+            color: var(--theme--foreground)
+            foreground: var(--theme--foreground)
+            text: $t:draft
+            value: draft
+          - background: var(--theme--warning-background)
+            color: var(--theme--warning)
+            foreground: var(--theme--warning)
+            text: $t:archived
+            value: archived
+        showAsDot: true
+      field: status
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - color: var(--theme--primary)
+            text: $t:published
+            value: published
+          - color: var(--theme--foreground)
+            text: $t:draft
+            value: draft
+          - color: var(--theme--warning)
+            text: $t:archived
+            value: archived
+      readonly: false
+      required: false
+      searchable: true
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: status
+      table: categories
+      data_type: character varying
+      default_value: draft
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: categories
+    field: name
+    type: string
+    meta:
+      collection: categories
+      conditions: null
+      display: null
+      display_options: null
+      field: name
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        placeholder: Nom de la catégorie
+      readonly: false
+      required: false
+      searchable: true
+      sort: 9
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: name
+      table: categories
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: esf_program
+    field: id
+    type: integer
+    meta:
+      collection: esf_program
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: esf_program
+      data_type: integer
+      default_value: nextval('esf_program_id_seq'::regclass)
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: true
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: esf_program
+    field: status
+    type: string
+    meta:
+      collection: esf_program
+      conditions: null
+      display: labels
+      display_options:
+        choices:
+          - background: var(--theme--primary-background)
+            color: var(--theme--primary)
+            foreground: var(--theme--primary)
+            text: $t:published
+            value: published
+          - background: var(--theme--background-normal)
+            color: var(--theme--foreground)
+            foreground: var(--theme--foreground)
+            text: $t:draft
+            value: draft
+          - background: var(--theme--warning-background)
+            color: var(--theme--warning)
+            foreground: var(--theme--warning)
+            text: $t:archived
+            value: archived
+        showAsDot: true
+      field: status
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - color: var(--theme--primary)
+            text: $t:published
+            value: published
+          - color: var(--theme--foreground)
+            text: $t:draft
+            value: draft
+          - color: var(--theme--warning)
+            text: $t:archived
+            value: archived
+      readonly: false
+      required: false
+      searchable: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: status
+      table: esf_program
+      data_type: character varying
+      default_value: draft
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: esf_program
+    field: content
+    type: text
+    meta:
+      collection: esf_program
+      conditions: null
+      display: null
+      display_options: null
+      field: content
+      group: null
+      hidden: false
+      interface: input-rich-text-html
+      note: null
+      options:
+        toolbar:
+          - bold
+          - italic
+          - underline
+          - h1
+          - h2
+          - h3
+          - alignleft
+          - aligncenter
+          - alignright
+          - alignjustify
+          - numlist
+          - bullist
+          - removeformat
+          - blockquote
+          - customLink
+          - customImage
+          - customMedia
+          - hr
+          - code
+          - fullscreen
+      readonly: false
+      required: false
+      searchable: true
+      sort: 7
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: content
+      table: esf_program
+      data_type: text
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: events
+    field: id
+    type: integer
+    meta:
+      collection: events
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: events
+      data_type: integer
+      default_value: nextval('events_id_seq'::regclass)
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: true
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: events
+    field: status
+    type: string
+    meta:
+      collection: events
+      conditions: null
+      display: labels
+      display_options:
+        choices:
+          - background: var(--theme--primary-background)
+            color: var(--theme--primary)
+            foreground: var(--theme--primary)
+            text: $t:published
+            value: published
+          - background: var(--theme--background-normal)
+            color: var(--theme--foreground)
+            foreground: var(--theme--foreground)
+            text: $t:draft
+            value: draft
+          - background: var(--theme--warning-background)
+            color: var(--theme--warning)
+            foreground: var(--theme--warning)
+            text: $t:archived
+            value: archived
+        showAsDot: true
+      field: status
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - color: var(--theme--primary)
+            text: $t:published
+            value: published
+          - color: var(--theme--foreground)
+            text: $t:draft
+            value: draft
+          - color: var(--theme--warning)
+            text: $t:archived
+            value: archived
+      readonly: false
+      required: false
+      searchable: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: status
+      table: events
+      data_type: character varying
+      default_value: draft
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: events
+    field: sort
+    type: integer
+    meta:
+      collection: events
+      conditions: null
+      display: null
+      display_options: null
+      field: sort
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: sort
+      table: events
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: events
+    field: user_created
+    type: uuid
+    meta:
+      collection: events
+      conditions: null
+      display: user
+      display_options: null
+      field: user_created
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      searchable: true
+      sort: 4
+      special:
+        - user-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: user_created
+      table: events
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_users
+      foreign_key_column: id
+  - collection: events
+    field: date_created
+    type: timestamp
+    meta:
+      collection: events
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_created
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 5
+      special:
+        - date-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: date_created
+      table: events
+      data_type: timestamp with time zone
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: events
+    field: user_updated
+    type: uuid
+    meta:
+      collection: events
+      conditions: null
+      display: user
+      display_options: null
+      field: user_updated
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      searchable: true
+      sort: 6
+      special:
+        - user-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: user_updated
+      table: events
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_users
+      foreign_key_column: id
+  - collection: events
+    field: date_updated
+    type: timestamp
+    meta:
+      collection: events
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_updated
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 7
+      special:
+        - date-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: date_updated
+      table: events
+      data_type: timestamp with time zone
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: events
+    field: cover
+    type: uuid
+    meta:
+      collection: events
+      conditions: null
+      display: null
+      display_options: null
+      field: cover
+      group: null
+      hidden: false
+      interface: file-image
+      note: null
+      options:
+        folder: 50c74f64-a186-4e6e-a9a4-418c6b052aca
+      readonly: false
+      required: false
+      searchable: true
+      sort: 9
+      special:
+        - file
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: cover
+      table: events
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_files
+      foreign_key_column: id
+  - collection: events
+    field: name
+    type: string
+    meta:
+      collection: events
+      conditions: null
+      display: null
+      display_options: null
+      field: name
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: true
+      searchable: true
+      sort: 10
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: name
+      table: events
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: events
+    field: description
+    type: text
+    meta:
+      collection: events
+      conditions: null
+      display: null
+      display_options: null
+      field: description
+      group: null
+      hidden: false
+      interface: input-multiline
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 11
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: description
+      table: events
+      data_type: text
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: events
+    field: type
+    type: string
+    meta:
+      collection: events
+      conditions: null
+      display: null
+      display_options: null
+      field: type
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 12
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: type
+      table: events
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: events
+    field: price
+    type: decimal
+    meta:
+      collection: events
+      conditions: null
+      display: null
+      display_options: null
+      field: price
+      group: null
+      hidden: false
+      interface: input
+      note: 0 = Gratuit
+      options:
+        iconLeft: euro_symbol
+        min: 0
+      readonly: false
+      required: false
+      searchable: true
+      sort: 13
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: price
+      table: events
+      data_type: numeric
+      default_value: null
+      max_length: null
+      numeric_precision: 10
+      numeric_scale: 2
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: events
+    field: capacity
+    type: integer
+    meta:
+      collection: events
+      conditions: null
+      display: null
+      display_options: null
+      field: capacity
+      group: null
+      hidden: false
+      interface: input
+      note: Bénévoles mobilisés
+      options:
+        min: 0
+      readonly: false
+      required: false
+      searchable: true
+      sort: 14
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: capacity
+      table: events
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: events
+    field: start_date
+    type: timestamp
+    meta:
+      collection: events
+      conditions: null
+      display: null
+      display_options: null
+      field: start_date
+      group: null
+      hidden: false
+      interface: datetime
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 15
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: start_date
+      table: events
+      data_type: timestamp with time zone
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: events
+    field: end_date
+    type: timestamp
+    meta:
+      collection: events
+      conditions: null
+      display: null
+      display_options: null
+      field: end_date
+      group: null
+      hidden: false
+      interface: datetime
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 16
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: end_date
+      table: events
+      data_type: timestamp with time zone
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: events
+    field: address
+    type: string
+    meta:
+      collection: events
+      conditions: null
+      display: null
+      display_options: null
+      field: address
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 17
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: address
+      table: events
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: events
+    field: link
+    type: string
+    meta:
+      collection: events
+      conditions: null
+      display: null
+      display_options: null
+      field: link
+      group: null
+      hidden: false
+      interface: input
+      note: Lien du bouton (don / inscription)
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 18
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: link
+      table: events
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: events
+    field: instagram
+    type: string
+    meta:
+      collection: events
+      conditions: null
+      display: null
+      display_options: null
+      field: instagram
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 19
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: instagram
+      table: events
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: events
+    field: linkedin
+    type: string
+    meta:
+      collection: events
+      conditions: null
+      display: null
+      display_options: null
+      field: linkedin
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 20
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: linkedin
+      table: events
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: events
+    field: recap
+    type: text
+    meta:
+      collection: events
+      conditions: null
+      display: null
+      display_options: null
+      field: recap
+      group: null
+      hidden: false
+      interface: input-multiline
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 21
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: recap
+      table: events
+      data_type: text
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: events
+    field: state
+    type: string
+    meta:
+      collection: events
+      conditions: null
+      display: null
+      display_options: null
+      field: state
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 22
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: state
+      table: events
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: events
+    field: sponsor
+    type: string
+    meta:
+      collection: events
+      conditions: null
+      display: null
+      display_options: null
+      field: sponsor
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 23
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: sponsor
+      table: events
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: members
+    field: id
+    type: integer
+    meta:
+      collection: members
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: members
+      data_type: integer
+      default_value: nextval('members_id_seq'::regclass)
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: true
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: members
+    field: name
+    type: string
+    meta:
+      collection: members
+      conditions: null
+      display: null
+      display_options: null
+      field: name
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: true
+      searchable: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: name
+      table: members
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: members
+    field: team
+    type: string
+    meta:
+      collection: members
+      conditions: null
+      display: null
+      display_options: null
+      field: team
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - text: DIRECTION
+            value: DIRECTION
+          - text: IT
+            value: IT
+          - text: FINANCE
+            value: FINANCE
+          - text: MARKETING
+            value: MARKETING
+          - text: LEGAL
+            value: LEGAL
+          - text: PROJET
+            value: PROJET
+      readonly: false
+      required: false
+      searchable: true
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: team
+      table: members
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: members
+    field: photo
+    type: uuid
+    meta:
+      collection: members
+      conditions: null
+      display: null
+      display_options: null
+      field: photo
+      group: null
+      hidden: false
+      interface: file-image
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 4
+      special:
+        - file
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: photo
+      table: members
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_files
+      foreign_key_column: id
+  - collection: members
+    field: main_role
+    type: string
+    meta:
+      collection: members
+      conditions: null
+      display: null
+      display_options: null
+      field: main_role
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: main_role
+      table: members
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: members
+    field: roles
+    type: json
+    meta:
+      collection: members
+      conditions: null
+      display: null
+      display_options: null
+      field: roles
+      group: null
+      hidden: false
+      interface: select-multiple-dropdown
+      note: null
+      options:
+        choices:
+          - text: ASSISTANTE TRESORERIE
+            value: ASSISTANTE TRESORERIE
+          - text: TRESORIERE ET RESPONSABLE FINANCE
+            value: TRESORIERE ET RESPONSABLE FINANCE
+          - text: COMMUNITY MANAGER
+            value: COMMUNITY MANAGER
+          - text: CHEF DE PROJET IT
+            value: CHEF DE PROJET IT
+          - text: DEVELOPPEUR FULLSTACK
+            value: DEVELOPPEUR FULLSTACK
+          - text: UX/UI DESIGNER
+            value: UX/UI DESIGNER
+          - text: PRESIDENTE & RESPONSABLE JURIDIQUE
+            value: PRESIDENTE & RESPONSABLE JURIDIQUE
+          - text: VICE PRESIDENTE, RESPONSABLE IT &MARKETING
+            value: VICE PRESIDENTE, RESPONSABLE IT &MARKETING
+          - text: RESPONSABLE TRESORERIE
+            value: RESPONSABLE TRESORERIE
+          - text: JURISTE
+            value: JURISTE
+      readonly: false
+      required: false
+      searchable: true
+      sort: 6
+      special:
+        - cast-json
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: roles
+      table: members
+      data_type: json
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: members
+    field: itv
+    type: uuid
+    meta:
+      collection: members
+      conditions: null
+      display: null
+      display_options: null
+      field: itv
+      group: null
+      hidden: false
+      interface: file
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 7
+      special:
+        - file
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: itv
+      table: members
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_files
+      foreign_key_column: id
+  - collection: members
+    field: order
+    type: integer
+    meta:
+      collection: members
+      conditions: null
+      display: null
+      display_options: null
+      field: order
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 8
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: order
+      table: members
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: offer
+    field: id
+    type: integer
+    meta:
+      collection: offer
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: offer
+      data_type: integer
+      default_value: nextval('offer_id_seq'::regclass)
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: true
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: offer
+    field: status
+    type: string
+    meta:
+      collection: offer
+      conditions: null
+      display: null
+      display_options: null
+      field: status
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - color: var(--theme--primary)
+            text: $t:published
+            value: published
+          - color: var(--theme--foreground)
+            text: $t:draft
+            value: draft
+          - color: var(--theme--warning)
+            text: $t:archived
+            value: archived
+      readonly: false
+      required: false
+      searchable: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: status
+      table: offer
+      data_type: character varying
+      default_value: draft
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: offer
+    field: date_created
+    type: timestamp
+    meta:
+      collection: offer
+      conditions: null
+      display: null
+      display_options: null
+      field: date_created
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 3
+      special:
+        - date-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: date_created
+      table: offer
+      data_type: timestamp with time zone
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: offer
+    field: date_updated
+    type: timestamp
+    meta:
+      collection: offer
+      conditions: null
+      display: null
+      display_options: null
+      field: date_updated
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 4
+      special:
+        - date-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: date_updated
+      table: offer
+      data_type: timestamp with time zone
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: offer
+    field: name
+    type: string
+    meta:
+      collection: offer
+      conditions: null
+      display: null
+      display_options: null
+      field: name
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: true
+      searchable: true
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: name
+      table: offer
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: offer
+    field: description
+    type: text
+    meta:
+      collection: offer
+      conditions: null
+      display: null
+      display_options: null
+      field: description
+      group: null
+      hidden: false
+      interface: input-rich-text-html
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 6
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: description
+      table: offer
+      data_type: text
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: offer
+    field: responsabilities
+    type: text
+    meta:
+      collection: offer
+      conditions: null
+      display: null
+      display_options: null
+      field: responsabilities
+      group: null
+      hidden: false
+      interface: input-rich-text-html
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 7
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: responsabilities
+      table: offer
+      data_type: text
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: offer
+    field: profile
+    type: text
+    meta:
+      collection: offer
+      conditions: null
+      display: null
+      display_options: null
+      field: profile
+      group: null
+      hidden: false
+      interface: input-rich-text-html
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 8
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: profile
+      table: offer
+      data_type: text
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: projects
+    field: id
+    type: integer
+    meta:
+      collection: projects
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: projects
+      data_type: integer
+      default_value: nextval('projects_id_seq'::regclass)
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: true
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: projects
+    field: status
+    type: string
+    meta:
+      collection: projects
+      conditions: null
+      display: labels
+      display_options:
+        choices:
+          - background: var(--theme--primary-background)
+            color: var(--theme--primary)
+            foreground: var(--theme--primary)
+            text: $t:published
+            value: published
+          - background: var(--theme--background-normal)
+            color: var(--theme--foreground)
+            foreground: var(--theme--foreground)
+            text: $t:draft
+            value: draft
+          - background: var(--theme--warning-background)
+            color: var(--theme--warning)
+            foreground: var(--theme--warning)
+            text: $t:archived
+            value: archived
+        showAsDot: true
+      field: status
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - color: var(--theme--primary)
+            text: $t:published
+            value: published
+          - color: var(--theme--foreground)
+            text: $t:draft
+            value: draft
+          - color: var(--theme--warning)
+            text: $t:archived
+            value: archived
+      readonly: false
+      required: false
+      searchable: true
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: status
+      table: projects
+      data_type: character varying
+      default_value: draft
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: projects
+    field: sort
+    type: integer
+    meta:
+      collection: projects
+      conditions: null
+      display: null
+      display_options: null
+      field: sort
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: sort
+      table: projects
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: projects
+    field: user_created
+    type: uuid
+    meta:
+      collection: projects
+      conditions: null
+      display: user
+      display_options: null
+      field: user_created
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      searchable: true
+      sort: 5
+      special:
+        - user-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: user_created
+      table: projects
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_users
+      foreign_key_column: id
+  - collection: projects
+    field: date_created
+    type: timestamp
+    meta:
+      collection: projects
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_created
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 6
+      special:
+        - date-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: date_created
+      table: projects
+      data_type: timestamp with time zone
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: projects
+    field: user_updated
+    type: uuid
+    meta:
+      collection: projects
+      conditions: null
+      display: user
+      display_options: null
+      field: user_updated
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      searchable: true
+      sort: 7
+      special:
+        - user-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: user_updated
+      table: projects
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_users
+      foreign_key_column: id
+  - collection: projects
+    field: date_updated
+    type: timestamp
+    meta:
+      collection: projects
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_updated
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 8
+      special:
+        - date-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: date_updated
+      table: projects
+      data_type: timestamp with time zone
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: projects
+    field: cover
+    type: uuid
+    meta:
+      collection: projects
+      conditions: null
+      display: null
+      display_options: null
+      field: cover
+      group: null
+      hidden: false
+      interface: file-image
+      note: null
+      options:
+        folder: 32fbb7ab-67e3-4515-8610-217745b2b975
+      readonly: false
+      required: false
+      searchable: true
+      sort: 1
+      special:
+        - file
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: cover
+      table: projects
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_files
+      foreign_key_column: id
+  - collection: projects
+    field: title
+    type: string
+    meta:
+      collection: projects
+      conditions: null
+      display: null
+      display_options: null
+      field: title
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 10
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: title
+      table: projects
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: projects
+    field: description
+    type: text
+    meta:
+      collection: projects
+      conditions: null
+      display: null
+      display_options: null
+      field: description
+      group: null
+      hidden: false
+      interface: input-multiline
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 11
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: description
+      table: projects
+      data_type: text
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: projects
+    field: cout
+    type: bigInteger
+    meta:
+      collection: projects
+      conditions: null
+      display: null
+      display_options: null
+      field: cout
+      group: null
+      hidden: false
+      interface: input
+      note: Coût (€)
+      options:
+        iconLeft: euro_symbol
+        min: 0
+      readonly: false
+      required: false
+      searchable: true
+      sort: 12
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: cout
+      table: projects
+      data_type: bigint
+      default_value: null
+      max_length: null
+      numeric_precision: 64
+      numeric_scale: 0
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: projects
+    field: details
+    type: text
+    meta:
+      collection: projects
+      conditions: null
+      display: null
+      display_options: null
+      field: details
+      group: null
+      hidden: false
+      interface: input-rich-text-html
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 13
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: details
+      table: projects
+      data_type: text
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: projects
+    field: start_date
+    type: timestamp
+    meta:
+      collection: projects
+      conditions: null
+      display: null
+      display_options: null
+      field: start_date
+      group: null
+      hidden: false
+      interface: datetime
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 14
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: start_date
+      table: projects
+      data_type: timestamp with time zone
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: projects
+    field: end_date
+    type: timestamp
+    meta:
+      collection: projects
+      conditions: null
+      display: null
+      display_options: null
+      field: end_date
+      group: null
+      hidden: false
+      interface: datetime
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 15
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: end_date
+      table: projects
+      data_type: timestamp with time zone
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: projects
+    field: medias
+    type: alias
+    meta:
+      collection: projects
+      conditions: null
+      display: null
+      display_options: null
+      field: medias
+      group: null
+      hidden: false
+      interface: files
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 16
+      special:
+        - m2m
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+  - collection: projects
+    field: targets
+    type: alias
+    meta:
+      collection: projects
+      conditions: null
+      display: null
+      display_options: null
+      field: targets
+      group: null
+      hidden: false
+      interface: list-m2m
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 17
+      special:
+        - m2m
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+  - collection: projects_files
+    field: id
+    type: integer
+    meta:
+      collection: projects_files
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: projects_files
+      data_type: integer
+      default_value: nextval('projects_files_id_seq'::regclass)
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: true
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: projects_files
+    field: projects_id
+    type: integer
+    meta:
+      collection: projects_files
+      conditions: null
+      display: null
+      display_options: null
+      field: projects_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: projects_id
+      table: projects_files
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: projects
+      foreign_key_column: id
+  - collection: projects_files
+    field: directus_files_id
+    type: uuid
+    meta:
+      collection: projects_files
+      conditions: null
+      display: null
+      display_options: null
+      field: directus_files_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: directus_files_id
+      table: projects_files
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_files
+      foreign_key_column: id
+  - collection: projects_targets
+    field: id
+    type: integer
+    meta:
+      collection: projects_targets
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: projects_targets
+      data_type: integer
+      default_value: nextval('projects_targets_id_seq'::regclass)
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: true
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: projects_targets
+    field: projects_id
+    type: integer
+    meta:
+      collection: projects_targets
+      conditions: null
+      display: null
+      display_options: null
+      field: projects_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: projects_id
+      table: projects_targets
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: projects
+      foreign_key_column: id
+  - collection: projects_targets
+    field: targets_id
+    type: integer
+    meta:
+      collection: projects_targets
+      conditions: null
+      display: null
+      display_options: null
+      field: targets_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: targets_id
+      table: projects_targets
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: targets
+      foreign_key_column: id
+  - collection: targets
+    field: id
+    type: integer
+    meta:
+      collection: targets
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: targets
+      data_type: integer
+      default_value: nextval('targets_id_seq'::regclass)
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: true
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: targets
+    field: status
+    type: string
+    meta:
+      collection: targets
+      conditions: null
+      display: labels
+      display_options:
+        choices:
+          - background: var(--theme--primary-background)
+            color: var(--theme--primary)
+            foreground: var(--theme--primary)
+            text: $t:published
+            value: published
+          - background: var(--theme--background-normal)
+            color: var(--theme--foreground)
+            foreground: var(--theme--foreground)
+            text: $t:draft
+            value: draft
+          - background: var(--theme--warning-background)
+            color: var(--theme--warning)
+            foreground: var(--theme--warning)
+            text: $t:archived
+            value: archived
+        showAsDot: true
+      field: status
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - color: var(--theme--primary)
+            text: $t:published
+            value: published
+          - color: var(--theme--foreground)
+            text: $t:draft
+            value: draft
+          - color: var(--theme--warning)
+            text: $t:archived
+            value: archived
+      readonly: false
+      required: false
+      searchable: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: status
+      table: targets
+      data_type: character varying
+      default_value: draft
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: targets
+    field: name
+    type: string
+    meta:
+      collection: targets
+      conditions: null
+      display: null
+      display_options: null
+      field: name
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: name
+      table: targets
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: terms_of_use
+    field: id
+    type: integer
+    meta:
+      collection: terms_of_use
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: terms_of_use
+      data_type: integer
+      default_value: nextval('terms_of_use_id_seq'::regclass)
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: true
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: terms_of_use
+    field: status
+    type: string
+    meta:
+      collection: terms_of_use
+      conditions: null
+      display: labels
+      display_options:
+        choices:
+          - background: var(--theme--primary-background)
+            color: var(--theme--primary)
+            foreground: var(--theme--primary)
+            text: $t:published
+            value: published
+          - background: var(--theme--background-normal)
+            color: var(--theme--foreground)
+            foreground: var(--theme--foreground)
+            text: $t:draft
+            value: draft
+          - background: var(--theme--warning-background)
+            color: var(--theme--warning)
+            foreground: var(--theme--warning)
+            text: $t:archived
+            value: archived
+        showAsDot: true
+      field: status
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - color: var(--theme--primary)
+            text: $t:published
+            value: published
+          - color: var(--theme--foreground)
+            text: $t:draft
+            value: draft
+          - color: var(--theme--warning)
+            text: $t:archived
+            value: archived
+      readonly: false
+      required: false
+      searchable: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: status
+      table: terms_of_use
+      data_type: character varying
+      default_value: draft
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: terms_of_use
+    field: sort
+    type: integer
+    meta:
+      collection: terms_of_use
+      conditions: null
+      display: null
+      display_options: null
+      field: sort
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: sort
+      table: terms_of_use
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: true
+      is_unique: true
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: terms_of_use
+    field: date_created
+    type: timestamp
+    meta:
+      collection: terms_of_use
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_created
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 5
+      special:
+        - date-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: date_created
+      table: terms_of_use
+      data_type: timestamp with time zone
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: terms_of_use
+    field: date_updated
+    type: timestamp
+    meta:
+      collection: terms_of_use
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_updated
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 7
+      special:
+        - date-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: date_updated
+      table: terms_of_use
+      data_type: timestamp with time zone
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: terms_of_use
+    field: title
+    type: string
+    meta:
+      collection: terms_of_use
+      conditions: null
+      display: null
+      display_options: null
+      field: title
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        iconLeft: title
+        placeholder: Titre de la condition d'utilisation
+      readonly: false
+      required: false
+      searchable: true
+      sort: 9
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: title
+      table: terms_of_use
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: terms_of_use
+    field: content
+    type: text
+    meta:
+      collection: terms_of_use
+      conditions: null
+      display: null
+      display_options: null
+      field: content
+      group: null
+      hidden: false
+      interface: input-rich-text-html
+      note: null
+      options:
+        folder: 8153f093-247a-48fc-8dcd-49071612c895
+        toolbar:
+          - undo
+          - redo
+          - bold
+          - italic
+          - underline
+          - fontfamily
+          - fontsize
+          - h1
+          - h2
+          - h3
+          - alignleft
+          - aligncenter
+          - alignjustify
+          - numlist
+          - bullist
+          - removeformat
+          - cut
+          - copy
+          - paste
+          - selectall
+          - blockquote
+          - customLink
+          - customImage
+          - customMedia
+          - hr
+          - code
+          - fullscreen
+      readonly: false
+      required: false
+      searchable: true
+      sort: 10
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: content
+      table: terms_of_use
+      data_type: text
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: terms_of_use
+    field: order
+    type: integer
+    meta:
+      collection: terms_of_use
+      conditions: null
+      display: null
+      display_options: null
+      field: order
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        iconLeft: format_list_numbered
+        min: 0
+        placeholder: Ordre d'apparition des rebriques
+      readonly: false
+      required: false
+      searchable: true
+      sort: 8
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: order
+      table: terms_of_use
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+systemFields:
+  - collection: directus_activity
+    field: timestamp
+    schema:
+      is_indexed: true
+  - collection: directus_oauth_clients
+    field: date_created
+    schema:
+      is_indexed: true
+  - collection: directus_oauth_codes
+    field: expires_at
+    schema:
+      is_indexed: true
+  - collection: directus_oauth_codes
+    field: used_at
+    schema:
+      is_indexed: true
+  - collection: directus_oauth_consents
+    field: client
+    schema:
+      is_indexed: true
+  - collection: directus_oauth_tokens
+    field: code_hash
+    schema:
+      is_indexed: true
+  - collection: directus_oauth_tokens
+    field: expires_at
+    schema:
+      is_indexed: true
+  - collection: directus_oauth_tokens
+    field: previous_session
+    schema:
+      is_indexed: true
+  - collection: directus_oauth_tokens
+    field: session
+    schema:
+      is_indexed: true
+  - collection: directus_revisions
+    field: activity
+    schema:
+      is_indexed: true
+  - collection: directus_revisions
+    field: parent
+    schema:
+      is_indexed: true
+  - collection: directus_sessions
+    field: oauth_client
+    schema:
+      is_indexed: true
+relations:
+  - collection: actualities
+    field: user_created
+    related_collection: directus_users
+    meta:
+      junction_field: null
+      many_collection: actualities
+      many_field: user_created
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: actualities
+      column: user_created
+      foreign_key_table: directus_users
+      foreign_key_column: id
+      constraint_name: actualities_user_created_foreign
+      on_update: NO ACTION
+      on_delete: NO ACTION
+  - collection: actualities
+    field: user_updated
+    related_collection: directus_users
+    meta:
+      junction_field: null
+      many_collection: actualities
+      many_field: user_updated
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: actualities
+      column: user_updated
+      foreign_key_table: directus_users
+      foreign_key_column: id
+      constraint_name: actualities_user_updated_foreign
+      on_update: NO ACTION
+      on_delete: NO ACTION
+  - collection: actualities
+    field: cover
+    related_collection: directus_files
+    meta:
+      junction_field: null
+      many_collection: actualities
+      many_field: cover
+      one_allowed_collections: null
+      one_collection: directus_files
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: actualities
+      column: cover
+      foreign_key_table: directus_files
+      foreign_key_column: id
+      constraint_name: actualities_cover_foreign
+      on_update: NO ACTION
+      on_delete: SET NULL
+  - collection: actualities_categories
+    field: categories_id
+    related_collection: categories
+    meta:
+      junction_field: actualities_id
+      many_collection: actualities_categories
+      many_field: categories_id
+      one_allowed_collections: null
+      one_collection: categories
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: actualities_categories
+      column: categories_id
+      foreign_key_table: categories
+      foreign_key_column: id
+      constraint_name: actualities_categories_categories_id_foreign
+      on_update: NO ACTION
+      on_delete: SET NULL
+  - collection: actualities_categories
+    field: actualities_id
+    related_collection: actualities
+    meta:
+      junction_field: categories_id
+      many_collection: actualities_categories
+      many_field: actualities_id
+      one_allowed_collections: null
+      one_collection: actualities
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: categories
+      sort_field: null
+    schema:
+      table: actualities_categories
+      column: actualities_id
+      foreign_key_table: actualities
+      foreign_key_column: id
+      constraint_name: actualities_categories_actualities_id_foreign
+      on_update: NO ACTION
+      on_delete: SET NULL
+  - collection: actualities_targets
+    field: targets_id
+    related_collection: targets
+    meta:
+      junction_field: actualities_id
+      many_collection: actualities_targets
+      many_field: targets_id
+      one_allowed_collections: null
+      one_collection: targets
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: actualities_targets
+      column: targets_id
+      foreign_key_table: targets
+      foreign_key_column: id
+      constraint_name: actualities_targets_targets_id_foreign
+      on_update: NO ACTION
+      on_delete: SET NULL
+  - collection: actualities_targets
+    field: actualities_id
+    related_collection: actualities
+    meta:
+      junction_field: targets_id
+      many_collection: actualities_targets
+      many_field: actualities_id
+      one_allowed_collections: null
+      one_collection: actualities
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: targets
+      sort_field: null
+    schema:
+      table: actualities_targets
+      column: actualities_id
+      foreign_key_table: actualities
+      foreign_key_column: id
+      constraint_name: actualities_targets_actualities_id_foreign
+      on_update: NO ACTION
+      on_delete: SET NULL
+  - collection: events
+    field: user_created
+    related_collection: directus_users
+    meta:
+      junction_field: null
+      many_collection: events
+      many_field: user_created
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: events
+      column: user_created
+      foreign_key_table: directus_users
+      foreign_key_column: id
+      constraint_name: events_user_created_foreign
+      on_update: NO ACTION
+      on_delete: NO ACTION
+  - collection: events
+    field: user_updated
+    related_collection: directus_users
+    meta:
+      junction_field: null
+      many_collection: events
+      many_field: user_updated
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: events
+      column: user_updated
+      foreign_key_table: directus_users
+      foreign_key_column: id
+      constraint_name: events_user_updated_foreign
+      on_update: NO ACTION
+      on_delete: NO ACTION
+  - collection: events
+    field: cover
+    related_collection: directus_files
+    meta:
+      junction_field: null
+      many_collection: events
+      many_field: cover
+      one_allowed_collections: null
+      one_collection: directus_files
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: events
+      column: cover
+      foreign_key_table: directus_files
+      foreign_key_column: id
+      constraint_name: events_cover_foreign
+      on_update: NO ACTION
+      on_delete: SET NULL
+  - collection: members
+    field: photo
+    related_collection: directus_files
+    meta:
+      junction_field: null
+      many_collection: members
+      many_field: photo
+      one_allowed_collections: null
+      one_collection: directus_files
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: members
+      column: photo
+      foreign_key_table: directus_files
+      foreign_key_column: id
+      constraint_name: members_photo_foreign
+      on_update: NO ACTION
+      on_delete: SET NULL
+  - collection: members
+    field: itv
+    related_collection: directus_files
+    meta:
+      junction_field: null
+      many_collection: members
+      many_field: itv
+      one_allowed_collections: null
+      one_collection: directus_files
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: members
+      column: itv
+      foreign_key_table: directus_files
+      foreign_key_column: id
+      constraint_name: members_itv_foreign
+      on_update: NO ACTION
+      on_delete: SET NULL
+  - collection: projects
+    field: user_created
+    related_collection: directus_users
+    meta:
+      junction_field: null
+      many_collection: projects
+      many_field: user_created
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: projects
+      column: user_created
+      foreign_key_table: directus_users
+      foreign_key_column: id
+      constraint_name: projects_user_created_foreign
+      on_update: NO ACTION
+      on_delete: NO ACTION
+  - collection: projects
+    field: user_updated
+    related_collection: directus_users
+    meta:
+      junction_field: null
+      many_collection: projects
+      many_field: user_updated
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: projects
+      column: user_updated
+      foreign_key_table: directus_users
+      foreign_key_column: id
+      constraint_name: projects_user_updated_foreign
+      on_update: NO ACTION
+      on_delete: NO ACTION
+  - collection: projects
+    field: cover
+    related_collection: directus_files
+    meta:
+      junction_field: null
+      many_collection: projects
+      many_field: cover
+      one_allowed_collections: null
+      one_collection: directus_files
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: projects
+      column: cover
+      foreign_key_table: directus_files
+      foreign_key_column: id
+      constraint_name: projects_cover_foreign
+      on_update: NO ACTION
+      on_delete: SET NULL
+  - collection: projects_files
+    field: directus_files_id
+    related_collection: directus_files
+    meta:
+      junction_field: projects_id
+      many_collection: projects_files
+      many_field: directus_files_id
+      one_allowed_collections: null
+      one_collection: directus_files
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: projects_files
+      column: directus_files_id
+      foreign_key_table: directus_files
+      foreign_key_column: id
+      constraint_name: projects_files_directus_files_id_foreign
+      on_update: NO ACTION
+      on_delete: SET NULL
+  - collection: projects_files
+    field: projects_id
+    related_collection: projects
+    meta:
+      junction_field: directus_files_id
+      many_collection: projects_files
+      many_field: projects_id
+      one_allowed_collections: null
+      one_collection: projects
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: medias
+      sort_field: null
+    schema:
+      table: projects_files
+      column: projects_id
+      foreign_key_table: projects
+      foreign_key_column: id
+      constraint_name: projects_files_projects_id_foreign
+      on_update: NO ACTION
+      on_delete: SET NULL
+  - collection: projects_targets
+    field: targets_id
+    related_collection: targets
+    meta:
+      junction_field: projects_id
+      many_collection: projects_targets
+      many_field: targets_id
+      one_allowed_collections: null
+      one_collection: targets
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: projects_targets
+      column: targets_id
+      foreign_key_table: targets
+      foreign_key_column: id
+      constraint_name: projects_targets_targets_id_foreign
+      on_update: NO ACTION
+      on_delete: SET NULL
+  - collection: projects_targets
+    field: projects_id
+    related_collection: projects
+    meta:
+      junction_field: targets_id
+      many_collection: projects_targets
+      many_field: projects_id
+      one_allowed_collections: null
+      one_collection: projects
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: targets
+      sort_field: null
+    schema:
+      table: projects_targets
+      column: projects_id
+      foreign_key_table: projects
+      foreign_key_column: id
+      constraint_name: projects_targets_projects_id_foreign
+      on_update: NO ACTION
+      on_delete: SET NULL
