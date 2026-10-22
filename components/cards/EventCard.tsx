@@ -10,11 +10,12 @@ import { formatDate } from "@/libs/dateutils";
 
 const EventCard = ({ props }: { props: EventInterface }) => {
   const returnPriceChip = () => {
-    let pricing = props?.price === 0 ? "Gratuit" : "Payant";
+    // Decimal Directus : le prix arrive en chaîne ("0.00"), absent = gratuit
+    const price = Number(props?.price ?? 0);
     return (
       <Chip
         key={props?.name}
-        label={`${pricing} : ${props?.price}€`}
+        label={price > 0 ? `Payant : ${price}€` : "Gratuit"}
         sx={{ fontWeight: "bold" }}
         color={"primary"}
       />
@@ -110,9 +111,11 @@ const EventCard = ({ props }: { props: EventInterface }) => {
               {"Faire un don "}👈
             </Button>
 
-            <Typography
-              variant={"subtitle1"}
-            >{`${props?.capacity} bénévoles mobilisés`}</Typography>
+            {props?.capacity ? (
+              <Typography
+                variant={"subtitle1"}
+              >{`${props.capacity} bénévoles mobilisés`}</Typography>
+            ) : null}
 
             {props?.instagram || props?.linkedin ? <Divider /> : null}
             <SocialLinks
