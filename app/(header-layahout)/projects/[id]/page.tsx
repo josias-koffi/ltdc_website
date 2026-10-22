@@ -5,7 +5,10 @@ import { ProjectEntity } from "@/libs/interfaces/entities";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import ViewProject from "@/container/projects-pages/view/ViewProject";
-import { COVER_WITH_FOCAL_POINT_FIELDS } from "@/libs/stringUtils";
+import {
+  COVER_WITH_FOCAL_POINT_FIELDS,
+  GALLERY_FIELDS,
+} from "@/libs/stringUtils";
 
 // Contenu édité dans le BO : sans cela, Next met en cache la réponse Directus
 // et la page ne reflète pas les modifications publiées. `dynamic` seul ne
@@ -16,7 +19,7 @@ export const fetchCache = "force-no-store";
 const fetchProjects = async (id: string): Promise<ProjectEntity | null> => {
   const request: FetchProps = {
     entity: "projects",
-    fields: COVER_WITH_FOCAL_POINT_FIELDS,
+    fields: [...COVER_WITH_FOCAL_POINT_FIELDS, ...GALLERY_FIELDS],
     filter: { id: { _eq: id } },
   };
 
