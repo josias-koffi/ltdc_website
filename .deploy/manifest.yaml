@@ -25,7 +25,8 @@ apps:
     resources: { cpus: 0.5, memory: 512m }
 
   cms:
-    image: directus/directus:12.4.1   # same version as docker-compose.directus.yml
+    # directus/Dockerfile: directus/directus:12.4.1 + our custom migrations (run at start)
+    image: ghcr.io/josias-koffi/ltdc-cms
     port: 8055
     domain: cms
     # /server/health requires a token since Directus 12; /server/ping is the public liveness probe.

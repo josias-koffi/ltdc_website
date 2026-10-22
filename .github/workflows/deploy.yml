@@ -63,6 +63,12 @@ jobs:
             COOKIEYES_ANALYTICS_ID=cookieyes
             COOKIEYES_ANALYTICS_SRC=https://cdn-cookieyes.com/client_data/f0877dc2d8c79a2f78db8b0f/script.js
             COOKIEYES_ANALYTICS_TYPE=text/javascript
+      # Directus with the custom migrations of directus/migrations, same tag as the web image.
+      - uses: docker/build-push-action@v6
+        with:
+          context: ./directus
+          push: true
+          tags: ghcr.io/josias-koffi/ltdc-cms:${{ needs.resolve.outputs.image_tag }}
 
   deploy:
     needs: [resolve, build]

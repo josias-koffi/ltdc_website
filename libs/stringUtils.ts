@@ -59,6 +59,18 @@ export const COVER_WITH_FOCAL_POINT_FIELDS = [
   "cover.focal_point_y",
 ];
 
+/** Photos de la galerie d'un projet (jonction projects_gallery), avec leur ordre. */
+export const GALLERY_FIELDS = [
+  "gallery.sort",
+  "gallery.directus_files_id.id",
+  "gallery.directus_files_id.title",
+  "gallery.directus_files_id.description",
+  "gallery.directus_files_id.width",
+  "gallery.directus_files_id.height",
+  "gallery.directus_files_id.focal_point_x",
+  "gallery.directus_files_id.focal_point_y",
+];
+
 /**
  * Point focal Directus (en pixels) converti en `object-position` CSS, pour que
  * le recadrage garde le sujet choisi. undefined si l'image n'en a pas.
