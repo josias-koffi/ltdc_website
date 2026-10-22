@@ -262,6 +262,32 @@ collections:
       versioning: false
     schema:
       name: projects_files
+  - collection: projects_gallery
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      autosave_revision_interval: null
+      collapse: open
+      collection: projects_gallery
+      color: null
+      display_template: null
+      group: null
+      hidden: true
+      icon: import_export
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: null
+      sort_field: null
+      status: active
+      translations: null
+      unarchive_value: null
+      versioning: false
+    schema:
+      name: projects_gallery
   - collection: projects_targets
     meta:
       accountability: all
@@ -3803,7 +3829,7 @@ fields:
       display_options: null
       field: medias
       group: null
-      hidden: false
+      hidden: true
       interface: files
       note: null
       options: null
@@ -3837,6 +3863,32 @@ fields:
       sort: 17
       special:
         - m2m
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+  - collection: projects
+    field: gallery
+    type: alias
+    meta:
+      collection: projects
+      conditions: null
+      display: null
+      display_options: null
+      field: gallery
+      group: null
+      hidden: false
+      interface: files
+      note: >-
+        Photos affichées dans la galerie de la page projet (glisser pour les
+        ordonner)
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 15
+      special:
+        - files
       translations: null
       validation: null
       validation_message: null
@@ -3961,6 +4013,166 @@ fields:
       has_auto_increment: false
       foreign_key_table: directus_files
       foreign_key_column: id
+  - collection: projects_gallery
+    field: id
+    type: integer
+    meta:
+      collection: projects_gallery
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: projects_gallery
+      data_type: integer
+      default_value: nextval('projects_gallery_id_seq'::regclass)
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: true
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: projects_gallery
+    field: projects_id
+    type: integer
+    meta:
+      collection: projects_gallery
+      conditions: null
+      display: null
+      display_options: null
+      field: projects_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: projects_id
+      table: projects_gallery
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: projects
+      foreign_key_column: id
+  - collection: projects_gallery
+    field: directus_files_id
+    type: uuid
+    meta:
+      collection: projects_gallery
+      conditions: null
+      display: null
+      display_options: null
+      field: directus_files_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: directus_files_id
+      table: projects_gallery
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_files
+      foreign_key_column: id
+  - collection: projects_gallery
+    field: sort
+    type: integer
+    meta:
+      collection: projects_gallery
+      conditions: null
+      display: null
+      display_options: null
+      field: sort
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: sort
+      table: projects_gallery
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
   - collection: projects_targets
     field: id
     type: integer
@@ -5020,6 +5232,48 @@ relations:
       constraint_name: projects_files_projects_id_foreign
       on_update: NO ACTION
       on_delete: SET NULL
+  - collection: projects_gallery
+    field: directus_files_id
+    related_collection: directus_files
+    meta:
+      junction_field: projects_id
+      many_collection: projects_gallery
+      many_field: directus_files_id
+      one_allowed_collections: null
+      one_collection: directus_files
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: projects_gallery
+      column: directus_files_id
+      foreign_key_table: directus_files
+      foreign_key_column: id
+      constraint_name: projects_gallery_directus_files_id_foreign
+      on_update: NO ACTION
+      on_delete: CASCADE
+  - collection: projects_gallery
+    field: projects_id
+    related_collection: projects
+    meta:
+      junction_field: directus_files_id
+      many_collection: projects_gallery
+      many_field: projects_id
+      one_allowed_collections: null
+      one_collection: projects
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: gallery
+      sort_field: sort
+    schema:
+      table: projects_gallery
+      column: projects_id
+      foreign_key_table: projects
+      foreign_key_column: id
+      constraint_name: projects_gallery_projects_id_foreign
+      on_update: NO ACTION
+      on_delete: CASCADE
   - collection: projects_targets
     field: targets_id
     related_collection: targets

@@ -1,4 +1,5 @@
 # Local Directus backend (same images as the Dokploy deployment, see .deploy/manifest.yaml).
+# Directus is built from directus/Dockerfile so the custom migrations run at start.
 # Secrets live in .env.directus.local (gitignored).
 #   docker compose -f docker-compose.directus.yml up -d
 services:
@@ -17,7 +18,7 @@ services:
             retries: 10
 
     directus:
-        image: directus/directus:12.4.1
+        build: ./directus
         restart: unless-stopped
         depends_on:
             db:

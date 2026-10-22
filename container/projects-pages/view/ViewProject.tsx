@@ -13,6 +13,7 @@ import { ProjectEntity } from "@/libs/interfaces/entities";
 import { Typography, Box } from "@mui/material";
 import { formatDate } from "@/libs/dateutils";
 import Targets from "@/components/entity/Targets";
+import ProjectGallery from "@/components/sections/gallery/ProjectGallery";
 
 const ViewProject = ({ project }: { project: ProjectEntity }) => {
   // DOMParser n'existe que dans le navigateur : on rend le HTML brut au serveur
@@ -103,6 +104,9 @@ const ViewProject = ({ project }: { project: ProjectEntity }) => {
           __html: details,
         }}
       />
+      {project?.gallery?.length ? (
+        <ProjectGallery gallery={project.gallery} title={project.title} />
+      ) : null}
       {/*  Sources et liens utiles*/}
       {project?.sources ? (
         <Box>

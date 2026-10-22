@@ -108,6 +108,13 @@ export interface ProjectEntity {
   user_created: string;
   user_updated?: string;
   cout?: number;
+  gallery?: ProjectGalleryEntity[];
+}
+
+/** Ligne de la jonction projects_gallery (ordre réglé dans le BO). */
+export interface ProjectGalleryEntity {
+  sort?: number | null;
+  directus_files_id: FilesInterface;
 }
 
 export interface FilesInterface {
