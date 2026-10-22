@@ -33,7 +33,7 @@ const MemberSection = () => {
       >
         {"Direction"}
       </Typography>
-      <MembersByTeam team={Team.DIRECTION} showTips={false} />
+      <MembersByTeam team={Team.DIRECTION} showTips={false} limit={4} />
       <Button variant={"contained"} href={"/members"} sx={{ p: 3 }}>
         {"Voir tout les membres"}
       </Button>

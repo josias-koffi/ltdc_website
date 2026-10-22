@@ -19,10 +19,13 @@ const MembersByTeam = ({
   team,
   showTips = true,
   isInteractive = false,
+  limit = -1,
 }: {
   team: Team;
   showTips?: boolean;
   isInteractive?: boolean;
+  // -1 = toute l'équipe ; l'accueil n'en montre qu'un aperçu
+  limit?: number;
 }) => {
   const [membersInfo, setMembersInfo] = useState<MemberEntity[]>([]);
   const [activeMember, setActiveMember] = useState<MemberEntity>();
@@ -34,7 +37,7 @@ const MembersByTeam = ({
     const filter: FetchProps = {
       entity: "members",
       filter: { team: { _eq: team } },
-      limit: 4,
+      limit,
       sort: ["order"],
     };
     try {
