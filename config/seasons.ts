@@ -126,7 +126,9 @@ const DEFAULT_LOGOS: SeasonLogos = {
 };
 
 const DEFAULT_ASSETS: SeasonAssets = {
-  heroVideo: "/videos/hero-section/video_hero_section.mp4",
+  // Teaser « Un bout de ma vie » (oct. 2026) pour un temps. L'ancienne vidéo reste
+  // dans public/ : "/videos/hero-section/video_hero_section.mp4".
+  heroVideo: "/videos/hero-section/teaser_un_bout_de_ma_vie.mp4",
   heroPoster: "/images/homePage/Ellipse.svg",
   callToAction: {
     title: "Rejoignez-nous",
@@ -170,8 +172,7 @@ export const SEASONS: Record<SeasonKey, SeasonDefinition> = {
       favicon: "/icons/logo/october/favicon-october.png",
     },
     assets: {
-      // heroVideo : vidéo Octobre Rose pas encore livrée, la vidéo par défaut
-      // reste affichée d'ici là.
+      // heroVideo : celle par défaut (teaser « Un bout de ma vie »).
       callToAction: {
         title: "C’est bientôt disponible !",
         text:
