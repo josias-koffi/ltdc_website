@@ -50,6 +50,8 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       # One build-push step per image of the manifest.
       # The URLs are baked into the Next bundle: a staging image is not promotable to production.
+      # CookieYes is registered for www.asso-ltdc.org only: elsewhere its consent cookie
+      # is refused and the banner comes back on every page, so staging builds without it.
       # Plausible (self-hosted on the lost VPS) is left out until it is redeployed:
       # add PLAUSIBLE_DATA_DOMAINE / PLAUSIBLE_SCRIPT_SRC back then.
       - uses: docker/build-push-action@v6
@@ -61,7 +63,7 @@ jobs:
             NEXT_PUBLIC_BO_URL=${{ needs.resolve.outputs.environment == 'production' && 'https://bo-prod.asso-ltdc.org/' || 'https://bo-stage.asso-ltdc.org/' }}
             NEXT_PUBLIC_API_URL=${{ needs.resolve.outputs.environment == 'production' && 'https://www.asso-ltdc.org/' || 'https://stage-ltdc.asso-ltdc.org/' }}
             COOKIEYES_ANALYTICS_ID=cookieyes
-            COOKIEYES_ANALYTICS_SRC=https://cdn-cookieyes.com/client_data/f0877dc2d8c79a2f78db8b0f/script.js
+            COOKIEYES_ANALYTICS_SRC=${{ needs.resolve.outputs.environment == 'production' && 'https://cdn-cookieyes.com/client_data/f0877dc2d8c79a2f78db8b0f/script.js' || '' }}
             COOKIEYES_ANALYTICS_TYPE=text/javascript
       # Directus with the custom migrations of directus/migrations, same tag as the web image.
       - uses: docker/build-push-action@v6
