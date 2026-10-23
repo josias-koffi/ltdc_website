@@ -2858,9 +2858,11 @@ fields:
       display_options: null
       field: order
       group: null
-      hidden: true
+      hidden: false
       interface: input
-      note: null
+      note: >-
+        Position dans l'équipe : 1 apparaît en premier (ou glisser les membres
+        dans la liste)
       options: null
       readonly: false
       required: false
@@ -2870,7 +2872,7 @@ fields:
       translations: null
       validation: null
       validation_message: null
-      width: full
+      width: half
     schema:
       name: order
       table: members
