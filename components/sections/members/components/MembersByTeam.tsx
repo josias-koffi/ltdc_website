@@ -38,7 +38,7 @@ const MembersByTeam = ({
       entity: "members",
       filter: { team: { _eq: team } },
       limit,
-      sort: ["order"],
+      sort: ["order", "name"],
     };
     try {
       const res = await getItems(filter);

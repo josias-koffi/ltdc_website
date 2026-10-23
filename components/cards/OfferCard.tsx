@@ -23,8 +23,10 @@ const OfferCard = ({ props }: { props: OfferEntity }) => {
       viewport={{ once: true, amount: 0.1 }}
       whileHover={{ y: -6, boxShadow: "0 20px 40px rgba(0,0,0,0.12)" }}
       transition={{ duration: 0.25 }}
+      sx={{ height: "100%", display: "flex", flexDirection: "column" }}
     >
-      <CardContent sx={{ height: 100 }}>
+      {/* Le texte prend la place qu'il lui faut, le bouton reste en bas de la carte. */}
+      <CardContent sx={{ flexGrow: 1 }}>
         <Typography gutterBottom color={"primary"} variant="h5" component="div">
           {props?.name}
         </Typography>
@@ -36,7 +38,7 @@ const OfferCard = ({ props }: { props: OfferEntity }) => {
           }}
         />
       </CardContent>
-      <CardActions sx={{ justifyContent: "flex-end", pt: 10 }}>
+      <CardActions sx={{ justifyContent: "flex-end", pt: 2 }}>
         <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
           <Button variant={"contained"} href={"offers/" + props?.id}>
             {"Voir l'offre"}
