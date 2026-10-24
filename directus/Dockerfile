@@ -4,3 +4,8 @@
 FROM directus/directus:12.4.1
 
 COPY --chown=node:node migrations /directus/migrations
+
+# Le chemin par défaut (`./migrations`) dépend du répertoire de lancement du
+# conteneur. Le rendre absolu garantit que bootstrap découvre les migrations
+# LTDC dans tous les environnements Dokploy.
+ENV MIGRATIONS_PATH=/directus/migrations
