@@ -1,9 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
-import ImageWrapper, {
-  BANNER_HEIGHT,
-} from "@/components/wrapper/ImageWrapper";
+import BannerImage from "@/components/wrapper/BannerImage";
 import { returnImageUrlById, updateHtmlAttributes } from "@/libs/stringUtils";
 import { ActualitiesEntity } from "@/libs/interfaces/entities";
 import { Typography, Box } from "@mui/material";
@@ -25,10 +23,10 @@ const ViewActualities = ({ actuality }: { actuality: ActualitiesEntity }) => {
   return (
     <ContainerWrapper>
       {actuality?.cover ? (
-        <ImageWrapper
+        <BannerImage
           src={returnImageUrlById(actuality?.cover)}
           alt={"Image de l'actualité"}
-          sx={{ height: BANNER_HEIGHT }}
+          file={actuality.cover}
         />
       ) : null}
 

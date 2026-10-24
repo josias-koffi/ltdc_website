@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
-import {Box, Typography} from "@mui/material";
+import {Typography} from "@mui/material";
 import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
-import ImageWrapper, {BANNER_HEIGHT} from "@/components/wrapper/ImageWrapper";
+import BannerImage from "@/components/wrapper/BannerImage";
 import {cleanAndFormatText} from "@/libs/stringUtils";
 import {motion} from "framer-motion";
 
@@ -11,7 +11,6 @@ interface RubriqueHeadProps {
     imageAlt: string;
     title: string;
     description: string;
-    objectPosition?: "right" | "left" | "top" | "bottom" | "center";
 }
 
 const RubriqueHead = ({
@@ -19,7 +18,6 @@ const RubriqueHead = ({
                           description,
                           title,
                           imageAlt,
-                          objectPosition,
                       }: RubriqueHeadProps) => {
     return (
         <ContainerWrapper
@@ -39,16 +37,7 @@ const RubriqueHead = ({
                 transition={{duration: 0.7, ease: "easeOut"}}
                 style={{width: "100%", overflow: "hidden", borderRadius: 12}}
             >
-                <Box sx={{width: "100%", height: BANNER_HEIGHT}}>
-                    <ImageWrapper
-                        src={imageUrl}
-                        alt={imageAlt}
-                        objectPosition={objectPosition}
-                        width="100%"
-                        height="100%"
-                        sx={{borderRadius: 5}}
-                    />
-                </Box>
+                <BannerImage src={imageUrl} alt={imageAlt}/>
             </motion.div>
 
             <motion.div

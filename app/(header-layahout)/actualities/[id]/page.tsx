@@ -5,6 +5,7 @@ import { FetchProps } from "@/libs/interfaces/Interfaces";
 import { ActualitiesEntity } from "@/libs/interfaces/entities";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { COVER_WITH_FOCAL_POINT_FIELDS } from "@/libs/stringUtils";
 
 // Contenu édité dans le BO : sans cela, Next met en cache la réponse Directus
 // et la page ne reflète pas les modifications publiées. `dynamic` seul ne
@@ -18,7 +19,8 @@ const fetchActuality = async (
 ): Promise<ActualitiesEntity | null> => {
   const request: FetchProps = {
     entity: "actualities",
-    deepFields: false,
+    // Dimensions de la couverture : le bandeau prend son ratio dès le rendu.
+    fields: COVER_WITH_FOCAL_POINT_FIELDS,
     filter: { id: { _eq: id } },
   };
 
