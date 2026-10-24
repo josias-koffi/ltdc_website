@@ -1,11 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
-import ImageWrapper, {
-  BANNER_HEIGHT,
-} from "@/components/wrapper/ImageWrapper";
+import BannerImage from "@/components/wrapper/BannerImage";
 import {
-  focalPointPosition,
   returnImageUrlById,
   updateHtmlAttributes,
 } from "@/libs/stringUtils";
@@ -29,11 +26,10 @@ const ViewProject = ({ project }: { project: ProjectEntity }) => {
   return (
     <ContainerWrapper>
       {project?.cover ? (
-        <ImageWrapper
+        <BannerImage
           src={returnImageUrlById(project?.cover)}
           alt={"Image du projet"}
-          objectPosition={focalPointPosition(project.cover)}
-          sx={{ height: BANNER_HEIGHT }}
+          file={project.cover}
         />
       ) : null}
 
