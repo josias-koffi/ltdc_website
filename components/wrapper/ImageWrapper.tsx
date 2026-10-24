@@ -17,13 +17,6 @@ interface ImageWrapperProps {
   sx?: any;
 }
 
-/**
- * Hauteur des bandeaux d'image : en-têtes de rubrique (projets, actualités,
- * événements, offres) et couvertures des pages détail. Assez haut pour limiter
- * le recadrage des visuels.
- */
-export const BANNER_HEIGHT = { xs: 260, sm: 380, md: 480, lg: 560 };
-
 const ImageWrapper = (props: ImageWrapperProps) => {
   const {
     src,
