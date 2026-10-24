@@ -48,6 +48,7 @@ const ButtonList = (props: Props) => {
     { name: "Projets", link: "/projects" },
     { name: "Événements", link: "/events" },
     { name: "Actualités", link: "/actualities" },
+    { name: "Émissions", link: "/emissions" },
     { name: "Nos offres", link: "/offers" },
     { name: "Contact", link: "/contact" },
     {

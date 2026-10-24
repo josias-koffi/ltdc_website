@@ -24,6 +24,7 @@ const PUBLISHED_FILTERS: Partial<Record<EntityInterface["name"], object>> = {
   events: { status: PUBLISHED },
   targets: { status: PUBLISHED },
   offer: { status: PUBLISHED },
+  emissions: { status: PUBLISHED },
   actualities_categories: { categories_id: { status: PUBLISHED } },
   actualities_targets: { targets_id: { status: PUBLISHED } },
   projects_targets: { targets_id: { status: PUBLISHED } },
