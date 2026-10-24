@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { getItems } from "@/libs/directus";
 import { Box, Skeleton } from "@mui/material";
 import Grid from "@mui/material/Grid2";
@@ -14,6 +14,7 @@ interface ListFromEntityProps {
   itemsSize?: { xl?: number; md?: number; sm?: number; xs?: number };
   filter?: FetchProps["filter"];
   fields?: FetchProps["fields"];
+  sort?: string[];
 }
 
 const DEFAULT_SIZE = { xl: 4, md: 6, sm: 12, xs: 12 };
@@ -42,6 +43,7 @@ const ListFromEntity = ({
   itemsSize,
   filter,
   fields,
+  sort,
 }: ListFromEntityProps) => {
   const [data, setData] = useState<unknown[]>([]);
   const [loading, setLoading] = useState(true);
@@ -49,13 +51,13 @@ const ListFromEntity = ({
 
   const size = itemsSize ?? DEFAULT_SIZE;
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     setLoading(true);
     const request: FetchProps = {
       entity: entity,
       limit: LIMIT,
       page: currentPage,
-      sort: SORT,
+      sort: sort ?? SORT,
       filter,
       fields,
     };
@@ -72,11 +74,11 @@ const ListFromEntity = ({
     } finally {
       setLoading(false);
     }
-  };
+  }, [currentPage, entity, fields, filter, sort]);
 
   useEffect(() => {
     fetchData();
-  }, [currentPage]);
+  }, [fetchData]);
 
   return (
     <ContainerWrapper sxProps={{ py: 0, pb: 5 }}>

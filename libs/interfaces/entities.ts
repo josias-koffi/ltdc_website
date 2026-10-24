@@ -111,6 +111,25 @@ export interface ProjectEntity {
   gallery?: ProjectGalleryEntity[];
 }
 
+export interface EmissionEntity {
+  id: number;
+  status: Status["value"];
+  sort?: number | null;
+  title: string;
+  description: string;
+  content?: string | null;
+  cover: string | FilesInterface;
+  publication_date: string;
+  episode_number?: number | null;
+  video_source: "youtube" | "directus";
+  youtube_url?: string | null;
+  video_file?: string | FilesInterface | null;
+  date_created?: string;
+  date_updated?: string;
+  user_created?: string;
+  user_updated?: string;
+}
+
 /** Ligne de la jonction projects_gallery (ordre réglé dans le BO). */
 export interface ProjectGalleryEntity {
   sort?: number | null;
