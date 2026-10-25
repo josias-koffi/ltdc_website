@@ -7,7 +7,7 @@ import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import ChevronLeftRoundedIcon from "@mui/icons-material/ChevronLeftRounded";
 import ChevronRightRoundedIcon from "@mui/icons-material/ChevronRightRounded";
 import ImageWrapper from "@/components/wrapper/ImageWrapper";
-import { ProjectGalleryEntity } from "@/libs/interfaces/entities";
+import { GalleryEntity } from "@/libs/interfaces/entities";
 import { focalPointPosition, returnImageUrlById } from "@/libs/stringUtils";
 
 const lightboxButtonSx = {
@@ -17,12 +17,46 @@ const lightboxButtonSx = {
   "&:hover": { backgroundColor: "rgba(0, 0, 0, 0.7)" },
 };
 
-/** Galerie photo d'un projet : vignettes, puis agrandissement au clic. */
+const watermarkSx = {
+  position: "absolute",
+  right: { xs: 8, sm: 12 },
+  bottom: { xs: 6, sm: 10 },
+  zIndex: 2,
+  color: "rgba(255, 255, 255, 0.72)",
+  fontSize: { xs: "0.68rem", sm: "0.82rem" },
+  fontWeight: 700,
+  letterSpacing: "0.02em",
+  lineHeight: 1,
+  textShadow: "0 1px 3px rgba(0, 0, 0, 0.95)",
+  pointerEvents: "none",
+  userSelect: "none",
+};
+
+const Watermark = ({ large = false }: { large?: boolean }) => (
+  <Typography
+    component="span"
+    aria-hidden="true"
+    sx={
+      large
+        ? {
+            ...watermarkSx,
+            right: { xs: 14, sm: 24 },
+            bottom: { xs: 12, sm: 20 },
+            fontSize: { xs: "0.8rem", sm: "1rem" },
+          }
+        : watermarkSx
+    }
+  >
+    @association_ltdc
+  </Typography>
+);
+
+/** Galerie photo partagée par les projets et les actualités. */
 const ProjectGallery = ({
   gallery,
   title,
 }: {
-  gallery: ProjectGalleryEntity[];
+  gallery: GalleryEntity[];
   title: string;
 }) => {
   // Les fichiers supprimés du BO laissent une ligne de jonction sans fichier.
@@ -52,6 +86,12 @@ const ProjectGallery = ({
 
   if (!photos.length) return null;
 
+  const activePhoto = active !== null ? photos[active] : null;
+  const activeRatio =
+    activePhoto?.width && activePhoto.height
+      ? activePhoto.width / activePhoto.height
+      : null;
+
   const alt = (index: number) =>
     photos[index]?.description ||
     photos[index]?.title ||
@@ -72,6 +112,7 @@ const ProjectGallery = ({
               aria-label={`Agrandir : ${alt(index)}`}
               sx={{
                 display: "block",
+                position: "relative",
                 width: "100%",
                 p: 0,
                 border: 0,
@@ -88,6 +129,7 @@ const ProjectGallery = ({
                 zIndex={1}
                 sx={{ height: { xs: 160, sm: 200, md: 220 } }}
               />
+              <Watermark />
             </Box>
           </Grid>
         ))}
@@ -100,15 +142,38 @@ const ProjectGallery = ({
         fullWidth
         PaperProps={{ sx: { backgroundColor: "black", position: "relative" } }}
       >
-        {active !== null ? (
-          <Box sx={{ position: "relative", width: "100%", height: "85vh" }}>
-            <Image
-              src={returnImageUrlById(photos[active])}
-              alt={alt(active)}
-              fill
-              sizes="(max-width: 1200px) 100vw, 1200px"
-              style={{ objectFit: "contain" }}
-            />
+        {active !== null && activePhoto ? (
+          <Box
+            sx={{
+              position: "relative",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              width: "100%",
+              height: "85vh",
+            }}
+          >
+            <Box
+              sx={{
+                position: "relative",
+                width: activeRatio
+                  ? `min(100%, calc(85vh * ${activeRatio}))`
+                  : "100%",
+                ...(activeRatio
+                  ? { aspectRatio: `${activeRatio}` }
+                  : { height: "85vh" }),
+                maxHeight: "85vh",
+              }}
+            >
+              <Image
+                src={returnImageUrlById(activePhoto)}
+                alt={alt(active)}
+                fill
+                sizes="(max-width: 1200px) 100vw, 1200px"
+                style={{ objectFit: "contain" }}
+              />
+              <Watermark large />
+            </Box>
             <IconButton
               aria-label="Fermer"
               onClick={() => setActive(null)}

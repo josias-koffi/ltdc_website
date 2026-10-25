@@ -89,6 +89,7 @@ export interface ActualitiesEntity {
   title: string;
   user_created: string;
   user_updated?: string;
+  gallery?: GalleryEntity[];
 }
 export interface ProjectEntity {
   targets?: TargetsEntity[];
@@ -108,7 +109,7 @@ export interface ProjectEntity {
   user_created: string;
   user_updated?: string;
   cout?: number;
-  gallery?: ProjectGalleryEntity[];
+  gallery?: GalleryEntity[];
 }
 
 export interface EmissionEntity {
@@ -130,8 +131,8 @@ export interface EmissionEntity {
   user_updated?: string;
 }
 
-/** Ligne de la jonction projects_gallery (ordre réglé dans le BO). */
-export interface ProjectGalleryEntity {
+/** Ligne d'une jonction de galerie Directus (ordre réglé dans le BO). */
+export interface GalleryEntity {
   sort?: number | null;
   directus_files_id: FilesInterface;
 }
