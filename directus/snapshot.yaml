@@ -54,6 +54,32 @@ collections:
       versioning: false
     schema:
       name: actualities_categories
+  - collection: actualities_gallery
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      autosave_revision_interval: null
+      collapse: open
+      collection: actualities_gallery
+      color: null
+      display_template: null
+      group: null
+      hidden: true
+      icon: import_export
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: null
+      sort_field: null
+      status: active
+      translations: null
+      unarchive_value: null
+      versioning: false
+    schema:
+      name: actualities_gallery
   - collection: actualities_targets
     meta:
       accountability: all
@@ -1072,6 +1098,192 @@ fields:
       max_length: null
       numeric_precision: null
       numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: actualities
+    field: gallery
+    type: alias
+    meta:
+      collection: actualities
+      conditions: null
+      display: null
+      display_options: null
+      field: gallery
+      group: null
+      hidden: false
+      interface: files
+      note: >-
+        Photos affichées dans la galerie de la page actualité (glisser pour les
+        ordonner)
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 18
+      special:
+        - files
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+  - collection: actualities_gallery
+    field: id
+    type: integer
+    meta:
+      collection: actualities_gallery
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: actualities_gallery
+      data_type: integer
+      default_value: nextval('actualities_gallery_id_seq'::regclass)
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: true
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: actualities_gallery
+    field: actualities_id
+    type: integer
+    meta:
+      collection: actualities_gallery
+      conditions: null
+      display: null
+      display_options: null
+      field: actualities_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: actualities_id
+      table: actualities_gallery
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: actualities
+      foreign_key_column: id
+  - collection: actualities_gallery
+    field: directus_files_id
+    type: uuid
+    meta:
+      collection: actualities_gallery
+      conditions: null
+      display: null
+      display_options: null
+      field: directus_files_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: directus_files_id
+      table: actualities_gallery
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_files
+      foreign_key_column: id
+  - collection: actualities_gallery
+    field: sort
+    type: integer
+    meta:
+      collection: actualities_gallery
+      conditions: null
+      display: null
+      display_options: null
+      field: sort
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: sort
+      table: actualities_gallery
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
       is_nullable: true
       is_unique: false
       is_indexed: false
@@ -5749,6 +5961,48 @@ relations:
       constraint_name: actualities_cover_foreign
       on_update: NO ACTION
       on_delete: SET NULL
+  - collection: actualities_gallery
+    field: directus_files_id
+    related_collection: directus_files
+    meta:
+      junction_field: actualities_id
+      many_collection: actualities_gallery
+      many_field: directus_files_id
+      one_allowed_collections: null
+      one_collection: directus_files
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: actualities_gallery
+      column: directus_files_id
+      foreign_key_table: directus_files
+      foreign_key_column: id
+      constraint_name: actualities_gallery_directus_files_id_foreign
+      on_update: NO ACTION
+      on_delete: CASCADE
+  - collection: actualities_gallery
+    field: actualities_id
+    related_collection: actualities
+    meta:
+      junction_field: directus_files_id
+      many_collection: actualities_gallery
+      many_field: actualities_id
+      one_allowed_collections: null
+      one_collection: actualities
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: gallery
+      sort_field: sort
+    schema:
+      table: actualities_gallery
+      column: actualities_id
+      foreign_key_table: actualities
+      foreign_key_column: id
+      constraint_name: actualities_gallery_actualities_id_foreign
+      on_update: NO ACTION
+      on_delete: CASCADE
   - collection: actualities_categories
     field: categories_id
     related_collection: categories

@@ -8,6 +8,7 @@ import { Typography, Box } from "@mui/material";
 import { formatDate } from "@/libs/dateutils";
 import Category from "@/components/entity/Category";
 import Targets from "@/components/entity/Targets";
+import ProjectGallery from "@/components/sections/gallery/ProjectGallery";
 
 const ViewActualities = ({ actuality }: { actuality: ActualitiesEntity }) => {
   // DOMParser n'existe que dans le navigateur : on rend le HTML brut au serveur
@@ -87,6 +88,9 @@ const ViewActualities = ({ actuality }: { actuality: ActualitiesEntity }) => {
           __html: content,
         }}
       />
+      {actuality?.gallery?.length ? (
+        <ProjectGallery gallery={actuality.gallery} title={actuality.title} />
+      ) : null}
       {/*  Sources et liens utiles*/}
       {actuality?.sources ? (
         <Box>

@@ -59,7 +59,7 @@ export const COVER_WITH_FOCAL_POINT_FIELDS = [
   "cover.focal_point_y",
 ];
 
-/** Photos de la galerie d'un projet (jonction projects_gallery), avec leur ordre. */
+/** Photos d'une galerie Directus, avec leur ordre. */
 export const GALLERY_FIELDS = [
   "gallery.sort",
   "gallery.directus_files_id.id",
