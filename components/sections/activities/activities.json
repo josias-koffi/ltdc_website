@@ -1,8 +1,25 @@
 {
   "images": [
-    "/images/tournage-emission/IMG_7589.jpeg",
-    "/images/tournage-emission/IMG_0085.jpeg",
-    "/images/tournage-emission/IMG_7591.jpeg"
+    {
+      "src": "/images/tournage-emission/IMG_7589.jpeg",
+      "width": 1600,
+      "height": 1200
+    },
+    {
+      "src": "/images/tournage-emission/IMG_0085.jpeg",
+      "width": 1200,
+      "height": 1600
+    },
+    {
+      "src": "/images/tournage-emission/IMG_7591.jpeg",
+      "width": 1200,
+      "height": 1600
+    },
+    {
+      "src": "/images/tournage-emission/IMG_7592.jpeg",
+      "width": 1179,
+      "height": 654
+    }
   ],
   "activities": [
     {
