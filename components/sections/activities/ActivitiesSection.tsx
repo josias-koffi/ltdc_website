@@ -24,6 +24,7 @@ interface ActivityInterface {
 const ActivitiesSection = (props: ActivitiesSectionInterface) => {
   const { variant } = props;
   const { images, activities } = ACTIVITIES;
+  const imageRows = [images.slice(0, 2), images.slice(2, 4)];
   const frame = useContext(FrameSettingContext);
   const notPhoneScreen = useContext(ScreenTypeContext);
   const ABSOLUT_IMAGE_POSITION = notPhoneScreen ? 2 : -300;
@@ -103,58 +104,40 @@ const ActivitiesSection = (props: ActivitiesSectionInterface) => {
                 gap: 1,
               }}
             >
-              <motion.div
-                variants={fadeLeft}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
-              >
-                <Box
-                  sx={{
-                    position: "relative",
-                    height: 340,
-                    borderRadius: 2,
-                    overflow: "hidden",
-                  }}
-                >
-                  <Image
-                    src={images[0]}
-                    alt="activité 1"
-                    fill
-                    style={{ objectFit: "cover" }}
-                  />
-                </Box>
-              </motion.div>
-
-              <Box sx={{ display: "flex", gap: 1, height: 250 }}>
-                {[images[1], images[2]].map((src, i) => (
-                  <motion.div
-                    key={src}
-                    variants={fadeLeft}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.2 }}
-                    style={{ flex: 1, position: "relative" }}
-                    transition={{ delay: 0.15 + i * 0.1 } as never}
-                  >
-                    <Box
-                      sx={{
-                        position: "relative",
-                        height: "100%",
-                        borderRadius: 2,
-                        overflow: "hidden",
-                      }}
+              {/* Rangées de deux photos : chacune prend une largeur proportionnelle
+                  à son ratio, la rangée a donc une seule hauteur et rien n'est recadré. */}
+              {imageRows.map((row, rowIndex) => (
+                <Box key={rowIndex} sx={{ display: "flex", gap: 1 }}>
+                  {row.map((image, i) => (
+                    <motion.div
+                      key={image.src}
+                      variants={fadeLeft}
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: true, amount: 0.2 }}
+                      style={{ flex: `${image.width / image.height} 1 0`, minWidth: 0 }}
+                      transition={{ delay: (rowIndex * 2 + i) * 0.1 } as never}
                     >
-                      <Image
-                        src={src}
-                        alt={`activité ${i + 2}`}
-                        fill
-                        style={{ objectFit: "cover" }}
-                      />
-                    </Box>
-                  </motion.div>
-                ))}
-              </Box>
+                      <Box
+                        sx={{
+                          position: "relative",
+                          aspectRatio: `${image.width} / ${image.height}`,
+                          borderRadius: 2,
+                          overflow: "hidden",
+                        }}
+                      >
+                        <Image
+                          src={image.src}
+                          alt={`activité ${rowIndex * 2 + i + 1}`}
+                          fill
+                          sizes="(max-width: 900px) 50vw, 25vw"
+                          style={{ objectFit: "cover" }}
+                        />
+                      </Box>
+                    </motion.div>
+                  ))}
+                </Box>
+              ))}
             </Grid>
           ) : null}
 
