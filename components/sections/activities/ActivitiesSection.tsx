@@ -23,8 +23,8 @@ interface ActivityInterface {
 
 const ActivitiesSection = (props: ActivitiesSectionInterface) => {
   const { variant } = props;
-  const { images, activities } = ACTIVITIES;
-  const imageRows = [images.slice(0, 2), images.slice(2, 4)];
+  // Une entrée de `images` = une rangée de photos.
+  const { images: imageRows, activities } = ACTIVITIES;
   const frame = useContext(FrameSettingContext);
   const notPhoneScreen = useContext(ScreenTypeContext);
   const ABSOLUT_IMAGE_POSITION = notPhoneScreen ? 2 : -300;
@@ -104,7 +104,7 @@ const ActivitiesSection = (props: ActivitiesSectionInterface) => {
                 gap: 1,
               }}
             >
-              {/* Rangées de deux photos : chacune prend une largeur proportionnelle
+              {/* Rangées de photos : chacune prend une largeur proportionnelle
                   à son ratio, la rangée a donc une seule hauteur et rien n'est recadré. */}
               {imageRows.map((row, rowIndex) => (
                 <Box key={rowIndex} sx={{ display: "flex", gap: 1 }}>
@@ -116,7 +116,7 @@ const ActivitiesSection = (props: ActivitiesSectionInterface) => {
                       whileInView="visible"
                       viewport={{ once: true, amount: 0.2 }}
                       style={{ flex: `${image.width / image.height} 1 0`, minWidth: 0 }}
-                      transition={{ delay: (rowIndex * 2 + i) * 0.1 } as never}
+                      transition={{ delay: (rowIndex + i) * 0.1 } as never}
                     >
                       <Box
                         sx={{
@@ -128,9 +128,9 @@ const ActivitiesSection = (props: ActivitiesSectionInterface) => {
                       >
                         <Image
                           src={image.src}
-                          alt={`activité ${rowIndex * 2 + i + 1}`}
+                          alt={`activité ${rowIndex + 1}.${i + 1}`}
                           fill
-                          sizes="(max-width: 900px) 50vw, 25vw"
+                          sizes="(max-width: 900px) 50vw, 33vw"
                           style={{ objectFit: "cover" }}
                         />
                       </Box>
